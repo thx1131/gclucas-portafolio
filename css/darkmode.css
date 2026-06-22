@@ -1,0 +1,195 @@
+/* ============================================
+   DARKMODE - ESTILOS ADICIONALES
+   ============================================ */
+
+/* Transición suave al cambiar tema */
+body,
+body * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dark mode - ajustes específicos */
+body.dark-mode {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+body.dark-mode .navbar {
+    background-color: var(--color-bg);
+    border-bottom-color: var(--color-border);
+}
+
+body.dark-mode a {
+    color: var(--color-text);
+}
+
+body.dark-mode a:hover {
+    color: var(--color-text-secondary);
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: var(--color-text);
+}
+
+body.dark-mode .logo {
+    color: var(--color-text);
+}
+
+body.dark-mode .nav-links a {
+    color: var(--color-text-secondary);
+}
+
+body.dark-mode .nav-links a:hover {
+    color: var(--color-text);
+}
+
+body.dark-mode .darkmode-toggle {
+    color: var(--color-text);
+}
+
+body.dark-mode .hamburger span {
+    background-color: var(--color-text);
+}
+
+body.dark-mode section {
+    border-top-color: var(--color-border);
+}
+
+body.dark-mode .tagline,
+body.dark-mode .description {
+    color: var(--color-text-secondary);
+}
+
+body.dark-mode .statement-content p {
+    color: var(--color-text);
+}
+
+body.dark-mode .galeria-serie-desc,
+body.dark-mode .obra-meta {
+    color: var(--color-text-secondary);
+}
+
+body.dark-mode .obra-titulo {
+    color: var(--color-text);
+}
+
+body.dark-mode .texto-header:hover {
+    color: var(--color-text-secondary);
+}
+
+body.dark-mode .texto-preview,
+body.dark-mode .texto-toggle {
+    color: var(--color-text-secondary);
+}
+
+body.dark-mode .texto-content p {
+    color: var(--color-text);
+}
+
+body.dark-mode .bio-main p {
+    color: var(--color-text);
+}
+
+body.dark-mode .cv-list li {
+    color: var(--color-text-secondary);
+}
+
+body.dark-mode .contact-info p,
+body.dark-mode .contact-socials p {
+    color: var(--color-text);
+}
+
+body.dark-mode .contact-info a,
+body.dark-mode .contact-socials a {
+    color: var(--color-text);
+}
+
+body.dark-mode .contact-info a:hover,
+body.dark-mode .contact-socials a:hover {
+    color: var(--color-text-secondary);
+}
+
+body.dark-mode .contact-form {
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-border);
+}
+
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    border-color: var(--color-border);
+}
+
+body.dark-mode .contact-form input:focus,
+body.dark-mode .contact-form textarea:focus {
+    border-color: var(--color-text);
+}
+
+body.dark-mode .contact-form input::placeholder,
+body.dark-mode .contact-form textarea::placeholder {
+    color: var(--color-text-secondary);
+}
+
+body.dark-mode .contact-form button {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    border-color: var(--color-text);
+}
+
+body.dark-mode .contact-form button:hover {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    border-color: var(--color-text);
+}
+
+body.dark-mode .footer {
+    color: var(--color-text-secondary);
+    border-top-color: var(--color-border);
+}
+
+body.dark-mode .footer a {
+    color: var(--color-text-secondary);
+}
+
+body.dark-mode .footer a:hover {
+    color: var(--color-text);
+}
+
+/* ============================================
+   ICON DARKMODE - Animación
+   ============================================ */
+
+.darkmode-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+body.dark-mode .darkmode-icon {
+    transform: rotate(180deg);
+}
+
+/* ============================================
+   PREFERENCIA DEL SISTEMA (prefers-color-scheme)
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+    body:not(.light-mode) {
+        --color-bg: #1a1a1a;
+        --color-bg-secondary: #2a2a2a;
+        --color-text: #f0f0f0;
+        --color-text-secondary: #b0b0b0;
+        --color-border: #333333;
+        --color-accent: #f0f0f0;
+    }
+
+    body:not(.light-mode) {
+        background-color: var(--color-bg);
+        color: var(--color-text);
+    }
+}

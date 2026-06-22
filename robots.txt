@@ -1,0 +1,16 @@
+# Google, Bing, y otros motores de búsqueda
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemaps
+Sitemap: https://gclucas.art/sitemap.xml
+
+# Velocidad de rastreo
+Crawl-delay: 1
+
+# Google específicamente
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
