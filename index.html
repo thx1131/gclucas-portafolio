@@ -43,3 +43,137 @@
                 <li><a href="#work">work</a></li>
                 <li><a href="#text">text</a></li>
                 <li><a href="#bio">bio</a></li>
+                <li><a href="#contact">contact</a></li>
+            </ul>
+            <button class="darkmode-toggle" id="darkmodeToggle" aria-label="Toggle dark mode">
+                <span class="darkmode-icon">◐</span>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- PORTADA / HERO -->
+    <section id="portada" class="hero">
+        <div class="hero-content">
+            <div class="hero-image">
+                <img src="https://picsum.photos/600/800?random=hero" alt="GC Lucas - Obra destacada">
+            </div>
+            <div class="hero-text">
+                <h1>gclucas</h1>
+                <p class="tagline">exploración de contradicciones y transiciones</p>
+                <p class="description">artista visual basado en monterrey. obra en pintura, grabado, fotografía e instalación.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATEMENT -->
+    <section id="statement" class="statement">
+        <div class="section-container">
+            <h2>statement</h2>
+            <div class="statement-content">
+                <p>Mi método de trabajo se basa en la exploración de la naturaleza dual de la realidad. Las contradicciones pueden ser quizás la única manera de explicarnos un poco la vida así como una de las expresiones más plenas de la lucidez.</p>
+                
+                <p>A través de mi obra busco poner en diálogo elementos opuestos: lo real y lo imaginado, lo artificial y lo natural, la razón y el absurdo, lo abstracto y lo tangible. A través de la imagen propongo una reformulación de estas polaridades con la intención de disolverlas y alcanzar un punto de integración. La imagen se convierte así en un espacio de encuentro donde los contrarios se transforman mutuamente, generando nuevas lecturas y posibilidades de interpretación.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK / GALERÍAS -->
+    <section id="work" class="work">
+        <div class="section-container">
+            <h2>work</h2>
+            <div id="galeria-container" class="galeria-container">
+                <!-- Se genera dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- TEXT / ESCRITOS -->
+    <section id="text" class="text">
+        <div class="section-container">
+            <h2>text</h2>
+            <div id="textos-container" class="textos-container">
+                <!-- Se genera dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- BIO -->
+    <section id="bio" class="bio">
+        <div class="section-container">
+            <h2>bio</h2>
+            
+            <div class="bio-main">
+                <p>GC Lucas es artista visual basado en Monterrey. Su práctica abarca pintura, grabado, fotografía e instalación. Trabaja desde la contradicción como herramienta: pone en diálogo elementos opuestos para alcanzar un punto de integración donde los contrarios se transforman mutuamente.</p>
+                
+                <p>Su obra responde a fenómenos contemporáneos: la automatización, la violencia política, el consumo, la temporalidad acelerada. Busca reformular estas polaridades y revelar nuevas lecturas: a veces irónicas, dramáticas, disruptivas.</p>
+                
+                <p>Expone en México e internacionalmente. Publicado en <em>Armas y Letras</em> (UANL, 2008) y <em>Grama</em> (UdeM, 2010).</p>
+            </div>
+
+            <div class="bio-cv">
+                <h3>exposiciones individuales</h3>
+                <ul class="cv-list">
+                    <li>2010 — Cero Quilates — Flying Circus Gallery, Monterrey</li>
+                    <li>2008 — Aquí es Todas Partes — Centro de las Artes, Monterrey</li>
+                    <li>2006 — Dos — Esquina Amarilla, Monterrey</li>
+                    <li>2004 — Naranja Dulce — Museo Metropolitano, Monterrey</li>
+                    <li>2002 — Psy — Galería Efímera, Monterrey</li>
+                </ul>
+
+                <h3>exposiciones colectivas</h3>
+                <ul class="cv-list">
+                    <li>2025 — Bienal Rufino Tamayo — Museo Rufino Tamayo</li>
+                    <li>2021 — El Triunfo de la Pintura — Pinacoteca, Monterrey</li>
+                    <li>2021 — Triennale — Grenchen Art Museum, Suiza</li>
+                    <li>2017 — Shaped in Mexico — About Gallery, Venecia</li>
+                    <li>2017 — Shaped in Mexico — Gerickepaffrath Gallery, Dusseldorf</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <h2>contact</h2>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p><strong>email:</strong> <a href="mailto:gclucas999@gmail.com">gclucas999@gmail.com</a></p>
+                    <p><strong>teléfono:</strong> <a href="tel:+524151511029">+52 415 151 1029</a></p>
+                    <p><strong>whatsapp:</strong> <a href="https://wa.me/524151511029" target="_blank">Enviar mensaje</a></p>
+                </div>
+
+                <div class="contact-socials">
+                    <p><strong>redes:</strong></p>
+                    <ul class="socials">
+                        <li><a href="https://instagram.com/lucasasecas" target="_blank">instagram</a></li>
+                    </ul>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="nombre" required>
+                    <input type="email" placeholder="email" required>
+                    <textarea placeholder="mensaje" rows="5" required></textarea>
+                    <button type="submit">enviar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; gclucas ® 2026 | <a href="https://instagram.com/lucasasecas" target="_blank">instagram</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/darkmode.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
