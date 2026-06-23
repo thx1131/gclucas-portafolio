@@ -12,8 +12,8 @@
           "año": "2019",
           "tecnica": "acrílico/canvas",
           "dimensiones": "140x155 cm",
-          "imagen": "https://images.unsplash.com/photo-1579783902614-e3fb446b9a1f?w=800&h=1000&fit=crop",
-          "imagen_thumb": "https://images.unsplash.com/photo-1579783902614-e3fb446b9a1f?w=300&h=300&fit=crop"
+          "imagen": "https://picsum.photos/800/1000?random=1",
+          "imagen_thumb": "https://picsum.photos/300/300?random=1"
         },
         {
           "id": "pixelogue-2",
@@ -21,8 +21,8 @@
           "año": "2019",
           "tecnica": "acrílico/canvas",
           "dimensiones": "140x155 cm",
-          "imagen": "https://images.unsplash.com/photo-1578321272176-b7baa6d9e3d1?w=800&h=1000&fit=crop",
-          "imagen_thumb": "https://images.unsplash.com/photo-1578321272176-b7baa6d9e3d1?w=300&h=300&fit=crop"
+          "imagen": "https://picsum.photos/800/1000?random=2",
+          "imagen_thumb": "https://picsum.photos/300/300?random=2"
         }
       ]
     },
@@ -38,8 +38,8 @@
           "año": "2023",
           "tecnica": "óleo, acrílico, grafito/canvas",
           "dimensiones": "100x100 cm",
-          "imagen": "https://images.unsplash.com/photo-1578321272176-b7baa6d9e3d1?w=800&h=800&fit=crop",
-          "imagen_thumb": "https://images.unsplash.com/photo-1578321272176-b7baa6d9e3d1?w=300&h=300&fit=crop"
+          "imagen": "https://picsum.photos/800/800?random=3",
+          "imagen_thumb": "https://picsum.photos/300/300?random=3"
         },
         {
           "id": "peligro-2",
@@ -47,8 +47,8 @@
           "año": "2023",
           "tecnica": "óleo, acrílico, grafito/canvas",
           "dimensiones": "100x100 cm",
-          "imagen": "https://images.unsplash.com/photo-1577720643272-265ed05cc0f5?w=800&h=800&fit=crop",
-          "imagen_thumb": "https://images.unsplash.com/photo-1577720643272-265ed05cc0f5?w=300&h=300&fit=crop"
+          "imagen": "https://picsum.photos/800/800?random=4",
+          "imagen_thumb": "https://picsum.photos/300/300?random=4"
         }
       ]
     },
@@ -64,8 +64,8 @@
           "año": "2021",
           "tecnica": "acrílico/canvas",
           "dimensiones": "90x60 cm",
-          "imagen": "https://images.unsplash.com/photo-1578926078328-123456789012?w=800&h=600&fit=crop",
-          "imagen_thumb": "https://images.unsplash.com/photo-1578926078328-123456789012?w=300&h=225&fit=crop"
+          "imagen": "https://picsum.photos/800/600?random=5",
+          "imagen_thumb": "https://picsum.photos/300/225?random=5"
         },
         {
           "id": "filippo-2",
@@ -73,8 +73,8 @@
           "año": "2021",
           "tecnica": "acrílico/canvas",
           "dimensiones": "90x60 cm",
-          "imagen": "https://images.unsplash.com/photo-1578926078328-987654321098?w=800&h=600&fit=crop",
-          "imagen_thumb": "https://images.unsplash.com/photo-1578926078328-987654321098?w=300&h=225&fit=crop"
+          "imagen": "https://picsum.photos/800/600?random=6",
+          "imagen_thumb": "https://picsum.photos/300/225?random=6"
         }
       ]
     },
@@ -90,8 +90,8 @@
           "año": "2020",
           "tecnica": "grabado/papel",
           "dimensiones": "38x30 cm",
-          "imagen": "https://images.unsplash.com/photo-1579783902614-e3fb446b9a1f?w=600&h=750&fit=crop",
-          "imagen_thumb": "https://images.unsplash.com/photo-1579783902614-e3fb446b9a1f?w=300&h=375&fit=crop"
+          "imagen": "https://picsum.photos/600/750?random=7",
+          "imagen_thumb": "https://picsum.photos/300/375?random=7"
         },
         {
           "id": "headless-2",
@@ -99,8 +99,8 @@
           "año": "2020",
           "tecnica": "grabado/papel",
           "dimensiones": "38x30 cm",
-          "imagen": "https://images.unsplash.com/photo-1578321272176-b7baa6d9e3d1?w=600&h=750&fit=crop",
-          "imagen_thumb": "https://images.unsplash.com/photo-1578321272176-b7baa6d9e3d1?w=300&h=375&fit=crop"
+          "imagen": "https://picsum.photos/600/750?random=8",
+          "imagen_thumb": "https://picsum.photos/300/375?random=8"
         }
       ]
     },
@@ -116,8 +116,8 @@
           "año": "2018",
           "tecnica": "acrílico/canvas",
           "dimensiones": "180x120 cm",
-          "imagen": "https://images.unsplash.com/photo-1577720643272-265ed05cc0f5?w=800&h=530&fit=crop",
-          "imagen_thumb": "https://images.unsplash.com/photo-1577720643272-265ed05cc0f5?w=300&h=200&fit=crop"
+          "imagen": "https://picsum.photos/800/530?random=9",
+          "imagen_thumb": "https://picsum.photos/300/200?random=9"
         },
         {
           "id": "nude-2",
@@ -125,8 +125,8 @@
           "año": "2018",
           "tecnica": "acrílico/canvas",
           "dimensiones": "180x120 cm",
-          "imagen": "https://images.unsplash.com/photo-1578926078328-123456789055?w=800&h=530&fit=crop",
-          "imagen_thumb": "https://images.unsplash.com/photo-1578926078328-123456789055?w=300&h=200&fit=crop"
+          "imagen": "https://picsum.photos/800/530?random=10",
+          "imagen_thumb": "https://picsum.photos/300/200?random=10"
         }
       ]
     }
