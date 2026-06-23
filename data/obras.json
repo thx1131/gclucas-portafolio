@@ -12,8 +12,8 @@
           "año": "2019",
           "tecnica": "acrílico/canvas",
           "dimensiones": "140x155 cm",
-          "imagen": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_800,h_1000,c_fill,q_auto/pixelogue-more-human.jpg",
-          "imagen_thumb": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_300,h_300,c_fill,q_auto/pixelogue-more-human.jpg"
+          "imagen": "https://images.unsplash.com/photo-1579783902614-e3fb446b9a1f?w=800&h=1000&fit=crop",
+          "imagen_thumb": "https://images.unsplash.com/photo-1579783902614-e3fb446b9a1f?w=300&h=300&fit=crop"
         },
         {
           "id": "pixelogue-2",
@@ -21,8 +21,8 @@
           "año": "2019",
           "tecnica": "acrílico/canvas",
           "dimensiones": "140x155 cm",
-          "imagen": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_800,h_1000,c_fill,q_auto/pixelogue-disappeared.jpg",
-          "imagen_thumb": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_300,h_300,c_fill,q_auto/pixelogue-disappeared.jpg"
+          "imagen": "https://images.unsplash.com/photo-1578321272176-b7baa6d9e3d1?w=800&h=1000&fit=crop",
+          "imagen_thumb": "https://images.unsplash.com/photo-1578321272176-b7baa6d9e3d1?w=300&h=300&fit=crop"
         }
       ]
     },
@@ -38,8 +38,8 @@
           "año": "2023",
           "tecnica": "óleo, acrílico, grafito/canvas",
           "dimensiones": "100x100 cm",
-          "imagen": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_800,h_800,c_fill,q_auto/peligro-extincion-1.jpg",
-          "imagen_thumb": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_300,h_300,c_fill,q_auto/peligro-extincion-1.jpg"
+          "imagen": "https://images.unsplash.com/photo-1578321272176-b7baa6d9e3d1?w=800&h=800&fit=crop",
+          "imagen_thumb": "https://images.unsplash.com/photo-1578321272176-b7baa6d9e3d1?w=300&h=300&fit=crop"
         },
         {
           "id": "peligro-2",
@@ -47,8 +47,8 @@
           "año": "2023",
           "tecnica": "óleo, acrílico, grafito/canvas",
           "dimensiones": "100x100 cm",
-          "imagen": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_800,h_800,c_fill,q_auto/peligro-extincion-2.jpg",
-          "imagen_thumb": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_300,h_300,c_fill,q_auto/peligro-extincion-2.jpg"
+          "imagen": "https://images.unsplash.com/photo-1577720643272-265ed05cc0f5?w=800&h=800&fit=crop",
+          "imagen_thumb": "https://images.unsplash.com/photo-1577720643272-265ed05cc0f5?w=300&h=300&fit=crop"
         }
       ]
     },
@@ -64,8 +64,8 @@
           "año": "2021",
           "tecnica": "acrílico/canvas",
           "dimensiones": "90x60 cm",
-          "imagen": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_800,h_600,c_fill,q_auto/vision-filippo-2.jpg",
-          "imagen_thumb": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_300,h_225,c_fill,q_auto/vision-filippo-2.jpg"
+          "imagen": "https://images.unsplash.com/photo-1578926078328-123456789012?w=800&h=600&fit=crop",
+          "imagen_thumb": "https://images.unsplash.com/photo-1578926078328-123456789012?w=300&h=225&fit=crop"
         },
         {
           "id": "filippo-2",
@@ -73,8 +73,8 @@
           "año": "2021",
           "tecnica": "acrílico/canvas",
           "dimensiones": "90x60 cm",
-          "imagen": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_800,h_600,c_fill,q_auto/vision-filippo-3.jpg",
-          "imagen_thumb": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_300,h_225,c_fill,q_auto/vision-filippo-3.jpg"
+          "imagen": "https://images.unsplash.com/photo-1578926078328-987654321098?w=800&h=600&fit=crop",
+          "imagen_thumb": "https://images.unsplash.com/photo-1578926078328-987654321098?w=300&h=225&fit=crop"
         }
       ]
     },
@@ -90,8 +90,8 @@
           "año": "2020",
           "tecnica": "grabado/papel",
           "dimensiones": "38x30 cm",
-          "imagen": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_600,h_750,c_fill,q_auto/headless-berzerk.jpg",
-          "imagen_thumb": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_300,h_375,c_fill,q_auto/headless-berzerk.jpg"
+          "imagen": "https://images.unsplash.com/photo-1579783902614-e3fb446b9a1f?w=600&h=750&fit=crop",
+          "imagen_thumb": "https://images.unsplash.com/photo-1579783902614-e3fb446b9a1f?w=300&h=375&fit=crop"
         },
         {
           "id": "headless-2",
@@ -99,8 +99,8 @@
           "año": "2020",
           "tecnica": "grabado/papel",
           "dimensiones": "38x30 cm",
-          "imagen": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_600,h_750,c_fill,q_auto/headless-ciber-man.jpg",
-          "imagen_thumb": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_300,h_375,c_fill,q_auto/headless-ciber-man.jpg"
+          "imagen": "https://images.unsplash.com/photo-1578321272176-b7baa6d9e3d1?w=600&h=750&fit=crop",
+          "imagen_thumb": "https://images.unsplash.com/photo-1578321272176-b7baa6d9e3d1?w=300&h=375&fit=crop"
         }
       ]
     },
@@ -116,8 +116,8 @@
           "año": "2018",
           "tecnica": "acrílico/canvas",
           "dimensiones": "180x120 cm",
-          "imagen": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_800,h_530,c_fill,q_auto/nude-revisited-1.jpg",
-          "imagen_thumb": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_300,h_200,c_fill,q_auto/nude-revisited-1.jpg"
+          "imagen": "https://images.unsplash.com/photo-1577720643272-265ed05cc0f5?w=800&h=530&fit=crop",
+          "imagen_thumb": "https://images.unsplash.com/photo-1577720643272-265ed05cc0f5?w=300&h=200&fit=crop"
         },
         {
           "id": "nude-2",
@@ -125,8 +125,8 @@
           "año": "2018",
           "tecnica": "acrílico/canvas",
           "dimensiones": "180x120 cm",
-          "imagen": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_800,h_530,c_fill,q_auto/nude-revisited-2.jpg",
-          "imagen_thumb": "https://res.cloudinary.com/dt2w4nxz6/image/upload/w_300,h_200,c_fill,q_auto/nude-revisited-2.jpg"
+          "imagen": "https://images.unsplash.com/photo-1578926078328-123456789055?w=800&h=530&fit=crop",
+          "imagen_thumb": "https://images.unsplash.com/photo-1578926078328-123456789055?w=300&h=200&fit=crop"
         }
       ]
     }
