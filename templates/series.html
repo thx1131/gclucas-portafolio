@@ -1,0 +1,37 @@
+<!-- series detail section -->
+<section class="series-detail">
+    <div class="container">
+        <div class="series-header">
+            <h1>{{series_title}}</h1>
+            <p class="series-year">{{series_year}}</p>
+        </div>
+        
+        <div class="series-statement">
+            {{series_statement}}
+        </div>
+        
+        <div class="gallery">
+            {{gallery}}
+        </div>
+    </div>
+</section>
+
+<!-- modal para galería -->
+<div class="modal" id="galleryModal">
+    <div class="modal-content">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <div class="modal-image">
+            <img id="modalImage" src="" alt="">
+        </div>
+        <div class="modal-info">
+            <h3 id="modalTitle"></h3>
+            <p id="modalYear"></p>
+            <p id="modalTechnique"></p>
+            <p id="modalDimensions"></p>
+        </div>
+        <div class="modal-nav">
+            <button class="modal-prev" id="modalPrev">← previous</button>
+            <button class="modal-next" id="modalNext">next →</button>
+        </div>
+    </div>
+</div>

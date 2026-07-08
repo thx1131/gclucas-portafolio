@@ -1,0 +1,162 @@
+[
+  {
+    "id": "PIX001",
+    "series": "pixelogue",
+    "titleEn": "More Human Than Human",
+    "titleEs": "más humano que humano",
+    "year": 2019,
+    "technique": "acrylic, graphite on canvas",
+    "techniqueEs": "acrílico, grafito sobre lienzo",
+    "dimensions": {
+      "height": 155,
+      "width": 140,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://picsum.photos/800/600?random=10",
+    "order": 1
+  },
+  {
+    "id": "PIX002",
+    "series": "pixelogue",
+    "titleEn": "You Just Disappeared",
+    "titleEs": "simplemente desapareciste",
+    "year": 2019,
+    "technique": "acrylic, graphite on canvas",
+    "techniqueEs": "acrílico, grafito sobre lienzo",
+    "dimensions": {
+      "height": 155,
+      "width": 140,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://picsum.photos/800/600?random=11",
+    "order": 2
+  },
+  {
+    "id": "PEL001",
+    "series": "peligro-extincion",
+    "titleEn": "Extinction 1",
+    "titleEs": "peligro de extinción 1",
+    "year": 2023,
+    "technique": "oil, acrylic, graphite on canvas",
+    "techniqueEs": "óleo, acrílico, grafito sobre lienzo",
+    "dimensions": {
+      "height": 100,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://picsum.photos/800/600?random=20",
+    "order": 1
+  },
+  {
+    "id": "PEL002",
+    "series": "peligro-extincion",
+    "titleEn": "Extinction 2",
+    "titleEs": "peligro de extinción 2",
+    "year": 2023,
+    "technique": "oil, acrylic, graphite on canvas",
+    "techniqueEs": "óleo, acrílico, grafito sobre lienzo",
+    "dimensions": {
+      "height": 100,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://picsum.photos/800/600?random=21",
+    "order": 2
+  },
+  {
+    "id": "VIS001",
+    "series": "vision-filippo",
+    "titleEn": "Vision 1",
+    "titleEs": "visión 1",
+    "year": 2021,
+    "technique": "acrylic on canvas",
+    "techniqueEs": "acrílico sobre lienzo",
+    "dimensions": {
+      "height": 90,
+      "width": 60,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://picsum.photos/800/600?random=30",
+    "order": 1
+  },
+  {
+    "id": "VIS002",
+    "series": "vision-filippo",
+    "titleEn": "Vision 2",
+    "titleEs": "visión 2",
+    "year": 2021,
+    "technique": "acrylic on canvas",
+    "techniqueEs": "acrílico sobre lienzo",
+    "dimensions": {
+      "height": 90,
+      "width": 60,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://picsum.photos/800/600?random=31",
+    "order": 2
+  },
+  {
+    "id": "HEAD001",
+    "series": "headless",
+    "titleEn": "Headless 1",
+    "titleEs": "headless 1",
+    "year": 2020,
+    "technique": "engraving on paper",
+    "techniqueEs": "grabado sobre papel",
+    "dimensions": {
+      "height": 38,
+      "width": 30,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://picsum.photos/800/600?random=40",
+    "order": 1
+  },
+  {
+    "id": "HEAD002",
+    "series": "headless",
+    "titleEn": "Headless 2",
+    "titleEs": "headless 2",
+    "year": 2020,
+    "technique": "engraving on paper",
+    "techniqueEs": "grabado sobre papel",
+    "dimensions": {
+      "height": 38,
+      "width": 30,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://picsum.photos/800/600?random=41",
+    "order": 2
+  },
+  {
+    "id": "NUDE001",
+    "series": "nude-revisited",
+    "titleEn": "Nude 1",
+    "titleEs": "desnudo 1",
+    "year": 2018,
+    "technique": "photograph",
+    "techniqueEs": "fotografía",
+    "dimensions": {
+      "height": 120,
+      "width": 90,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://picsum.photos/800/600?random=50",
+    "order": 1
+  },
+  {
+    "id": "NUDE002",
+    "series": "nude-revisited",
+    "titleEn": "Nude 2",
+    "titleEs": "desnudo 2",
+    "year": 2018,
+    "technique": "photograph",
+    "techniqueEs": "fotografía",
+    "dimensions": {
+      "height": 120,
+      "width": 90,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://picsum.photos/800/600?random=51",
+    "order": 2
+  }
+]

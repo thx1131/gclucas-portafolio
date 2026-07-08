@@ -1,0 +1,28 @@
+{
+  "title": "gclucas",
+  "descriptionEn": "Visual artist exploring contradictions and transitions through painting, engraving, photography, and installation.",
+  "descriptionEs": "Artista visual explorando contradicciones y transiciones a través de pintura, grabado, fotografía e instalación.",
+  "author": "GC Lucas",
+  "email": "gclucas999@gmail.com",
+  "phone": "+52 415 151 1029",
+  "whatsapp_number": "524151511029",
+  "instagram": "https://www.instagram.com/lucas.asecas/",
+  "whatsapp": "https://wa.me/524151511029",
+  "copyright": "© gclucas ® 2026",
+  "language": "en",
+  "url": "https://gclucas.art",
+  "statementEn": "My method of work is based on the exploration of the dual nature of reality. Contradictions may be perhaps the only way to explain a little bit about life, as well as one of the fullest expressions of lucidity. Through my work I seek to put opposite elements in dialogue: the real and the imagined, the artificial and the natural, reason and absurdity, the abstract and the tangible.",
+  "statementEs": "Mi método de trabajo se basa en la exploración de la naturaleza dual de la realidad. Las contradicciones pueden ser quizás la única manera de explicarnos un poco la vida así como una de las expresiones más plenas de la lucidez. A través de mi obra busco poner en diálogo elementos opuestos: lo real y lo imaginado, lo artificial y lo natural, la razón y el absurdo, lo abstracto y lo tangible.",
+  "bioEn": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "bioEs": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "colors": {
+    "bgLight": "#ffffff",
+    "bgDark": "#1a1a1a",
+    "textLight": "#1a1a1a",
+    "textDark": "#f0f0f0",
+    "borderLight": "#e0e0e0",
+    "borderDark": "#333333",
+    "accentLight": "#666666",
+    "accentDark": "#b0b0b0"
+  }
+}

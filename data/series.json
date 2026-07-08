@@ -1,0 +1,52 @@
+[
+  {
+    "id": "pixelogue",
+    "titleEn": "Pixelogue",
+    "titleEs": "pixelogue",
+    "year": 2019,
+    "statementEn": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "statementEs": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "coverImage": "https://picsum.photos/800/600?random=1",
+    "order": 10
+  },
+  {
+    "id": "peligro-extincion",
+    "titleEn": "Danger of Extinction",
+    "titleEs": "peligro de extinción",
+    "year": 2023,
+    "statementEn": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "statementEs": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "coverImage": "https://picsum.photos/800/600?random=2",
+    "order": 20
+  },
+  {
+    "id": "vision-filippo",
+    "titleEn": "Vision of Filippo",
+    "titleEs": "visión de filippo",
+    "year": 2021,
+    "statementEn": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "statementEs": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "coverImage": "https://picsum.photos/800/600?random=3",
+    "order": 30
+  },
+  {
+    "id": "headless",
+    "titleEn": "Headless",
+    "titleEs": "headless",
+    "year": 2020,
+    "statementEn": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "statementEs": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "coverImage": "https://picsum.photos/800/600?random=4",
+    "order": 40
+  },
+  {
+    "id": "nude-revisited",
+    "titleEn": "Nude Revisited",
+    "titleEs": "nude revisited",
+    "year": 2018,
+    "statementEn": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
+    "statementEs": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
+    "coverImage": "https://picsum.photos/800/600?random=5",
+    "order": 50
+  }
+]
