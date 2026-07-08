@@ -1,197 +1,106 @@
-/* ============================================
-   GALLERY - GENERAR GALERÍAS DINÁMICAMENTE
-   ============================================ */
+// GALLERY MODAL
+const galleryModal = document.getElementById('galleryModal');
+const modalImage = document.getElementById('modalImage');
+const modalTitle = document.getElementById('modalTitle');
+const modalYear = document.getElementById('modalYear');
+const modalTechnique = document.getElementById('modalTechnique');
+const modalDimensions = document.getElementById('modalDimensions');
+const modalClose = document.getElementById('modalClose');
+const modalPrev = document.getElementById('modalPrev');
+const modalNext = document.getElementById('modalNext');
 
-class Gallery {
-    constructor() {
-        this.galeriaContainer = document.getElementById('galeria-container');
-        this.textosContainer = document.getElementById('textos-container');
-        this.dataUrl = 'data/obras.json';
-        
-        this.init();
-    }
+let currentGalleryItems = [];
+let currentIndex = 0;
 
-    async init() {
-        try {
-            const data = await this.loadData();
-            this.renderGalerias(data.series);
-            this.renderTextos(data.textos);
-        } catch (error) {
-            console.error('Error cargando datos:', error);
-        }
-    }
-
-    async loadData() {
-        const response = await fetch(this.dataUrl);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await response.json();
-    }
-
-    renderGalerias(series) {
-        this.galeriaContainer.innerHTML = '';
-
-        series.forEach(serie => {
-            // Crear contenedor de serie
-            const serieDiv = document.createElement('div');
-            serieDiv.className = 'galeria-serie';
-
-            // Título y descripción de serie
-            const serieHeader = document.createElement('div');
-            serieHeader.innerHTML = `
-                <h3>${serie.nombre}</h3>
-                <p class="galeria-serie-desc">${serie.descripcion}</p>
-            `;
-            serieDiv.appendChild(serieHeader);
-
-            // Grid de obras
-            const obrasGrid = document.createElement('div');
-            obrasGrid.className = 'obras-grid';
-
-            serie.obras.forEach(obra => {
-                const obraCard = document.createElement('div');
-                obraCard.className = 'obra-card';
-                
-                obraCard.innerHTML = `
-                    <div class="obra-image">
-                        <img src="${obra.imagen_thumb}" 
-                             alt="${obra.titulo}" 
-                             data-full="${obra.imagen}"
-                             loading="lazy">
-                    </div>
-                    <div class="obra-info">
-                        <div class="obra-titulo">${obra.titulo}</div>
-                        <div class="obra-meta">${obra.año} | ${obra.tecnica}</div>
-                        <div class="obra-meta">${obra.dimensiones}</div>
-                    </div>
-                `;
-
-                // Event listener para abrir modal
-                obraCard.addEventListener('click', () => {
-                    this.openModal(obra, serie.obras);
-                });
-
-                obrasGrid.appendChild(obraCard);
-            });
-
-            serieDiv.appendChild(obrasGrid);
-            this.galeriaContainer.appendChild(serieDiv);
-        });
-    }
-
-    renderTextos(textos) {
-        this.textosContainer.innerHTML = '';
-
-        textos.forEach(texto => {
-            const textoItem = document.createElement('div');
-            textoItem.className = 'texto-item';
-
-            const textoHeader = document.createElement('div');
-            textoHeader.className = 'texto-header';
-            textoHeader.innerHTML = `
-                <div>
-                    <div class="texto-title">${texto.titulo}</div>
-                    <div class="texto-preview">${texto.preview}</div>
-                </div>
-                <div class="texto-toggle">▼</div>
-            `;
-
-            const textoContent = document.createElement('div');
-            textoContent.className = 'texto-content';
-            textoContent.innerHTML = texto.contenido
-                .split('\n\n')
-                .map(p => `<p>${p}</p>`)
-                .join('');
-
-            // Event listener para expandir/contraer
-            textoHeader.addEventListener('click', () => {
-                textoItem.classList.toggle('open');
-            });
-
-            textoItem.appendChild(textoHeader);
-            textoItem.appendChild(textoContent);
-            this.textosContainer.appendChild(textoItem);
-        });
-    }
-
-    openModal(obra, obrasDelaSerie) {
-        // Crear modal
-        const modal = document.createElement('div');
-        modal.className = 'modal';
-        modal.id = 'obraModal';
-
-        // Encontrar índice de la obra actual
-        const currentIndex = obrasDelaSerie.findIndex(o => o.id === obra.id);
-
-        modal.innerHTML = `
-            <div class="modal-content">
-                <span class="modal-close">&times;</span>
-                
-                <div class="modal-image">
-                    <img src="${obra.imagen}" alt="${obra.titulo}">
-                </div>
-
-                <div class="modal-info">
-                    <h3>${obra.titulo}</h3>
-                    <p><strong>año:</strong> ${obra.año}</p>
-                    <p><strong>técnica:</strong> ${obra.tecnica}</p>
-                    <p><strong>dimensiones:</strong> ${obra.dimensiones}</p>
-                </div>
-
-                <div class="modal-nav">
-                    ${currentIndex > 0 ? `<button class="modal-prev">← anterior</button>` : ''}
-                    ${currentIndex < obrasDelaSerie.length - 1 ? `<button class="modal-next">siguiente →</button>` : ''}
-                </div>
-            </div>
-        `;
-
-        // Agregar modal al DOM
-        document.body.appendChild(modal);
-
-        // Event listeners
-        const closeBtn = modal.querySelector('.modal-close');
-        const prevBtn = modal.querySelector('.modal-prev');
-        const nextBtn = modal.querySelector('.modal-next');
-
-        closeBtn.addEventListener('click', () => {
-            modal.remove();
-        });
-
-        // Cerrar al hacer click afuera
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.remove();
-            }
-        });
-
-        // Navegación
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                modal.remove();
-                this.openModal(obrasDelaSerie[currentIndex - 1], obrasDelaSerie);
-            });
-        }
-
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                modal.remove();
-                this.openModal(obrasDelaSerie[currentIndex + 1], obrasDelaSerie);
-            });
-        }
-
-        // Cerrar con tecla ESC
-        const handleEsc = (e) => {
-            if (e.key === 'Escape') {
-                modal.remove();
-                document.removeEventListener('keydown', handleEsc);
-            }
-        };
-        document.addEventListener('keydown', handleEsc);
-    }
+// Abrir modal
+function openGallery(items, index) {
+    currentGalleryItems = items;
+    currentIndex = index;
+    updateModal();
+    galleryModal.classList.add('active');
 }
 
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', () => {
-    new Gallery();
+// Cerrar modal
+function closeGallery() {
+    galleryModal.classList.remove('active');
+    currentGalleryItems = [];
+    currentIndex = 0;
+}
+
+// Actualizar contenido del modal
+function updateModal() {
+    if (!currentGalleryItems.length) return;
+    
+    const item = currentGalleryItems[currentIndex];
+    modalImage.src = item.image;
+    modalImage.alt = item.title;
+    modalTitle.textContent = item.title;
+    modalYear.textContent = item.year;
+    modalTechnique.textContent = `Technique: ${item.technique}`;
+    modalDimensions.textContent = `Dimensions: ${item.dimensions}`;
+}
+
+// Navegación
+function prevImage() {
+    currentIndex = (currentIndex - 1 + currentGalleryItems.length) % currentGalleryItems.length;
+    updateModal();
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % currentGalleryItems.length;
+    updateModal();
+}
+
+// Event listeners
+if (modalClose) {
+    modalClose.addEventListener('click', closeGallery);
+}
+
+if (modalPrev) {
+    modalPrev.addEventListener('click', prevImage);
+}
+
+if (modalNext) {
+    modalNext.addEventListener('click', nextImage);
+}
+
+// Cerrar modal al hacer click fuera
+if (galleryModal) {
+    galleryModal.addEventListener('click', (e) => {
+        if (e.target === galleryModal) {
+            closeGallery();
+        }
+    });
+}
+
+// Navegar con teclado
+document.addEventListener('keydown', (e) => {
+    if (!galleryModal.classList.contains('active')) return;
+    
+    if (e.key === 'ArrowLeft') prevImage();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'Escape') closeGallery();
 });
+
+// Delegar clicks en items de galería
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.gallery-item img')) {
+        const item = e.target.closest('.gallery-item');
+        const galleryContainer = item.closest('.gallery');
+        
+        if (galleryContainer) {
+            const items = Array.from(galleryContainer.querySelectorAll('.gallery-item')).map(el => ({
+                image: el.querySelector('img').src,
+                title: el.querySelector('h4')?.textContent || '',
+                year: el.querySelector('.year')?.textContent || '',
+                technique: el.dataset.technique || '',
+                dimensions: el.dataset.dimensions || ''
+            }));
+            
+            const index = Array.from(galleryContainer.querySelectorAll('.gallery-item')).indexOf(item);
+            openGallery(items, index);
+        }
+    }
+});
+
+console.log('gallery.js loaded');

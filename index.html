@@ -1,179 +1,164 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="GC Lucas - Artista visual. Exploración de contradicciones y transiciones. Obra en pintura, grabado, fotografía e instalación.">
-    <meta name="keywords" content="arte, artista visual, pintura, grabado, Monterrey, contemporáneo">
+    <title>gclucas | visual artist | gclucas</title>
+    <meta name="description" content="Visual artist exploring contradictions and transitions through painting, engraving, photography, and installation.">
     <meta name="author" content="GC Lucas">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph (para redes sociales) -->
-    <meta property="og:title" content="GC Lucas - Artista Visual">
-    <meta property="og:description" content="Exploración de contradicciones y transiciones en la imagen contemporánea.">
-    <meta property="og:type" content="website">
+    <meta property="og:title" content="gclucas | visual artist">
+    <meta property="og:description" content="Visual artist exploring contradictions and transitions through painting, engraving, photography, and installation.">
+    <meta property="og:image" content="https://picsum.photos/1200/600?random=og">
     <meta property="og:url" content="https://gclucas.art">
-    <meta property="og:image" content="https://res.cloudinary.com/dt2w4nxz6/image/upload/w_1200,h_630,c_fill/gclucas-og-image.jpg">
-    
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GC Lucas - Artista Visual">
-    <meta name="twitter:description" content="Exploración de contradicciones y transiciones">
-    <meta name="twitter:image" content="https://res.cloudinary.com/dt2w4nxz6/image/upload/w_1200,h_630,c_fill/gclucas-og-image.jpg">
-    
-    <!-- Canonical URL -->
+    <meta name="twitter:title" content="gclucas | visual artist">
+    <meta name="twitter:description" content="Visual artist exploring contradictions and transitions through painting, engraving, photography, and installation.">
+    <meta name="twitter:image" content="https://picsum.photos/1200/600?random=og">
     <link rel="canonical" href="https://gclucas.art">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>●</text></svg>">
-    
-    <!-- Estilos -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/darkmode.css">
-    
-    <title>GC Lucas | Artista Visual</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/darkmode.css">
 </head>
 <body>
-    <!-- NAVBAR -->
     <nav class="navbar">
-        <div class="nav-container">
-            <a href="#portada" class="logo">gclucas</a>
-            <ul class="nav-links">
-                <li><a href="#statement">statement</a></li>
-                <li><a href="#work">work</a></li>
-                <li><a href="#text">text</a></li>
-                <li><a href="#bio">bio</a></li>
-                <li><a href="#contact">contact</a></li>
-            </ul>
-            <button class="darkmode-toggle" id="darkmodeToggle" aria-label="Toggle dark mode">
-                <span class="darkmode-icon">◐</span>
-            </button>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <div class="navbar-container">
+        <div class="navbar-brand">
+            <a href="/">gclucas</a>
         </div>
-    </nav>
+        
+        <button class="navbar-toggle" id="navbarToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <ul class="navbar-menu" id="navbarMenu">
+            <li><a href="/#statement">statement</a></li>
+            <li><a href="/work/">work</a></li>
+            <li><a href="/#bio">bio</a></li>
+            <li><a href="/#contact">contact</a></li>
+        </ul>
+        
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+            <span class="theme-icon">◐</span>
+        </button>
+    </div>
+</nav>
 
-    <!-- PORTADA / HERO -->
-    <section id="portada" class="hero">
-        <div class="hero-content">
-            <div class="hero-image">
-                <img src="https://picsum.photos/600/800?random=hero" alt="GC Lucas - Obra destacada">
-            </div>
-            <div class="hero-text">
-                <h1>gclucas</h1>
-                <p class="tagline">exploración de contradicciones y transiciones</p>
-                <p class="description">artista visual basado en monterrey. obra en pintura, grabado, fotografía e instalación.</p>
-            </div>
+    
+    <main>
+        <!-- hero section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">gclucas</h1>
+        <p class="hero-tagline">visual artist exploring contradictions & transitions</p>
+        <div class="hero-scroll">↓</div>
+    </div>
+    <div class="hero-image">
+        <img src="https://picsum.photos/1200/600?random=hero" alt="gclucas portfolio" loading="lazy">
+    </div>
+</section>
+
+<!-- statement section -->
+<section class="section" id="statement">
+    <div class="container">
+        <h2>statement</h2>
+        <div class="statement-content">
+            <p>My method of work is based on the exploration of the dual nature of reality. Contradictions may be perhaps the only way to explain a little bit about life, as well as one of the fullest expressions of lucidity.</p>
+            <p>Through my work I seek to put opposite elements in dialogue: the real and the imagined, the artificial and the natural, reason and absurdity, the abstract and the tangible. Through the image I propose a reformulation of these polarities with the intention of dissolving them and reaching a point of integration.</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- STATEMENT -->
-    <section id="statement" class="statement">
-        <div class="section-container">
-            <h2>statement</h2>
-            <div class="statement-content">
-                <p>Mi método de trabajo se basa en la exploración de la naturaleza dual de la realidad. Las contradicciones pueden ser quizás la única manera de explicarnos un poco la vida así como una de las expresiones más plenas de la lucidez.</p>
-                
-                <p>A través de mi obra busco poner en diálogo elementos opuestos: lo real y lo imaginado, lo artificial y lo natural, la razón y el absurdo, lo abstracto y lo tangible. A través de la imagen propongo una reformulación de estas polaridades con la intención de disolverlas y alcanzar un punto de integración. La imagen se convierte así en un espacio de encuentro donde los contrarios se transforman mutuamente, generando nuevas lecturas y posibilidades de interpretación.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- WORK / GALERÍAS -->
-    <section id="work" class="work">
-        <div class="section-container">
-            <h2>work</h2>
-            <div id="galeria-container" class="galeria-container">
-                <!-- Se genera dinámicamente con JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- TEXT / ESCRITOS -->
-    <section id="text" class="text">
-        <div class="section-container">
-            <h2>text</h2>
-            <div id="textos-container" class="textos-container">
-                <!-- Se genera dinámicamente con JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- BIO -->
-    <section id="bio" class="bio">
-        <div class="section-container">
-            <h2>bio</h2>
+<!-- work section -->
+<section class="section" id="work">
+    <div class="container">
+        <h2><a href="/work/">work</a></h2>
+        <p class="section-subtitle">explore the series</p>
+        <div class="series-grid">
             
-            <div class="bio-main">
-                <p>GC Lucas es artista visual basado en Monterrey. Su práctica abarca pintura, grabado, fotografía e instalación. Trabaja desde la contradicción como herramienta: pone en diálogo elementos opuestos para alcanzar un punto de integración donde los contrarios se transforman mutuamente.</p>
-                
-                <p>Su obra responde a fenómenos contemporáneos: la automatización, la violencia política, el consumo, la temporalidad acelerada. Busca reformular estas polaridades y revelar nuevas lecturas: a veces irónicas, dramáticas, disruptivas.</p>
-                
-                <p>Expone en México e internacionalmente. Publicado en <em>Armas y Letras</em> (UANL, 2008) y <em>Grama</em> (UdeM, 2010).</p>
-            </div>
-
-            <div class="bio-cv">
-                <h3>exposiciones individuales</h3>
-                <ul class="cv-list">
-                    <li>2010 — Cero Quilates — Flying Circus Gallery, Monterrey</li>
-                    <li>2008 — Aquí es Todas Partes — Centro de las Artes, Monterrey</li>
-                    <li>2006 — Dos — Esquina Amarilla, Monterrey</li>
-                    <li>2004 — Naranja Dulce — Museo Metropolitano, Monterrey</li>
-                    <li>2002 — Psy — Galería Efímera, Monterrey</li>
-                </ul>
-
-                <h3>exposiciones colectivas</h3>
-                <ul class="cv-list">
-                    <li>2025 — Bienal Rufino Tamayo — Museo Rufino Tamayo</li>
-                    <li>2021 — El Triunfo de la Pintura — Pinacoteca, Monterrey</li>
-                    <li>2021 — Triennale — Grenchen Art Museum, Suiza</li>
-                    <li>2017 — Shaped in Mexico — About Gallery, Venecia</li>
-                    <li>2017 — Shaped in Mexico — Gerickepaffrath Gallery, Dusseldorf</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
-        <div class="section-container">
-            <h2>contact</h2>
+            <a href="/work/pixelogue/" class="series-card">
+                <img src="https://picsum.photos/800/600?random=1" alt="Pixelogue" loading="lazy">
+                <h3>Pixelogue</h3>
+                <div class="year">2019</div>
+            </a>
             
-            <div class="contact-content">
-                <div class="contact-info">
-                    <p><strong>email:</strong> <a href="mailto:gclucas999@gmail.com">gclucas999@gmail.com</a></p>
-                    <p><strong>teléfono:</strong> <a href="tel:+524151511029">+52 415 151 1029</a></p>
-                    <p><strong>whatsapp:</strong> <a href="https://wa.me/524151511029" target="_blank">Enviar mensaje</a></p>
-                </div>
-
-                <div class="contact-socials">
-                    <p><strong>redes:</strong></p>
-                    <ul class="socials">
-                        <li><a href="https://instagram.com/lucasasecas" target="_blank">instagram</a></li>
-                    </ul>
-                </div>
-
-                <form class="contact-form" id="contactForm">
-                    <input type="text" placeholder="nombre" required>
-                    <input type="email" placeholder="email" required>
-                    <textarea placeholder="mensaje" rows="5" required></textarea>
-                    <button type="submit">enviar</button>
-                </form>
-            </div>
+            <a href="/work/peligro-extincion/" class="series-card">
+                <img src="https://picsum.photos/800/600?random=2" alt="Danger of Extinction" loading="lazy">
+                <h3>Danger of Extinction</h3>
+                <div class="year">2023</div>
+            </a>
+            
+            <a href="/work/vision-filippo/" class="series-card">
+                <img src="https://picsum.photos/800/600?random=3" alt="Vision of Filippo" loading="lazy">
+                <h3>Vision of Filippo</h3>
+                <div class="year">2021</div>
+            </a>
+            
+            <a href="/work/headless/" class="series-card">
+                <img src="https://picsum.photos/800/600?random=4" alt="Headless" loading="lazy">
+                <h3>Headless</h3>
+                <div class="year">2020</div>
+            </a>
+            
+            <a href="/work/nude-revisited/" class="series-card">
+                <img src="https://picsum.photos/800/600?random=5" alt="Nude Revisited" loading="lazy">
+                <h3>Nude Revisited</h3>
+                <div class="year">2018</div>
+            </a>
+            
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- FOOTER -->
+<!-- bio section -->
+<section class="section" id="bio">
+    <div class="container">
+        <h2>bio</h2>
+        <div class="bio-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+</section>
+
+<!-- contact section -->
+<section class="section" id="contact">
+    <div class="container">
+        <h2>contact</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <p><strong>email:</strong> <a href="mailto:gclucas999@gmail.com">gclucas999@gmail.com</a></p>
+                <p><strong>whatsapp:</strong> <a href="https://wa.me/524151511029">+52 4151511029</a></p>
+                <p><strong>instagram:</strong> <a href="https://instagram.com/lucasasecas" target="_blank">@lucasasecas</a></p>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <input type="text" placeholder="name" required>
+                <input type="email" placeholder="email" required>
+                <textarea placeholder="message" rows="5" required></textarea>
+                <button type="submit">send</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+    </main>
+    
     <footer class="footer">
-        <p>&copy; gclucas ® 2026 | <a href="https://instagram.com/lucasasecas" target="_blank">instagram</a></p>
-    </footer>
+    <div class="footer-container">
+        <div class="footer-content">
+            <p>© gclucas ® 2026</p>
+        </div>
+        <div class="footer-socials">
+            <a href="https://instagram.com/lucasasecas" target="_blank" rel="noopener noreferrer">instagram</a>
+            <a href="https://wa.me/524151511029" target="_blank" rel="noopener noreferrer">whatsapp</a>
+            <a href="mailto:gclucas999@gmail.com">email</a>
+        </div>
+    </div>
+</footer>
 
-    <!-- Scripts -->
-    <script src="js/darkmode.js"></script>
-    <script src="js/gallery.js"></script>
-    <script src="js/main.js"></script>
+    
+    <script src="/js/main.js"></script>
+    <script src="/js/darkmode.js"></script>
+    <script src="/js/gallery.js"></script>
 </body>
 </html>
