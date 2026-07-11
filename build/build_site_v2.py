@@ -17,7 +17,7 @@ Genera todas las páginas:
 import json
 import os
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, date
 
 class SiteBuilder:
     def __init__(self):
@@ -322,6 +322,30 @@ class SiteBuilder:
         self._save_html(output_path, html)
         print(f"✅ Created: {output_path}")
     
+    def build_sitemap(self):
+        """Build /sitemap.xml — se regenera con las URLs reales en cada build"""
+        print("🗺️  Building sitemap...")
+
+        base_url = self.site_data['url'].rstrip('/')
+        today = date.today().isoformat()
+        static_paths = ['/', '/statement/', '/work/', '/text/', '/bio/', '/contact/']
+        paths = static_paths + [f"/work/{s['id']}/" for s in self.series_data]
+
+        entries = "\n".join(
+            f"  <url>\n    <loc>{base_url}{p}</loc>\n    <lastmod>{today}</lastmod>\n  </url>"
+            for p in paths
+        )
+        xml = (
+            '<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            f"{entries}\n"
+            "</urlset>\n"
+        )
+
+        output_path = self.output_dir / 'sitemap.xml'
+        output_path.write_text(xml, encoding='utf-8')
+        print(f"✅ Created: {output_path} ({len(paths)} URLs)")
+    
     def build(self):
         """Build entire site"""
         print("\n" + "="*60)
@@ -336,6 +360,7 @@ class SiteBuilder:
         self.build_text_index()
         self.build_bio()
         self.build_contact()
+        self.build_sitemap()
         
         print("\n" + "="*60)
         print("✅ Multipágina site generation complete!")

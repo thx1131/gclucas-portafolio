@@ -1,3 +1,14 @@
-.DS_Store
+# Python
+.venv/
 __pycache__/
 *.pyc
+
+# Material fuente (nunca al repo)
+*.pptx
+*.xlsx
+staging_*/
+cloudinary_urls.json
+
+# Sistema
+.DS_Store
+Thumbs.db
