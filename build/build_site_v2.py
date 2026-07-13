@@ -83,6 +83,19 @@ class SiteBuilder:
     def _get_works_by_series(self, series_id):
         """Get all works for a series"""
         return [w for w in self.works_data if w['series'] == series_id]
+
+    def _format_dimensions(self, dims):
+        """Formatea dimensions en sus variantes: normal, 3D, variables, raw, vacío"""
+        if not dims:
+            return ""
+        if dims.get('variable'):
+            return "variable dimensions"
+        if 'raw' in dims:
+            return dims['raw']
+        parts = [str(dims['height']), str(dims['width'])]
+        if 'depth' in dims:
+            parts.append(str(dims['depth']))
+        return "×".join(parts) + f" {dims.get('unit', 'cm')}"
     
     def _save_html(self, path, content):
         """Save HTML file"""
@@ -121,7 +134,9 @@ class SiteBuilder:
             """
         
         content = self._render_template(self.home_template, {
-            'series_preview': series_preview
+            'series_preview': series_preview,
+            'hero_image': self.site_data.get('heroImage',
+                'https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL004')
         })
         
         html = self._build_full_page(
@@ -194,14 +209,14 @@ class SiteBuilder:
     def build_series_pages(self):
         """Build /work/[series-id]/index.html for each series"""
         print("🎨 Building series pages...")
-        
-        for series in self.series_data:
+
+        for i, series in enumerate(self.series_data):
             series_id = series['id']
             works = self._get_works_by_series(series_id)
-            
+
             gallery_html = ""
             for work in works:
-                dimensions = f"{work['dimensions']['height']}×{work['dimensions']['width']} {work['dimensions']['unit']}"
+                dimensions = self._format_dimensions(work['dimensions'])
                 gallery_html += f"""
                 <div class="gallery-item" data-technique="{work['technique']}" data-dimensions="{dimensions}">
                     <img src="{work['cloudinaryUrl']}" alt="{work['titleEn']}" loading="lazy">
@@ -211,14 +226,23 @@ class SiteBuilder:
                     </div>
                 </div>
                 """
-            
+
+            prev_s = self.series_data[i - 1] if i > 0 else None
+            next_s = self.series_data[i + 1] if i < len(self.series_data) - 1 else None
+            nav = '<div class="series-nav">'
+            nav += f'<a href="/work/{prev_s["id"]}/">← {prev_s["titleEn"]}</a>' if prev_s else '<span></span>'
+            nav += '<a href="/work/">work</a>'
+            nav += f'<a href="/work/{next_s["id"]}/">{next_s["titleEn"]} →</a>' if next_s else '<span></span>'
+            nav += '</div>'
+
             content = self._render_template(self.series_template, {
                 'series_title': series['titleEn'],
                 'series_year': series['year'],
                 'series_statement': f"<p>{series['statementEn']}</p>",
-                'gallery': gallery_html
+                'gallery': gallery_html,
+                'series_nav': nav
             })
-            
+
             html = self._build_full_page(
                 content,
                 f"{series['titleEn']} | gclucas",
@@ -227,7 +251,7 @@ class SiteBuilder:
                 f"{self.site_data['url']}/work/{series_id}/",
                 f"{self.site_data['url']}/work/{series_id}/"
             )
-            
+
             output_path = self.output_dir / 'work' / series_id / 'index.html'
             self._save_html(output_path, html)
             print(f"✅ Created: {output_path} ({len(works)} works)")

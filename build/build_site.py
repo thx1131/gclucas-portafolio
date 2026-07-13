@@ -172,13 +172,22 @@ class SiteBuilder:
         """Build /work/[series-id]/index.html for each series"""
         print("🎨 Building series pages...")
         
-        for series in self.series_data:
+for i, series in enumerate(self.series_data):
             series_id = series['id']
             works = self._get_works_by_series(series_id)
             
             gallery_html = self._build_gallery_html(works)
+
+            prev_s = self.series_data[i - 1] if i > 0 else None
+            next_s = self.series_data[i + 1] if i < len(self.series_data) - 1 else None
+            nav = '<div class="series-nav">'
+            nav += f'<a href="/work/{prev_s["id"]}/">← {prev_s["titleEn"]}</a>' if prev_s else '<span></span>'
+            nav += '<a href="/work/">all series</a>'
+            nav += f'<a href="/work/{next_s["id"]}/">{next_s["titleEn"]} →</a>' if next_s else '<span></span>'
+            nav += '</div>'
             
             content = self._render_template(self.series_template, {
+                'series_nav': nav,
                 'series_title': series['titleEn'],
                 'series_year': series['year'],
                 'series_statement': f"<p>{series['statementEn']}</p>",

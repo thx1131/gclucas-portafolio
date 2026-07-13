@@ -1,162 +1,2288 @@
 [
   {
-    "id": "PIX001",
-    "series": "pixelogue",
-    "titleEn": "More Human Than Human",
-    "titleEs": "más humano que humano",
-    "year": 2019,
-    "technique": "acrylic, graphite on canvas",
-    "techniqueEs": "acrílico, grafito sobre lienzo",
+    "id": "FIC001",
+    "series": "ficciones",
+    "titleEn": "ficciones 1",
+    "titleEs": "ficciones 1",
+    "year": 2025,
+    "technique": "libro, celular (IA)",
+    "techniqueEs": "libro, celular (IA)",
     "dimensions": {
-      "height": 155,
-      "width": 140,
-      "unit": "cm"
+      "height": 45,
+      "width": 28,
+      "unit": "cm",
+      "depth": 3
     },
-    "cloudinaryUrl": "https://picsum.photos/800/600?random=10",
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/FIC001",
     "order": 1
   },
   {
-    "id": "PIX002",
-    "series": "pixelogue",
-    "titleEn": "You Just Disappeared",
-    "titleEs": "simplemente desapareciste",
-    "year": 2019,
-    "technique": "acrylic, graphite on canvas",
-    "techniqueEs": "acrílico, grafito sobre lienzo",
-    "dimensions": {
-      "height": 155,
-      "width": 140,
-      "unit": "cm"
-    },
-    "cloudinaryUrl": "https://picsum.photos/800/600?random=11",
-    "order": 2
-  },
-  {
     "id": "PEL001",
-    "series": "peligro-extincion",
-    "titleEn": "Extinction 1",
+    "series": "peligro-de-extincion",
+    "titleEn": "peligro de extinción 1",
     "titleEs": "peligro de extinción 1",
     "year": 2023,
-    "technique": "oil, acrylic, graphite on canvas",
-    "techniqueEs": "óleo, acrílico, grafito sobre lienzo",
+    "technique": "oil,acrilic, graphite /canvas",
+    "techniqueEs": "oil,acrilic, graphite /canvas",
     "dimensions": {
       "height": 100,
       "width": 100,
       "unit": "cm"
     },
-    "cloudinaryUrl": "https://picsum.photos/800/600?random=20",
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL001",
     "order": 1
   },
   {
     "id": "PEL002",
-    "series": "peligro-extincion",
-    "titleEn": "Extinction 2",
+    "series": "peligro-de-extincion",
+    "titleEn": "peligro de extinción 2",
     "titleEs": "peligro de extinción 2",
     "year": 2023,
-    "technique": "oil, acrylic, graphite on canvas",
-    "techniqueEs": "óleo, acrílico, grafito sobre lienzo",
+    "technique": "oil,acrilic, graphite /canvas",
+    "techniqueEs": "oil,acrilic, graphite /canvas",
     "dimensions": {
       "height": 100,
       "width": 100,
       "unit": "cm"
     },
-    "cloudinaryUrl": "https://picsum.photos/800/600?random=21",
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL002",
     "order": 2
   },
   {
-    "id": "VIS001",
-    "series": "vision-filippo",
-    "titleEn": "Vision 1",
-    "titleEs": "visión 1",
-    "year": 2021,
-    "technique": "acrylic on canvas",
-    "techniqueEs": "acrílico sobre lienzo",
+    "id": "PEL003",
+    "series": "peligro-de-extincion",
+    "titleEn": "peligro de extinción 3",
+    "titleEs": "peligro de extinción 3",
+    "year": 2023,
+    "technique": "oil,acrilic, graphite /canvas",
+    "techniqueEs": "oil,acrilic, graphite /canvas",
     "dimensions": {
-      "height": 90,
-      "width": 60,
+      "height": 100,
+      "width": 100,
       "unit": "cm"
     },
-    "cloudinaryUrl": "https://picsum.photos/800/600?random=30",
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL003",
+    "order": 3
+  },
+  {
+    "id": "PEL004",
+    "series": "peligro-de-extincion",
+    "titleEn": "peligro de extinción 4",
+    "titleEs": "peligro de extinción 4",
+    "year": 2023,
+    "technique": "oil,acrilic, graphite /canvas",
+    "techniqueEs": "oil,acrilic, graphite /canvas",
+    "dimensions": {
+      "height": 100,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL004",
+    "order": 4
+  },
+  {
+    "id": "PEL005",
+    "series": "peligro-de-extincion",
+    "titleEn": "peligro de extinción 5",
+    "titleEs": "peligro de extinción 5",
+    "year": 2023,
+    "technique": "oil,acrilic, graphite /canvas",
+    "techniqueEs": "oil,acrilic, graphite /canvas",
+    "dimensions": {
+      "height": 100,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL005",
+    "order": 5
+  },
+  {
+    "id": "PEL006",
+    "series": "peligro-de-extincion",
+    "titleEn": "peligro de extinción 6",
+    "titleEs": "peligro de extinción 6",
+    "year": 2023,
+    "technique": "oil,acrilic, graphite /canvas",
+    "techniqueEs": "oil,acrilic, graphite /canvas",
+    "dimensions": {
+      "height": 100,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL006",
+    "order": 6
+  },
+  {
+    "id": "SUE001",
+    "series": "vision-de-filippo",
+    "titleEn": "visión de filippo 2",
+    "titleEs": "visión de filippo 2",
+    "year": 2021,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
+    "dimensions": {
+      "height": 60,
+      "width": 90,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SUE001",
     "order": 1
   },
   {
-    "id": "VIS002",
-    "series": "vision-filippo",
-    "titleEn": "Vision 2",
-    "titleEs": "visión 2",
+    "id": "SUE002",
+    "series": "vision-de-filippo",
+    "titleEn": "visión de filippo 3",
+    "titleEs": "visión de filippo 3",
     "year": 2021,
-    "technique": "acrylic on canvas",
-    "techniqueEs": "acrílico sobre lienzo",
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
     "dimensions": {
-      "height": 90,
-      "width": 60,
+      "height": 60,
+      "width": 90,
       "unit": "cm"
     },
-    "cloudinaryUrl": "https://picsum.photos/800/600?random=31",
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SUE002",
     "order": 2
   },
   {
-    "id": "HEAD001",
+    "id": "SUE003",
+    "series": "vision-de-filippo",
+    "titleEn": "visión de filippo 1",
+    "titleEs": "visión de filippo 1",
+    "year": 2021,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
+    "dimensions": {
+      "height": 60,
+      "width": 90,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SUE003",
+    "order": 3
+  },
+  {
+    "id": "SUE004",
+    "series": "vision-de-filippo",
+    "titleEn": "visión de filippo 5",
+    "titleEs": "visión de filippo 5",
+    "year": 2021,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
+    "dimensions": {
+      "height": 60,
+      "width": 90,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SUE004",
+    "order": 4
+  },
+  {
+    "id": "SUE005",
+    "series": "vision-de-filippo",
+    "titleEn": "visión de filippo 6",
+    "titleEs": "visión de filippo 6",
+    "year": 2021,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
+    "dimensions": {
+      "height": 60,
+      "width": 90,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SUE005",
+    "order": 5
+  },
+  {
+    "id": "SUE006",
+    "series": "vision-de-filippo",
+    "titleEn": "pendiente",
+    "titleEs": "pendiente",
+    "year": 2021,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
+    "dimensions": {
+      "height": 60,
+      "width": 90,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "",
+    "order": 6
+  },
+  {
+    "id": "BER001",
     "series": "headless",
-    "titleEn": "Headless 1",
-    "titleEs": "headless 1",
+    "titleEn": "berzerk",
+    "titleEs": "berzerk",
     "year": 2020,
-    "technique": "engraving on paper",
-    "techniqueEs": "grabado sobre papel",
+    "technique": "grabado/papel",
+    "techniqueEs": "grabado/papel",
     "dimensions": {
       "height": 38,
       "width": 30,
       "unit": "cm"
     },
-    "cloudinaryUrl": "https://picsum.photos/800/600?random=40",
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/BER001",
     "order": 1
   },
   {
-    "id": "HEAD002",
+    "id": "SHI001",
     "series": "headless",
-    "titleEn": "Headless 2",
-    "titleEs": "headless 2",
+    "titleEn": "shiver",
+    "titleEs": "shiver",
     "year": 2020,
-    "technique": "engraving on paper",
-    "techniqueEs": "grabado sobre papel",
+    "technique": "grabado/papel",
+    "techniqueEs": "grabado/papel",
+    "dimensions": {
+      "height": 30,
+      "width": 38,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SHI001",
+    "order": 2
+  },
+  {
+    "id": "CIB001",
+    "series": "headless",
+    "titleEn": "ciber man",
+    "titleEs": "ciber man",
+    "year": 2020,
+    "technique": "grabado/papel",
+    "techniqueEs": "grabado/papel",
+    "dimensions": {
+      "height": 30,
+      "width": 38,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CIB001",
+    "order": 3
+  },
+  {
+    "id": "FLE001",
+    "series": "headless",
+    "titleEn": "flesh will melt",
+    "titleEs": "flesh will melt",
+    "year": 2020,
+    "technique": "grabado/papel",
+    "techniqueEs": "grabado/papel",
+    "dimensions": {
+      "height": 30,
+      "width": 38,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/FLE001",
+    "order": 4
+  },
+  {
+    "id": "MEM001",
+    "series": "headless",
+    "titleEn": "memorex",
+    "titleEs": "memorex",
+    "year": 2020,
+    "technique": "grabado/papel",
+    "techniqueEs": "grabado/papel",
     "dimensions": {
       "height": 38,
       "width": 30,
       "unit": "cm"
     },
-    "cloudinaryUrl": "https://picsum.photos/800/600?random=41",
-    "order": 2
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/MEM001",
+    "order": 5
   },
   {
-    "id": "NUDE001",
-    "series": "nude-revisited",
-    "titleEn": "Nude 1",
-    "titleEs": "desnudo 1",
-    "year": 2018,
-    "technique": "photograph",
-    "techniqueEs": "fotografía",
+    "id": "COI001",
+    "series": "headless",
+    "titleEn": "coins",
+    "titleEs": "coins",
+    "year": 2020,
+    "technique": "grabado/papel",
+    "techniqueEs": "grabado/papel",
     "dimensions": {
-      "height": 120,
-      "width": 90,
+      "height": 30,
+      "width": 38,
       "unit": "cm"
     },
-    "cloudinaryUrl": "https://picsum.photos/800/600?random=50",
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/COI001",
+    "order": 6
+  },
+  {
+    "id": "THI001",
+    "series": "headless",
+    "titleEn": "think deep",
+    "titleEs": "think deep",
+    "year": 2020,
+    "technique": "grabado/papel",
+    "techniqueEs": "grabado/papel",
+    "dimensions": {
+      "height": 38,
+      "width": 30,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/THI001",
+    "order": 7
+  },
+  {
+    "id": "MHH001",
+    "series": "pixelogue",
+    "titleEn": "more human than human",
+    "titleEs": "more human than human",
+    "year": 2019,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
+    "dimensions": {
+      "height": 155,
+      "width": 140,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/MHH001",
     "order": 1
   },
   {
-    "id": "NUDE002",
-    "series": "nude-revisited",
-    "titleEn": "Nude 2",
-    "titleEs": "desnudo 2",
-    "year": 2018,
-    "technique": "photograph",
-    "techniqueEs": "fotografía",
+    "id": "YJD001",
+    "series": "pixelogue",
+    "titleEn": "you just disappeared",
+    "titleEs": "you just disappeared",
+    "year": 2019,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
     "dimensions": {
-      "height": 120,
-      "width": 90,
+      "height": 155,
+      "width": 140,
       "unit": "cm"
     },
-    "cloudinaryUrl": "https://picsum.photos/800/600?random=51",
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/YJD001",
     "order": 2
+  },
+  {
+    "id": "IWH001",
+    "series": "pixelogue",
+    "titleEn": "inaudible whisper",
+    "titleEs": "inaudible whisper",
+    "year": 2019,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
+    "dimensions": {
+      "height": 155,
+      "width": 140,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/IWH001",
+    "order": 3
+  },
+  {
+    "id": "PEW001",
+    "series": "pixelogue",
+    "titleEn": "pew pew pew",
+    "titleEs": "pew pew pew",
+    "year": 2019,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
+    "dimensions": {
+      "height": 155,
+      "width": 140,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEW001",
+    "order": 4
+  },
+  {
+    "id": "REV001",
+    "series": "nude-reviseted",
+    "titleEn": "reviseted 1",
+    "titleEs": "reviseted 1",
+    "year": 2018,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
+    "dimensions": {
+      "height": 120,
+      "width": 180,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/REV001",
+    "order": 1
+  },
+  {
+    "id": "REV002",
+    "series": "nude-reviseted",
+    "titleEn": "reviseted 2",
+    "titleEs": "reviseted 2",
+    "year": 2018,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
+    "dimensions": {
+      "height": 120,
+      "width": 180,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/REV002",
+    "order": 2
+  },
+  {
+    "id": "REV003",
+    "series": "nude-reviseted",
+    "titleEn": "reviseted 3",
+    "titleEs": "reviseted 3",
+    "year": 2018,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
+    "dimensions": {
+      "height": 120,
+      "width": 180,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/REV003",
+    "order": 3
+  },
+  {
+    "id": "REV004",
+    "series": "nude-reviseted",
+    "titleEn": "reviseted 4",
+    "titleEs": "reviseted 4",
+    "year": 2018,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
+    "dimensions": {
+      "height": 120,
+      "width": 180,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/REV004",
+    "order": 4
+  },
+  {
+    "id": "REV005",
+    "series": "nude-reviseted",
+    "titleEn": "reviseted 5",
+    "titleEs": "reviseted 5",
+    "year": 2018,
+    "technique": "acrilic/canvas",
+    "techniqueEs": "acrilic/canvas",
+    "dimensions": {
+      "height": 120,
+      "width": 180,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/REV005",
+    "order": 5
+  },
+  {
+    "id": "HAR001",
+    "series": "bob-ross-disturbed",
+    "titleEn": "harvest pacman",
+    "titleEs": "harvest pacman",
+    "year": 2017,
+    "technique": "acrilic, oil/canvas",
+    "techniqueEs": "acrilic, oil/canvas",
+    "dimensions": {
+      "height": 30,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/HAR001",
+    "order": 1
+  },
+  {
+    "id": "EQU001",
+    "series": "bob-ross-disturbed",
+    "titleEn": "equinox mario",
+    "titleEs": "equinox mario",
+    "year": 2017,
+    "technique": "acrilic, oil/canvas",
+    "techniqueEs": "acrilic, oil/canvas",
+    "dimensions": {
+      "height": 40,
+      "width": 50,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/EQU001",
+    "order": 2
+  },
+  {
+    "id": "SON001",
+    "series": "bob-ross-disturbed",
+    "titleEn": "sonic season",
+    "titleEs": "sonic season",
+    "year": 2017,
+    "technique": "acrilic, oil/canvas",
+    "techniqueEs": "acrilic, oil/canvas",
+    "dimensions": {
+      "height": 50,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SON001",
+    "order": 3
+  },
+  {
+    "id": "SPR001",
+    "series": "bob-ross-disturbed",
+    "titleEn": "springtime kirby",
+    "titleEs": "springtime kirby",
+    "year": 2017,
+    "technique": "acrilic, oil/canvas",
+    "techniqueEs": "acrilic, oil/canvas",
+    "dimensions": {
+      "height": 20,
+      "width": 25,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SPR001",
+    "order": 4
+  },
+  {
+    "id": "WIN001",
+    "series": "bob-ross-disturbed",
+    "titleEn": "winter mega man",
+    "titleEs": "winter mega man",
+    "year": 2017,
+    "technique": "acrilic, oil/canvas",
+    "techniqueEs": "acrilic, oil/canvas",
+    "dimensions": {
+      "height": 40,
+      "width": 60,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/WIN001",
+    "order": 5
+  },
+  {
+    "id": "AUT001",
+    "series": "bob-ross-disturbed",
+    "titleEn": "autumn qbert",
+    "titleEs": "autumn qbert",
+    "year": 2017,
+    "technique": "acrilic, oil/canvas",
+    "techniqueEs": "acrilic, oil/canvas",
+    "dimensions": {
+      "height": 25,
+      "width": 20,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/AUT001",
+    "order": 6
+  },
+  {
+    "id": "SOL001",
+    "series": "bob-ross-disturbed",
+    "titleEn": "solstice invader",
+    "titleEs": "solstice invader",
+    "year": 2017,
+    "technique": "acrilic, oil/canvas",
+    "techniqueEs": "acrilic, oil/canvas",
+    "dimensions": {
+      "height": 40,
+      "width": 50,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SOL001",
+    "order": 7
+  },
+  {
+    "id": "ENE001",
+    "series": "enemigo-publico",
+    "titleEn": "enemigo público",
+    "titleEs": "enemigo público",
+    "year": 2016,
+    "technique": "papel/acrílico",
+    "techniqueEs": "papel/acrílico",
+    "dimensions": {
+      "variable": true
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/ENE001",
+    "order": 1
+  },
+  {
+    "id": "ENE002",
+    "series": "enemigo-publico",
+    "titleEn": "enemigo público",
+    "titleEs": "enemigo público",
+    "year": 2016,
+    "technique": "papel/acrílico",
+    "techniqueEs": "papel/acrílico",
+    "dimensions": {
+      "variable": true
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/ENE002",
+    "order": 2
+  },
+  {
+    "id": "ENE003",
+    "series": "enemigo-publico",
+    "titleEn": "enemigo público",
+    "titleEs": "enemigo público",
+    "year": 2016,
+    "technique": "papel/acrílico",
+    "techniqueEs": "papel/acrílico",
+    "dimensions": {
+      "variable": true
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/ENE003",
+    "order": 3
+  },
+  {
+    "id": "ENE004",
+    "series": "enemigo-publico",
+    "titleEn": "enemigo público",
+    "titleEs": "enemigo público",
+    "year": 2016,
+    "technique": "papel/acrílico",
+    "techniqueEs": "papel/acrílico",
+    "dimensions": {
+      "variable": true
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/ENE004",
+    "order": 4
+  },
+  {
+    "id": "BER002",
+    "series": "berser-k",
+    "titleEn": "berzerk",
+    "titleEs": "berzerk",
+    "year": 2016,
+    "technique": "oil, spray/canvas",
+    "techniqueEs": "oil, spray/canvas",
+    "dimensions": {
+      "height": 180,
+      "width": 180,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/BER002",
+    "order": 1
+  },
+  {
+    "id": "CIB002",
+    "series": "berser-k",
+    "titleEn": "ciberman",
+    "titleEs": "ciberman",
+    "year": 2016,
+    "technique": "oil, spray/canvas",
+    "techniqueEs": "oil, spray/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 200,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CIB002",
+    "order": 2
+  },
+  {
+    "id": "NUC001",
+    "series": "berser-k",
+    "titleEn": "nuclear dj",
+    "titleEs": "nuclear dj",
+    "year": 2016,
+    "technique": "oil, spray/canvas",
+    "techniqueEs": "oil, spray/canvas",
+    "dimensions": {
+      "height": 180,
+      "width": 180,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/NUC001",
+    "order": 3
+  },
+  {
+    "id": "ZIZ001",
+    "series": "berser-k",
+    "titleEn": "zigzag zebra",
+    "titleEs": "zigzag zebra",
+    "year": 2016,
+    "technique": "oil, spray/canvas",
+    "techniqueEs": "oil, spray/canvas",
+    "dimensions": {
+      "height": 120,
+      "width": 120,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/ZIZ001",
+    "order": 4
+  },
+  {
+    "id": "BAC001",
+    "series": "nevermind",
+    "titleEn": "backpack",
+    "titleEs": "backpack",
+    "year": 2015,
+    "technique": "oil, acrilic/canvas",
+    "techniqueEs": "oil, acrilic/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 200,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/BAC001",
+    "order": 1
+  },
+  {
+    "id": "WW4001",
+    "series": "nevermind",
+    "titleEn": "WW4",
+    "titleEs": "WW4",
+    "year": 2015,
+    "technique": "oil, acrilic/canvas",
+    "techniqueEs": "oil, acrilic/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 200,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/WW4001",
+    "order": 2
+  },
+  {
+    "id": "NOB001",
+    "series": "nevermind",
+    "titleEn": "nobody´s a stranger",
+    "titleEs": "nobody´s a stranger",
+    "year": 2015,
+    "technique": "oil, acrilic/canvas",
+    "techniqueEs": "oil, acrilic/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 200,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/NOB001",
+    "order": 3
+  },
+  {
+    "id": "BTF001",
+    "series": "nevermind",
+    "titleEn": "better than fiction",
+    "titleEs": "better than fiction",
+    "year": 2014,
+    "technique": "oil, acrilic/canvas",
+    "techniqueEs": "oil, acrilic/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 200,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/BTF001",
+    "order": 4
+  },
+  {
+    "id": "WDY001",
+    "series": "nevermind",
+    "titleEn": "what do you want?",
+    "titleEs": "what do you want?",
+    "year": 2014,
+    "technique": "oil, acrilic/canvas",
+    "techniqueEs": "oil, acrilic/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 200,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/WDY001",
+    "order": 5
+  },
+  {
+    "id": "PLP001",
+    "series": "nevermind",
+    "titleEn": "plastic planet",
+    "titleEs": "plastic planet",
+    "year": 2014,
+    "technique": "oil, acrilic/canvas",
+    "techniqueEs": "oil, acrilic/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 200,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PLP001",
+    "order": 6
+  },
+  {
+    "id": "TEN001",
+    "series": "nevermind",
+    "titleEn": "the end",
+    "titleEs": "the end",
+    "year": 2014,
+    "technique": "oil, acrilic/canvas",
+    "techniqueEs": "oil, acrilic/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TEN001",
+    "order": 7
+  },
+  {
+    "id": "ATS001",
+    "series": "anticommands",
+    "titleEn": "atesora el silencio",
+    "titleEs": "atesora el silencio",
+    "year": 2013,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 40,
+      "width": 60,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/ATS001",
+    "order": 1
+  },
+  {
+    "id": "DEF001",
+    "series": "anticommands",
+    "titleEn": "define beauty",
+    "titleEs": "define beauty",
+    "year": 2013,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 40,
+      "width": 60,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/DEF001",
+    "order": 2
+  },
+  {
+    "id": "CAM001",
+    "series": "anticommands",
+    "titleEn": "camina lejos",
+    "titleEs": "camina lejos",
+    "year": 2013,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 40,
+      "width": 60,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CAM001",
+    "order": 3
+  },
+  {
+    "id": "ENJ001",
+    "series": "anticommands",
+    "titleEn": "enjoy solitude",
+    "titleEs": "enjoy solitude",
+    "year": 2013,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 40,
+      "width": 60,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/ENJ001",
+    "order": 4
+  },
+  {
+    "id": "ITW001",
+    "series": "anticommands",
+    "titleEn": "in is the way out",
+    "titleEs": "in is the way out",
+    "year": 2013,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 40,
+      "width": 60,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/ITW001",
+    "order": 5
+  },
+  {
+    "id": "JIL001",
+    "series": "anticommands",
+    "titleEn": "just an illusion",
+    "titleEs": "just an illusion",
+    "year": 2013,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 40,
+      "width": 60,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/JIL001",
+    "order": 6
+  },
+  {
+    "id": "LEA001",
+    "series": "anticommands",
+    "titleEn": "learn to fly",
+    "titleEs": "learn to fly",
+    "year": 2013,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 40,
+      "width": 60,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/LEA001",
+    "order": 7
+  },
+  {
+    "id": "SWR001",
+    "series": "anticommands",
+    "titleEn": "something´s wrong",
+    "titleEs": "something´s wrong",
+    "year": 2013,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 40,
+      "width": 60,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SWR001",
+    "order": 8
+  },
+  {
+    "id": "OBJ001",
+    "series": "objetos-perdidos",
+    "titleEn": "objetos perdidos",
+    "titleEs": "objetos perdidos",
+    "year": 2012,
+    "technique": "pala, tierra, baño de oro (IA)",
+    "techniqueEs": "pala, tierra, baño de oro (IA)",
+    "dimensions": {
+      "variable": true
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/OBJ001",
+    "order": 1
+  },
+  {
+    "id": "IGT001",
+    "series": "in-god-we-trust",
+    "titleEn": "in god we trust",
+    "titleEs": "in god we trust",
+    "year": 2012,
+    "technique": "monedas",
+    "techniqueEs": "monedas",
+    "dimensions": {
+      "variable": true
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/IGT001",
+    "order": 1
+  },
+  {
+    "id": "IGT002",
+    "series": "in-god-we-trust",
+    "titleEn": "in god we trust",
+    "titleEs": "in god we trust",
+    "year": 2012,
+    "technique": "monedas mexicanas",
+    "techniqueEs": "monedas mexicanas",
+    "dimensions": {
+      "variable": true
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/IGT002",
+    "order": 2
+  },
+  {
+    "id": "LIB001",
+    "series": "libro-negro",
+    "titleEn": "libro negro",
+    "titleEs": "libro negro",
+    "year": 2011,
+    "technique": "papel, piel, acero",
+    "techniqueEs": "papel, piel, acero",
+    "dimensions": {
+      "height": 75,
+      "width": 55,
+      "unit": "cm",
+      "depth": 15
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/LIB001",
+    "order": 1
+  },
+  {
+    "id": "2985001",
+    "series": "archeology-road",
+    "titleEn": "2985ad",
+    "titleEs": "2985ad",
+    "year": 2011,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 33,
+      "width": 50,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/2985001",
+    "order": 1
+  },
+  {
+    "id": "2952001",
+    "series": "archeology-road",
+    "titleEn": "2952 ad",
+    "titleEs": "2952 ad",
+    "year": 2011,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 33,
+      "width": 50,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/2952001",
+    "order": 2
+  },
+  {
+    "id": "2947001",
+    "series": "archeology-road",
+    "titleEn": "2947 ad",
+    "titleEs": "2947 ad",
+    "year": 2011,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 33,
+      "width": 50,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/2947001",
+    "order": 3
+  },
+  {
+    "id": "2942001",
+    "series": "archeology-road",
+    "titleEn": "2942 ad",
+    "titleEs": "2942 ad",
+    "year": 2011,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 33,
+      "width": 50,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/2942001",
+    "order": 4
+  },
+  {
+    "id": "2953001",
+    "series": "archeology-road",
+    "titleEn": "2953 ad",
+    "titleEs": "2953 ad",
+    "year": 2011,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 33,
+      "width": 50,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/2953001",
+    "order": 5
+  },
+  {
+    "id": "2977001",
+    "series": "archeology-road",
+    "titleEn": "2977 ad",
+    "titleEs": "2977 ad",
+    "year": 2011,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 33,
+      "width": 50,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/2977001",
+    "order": 6
+  },
+  {
+    "id": "2973001",
+    "series": "archeology-road",
+    "titleEn": "2973 ad",
+    "titleEs": "2973 ad",
+    "year": 2011,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 33,
+      "width": 50,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/2973001",
+    "order": 7
+  },
+  {
+    "id": "2988001",
+    "series": "archeology-road",
+    "titleEn": "2988 ad",
+    "titleEs": "2988 ad",
+    "year": 2011,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 33,
+      "width": 50,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/2988001",
+    "order": 8
+  },
+  {
+    "id": "2911001",
+    "series": "archeology-road",
+    "titleEn": "2911 ad",
+    "titleEs": "2911 ad",
+    "year": 2011,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 33,
+      "width": 50,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/2911001",
+    "order": 9
+  },
+  {
+    "id": "QUI001",
+    "series": "0-quilates",
+    "titleEn": "0 quilates 1/43",
+    "titleEs": "0 quilates 1/43",
+    "year": 2009,
+    "technique": "plástico/hoja de oro",
+    "techniqueEs": "plástico/hoja de oro",
+    "dimensions": {
+      "variable": true
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/QUI001",
+    "order": 1
+  },
+  {
+    "id": "QUI002",
+    "series": "0-quilates",
+    "titleEn": "0 quilates 10/43",
+    "titleEs": "0 quilates 10/43",
+    "year": 2009,
+    "technique": "plástico/hoja de oro",
+    "techniqueEs": "plástico/hoja de oro",
+    "dimensions": {
+      "variable": true
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/QUI002",
+    "order": 2
+  },
+  {
+    "id": "QUI003",
+    "series": "0-quilates",
+    "titleEn": "0 quilates 12/43",
+    "titleEs": "0 quilates 12/43",
+    "year": 2009,
+    "technique": "plástico/hoja de oro",
+    "techniqueEs": "plástico/hoja de oro",
+    "dimensions": {
+      "variable": true
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/QUI003",
+    "order": 3
+  },
+  {
+    "id": "CUA001",
+    "series": "cuatro-vueltas",
+    "titleEn": "cuatro vueltas 1/40",
+    "titleEs": "cuatro vueltas 1/40",
+    "year": 2009,
+    "technique": "graphite/canson",
+    "techniqueEs": "graphite/canson",
+    "dimensions": {
+      "height": 40,
+      "width": 30,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CUA001",
+    "order": 1
+  },
+  {
+    "id": "CUA002",
+    "series": "cuatro-vueltas",
+    "titleEn": "cuatro vueltas 2/40",
+    "titleEs": "cuatro vueltas 2/40",
+    "year": 2009,
+    "technique": "graphite/canson",
+    "techniqueEs": "graphite/canson",
+    "dimensions": {
+      "height": 40,
+      "width": 30,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CUA002",
+    "order": 2
+  },
+  {
+    "id": "CUA003",
+    "series": "cuatro-vueltas",
+    "titleEn": "cuatro vueltas 3/40",
+    "titleEs": "cuatro vueltas 3/40",
+    "year": 2009,
+    "technique": "graphite/canson",
+    "techniqueEs": "graphite/canson",
+    "dimensions": {
+      "height": 40,
+      "width": 30,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CUA003",
+    "order": 3
+  },
+  {
+    "id": "CUA004",
+    "series": "cuatro-vueltas",
+    "titleEn": "cuatro vueltas 4/40",
+    "titleEs": "cuatro vueltas 4/40",
+    "year": 2009,
+    "technique": "graphite/canson",
+    "techniqueEs": "graphite/canson",
+    "dimensions": {
+      "height": 40,
+      "width": 30,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CUA004",
+    "order": 4
+  },
+  {
+    "id": "CUA005",
+    "series": "cuatro-vueltas",
+    "titleEn": "cuatro vueltas 5/40",
+    "titleEs": "cuatro vueltas 5/40",
+    "year": 2009,
+    "technique": "graphite/canson",
+    "techniqueEs": "graphite/canson",
+    "dimensions": {
+      "height": 40,
+      "width": 30,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CUA005",
+    "order": 5
+  },
+  {
+    "id": "CUA006",
+    "series": "cuatro-vueltas",
+    "titleEn": "cuatro vueltas 6/40",
+    "titleEs": "cuatro vueltas 6/40",
+    "year": 2009,
+    "technique": "graphite/canson",
+    "techniqueEs": "graphite/canson",
+    "dimensions": {
+      "height": 40,
+      "width": 30,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CUA006",
+    "order": 6
+  },
+  {
+    "id": "CUA007",
+    "series": "cuatro-vueltas",
+    "titleEn": "cuatro vueltas 7/40",
+    "titleEs": "cuatro vueltas 7/40",
+    "year": 2009,
+    "technique": "graphite/canson",
+    "techniqueEs": "graphite/canson",
+    "dimensions": {
+      "height": 40,
+      "width": 30,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CUA007",
+    "order": 7
+  },
+  {
+    "id": "CUA008",
+    "series": "cuatro-vueltas",
+    "titleEn": "cuatro vueltas 8/40",
+    "titleEs": "cuatro vueltas 8/40",
+    "year": 2009,
+    "technique": "graphite/canson",
+    "techniqueEs": "graphite/canson",
+    "dimensions": {
+      "height": 40,
+      "width": 30,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CUA008",
+    "order": 8
+  },
+  {
+    "id": "CUA009",
+    "series": "cuatro-vueltas",
+    "titleEn": "cuatro vueltas 9/40",
+    "titleEs": "cuatro vueltas 9/40",
+    "year": 2009,
+    "technique": "graphite/canson",
+    "techniqueEs": "graphite/canson",
+    "dimensions": {
+      "height": 40,
+      "width": 30,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CUA009",
+    "order": 9
+  },
+  {
+    "id": "CUA010",
+    "series": "cuatro-vueltas",
+    "titleEn": "cuatro vueltas 10/40",
+    "titleEs": "cuatro vueltas 10/40",
+    "year": 2009,
+    "technique": "graphite/canson",
+    "techniqueEs": "graphite/canson",
+    "dimensions": {
+      "height": 40,
+      "width": 30,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CUA010",
+    "order": 10
+  },
+  {
+    "id": "TRO001",
+    "series": "trompe-l-oeil",
+    "titleEn": "trompe l´oeil 1/12",
+    "titleEs": "trompe l´oeil 1/12",
+    "year": 2008,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 60,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRO001",
+    "order": 1
+  },
+  {
+    "id": "TRO002",
+    "series": "trompe-l-oeil",
+    "titleEn": "trompe l´oeil 2/12",
+    "titleEs": "trompe l´oeil 2/12",
+    "year": 2008,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 60,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRO002",
+    "order": 2
+  },
+  {
+    "id": "TRO003",
+    "series": "trompe-l-oeil",
+    "titleEn": "trompe l´oeil 3/12",
+    "titleEs": "trompe l´oeil 3/12",
+    "year": 2008,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 60,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRO003",
+    "order": 3
+  },
+  {
+    "id": "TRO004",
+    "series": "trompe-l-oeil",
+    "titleEn": "trompe l´oeil 4/12",
+    "titleEs": "trompe l´oeil 4/12",
+    "year": 2008,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 60,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRO004",
+    "order": 4
+  },
+  {
+    "id": "TRO005",
+    "series": "trompe-l-oeil",
+    "titleEn": "trompe l´oeil 5/12",
+    "titleEs": "trompe l´oeil 5/12",
+    "year": 2008,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 60,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRO005",
+    "order": 5
+  },
+  {
+    "id": "TRO006",
+    "series": "trompe-l-oeil",
+    "titleEn": "trompe l´oeil 6/12",
+    "titleEs": "trompe l´oeil 6/12",
+    "year": 2008,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 60,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRO006",
+    "order": 6
+  },
+  {
+    "id": "TRO007",
+    "series": "trompe-l-oeil",
+    "titleEn": "trompe l´oeil 7/12",
+    "titleEs": "trompe l´oeil 7/12",
+    "year": 2008,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 60,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRO007",
+    "order": 7
+  },
+  {
+    "id": "TRO008",
+    "series": "trompe-l-oeil",
+    "titleEn": "trompe l´oeil 8/12",
+    "titleEs": "trompe l´oeil 8/12",
+    "year": 2008,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 60,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRO008",
+    "order": 8
+  },
+  {
+    "id": "TIM001",
+    "series": "pausa",
+    "titleEn": "3:15 pm",
+    "titleEs": "3:15 pm",
+    "year": 2008,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM001",
+    "order": 1
+  },
+  {
+    "id": "TIM002",
+    "series": "pausa",
+    "titleEn": "3:15 pm",
+    "titleEs": "3:15 pm",
+    "year": 2008,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM002",
+    "order": 2
+  },
+  {
+    "id": "TIM003",
+    "series": "pausa",
+    "titleEn": "9:15 am",
+    "titleEs": "9:15 am",
+    "year": 2008,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 190,
+      "width": 110,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM003",
+    "order": 3
+  },
+  {
+    "id": "TIM004",
+    "series": "pausa",
+    "titleEn": "3:15 pm",
+    "titleEs": "3:15 pm",
+    "year": 2008,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM004",
+    "order": 4
+  },
+  {
+    "id": "TIM005",
+    "series": "pausa",
+    "titleEn": "10.30 am",
+    "titleEs": "10.30 am",
+    "year": 2008,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 180,
+      "width": 120,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM005",
+    "order": 5
+  },
+  {
+    "id": "TIM006",
+    "series": "pausa",
+    "titleEn": "1:15 pm",
+    "titleEs": "1:15 pm",
+    "year": 2008,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM006",
+    "order": 6
+  },
+  {
+    "id": "TIM007",
+    "series": "pausa",
+    "titleEn": "7:15 am",
+    "titleEs": "7:15 am",
+    "year": 2007,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM007",
+    "order": 7
+  },
+  {
+    "id": "TIM008",
+    "series": "pausa",
+    "titleEn": "3:15 pm",
+    "titleEs": "3:15 pm",
+    "year": 2008,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 180,
+      "width": 120,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM008",
+    "order": 8
+  },
+  {
+    "id": "TIM009",
+    "series": "pausa",
+    "titleEn": "12:30 pm",
+    "titleEs": "12:30 pm",
+    "year": 2008,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM009",
+    "order": 9
+  },
+  {
+    "id": "TIM010",
+    "series": "pausa",
+    "titleEn": "8:30 am",
+    "titleEs": "8:30 am",
+    "year": 2008,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 180,
+      "width": 120,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM010",
+    "order": 10
+  },
+  {
+    "id": "TIM011",
+    "series": "pausa",
+    "titleEn": "6:30 pm",
+    "titleEs": "6:30 pm",
+    "year": 2008,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 180,
+      "width": 120,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM011",
+    "order": 11
+  },
+  {
+    "id": "TIM012",
+    "series": "pausa",
+    "titleEn": "5:55 pm",
+    "titleEs": "5:55 pm",
+    "year": "2008-17",
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 220,
+      "width": 140,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM012",
+    "order": 12
+  },
+  {
+    "id": "LEJ001",
+    "series": "aqui-es-todas-partes",
+    "titleEn": "lejanía de lo inmediato",
+    "titleEs": "lejanía de lo inmediato",
+    "year": 2007,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 100,
+      "width": 150,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/LEJ001",
+    "order": 1
+  },
+  {
+    "id": "UNI001",
+    "series": "aqui-es-todas-partes",
+    "titleEn": "un instante de eternidad",
+    "titleEs": "un instante de eternidad",
+    "year": 2008,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 90,
+      "width": 60,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/UNI001",
+    "order": 2
+  },
+  {
+    "id": "ESP001",
+    "series": "aqui-es-todas-partes",
+    "titleEn": "espacio inagotable",
+    "titleEs": "espacio inagotable",
+    "year": 2007,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 100,
+      "width": 150,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/ESP001",
+    "order": 3
+  },
+  {
+    "id": "LIM001",
+    "series": "aqui-es-todas-partes",
+    "titleEn": "el hombre inventó los límites",
+    "titleEs": "el hombre inventó los límites",
+    "year": 2007,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 180,
+      "width": 135,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/LIM001",
+    "order": 4
+  },
+  {
+    "id": "INF001",
+    "series": "aqui-es-todas-partes",
+    "titleEn": "infinito y más acá",
+    "titleEs": "infinito y más acá",
+    "year": 2007,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 80,
+      "width": 60,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/INF001",
+    "order": 5
+  },
+  {
+    "id": "LUZ001",
+    "series": "aqui-es-todas-partes",
+    "titleEn": "la luz encuentra la luz",
+    "titleEs": "la luz encuentra la luz",
+    "year": 2007,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 100,
+      "width": 150,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/LUZ001",
+    "order": 6
+  },
+  {
+    "id": "HOY001",
+    "series": "aqui-es-todas-partes",
+    "titleEn": "hoyo blanco",
+    "titleEs": "hoyo blanco",
+    "year": "2007-17",
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 230,
+      "width": 140,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/HOY001",
+    "order": 7
+  },
+  {
+    "id": "TPA001",
+    "series": "aqui-es-todas-partes",
+    "titleEn": "todas las posibilidades",
+    "titleEs": "todas las posibilidades",
+    "year": 2007,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 100,
+      "width": 150,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TPA001",
+    "order": 8
+  },
+  {
+    "id": "TCA001",
+    "series": "aqui-es-todas-partes",
+    "titleEn": "todas las cosas una cosa",
+    "titleEs": "todas las cosas una cosa",
+    "year": 2007,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 100,
+      "width": 150,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TCA001",
+    "order": 9
+  },
+  {
+    "id": "IMP001",
+    "series": "aqui-es-todas-partes",
+    "titleEn": "y lo imposible también",
+    "titleEs": "y lo imposible también",
+    "year": 2007,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 100,
+      "width": 150,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/IMP001",
+    "order": 10
+  },
+  {
+    "id": "CON001",
+    "series": "aqui-es-todas-partes",
+    "titleEn": "confines de lo cercano",
+    "titleEs": "confines de lo cercano",
+    "year": 2007,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 100,
+      "width": 150,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CON001",
+    "order": 11
+  },
+  {
+    "id": "MAS001",
+    "series": "aqui-es-todas-partes",
+    "titleEn": "mas vasto que el todo",
+    "titleEs": "mas vasto que el todo",
+    "year": 2007,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 100,
+      "width": 150,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/MAS001",
+    "order": 12
+  },
+  {
+    "id": "H2O001",
+    "series": "h2o",
+    "titleEn": "h2o 1/12",
+    "titleEs": "h2o 1/12",
+    "year": 2006,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 60,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/H2O001",
+    "order": 1
+  },
+  {
+    "id": "H2O002",
+    "series": "h2o",
+    "titleEn": "h2o 2/12",
+    "titleEs": "h2o 2/12",
+    "year": 2006,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 60,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/H2O002",
+    "order": 2
+  },
+  {
+    "id": "H2O003",
+    "series": "h2o",
+    "titleEn": "h2o 3/12",
+    "titleEs": "h2o 3/12",
+    "year": 2006,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 60,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/H2O003",
+    "order": 3
+  },
+  {
+    "id": "H2O004",
+    "series": "h2o",
+    "titleEn": "h2o 4/12",
+    "titleEs": "h2o 4/12",
+    "year": 2006,
+    "technique": "photography",
+    "techniqueEs": "photography",
+    "dimensions": {
+      "height": 60,
+      "width": 40,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/H2O004",
+    "order": 4
+  },
+  {
+    "id": "CAM002",
+    "series": "naranja-dulce",
+    "titleEn": "campanita de oro",
+    "titleEs": "campanita de oro",
+    "year": 2004,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 180,
+      "width": 135,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CAM002",
+    "order": 1
+  },
+  {
+    "id": "SAN001",
+    "series": "naranja-dulce",
+    "titleEn": "san serafín",
+    "titleEs": "san serafín",
+    "year": 2004,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 180,
+      "width": 120,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SAN001",
+    "order": 2
+  },
+  {
+    "id": "DOP001",
+    "series": "naranja-dulce",
+    "titleEn": "do pin we",
+    "titleEs": "do pin we",
+    "year": 2004,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 180,
+      "width": 120,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/DOP001",
+    "order": 3
+  },
+  {
+    "id": "RUE001",
+    "series": "naranja-dulce",
+    "titleEn": "a la rueda rueda",
+    "titleEs": "a la rueda rueda",
+    "year": 2004,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 180,
+      "width": 135,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/RUE001",
+    "order": 4
+  },
+  {
+    "id": "TIT001",
+    "series": "naranja-dulce",
+    "titleEn": "titerefue",
+    "titleEs": "titerefue",
+    "year": 2004,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 180,
+      "width": 135,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIT001",
+    "order": 5
+  },
+  {
+    "id": "REG001",
+    "series": "saga",
+    "titleEn": "regreso a casa",
+    "titleEs": "regreso a casa",
+    "year": 2001,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 120,
+      "width": 80,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/REG001",
+    "order": 1
+  },
+  {
+    "id": "PAC001",
+    "series": "saga",
+    "titleEn": "pacífico",
+    "titleEs": "pacífico",
+    "year": 2000,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 190,
+      "width": 110,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PAC001",
+    "order": 2
+  },
+  {
+    "id": "CYA001",
+    "series": "saga",
+    "titleEn": "cyan",
+    "titleEs": "cyan",
+    "year": 2001,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 120,
+      "width": 80,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CYA001",
+    "order": 3
+  },
+  {
+    "id": "NAT001",
+    "series": "saga",
+    "titleEn": "natura",
+    "titleEs": "natura",
+    "year": 2001,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 170,
+      "width": 110,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/NAT001",
+    "order": 4
+  },
+  {
+    "id": "ERR001",
+    "series": "saga",
+    "titleEn": "errante",
+    "titleEs": "errante",
+    "year": 2000,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 190,
+      "width": 110,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/ERR001",
+    "order": 5
+  },
+  {
+    "id": "OJO001",
+    "series": "saga",
+    "titleEn": "ojo de agua",
+    "titleEs": "ojo de agua",
+    "year": 2001,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 165,
+      "width": 120,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/OJO001",
+    "order": 6
+  },
+  {
+    "id": "MWO001",
+    "series": "saga",
+    "titleEn": "MW",
+    "titleEs": "MW",
+    "year": 2001,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 80,
+      "width": 80,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/MWO001",
+    "order": 7
+  },
+  {
+    "id": "SAG001",
+    "series": "saga",
+    "titleEn": "saga",
+    "titleEs": "saga",
+    "year": 2000,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 190,
+      "width": 110,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SAG001",
+    "order": 8
+  },
+  {
+    "id": "VEN001",
+    "series": "saga",
+    "titleEn": "ventana",
+    "titleEs": "ventana",
+    "year": 2000,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 180,
+      "width": 135,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/VEN001",
+    "order": 9
+  },
+  {
+    "id": "VIA001",
+    "series": "trece-lunas",
+    "titleEn": "el viaje",
+    "titleEs": "el viaje",
+    "year": 1999,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 170,
+      "width": 120,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/VIA001",
+    "order": 1
+  },
+  {
+    "id": "PEC001",
+    "series": "trece-lunas",
+    "titleEn": "pec",
+    "titleEs": "pec",
+    "year": 1999,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 175,
+      "width": 130,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEC001",
+    "order": 2
+  },
+  {
+    "id": "MAD001",
+    "series": "trece-lunas",
+    "titleEn": "madre tierra",
+    "titleEs": "madre tierra",
+    "year": 1999,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 130,
+      "width": 200,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/MAD001",
+    "order": 3
+  },
+  {
+    "id": "GRA001",
+    "series": "trece-lunas",
+    "titleEn": "gran puerta",
+    "titleEs": "gran puerta",
+    "year": 1999,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 130,
+      "width": 200,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/GRA001",
+    "order": 4
+  },
+  {
+    "id": "NQP001",
+    "series": "trece-lunas",
+    "titleEn": "no quiero plata",
+    "titleEs": "no quiero plata",
+    "year": 1999,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/NQP001",
+    "order": 5
+  },
+  {
+    "id": "TRE001",
+    "series": "trece-lunas",
+    "titleEn": "tres gracias",
+    "titleEs": "tres gracias",
+    "year": 1999,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 110,
+      "width": 140,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRE001",
+    "order": 6
+  },
+  {
+    "id": "NIN001",
+    "series": "trece-lunas",
+    "titleEn": "niña leyendo",
+    "titleEs": "niña leyendo",
+    "year": 1998,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 150,
+      "width": 100,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/NIN001",
+    "order": 7
+  },
+  {
+    "id": "HUE001",
+    "series": "trece-lunas",
+    "titleEn": "huellas de luna",
+    "titleEs": "huellas de luna",
+    "year": 1998,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 70,
+      "width": 105,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/HUE001",
+    "order": 8
+  },
+  {
+    "id": "MAR001",
+    "series": "trece-lunas",
+    "titleEn": "marina",
+    "titleEs": "marina",
+    "year": 1998,
+    "technique": "oil/canvas",
+    "techniqueEs": "oil/canvas",
+    "dimensions": {
+      "height": 250,
+      "width": 115,
+      "unit": "cm"
+    },
+    "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/MAR001",
+    "order": 9
   }
 ]
