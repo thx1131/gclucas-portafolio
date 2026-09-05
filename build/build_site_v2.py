@@ -235,10 +235,14 @@ class SiteBuilder:
             nav += f'<a href="/work/{next_s["id"]}/">{next_s["titleEn"]} →</a>' if next_s else '<span></span>'
             nav += '</div>'
 
+            statement_html = f"<p>{series['statementEn']}</p>" if series['statementEn'] else ""
+            if series.get('statementAuthor'):
+                statement_html += f'<p class="statement-author">— {series["statementAuthor"]}</p>'
+
             content = self._render_template(self.series_template, {
                 'series_title': series['titleEn'],
                 'series_year': series['year'],
-                'series_statement': f"<p>{series['statementEn']}</p>",
+                'series_statement': statement_html,
                 'gallery': gallery_html,
                 'series_nav': nav
             })

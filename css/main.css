@@ -299,6 +299,17 @@ body.dark-mode .series-card .year {
     color: var(--accent-dark);
 }
 
+.statement-author {
+    font-style: italic;
+    font-size: 14px;
+    color: var(--accent-light);
+    margin-top: -8px;
+}
+
+body.dark-mode .statement-author {
+    color: var(--accent-dark);
+}
+
 /* SERIES DETAIL: breadcrumb + navegación entre series */
 .series-breadcrumb {
     padding-top: 30px;
