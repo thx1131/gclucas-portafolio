@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-04 (traducción EN + fixes de UI + cotejo bilingüe en Excel + retiro de Google Sheets del flujo editorial).
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-05 (auditoría de bugs/inconsistencias del sitio: contacto falso, /text/ placeholder indexable, og:image genérico, statements vacíos, título duplicado).
 
 ## Qué es esto
 
@@ -92,6 +92,7 @@ Estructura (hoja única "En español", 1011 filas, 24 bloques de serie por celda
 - **Caché**: si GitHub está bien pero gclucas.art se ve viejo → Cloudflare → Caching → Purge Everything.
 - **Conflicto de la serie Filippo** se resolvió con fingerprinting de imágenes a nivel de pixel; si reaparece ambigüedad serie/numeración, usar ese método.
 - "Uploaded 0 files" en el deploy = el commit no cambió nada realmente; revisar `git status` antes de asumir bug de Cloudflare.
+- **Archivo personal suelto en la raíz del repo, sin trackear**: `MP_1396036171.pdf` (ficha de pago interbancario BBVA/Infonavit a nombre de Luis, con CLABE). No tiene relación con el proyecto ni está en el historial de git. Nunca se debe agregar al repo — si reaparece un archivo así (descargas que caen por error en `~/Documentos/gclucas-portafolio/`), avisar a Luis para que lo mueva, no commitearlo.
 
 ## Bugs abiertos (backlog corto)
 
@@ -112,7 +113,18 @@ Estructura (hoja única "En español", 1011 filas, 24 bloques de serie por celda
 - **Color de texto**: `--text-light` pasó de `#1a1a1a` a `#333333` (carbón, no negro puro) en `css/main.css`.
 - **Statements de críticos con formato de cita**: 4 series (`berser-k` → Fernando Gonzalez Gortázar, `pausa` → Ana Elena Mallet, `saga` → Rocío Cerón, `trece-lunas` → Carlos Monsiváis) tenían el nombre del autor pegado al final del párrafo del statement. Se separó a un campo nuevo `statementAuthor` en `data/series.json`, y `build_site_v2.py` lo renderiza como `<p class="statement-author">— {nombre}</p>` (cursiva, color accent) en vez de texto corrido. (`excel_to_json.py` no genera este campo, pero ya no importa: el script está retirado del flujo — ver Arquitectura.)
 
-## Backlog esperando input de Lucas (no bloquear trabajo técnico por esto)
+## Sesión 2026-09-05: auditoría de bugs/inconsistencias del sitio
+
+Luis hizo una revisión manual del sitio y reportó 7 hallazgos (impacto alto/medio/bajo). Se resolvieron los de impacto alto y medio; los de pulido menor quedan en backlog abajo.
+
+- **Formulario de contacto era un callejón sin salida silencioso**: `templates/contact.html` no tenía `action`, y `js/main.js` hacía `preventDefault()` + `alert('Thank you...')` + `reset()` sin enviar nada a ningún lado — el visitante creía que su mensaje se envió y Lucas nunca lo recibía. Resuelto: se quitó el `<form>` en `index.html`, `templates/home.html`, `contact/index.html` y `templates/contact.html`, reemplazado por una línea de links directos (`email · whatsapp · instagram`, ya funcionales). CSS (`.contact-form`, `.contact-info`) y JS (listener de submit) limpiados en consecuencia.
+- **`/text/` es placeholder indexable**: tenía lorem ipsum y dos links "read more" a páginas que no existen (`/text/ficciones/`, y `/text/peligro-extincion/` que ni siquiera coincide con el slug real `peligro-de-extincion`), y estaba en `sitemap.xml` — Google la rastrearía y pegaría contra 404s. Se decidió **no borrar el contenido/templates** (esperando texto real de Lucas para definir el formato), solo hacerla no pública/no indexable mientras tanto: sacada de `sitemap.xml` (`build_sitemap` en `build_site_v2.py`), `<meta name="robots" content="noindex, nofollow">` agregado solo a esa página (nuevo placeholder `{{robots_meta}}` en `templates/base.html`, parámetro `noindex=False` en `_build_full_page`), y `Disallow: /text/` en `robots.txt` (estático, no lo genera el build). La página nunca estuvo linkeada desde navbar/footer, así que no hacía falta tocar navegación.
+- **og:image genérico (picsum.photos random) en casi todas las páginas**: home, statement, work, bio y contact usaban `picsum.photos/1200/600?random=...` como imagen de preview social — cualquiera que compartiera el link en WhatsApp/redes veía una foto random sin relación con el arte. Solo las páginas de serie individual (`/work/{serie}/`) ya usaban su `coverImage` real. Resuelto: nuevo atributo `self.default_og_image` en `SiteBuilder.__init__` (usa `site_data.get('heroImage', ...)`, mismo fallback que ya usaba el hero de home: `obras/PEL004` en Cloudinary), reutilizado en esas 5 páginas. `/text/` se dejó con el picsum placeholder a propósito, ya que no se indexa de todas formas. Páginas de serie individual no se tocaron.
+- **Statements vacíos mostraban "..." literal**: las 3 series sin `statementEn` (`h2o`, `naranja-dulce`, `trompe-l-oeil`) mostraban `<p>...</p>` en las tarjetas de `/work/`. Resuelto: `build_work_index` ahora omite el `<p>` del extracto si `statementEn` está vacío. **El `meta description` vacío de esas 3 páginas de serie individual queda pendiente a propósito**, hasta que Lucas mande esos textos — no se tocó.
+- **`<title>` duplicado en TODAS las páginas** (hallazgo nuevo, no reportado por Luis, encontrado al verificar el fix anterior): `templates/base.html` tenía `<title>{{title}} | gclucas</title>`, pero cada page builder ya arma el título completo con el sufijo incluido (ej. `f"{series['titleEn']} | gclucas"`, o `"gclucas | visual artist"` para home) — resultado: `<title>pausa | gclucas | gclucas</title>` en cada página del sitio. Resuelto: `base.html` ahora usa `<title>{{title}}</title>` sin sufijo extra. `og:title`/`twitter:title` no tenían este problema (no llevaban sufijo agregado en el template).
+- **No resueltos (pulido menor, quedan en backlog)**: extractos de statement cortados a lo bruto con `[:100]` (parten palabras a la mitad), smooth scroll en `js/main.js` busca `a[href^="#"]` pero todos los links reales son `/#statement` etc. (código muerto, no rompe nada), botón × del modal de galería sin `aria-label`.
+
+
 
 - ~~Traducciones EN + técnicas/materiales estandarizados en inglés~~ — **hecho 2026-09-04**: `statementEn` de las 21 series con texto (las 3 vacías —trompe-l-oeil, h2o, naranja-dulce— siguen esperando statement) y el campo `technique` de `works.json` traducidos a inglés profesional. Los títulos en español (series y obras) se respetaron sin traducir, por instrucción explícita. (Ya no aplica la advertencia de que se perdería al re-exportar el Sheet: `data/*.json` es ahora la fuente canónica, el Sheet está retirado — ver Arquitectura.)
 - Imagen hero
@@ -128,6 +140,7 @@ Estructura (hoja única "En español", 1011 filas, 24 bloques de serie por celda
 ## Backlog técnico scoped, no construido
 
 - `actualizar.sh` — script que encadene todo el pipeline (excel → json → build → push)
+- Pulido menor de la auditoría 2026-09-05 (ver esa sección): extractos de statement con `[:100]` cortan palabras a la mitad; smooth scroll de `js/main.js` (`a[href^="#"]`) es código muerto porque los links reales llevan `/` antes del `#`; botón × del modal de galería sin `aria-label`.
 - Script de ruteo de extracción de imágenes desde PowerPoint (discutido, no escrito)
 - Sección `/text/` — oculta hasta que exista contenido literario real
 - Evaluado y en pausa: CMS headless Git-based (Sveltia + build en Cloudflare Pages + Worker OAuth). Prerequisito: mover el build al CI de Pages. Decidir qué fuente manda (Sheets vs CMS) antes de implementar.

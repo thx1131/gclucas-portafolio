@@ -46,6 +46,11 @@ class SiteBuilder:
         # Components
         self.navbar_component = self._load_template('components/navbar.html')
         self.footer_component = self._load_template('components/footer.html')
+
+        # Imagen real usada como og:image genérico (home, statement, work, bio, contact).
+        # Las páginas de serie individual usan su propio coverImage, no esto.
+        self.default_og_image = self.site_data.get('heroImage',
+            'https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL004')
     
     def _load_json(self, filename):
         """Load JSON file from data directory. Siempre requerido: aborta el build si falta o es inválido."""
@@ -108,14 +113,18 @@ class SiteBuilder:
         with open(path, 'w', encoding='utf-8') as f:
             f.write(content)
     
-    def _build_full_page(self, content, title, description, og_image, og_url, canonical_url):
+    def _build_full_page(self, content, title, description, og_image, og_url, canonical_url, noindex=False):
         """Wraps content with base template, navbar, footer, SEO"""
+        robots_meta = (
+            '<meta name="robots" content="noindex, nofollow">' if noindex else ''
+        )
         full_content = self._render_template(self.base_template, {
             'title': title,
             'description': description,
             'og_image': og_image,
             'og_url': og_url,
             'canonical_url': canonical_url,
+            'robots_meta': robots_meta,
             'navbar': self.navbar_component,
             'content': content,
             'footer': self.footer_component
@@ -148,7 +157,7 @@ class SiteBuilder:
             content,
             "gclucas | visual artist",
             self.site_data['descriptionEn'],
-            "https://picsum.photos/1200/600?random=og",
+            self.default_og_image,
             self.site_data['url'],
             self.site_data['url']
         )
@@ -169,7 +178,7 @@ class SiteBuilder:
             content,
             "statement | gclucas",
             "Artist's statement",
-            "https://picsum.photos/1200/600?random=statement",
+            self.default_og_image,
             f"{self.site_data['url']}/statement/",
             f"{self.site_data['url']}/statement/"
         )
@@ -185,11 +194,12 @@ class SiteBuilder:
         series_list = ""
         for series in self.series_data:
             works_count = len(self._get_works_by_series(series['id']))
+            excerpt = f"<p>{series['statementEn'][:100]}...</p>" if series['statementEn'] else ""
             series_list += f"""
             <a href="/work/{series['id']}/" class="series-card">
                 <img src="{series['coverImage']}" alt="{series['titleEn']}" loading="lazy">
                 <h3>{series['titleEn']}</h3>
-                <p>{series['statementEn'][:100]}...</p>
+                {excerpt}
                 <div class="year">{series['year']} • {works_count} works</div>
             </a>
             """
@@ -202,7 +212,7 @@ class SiteBuilder:
             content,
             "work | gclucas",
             "Explore the series",
-            "https://picsum.photos/1200/600?random=work",
+            self.default_og_image,
             f"{self.site_data['url']}/work/",
             f"{self.site_data['url']}/work/"
         )
@@ -294,7 +304,8 @@ class SiteBuilder:
             "Writings and reflections",
             "https://picsum.photos/1200/600?random=texts",
             f"{self.site_data['url']}/text/",
-            f"{self.site_data['url']}/text/"
+            f"{self.site_data['url']}/text/",
+            noindex=True  # placeholder content (lorem ipsum, links a páginas inexistentes) — no indexar hasta que haya texto real
         )
         
         output_path = self.output_dir / 'text' / 'index.html'
@@ -323,7 +334,7 @@ class SiteBuilder:
             content,
             "bio | gclucas",
             "Artist biography and exhibitions",
-            "https://picsum.photos/1200/600?random=bio",
+            self.default_og_image,
             f"{self.site_data['url']}/bio/",
             f"{self.site_data['url']}/bio/"
         )
@@ -346,7 +357,7 @@ class SiteBuilder:
             content,
             "contact | gclucas",
             "Get in touch",
-            "https://picsum.photos/1200/600?random=contact",
+            self.default_og_image,
             f"{self.site_data['url']}/contact/",
             f"{self.site_data['url']}/contact/"
         )
@@ -361,7 +372,8 @@ class SiteBuilder:
 
         base_url = self.site_data['url'].rstrip('/')
         today = date.today().isoformat()
-        static_paths = ['/', '/statement/', '/work/', '/text/', '/bio/', '/contact/']
+        # /text/ excluido a propósito: contenido placeholder, no indexable todavía (ver noindex en build_text_index)
+        static_paths = ['/', '/statement/', '/work/', '/bio/', '/contact/']
         paths = static_paths + [f"/work/{s['id']}/" for s in self.series_data]
 
         entries = "\n".join(

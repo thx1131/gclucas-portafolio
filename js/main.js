@@ -31,16 +31,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// CONTACT FORM
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Aquí iría la lógica de envío (Supabase, email, etc)
-        alert('Thank you for your message. We will get back to you soon.');
-        contactForm.reset();
-    });
-}
-
 console.log('main.js loaded');
