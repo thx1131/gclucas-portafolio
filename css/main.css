@@ -537,6 +537,7 @@ body.dark-mode .contact-intro {
 .contact-links {
     font-size: 19px;
     letter-spacing: 0.5px;
+    margin-bottom: 0;
 }
 
 .contact-links a {
@@ -580,6 +581,11 @@ body.dark-mode .footer {
 
 .footer-socials a {
     text-transform: lowercase;
+    color: var(--text-light);
+}
+
+body.dark-mode .footer-socials a {
+    color: var(--text-dark);
 }
 
 /* RESPONSIVE */
