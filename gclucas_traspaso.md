@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Actualizado: 2026-09-04.
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-04 (sesión de traducción EN + fixes de UI).
 
 ## Qué es esto
 
@@ -71,9 +71,19 @@ Regla: editaste `data/` o `templates/` → regenera antes de push. Solo `css/` o
 1. **Dark mode arranca según preferencia del sistema; debe defaultear a light.** (js/darkmode.js) — confirmado: `getInitialTheme()` cae a `prefersDark ? 'dark' : 'light'`, y el listener de `matchMedia('(prefers-color-scheme: dark)')` reaplica ese fallback si el usuario cambia el tema del SO. Fix: hardcodear el fallback a `'light'` (y evaluar si el listener de cambios de sistema debe seguir existiendo).
 2. **Bio tiene lorem ipsum** — esperando texto de Lucas. Confirmado en `data/site.json` (`bioEn`/`bioEs`) y en `bio/index.html` generado. Además `templates/home.html` tiene un **segundo párrafo de lorem ipsum hardcodeado directo en el template** (el de "Duis aute irure...") que no viene de `data/site.json` — ver punto 8 más abajo, es un problema aparte de disciplina de fuente única.
 3. **SUE006 aparece "pendiente"** (sin imagen) en la serie visión de filippo — confirmado, `cloudinaryUrl: ""` en `data/works.json`. Reservado para imágenes que Lucas enviará.
-4. **Carpeta huérfana `{build,templates` en la raíz del repo.** Contiene una subcarpeta literal `components,data,css,js,work,images}` — restos de un `mkdir {build,templates,...}` corrido en un shell sin expansión de llaves. No está trackeada en git (no aparece en `git status` ni `git ls-files`), así que es basura local segura de borrar: `rm -rf "{build,templates"`.
-5. ~~`work/nude-revisited/` es output huérfano~~ — **resuelto 2026-09-04**, carpeta borrada (junto con `{build,templates`). Confirmó que "reviseted" no es un bug de build sino que **vive en el Google Sheet / `data/works.json`+`series.json`**; la decisión de naming sigue pendiente de Lucas (ver backlog de abajo).
+4. ~~Carpeta huérfana `{build,templates` en la raíz del repo~~ — **resuelto 2026-09-04**, borrada junto con `work/nude-revisited/`.
+5. ~~`work/nude-revisited/` es output huérfano~~ — **resuelto 2026-09-04**, carpeta borrada. Confirmó que "reviseted" no es un bug de build sino que **vive en el Google Sheet / `data/works.json`+`series.json`**; la decisión de naming sigue pendiente de Lucas (ver backlog de abajo).
 6. **`templates/home.html` tiene bio parcialmente hardcodeada fuera de `data/site.json`.** El párrafo "Duis aute irure..." está escrito directo en el template y no sale del JSON — viola el principio 4 de Arquitectura (fuente única). Cuando llegue el texto real de Lucas, hay que asegurarse de que **ambos** párrafos salgan de `site.json`, no solo uno.
+7. **Dark mode toggle podía verse opaco/con bajo contraste en modo oscuro** — resuelto 2026-09-04: el glyph de texto `◐` dependía de cómo cada fuente/SO lo renderizaba (en algunos casos no seguía `currentColor`). Se reemplazó por dos íconos SVG (sol/luna) con `stroke="currentColor"` en `templates/components/navbar.html`, garantizando que sigan el color del tema en ambos modos.
+8. **Botones prev/next del modal de galería quedaban tapados por el scroll interno en imágenes altas / laptops de poca altura** — resuelto 2026-09-04: `.modal-nav` ahora usa `position: sticky; bottom: 0` dentro de `.modal-content`, así los botones quedan siempre visibles sin necesidad de scrollear.
+
+## Sesión 2026-09-04: traducción EN + fixes de UI (commits `3b00bb6`, `ac4ca46`, `4af7165`)
+
+- **Ficha de obra (modal de galería) reformateada**: orden fijo título (negrita) → dimensions → technique → date, sin las etiquetas "Technique:"/"Dimensions:". Cambios en `templates/series.html` (orden de los `<p>`), `js/gallery.js` (se quitaron los prefijos hardcodeados) y `css/main.css` (`.modal-info h3 { font-weight: 700 }`).
+- **Color de texto**: `--text-light` pasó de `#1a1a1a` a `#333333` (carbón, no negro puro) en `css/main.css`.
+- **Statements de críticos con formato de cita**: 4 series (`berser-k` → Fernando Gonzalez Gortázar, `pausa` → Ana Elena Mallet, `saga` → Rocío Cerón, `trece-lunas` → Carlos Monsiváis) tenían el nombre del autor pegado al final del párrafo del statement. Se separó a un campo nuevo `statementAuthor` en `data/series.json`, y `build_site_v2.py` lo renderiza como `<p class="statement-author">— {nombre}</p>` (cursiva, color accent) en vez de texto corrido.
+  - **⚠️ `excel_to_json.py` no genera `statementAuthor`** — es un campo que se agregó a mano en `data/series.json`, fuera del pipeline Sheets → JSON. Si se vuelve a exportar el Sheet sin que el Sheet tenga esta columna (o sin actualizar `excel_to_json.py` para preservarla/generarla), el campo se pierde y esas 4 series vuelven a mostrar el nombre pegado al párrafo.
+- Ver también la entrada de traducciones EN en el backlog de abajo (mismo tipo de riesgo: parchado directo en JSON, no vía Sheet).
 
 ## Backlog esperando input de Lucas (no bloquear trabajo técnico por esto)
 
