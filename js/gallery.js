@@ -36,8 +36,8 @@ function updateModal() {
     modalImage.alt = item.title;
     modalTitle.textContent = item.title;
     modalYear.textContent = item.year;
-    modalTechnique.textContent = `Technique: ${item.technique}`;
-    modalDimensions.textContent = `Dimensions: ${item.dimensions}`;
+    modalTechnique.textContent = item.technique;
+    modalDimensions.textContent = item.dimensions;
 }
 
 // Navegación

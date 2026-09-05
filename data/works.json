@@ -5,7 +5,7 @@
     "titleEn": "ficciones 1",
     "titleEs": "ficciones 1",
     "year": 2025,
-    "technique": "libro, celular (IA)",
+    "technique": "book, phone (AI)",
     "techniqueEs": "libro, celular (IA)",
     "dimensions": {
       "height": 45,
@@ -22,7 +22,7 @@
     "titleEn": "peligro de extinción 1",
     "titleEs": "peligro de extinción 1",
     "year": 2023,
-    "technique": "oil,acrilic, graphite /canvas",
+    "technique": "oil, acrylic, graphite/canvas",
     "techniqueEs": "oil,acrilic, graphite /canvas",
     "dimensions": {
       "height": 100,
@@ -38,7 +38,7 @@
     "titleEn": "peligro de extinción 2",
     "titleEs": "peligro de extinción 2",
     "year": 2023,
-    "technique": "oil,acrilic, graphite /canvas",
+    "technique": "oil, acrylic, graphite/canvas",
     "techniqueEs": "oil,acrilic, graphite /canvas",
     "dimensions": {
       "height": 100,
@@ -54,7 +54,7 @@
     "titleEn": "peligro de extinción 3",
     "titleEs": "peligro de extinción 3",
     "year": 2023,
-    "technique": "oil,acrilic, graphite /canvas",
+    "technique": "oil, acrylic, graphite/canvas",
     "techniqueEs": "oil,acrilic, graphite /canvas",
     "dimensions": {
       "height": 100,
@@ -70,7 +70,7 @@
     "titleEn": "peligro de extinción 4",
     "titleEs": "peligro de extinción 4",
     "year": 2023,
-    "technique": "oil,acrilic, graphite /canvas",
+    "technique": "oil, acrylic, graphite/canvas",
     "techniqueEs": "oil,acrilic, graphite /canvas",
     "dimensions": {
       "height": 100,
@@ -86,7 +86,7 @@
     "titleEn": "peligro de extinción 5",
     "titleEs": "peligro de extinción 5",
     "year": 2023,
-    "technique": "oil,acrilic, graphite /canvas",
+    "technique": "oil, acrylic, graphite/canvas",
     "techniqueEs": "oil,acrilic, graphite /canvas",
     "dimensions": {
       "height": 100,
@@ -102,7 +102,7 @@
     "titleEn": "peligro de extinción 6",
     "titleEs": "peligro de extinción 6",
     "year": 2023,
-    "technique": "oil,acrilic, graphite /canvas",
+    "technique": "oil, acrylic, graphite/canvas",
     "techniqueEs": "oil,acrilic, graphite /canvas",
     "dimensions": {
       "height": 100,
@@ -118,7 +118,7 @@
     "titleEn": "visión de filippo 2",
     "titleEs": "visión de filippo 2",
     "year": 2021,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 60,
@@ -134,7 +134,7 @@
     "titleEn": "visión de filippo 3",
     "titleEs": "visión de filippo 3",
     "year": 2021,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 60,
@@ -150,7 +150,7 @@
     "titleEn": "visión de filippo 1",
     "titleEs": "visión de filippo 1",
     "year": 2021,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 60,
@@ -166,7 +166,7 @@
     "titleEn": "visión de filippo 5",
     "titleEs": "visión de filippo 5",
     "year": 2021,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 60,
@@ -182,7 +182,7 @@
     "titleEn": "visión de filippo 6",
     "titleEs": "visión de filippo 6",
     "year": 2021,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 60,
@@ -198,7 +198,7 @@
     "titleEn": "pendiente",
     "titleEs": "pendiente",
     "year": 2021,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 60,
@@ -214,7 +214,7 @@
     "titleEn": "berzerk",
     "titleEs": "berzerk",
     "year": 2020,
-    "technique": "grabado/papel",
+    "technique": "engraving/paper",
     "techniqueEs": "grabado/papel",
     "dimensions": {
       "height": 38,
@@ -230,7 +230,7 @@
     "titleEn": "shiver",
     "titleEs": "shiver",
     "year": 2020,
-    "technique": "grabado/papel",
+    "technique": "engraving/paper",
     "techniqueEs": "grabado/papel",
     "dimensions": {
       "height": 30,
@@ -246,7 +246,7 @@
     "titleEn": "ciber man",
     "titleEs": "ciber man",
     "year": 2020,
-    "technique": "grabado/papel",
+    "technique": "engraving/paper",
     "techniqueEs": "grabado/papel",
     "dimensions": {
       "height": 30,
@@ -262,7 +262,7 @@
     "titleEn": "flesh will melt",
     "titleEs": "flesh will melt",
     "year": 2020,
-    "technique": "grabado/papel",
+    "technique": "engraving/paper",
     "techniqueEs": "grabado/papel",
     "dimensions": {
       "height": 30,
@@ -278,7 +278,7 @@
     "titleEn": "memorex",
     "titleEs": "memorex",
     "year": 2020,
-    "technique": "grabado/papel",
+    "technique": "engraving/paper",
     "techniqueEs": "grabado/papel",
     "dimensions": {
       "height": 38,
@@ -294,7 +294,7 @@
     "titleEn": "coins",
     "titleEs": "coins",
     "year": 2020,
-    "technique": "grabado/papel",
+    "technique": "engraving/paper",
     "techniqueEs": "grabado/papel",
     "dimensions": {
       "height": 30,
@@ -310,7 +310,7 @@
     "titleEn": "think deep",
     "titleEs": "think deep",
     "year": 2020,
-    "technique": "grabado/papel",
+    "technique": "engraving/paper",
     "techniqueEs": "grabado/papel",
     "dimensions": {
       "height": 38,
@@ -326,7 +326,7 @@
     "titleEn": "more human than human",
     "titleEs": "more human than human",
     "year": 2019,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 155,
@@ -342,7 +342,7 @@
     "titleEn": "you just disappeared",
     "titleEs": "you just disappeared",
     "year": 2019,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 155,
@@ -358,7 +358,7 @@
     "titleEn": "inaudible whisper",
     "titleEs": "inaudible whisper",
     "year": 2019,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 155,
@@ -374,7 +374,7 @@
     "titleEn": "pew pew pew",
     "titleEs": "pew pew pew",
     "year": 2019,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 155,
@@ -390,7 +390,7 @@
     "titleEn": "reviseted 1",
     "titleEs": "reviseted 1",
     "year": 2018,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 120,
@@ -406,7 +406,7 @@
     "titleEn": "reviseted 2",
     "titleEs": "reviseted 2",
     "year": 2018,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 120,
@@ -422,7 +422,7 @@
     "titleEn": "reviseted 3",
     "titleEs": "reviseted 3",
     "year": 2018,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 120,
@@ -438,7 +438,7 @@
     "titleEn": "reviseted 4",
     "titleEs": "reviseted 4",
     "year": 2018,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 120,
@@ -454,7 +454,7 @@
     "titleEn": "reviseted 5",
     "titleEs": "reviseted 5",
     "year": 2018,
-    "technique": "acrilic/canvas",
+    "technique": "acrylic/canvas",
     "techniqueEs": "acrilic/canvas",
     "dimensions": {
       "height": 120,
@@ -470,7 +470,7 @@
     "titleEn": "harvest pacman",
     "titleEs": "harvest pacman",
     "year": 2017,
-    "technique": "acrilic, oil/canvas",
+    "technique": "acrylic, oil/canvas",
     "techniqueEs": "acrilic, oil/canvas",
     "dimensions": {
       "height": 30,
@@ -486,7 +486,7 @@
     "titleEn": "equinox mario",
     "titleEs": "equinox mario",
     "year": 2017,
-    "technique": "acrilic, oil/canvas",
+    "technique": "acrylic, oil/canvas",
     "techniqueEs": "acrilic, oil/canvas",
     "dimensions": {
       "height": 40,
@@ -502,7 +502,7 @@
     "titleEn": "sonic season",
     "titleEs": "sonic season",
     "year": 2017,
-    "technique": "acrilic, oil/canvas",
+    "technique": "acrylic, oil/canvas",
     "techniqueEs": "acrilic, oil/canvas",
     "dimensions": {
       "height": 50,
@@ -518,7 +518,7 @@
     "titleEn": "springtime kirby",
     "titleEs": "springtime kirby",
     "year": 2017,
-    "technique": "acrilic, oil/canvas",
+    "technique": "acrylic, oil/canvas",
     "techniqueEs": "acrilic, oil/canvas",
     "dimensions": {
       "height": 20,
@@ -534,7 +534,7 @@
     "titleEn": "winter mega man",
     "titleEs": "winter mega man",
     "year": 2017,
-    "technique": "acrilic, oil/canvas",
+    "technique": "acrylic, oil/canvas",
     "techniqueEs": "acrilic, oil/canvas",
     "dimensions": {
       "height": 40,
@@ -550,7 +550,7 @@
     "titleEn": "autumn qbert",
     "titleEs": "autumn qbert",
     "year": 2017,
-    "technique": "acrilic, oil/canvas",
+    "technique": "acrylic, oil/canvas",
     "techniqueEs": "acrilic, oil/canvas",
     "dimensions": {
       "height": 25,
@@ -566,7 +566,7 @@
     "titleEn": "solstice invader",
     "titleEs": "solstice invader",
     "year": 2017,
-    "technique": "acrilic, oil/canvas",
+    "technique": "acrylic, oil/canvas",
     "techniqueEs": "acrilic, oil/canvas",
     "dimensions": {
       "height": 40,
@@ -582,7 +582,7 @@
     "titleEn": "enemigo público",
     "titleEs": "enemigo público",
     "year": 2016,
-    "technique": "papel/acrílico",
+    "technique": "paper/acrylic",
     "techniqueEs": "papel/acrílico",
     "dimensions": {
       "variable": true
@@ -596,7 +596,7 @@
     "titleEn": "enemigo público",
     "titleEs": "enemigo público",
     "year": 2016,
-    "technique": "papel/acrílico",
+    "technique": "paper/acrylic",
     "techniqueEs": "papel/acrílico",
     "dimensions": {
       "variable": true
@@ -610,7 +610,7 @@
     "titleEn": "enemigo público",
     "titleEs": "enemigo público",
     "year": 2016,
-    "technique": "papel/acrílico",
+    "technique": "paper/acrylic",
     "techniqueEs": "papel/acrílico",
     "dimensions": {
       "variable": true
@@ -624,7 +624,7 @@
     "titleEn": "enemigo público",
     "titleEs": "enemigo público",
     "year": 2016,
-    "technique": "papel/acrílico",
+    "technique": "paper/acrylic",
     "techniqueEs": "papel/acrílico",
     "dimensions": {
       "variable": true
@@ -702,7 +702,7 @@
     "titleEn": "backpack",
     "titleEs": "backpack",
     "year": 2015,
-    "technique": "oil, acrilic/canvas",
+    "technique": "oil, acrylic/canvas",
     "techniqueEs": "oil, acrilic/canvas",
     "dimensions": {
       "height": 150,
@@ -718,7 +718,7 @@
     "titleEn": "WW4",
     "titleEs": "WW4",
     "year": 2015,
-    "technique": "oil, acrilic/canvas",
+    "technique": "oil, acrylic/canvas",
     "techniqueEs": "oil, acrilic/canvas",
     "dimensions": {
       "height": 150,
@@ -734,7 +734,7 @@
     "titleEn": "nobody´s a stranger",
     "titleEs": "nobody´s a stranger",
     "year": 2015,
-    "technique": "oil, acrilic/canvas",
+    "technique": "oil, acrylic/canvas",
     "techniqueEs": "oil, acrilic/canvas",
     "dimensions": {
       "height": 150,
@@ -750,7 +750,7 @@
     "titleEn": "better than fiction",
     "titleEs": "better than fiction",
     "year": 2014,
-    "technique": "oil, acrilic/canvas",
+    "technique": "oil, acrylic/canvas",
     "techniqueEs": "oil, acrilic/canvas",
     "dimensions": {
       "height": 150,
@@ -766,7 +766,7 @@
     "titleEn": "what do you want?",
     "titleEs": "what do you want?",
     "year": 2014,
-    "technique": "oil, acrilic/canvas",
+    "technique": "oil, acrylic/canvas",
     "techniqueEs": "oil, acrilic/canvas",
     "dimensions": {
       "height": 150,
@@ -782,7 +782,7 @@
     "titleEn": "plastic planet",
     "titleEs": "plastic planet",
     "year": 2014,
-    "technique": "oil, acrilic/canvas",
+    "technique": "oil, acrylic/canvas",
     "techniqueEs": "oil, acrilic/canvas",
     "dimensions": {
       "height": 150,
@@ -798,7 +798,7 @@
     "titleEn": "the end",
     "titleEs": "the end",
     "year": 2014,
-    "technique": "oil, acrilic/canvas",
+    "technique": "oil, acrylic/canvas",
     "techniqueEs": "oil, acrilic/canvas",
     "dimensions": {
       "height": 150,
@@ -942,7 +942,7 @@
     "titleEn": "objetos perdidos",
     "titleEs": "objetos perdidos",
     "year": 2012,
-    "technique": "pala, tierra, baño de oro (IA)",
+    "technique": "shovel, soil, gold leaf (AI)",
     "techniqueEs": "pala, tierra, baño de oro (IA)",
     "dimensions": {
       "variable": true
@@ -956,7 +956,7 @@
     "titleEn": "in god we trust",
     "titleEs": "in god we trust",
     "year": 2012,
-    "technique": "monedas",
+    "technique": "coins",
     "techniqueEs": "monedas",
     "dimensions": {
       "variable": true
@@ -970,7 +970,7 @@
     "titleEn": "in god we trust",
     "titleEs": "in god we trust",
     "year": 2012,
-    "technique": "monedas mexicanas",
+    "technique": "mexican coins",
     "techniqueEs": "monedas mexicanas",
     "dimensions": {
       "variable": true
@@ -984,7 +984,7 @@
     "titleEn": "libro negro",
     "titleEs": "libro negro",
     "year": 2011,
-    "technique": "papel, piel, acero",
+    "technique": "paper, leather, steel",
     "techniqueEs": "papel, piel, acero",
     "dimensions": {
       "height": 75,
@@ -1145,7 +1145,7 @@
     "titleEn": "0 quilates 1/43",
     "titleEs": "0 quilates 1/43",
     "year": 2009,
-    "technique": "plástico/hoja de oro",
+    "technique": "plastic/gold leaf",
     "techniqueEs": "plástico/hoja de oro",
     "dimensions": {
       "variable": true
@@ -1159,7 +1159,7 @@
     "titleEn": "0 quilates 10/43",
     "titleEs": "0 quilates 10/43",
     "year": 2009,
-    "technique": "plástico/hoja de oro",
+    "technique": "plastic/gold leaf",
     "techniqueEs": "plástico/hoja de oro",
     "dimensions": {
       "variable": true
@@ -1173,7 +1173,7 @@
     "titleEn": "0 quilates 12/43",
     "titleEs": "0 quilates 12/43",
     "year": 2009,
-    "technique": "plástico/hoja de oro",
+    "technique": "plastic/gold leaf",
     "techniqueEs": "plástico/hoja de oro",
     "dimensions": {
       "variable": true

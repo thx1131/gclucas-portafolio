@@ -18,7 +18,7 @@
   "colors": {
     "bgLight": "#ffffff",
     "bgDark": "#1a1a1a",
-    "textLight": "#1a1a1a",
+    "textLight": "#333333",
     "textDark": "#f0f0f0",
     "borderLight": "#e0e0e0",
     "borderDark": "#333333",

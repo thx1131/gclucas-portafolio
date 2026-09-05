@@ -2,7 +2,7 @@
 :root {
     --bg-light: #ffffff;
     --bg-dark: #1a1a1a;
-    --text-light: #1a1a1a;
+    --text-light: #333333;
     --text-dark: #f0f0f0;
     --border-light: #e0e0e0;
     --border-dark: #333333;
@@ -423,6 +423,7 @@ body.dark-mode .modal-close {
 }
 
 .modal-info h3 {
+    font-weight: 700;
     margin-bottom: 15px;
 }
 
