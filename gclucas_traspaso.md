@@ -24,7 +24,9 @@ data/series.json + data/works.json (FUENTE CANÓNICA — se edita directo)
 
 ⚠️ **Cambio 2026-09-04**: el Google Sheet + Excel + `excel_to_json.py` quedaron **retirados del flujo activo**. El Sheet es ahora un archivo histórico de referencia, ya no se sincroniza ni se re-exporta. Ver "Pipeline de imágenes" abajo.
 
-En evaluación (no implementado aún, requiere OK explícito antes de tocar código/config): mover la ejecución de `build/build_site_v2.py` del laptop de Luis al build de Cloudflare Pages, para que cada push a `main` genere el HTML en CI en vez de commitear HTML pre-generado. Mientras no se implemente, el flujo de arriba sigue siendo el real.
+**Aprobado 2026-09-04, en implementación**: mover la ejecución de `build/build_site_v2.py` del laptop de Luis al build de Cloudflare Pages, para que cada push a `main` genere el HTML en CI en vez de depender de que Luis lo regenere y commitee local. Hecho de este lado (Claude): `.python-version` (fija Python 3.13) y `_load_json`/`_load_template` ahora abortan el build (exit ≠ 0) si falta un archivo requerido o el JSON es inválido — antes fallaban en silencio (exit 0) e igual publicaban una página rota. Pendiente del lado de Luis: configurar en el dashboard de Pages el build command y build output directory (ver sección de abajo con los valores exactos).
+
+⚠️ **Riesgo de deriva del HTML versionado, mientras se siga commiteando como fallback**: una vez que el build corre en CI, el HTML del repo puede quedar desincronizado de lo realmente publicado si Luis hace push a `data/` o `templates/` sin regenerar local antes de commitear. gclucas.art reflejará el build de CI (que sí regenera en cada push), pero el HTML que queda versionado en git dejará de ser un espejo fiel de lo publicado — deja de servir como "lo que ves en git es lo que hay en producción". Decisión pendiente: dejar de versionar el HTML generado una vez confirmado que el build en CI es confiable (varios deploys exitosos seguidos).
 
 Principios fijos:
 1. **HTML pre-generado**, nunca renderizado client-side. Vanilla HTML/CSS/JS, cero frameworks.
@@ -54,6 +56,20 @@ Pipeline de imágenes (en `~/Documentos/obras-extraccion/`, activar venv primero
 - `excel_to_json.py` — **retirado del flujo activo (2026-09-04)**. Ya no se ejecuta como parte del proceso normal: `data/series.json` y `data/works.json` son la fuente canónica y se editan directo. El script se conserva en el repo sin borrar, por si hace falta para una migración masiva futura.
 
 Regla: editaste `data/` o `templates/` → regenera antes de push. Solo `css/` o `js/` → push directo.
+
+## Migración del build a Cloudflare Pages CI (2026-09-04)
+
+Configuración a poner en el dashboard de Pages (Build & deployments):
+- **Build command**: `python3 build/build_site_v2.py`
+- **Build output directory**: `/` (raíz — el script escribe ahí mismo, no genera `dist/`)
+- **Root directory**: sin cambios, `/`
+- Python queda fijado por `.python-version` (3.13) en la raíz del repo; no hace falta setear `PYTHON_VERSION` a mano.
+- No hace falta `requirements.txt` — `build_site_v2.py` es 100% stdlib, sin dependencias.
+
+Qué revisar en el log del primer deploy para confirmar que funcionó:
+- Debe aparecer el bloque `🎨 ATELIER v2.0 - Multipágina SEO-Optimizado` seguido de los `✅ Created: ...` por cada página (home, statement, work index, cada serie, texts, bio, contact, sitemap).
+- Build debe terminar en **success**, no solo "sin errores visibles" — si falta un archivo requerido (cualquier JSON de `data/` o cualquier template salvo `text-detail.html`), el build ahora aborta con `❌ Error fatal: ...` y exit code ≠ 0, y Cloudflare debe marcar el deploy como fallido y mantener el último deploy bueno.
+- Comparar una página al azar (ej. `/work/ficciones/`) entre el HTML servido en gclucas.art y el HTML commiteado en git — deberían ser idénticos mientras no haya deriva (ver advertencia arriba).
 
 ## Hoja de proyecto-cotejo.xlsx
 

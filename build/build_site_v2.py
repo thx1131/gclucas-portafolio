@@ -15,7 +15,7 @@ Genera todas las páginas:
 """
 
 import json
-import os
+import sys
 from pathlib import Path
 from datetime import datetime, date
 
@@ -38,7 +38,8 @@ class SiteBuilder:
         self.work_template = self._load_template('work.html')
         self.series_template = self._load_template('series.html')
         self.text_template = self._load_template('text.html')
-        self.text_detail_template = self._load_template('text-detail.html')
+        # opcional: aún no se renderiza ninguna página con este template (ver backlog /text/)
+        self.text_detail_template = self._load_template('text-detail.html', optional=True)
         self.bio_template = self._load_template('bio.html')
         self.contact_template = self._load_template('contact.html')
         
@@ -47,24 +48,28 @@ class SiteBuilder:
         self.footer_component = self._load_template('components/footer.html')
     
     def _load_json(self, filename):
-        """Load JSON file from data directory"""
+        """Load JSON file from data directory. Siempre requerido: aborta el build si falta o es inválido."""
         path = self.data_dir / filename
         try:
             with open(path, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except FileNotFoundError:
-            print(f"❌ Error: {filename} not found at {path}")
-            return []
-    
-    def _load_template(self, filename):
-        """Load template file from templates directory"""
+            sys.exit(f"❌ Error fatal: {filename} not found at {path}")
+        except json.JSONDecodeError as e:
+            sys.exit(f"❌ Error fatal: {filename} tiene JSON inválido ({e})")
+
+    def _load_template(self, filename, optional=False):
+        """Load template file from templates directory.
+        optional=True: falta tolerada (ningún page builder lo usa todavía), devuelve "" y solo avisa."""
         path = self.templates_dir / filename
         try:
             with open(path, 'r', encoding='utf-8') as f:
                 return f.read()
         except FileNotFoundError:
-            print(f"❌ Error: {filename} not found at {path}")
-            return ""
+            if optional:
+                print(f"⚠️  Aviso: {filename} not found at {path} (opcional, no bloquea el build)")
+                return ""
+            sys.exit(f"❌ Error fatal: {filename} not found at {path}")
     
     def _render_template(self, template, variables):
         """Replace variables in template"""
