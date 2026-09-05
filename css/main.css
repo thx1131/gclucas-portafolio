@@ -488,6 +488,7 @@ body.dark-mode .modal-nav {
     flex: 1;
     padding: 10px;
     background-color: var(--bg-light);
+    color: var(--text-light);
     border: 1px solid var(--border-light);
     cursor: pointer;
     font-size: 12px;
@@ -497,6 +498,7 @@ body.dark-mode .modal-nav {
 
 body.dark-mode .modal-nav button {
     background-color: var(--bg-dark);
+    color: var(--text-dark);
     border-color: var(--border-dark);
 }
 

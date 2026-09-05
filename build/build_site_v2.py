@@ -107,6 +107,12 @@ class SiteBuilder:
             parts.append(str(dims['depth']))
         return "×".join(parts) + f" {dims.get('unit', 'cm')}"
     
+    def _truncate(self, text, length=100):
+        """Corta texto a `length` caracteres sin partir una palabra a la mitad"""
+        if len(text) <= length:
+            return text
+        return text[:length].rsplit(' ', 1)[0] + "..."
+
     def _save_html(self, path, content):
         """Save HTML file"""
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -194,7 +200,7 @@ class SiteBuilder:
         series_list = ""
         for series in self.series_data:
             works_count = len(self._get_works_by_series(series['id']))
-            excerpt = f"<p>{series['statementEn'][:100]}...</p>" if series['statementEn'] else ""
+            excerpt = f"<p>{self._truncate(series['statementEn'])}</p>" if series['statementEn'] else ""
             series_list += f"""
             <a href="/work/{series['id']}/" class="series-card">
                 <img src="{series['coverImage']}" alt="{series['titleEn']}" loading="lazy">
@@ -265,7 +271,7 @@ class SiteBuilder:
             html = self._build_full_page(
                 content,
                 f"{series['titleEn']} | gclucas",
-                series['statementEn'][:160],
+                self._truncate(series['statementEn'], 160),
                 series['coverImage'],
                 f"{self.site_data['url']}/work/{series_id}/",
                 f"{self.site_data['url']}/work/{series_id}/"
