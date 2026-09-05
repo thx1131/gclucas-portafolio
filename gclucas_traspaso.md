@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-04 (sesión de traducción EN + fixes de UI).
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-04 (sesión de traducción EN + fixes de UI + cotejo bilingüe en Excel).
 
 ## Qué es esto
 
@@ -53,6 +53,18 @@ Pipeline de imágenes (en `~/Documentos/obras-extraccion/`, activar venv primero
 - `excel_to_json.py` — inventario + URLs → `series.json` y `works.json`
 
 Regla: editaste `data/` o `templates/` → regenera antes de push. Solo `css/` o `js/` → push directo.
+
+## Hoja de proyecto-cotejo.xlsx
+
+Hoja maestra de cotejo/verificación editorial (distinta del `HOJA_DE_TRASPASO_lucas.md` roto de la sección Referencias). Vive en dos copias:
+- `~/Documentos/obras-extraccion/Hoja_de_proyecto-cotejo_sin_url.xlsx` (original, sin columna de URL)
+- `~/Documentos/gclucas-portafolio/Hoja de proyecto-cotejo.xlsx` (copia con URL pública, agregada 2026-09-04) — **gitignorada** (`*.xlsx` en `.gitignore`), nunca se sube al repo.
+
+Estructura (hoja única "En español", 1011 filas, 24 bloques de serie por celdas fusionadas en A–D, 144 filas de obra): `No Serie / Nombre serie / Textos en Dossier / Textos en Portafolio / No de obra / Nombre obra / Medidas / Materiales / Año / Obra en Dossier / Obra en Portafolio / ID Interno / URL Pública`.
+
+- **Hallazgo**: el `statementEs` que vive en `data/series.json` no siempre viene de la columna D ("Textos en Portafolio") — para `berser-k` (la cita de Fernando Gonzalez Gortázar), D está vacía en el Excel y el texto real está en C ("Textos en Dossier"). El pipeline `excel_to_json.py` hace algún tipo de fallback D→C que no está documentado; revisar el script si se toca esa lógica.
+- **2026-09-04**: se agregaron dos columnas nuevas al final (N: `Statement EN`, O: `Materiales / Technique EN`) en la copia del repo, con las traducciones hechas esta sesión, para cotejo visual lado a lado con C/D y H. Mismo estilo y fusión de celdas que las columnas originales. Emparejado por `Nombre serie` (para N) e `ID Interno` (para O) — **de nuevo el gotcha de IDs como float** (ver Gotchas): la serie `archeology-road` tiene IDs numéricos (`2985001`, etc.) que Excel entrega como float y hubo que castear a string vía `int()` para matchear contra `data/works.json`.
+- Esta hoja **no alimenta el build** (no la lee `build_site_v2.py`) — es solo para cotejo humano. Las columnas N/O son manuales, no se regeneran solas; si el Sheet fuente cambia, hay que repetir el volcado a mano o formalizarlo en `excel_to_json.py`.
 
 ## Gotchas (aprendidos a golpes)
 
