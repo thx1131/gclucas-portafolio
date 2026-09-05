@@ -120,9 +120,31 @@ body.dark-mode .navbar {
 .theme-toggle {
     background: none;
     border: none;
-    font-size: 20px;
     cursor: pointer;
     padding: 8px;
+    display: flex;
+    align-items: center;
+    color: var(--text-light);
+}
+
+body.dark-mode .theme-toggle {
+    color: var(--text-dark);
+}
+
+.theme-icon {
+    display: none;
+}
+
+.icon-moon {
+    display: block;
+}
+
+body.dark-mode .icon-moon {
+    display: none;
+}
+
+body.dark-mode .icon-sun {
+    display: block;
 }
 
 .navbar-toggle {
@@ -441,6 +463,14 @@ body.dark-mode .modal-info p {
     display: flex;
     gap: 10px;
     margin-top: 20px;
+    position: sticky;
+    bottom: 0;
+    background-color: var(--bg-light);
+    padding-top: 10px;
+}
+
+body.dark-mode .modal-nav {
+    background-color: var(--bg-dark);
 }
 
 .modal-nav button {
