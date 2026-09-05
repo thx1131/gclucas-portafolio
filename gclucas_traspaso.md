@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-04 (sesión de traducción EN + fixes de UI + cotejo bilingüe en Excel).
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-04 (traducción EN + fixes de UI + cotejo bilingüe en Excel + retiro de Google Sheets del flujo editorial).
 
 ## Qué es esto
 
@@ -16,20 +16,21 @@ Portafolio estático multipágina del artista visual GC Lucas (Lucas de la Garza
 ## Arquitectura (NO revertir sin discutirlo)
 
 ```
-Google Sheets (fuente EDITORIAL)
-  → export Excel
-  → excel_to_json.py
-  → data/series.json + data/works.json (fuente TÉCNICA)
+data/series.json + data/works.json (FUENTE CANÓNICA — se edita directo)
   → build/build_site_v2.py
   → HTML estático pre-generado (SEO: meta/OG únicos por página)
   → git push → Cloudflare Pages
 ```
 
+⚠️ **Cambio 2026-09-04**: el Google Sheet + Excel + `excel_to_json.py` quedaron **retirados del flujo activo**. El Sheet es ahora un archivo histórico de referencia, ya no se sincroniza ni se re-exporta. Ver "Pipeline de imágenes" abajo.
+
+En evaluación (no implementado aún, requiere OK explícito antes de tocar código/config): mover la ejecución de `build/build_site_v2.py` del laptop de Luis al build de Cloudflare Pages, para que cada push a `main` genere el HTML en CI en vez de commitear HTML pre-generado. Mientras no se implemente, el flujo de arriba sigue siendo el real.
+
 Principios fijos:
 1. **HTML pre-generado**, nunca renderizado client-side. Vanilla HTML/CSS/JS, cero frameworks.
 2. **URLs limpias**: `/work/pixelogue/` (carpeta + index.html), nunca `.html` visible.
 3. **IDs inmutables**: formato 3 letras + 3 dígitos (`PEL001`). Jamás cambian, aunque la serie se renombre.
-4. **Disciplina de fuente única**: todo cambio editorial entra por Google Sheets → JSON. NUNCA parchear JSON o HTML generado a mano.
+4. **Los JSON en `data/` son la fuente canónica** — se editan directo, a mano o con scripts. Ya no hay una fuente editorial externa que "gane": lo que está en `data/series.json` y `data/works.json` es la verdad. (Hasta 2026-09-04 la regla era la inversa: todo cambio entraba por Google Sheets → JSON, nunca al revés — ver arriba.)
 5. Sitio **solo en inglés** (sin toggle bilingüe).
 6. Colores en CSS custom properties, no en JSON. Fuente: Carlito (Google Fonts). ⚠️ Nota 2026-09-04: `data/site.json` tiene un bloque `colors` que **no lee `build_site_v2.py`** — es un duplicado muerto de lo que ya vive en `css/main.css :root`. Se actualizó por consistencia al cambiar `--text-light`, pero técnicamente no hace nada; evaluar borrarlo del JSON para no mantener dos fuentes de la misma info.
 
@@ -50,7 +51,7 @@ Pipeline de imágenes (en `~/Documentos/obras-extraccion/`, activar venv primero
 - `extract_pptx_v2.py` — extrae imagen principal por slide, matchea IDs vía Excel (maneja fills, duplicados apilados, nombres multilingües/seriados)
 - `verificar.py` — cruza IDs del Excel vs carpeta local de imágenes
 - `cloudinary_sync.py` — upload idempotente a `obras/{ID}` con tags de serie → `cloudinary_urls.json`
-- `excel_to_json.py` — inventario + URLs → `series.json` y `works.json`
+- `excel_to_json.py` — **retirado del flujo activo (2026-09-04)**. Ya no se ejecuta como parte del proceso normal: `data/series.json` y `data/works.json` son la fuente canónica y se editan directo. El script se conserva en el repo sin borrar, por si hace falta para una migración masiva futura.
 
 Regla: editaste `data/` o `templates/` → regenera antes de push. Solo `css/` o `js/` → push directo.
 
@@ -93,13 +94,11 @@ Estructura (hoja única "En español", 1011 filas, 24 bloques de serie por celda
 
 - **Ficha de obra (modal de galería) reformateada**: orden fijo título (negrita) → dimensions → technique → date, sin las etiquetas "Technique:"/"Dimensions:". Cambios en `templates/series.html` (orden de los `<p>`), `js/gallery.js` (se quitaron los prefijos hardcodeados) y `css/main.css` (`.modal-info h3 { font-weight: 700 }`).
 - **Color de texto**: `--text-light` pasó de `#1a1a1a` a `#333333` (carbón, no negro puro) en `css/main.css`.
-- **Statements de críticos con formato de cita**: 4 series (`berser-k` → Fernando Gonzalez Gortázar, `pausa` → Ana Elena Mallet, `saga` → Rocío Cerón, `trece-lunas` → Carlos Monsiváis) tenían el nombre del autor pegado al final del párrafo del statement. Se separó a un campo nuevo `statementAuthor` en `data/series.json`, y `build_site_v2.py` lo renderiza como `<p class="statement-author">— {nombre}</p>` (cursiva, color accent) en vez de texto corrido.
-  - **⚠️ `excel_to_json.py` no genera `statementAuthor`** — es un campo que se agregó a mano en `data/series.json`, fuera del pipeline Sheets → JSON. Si se vuelve a exportar el Sheet sin que el Sheet tenga esta columna (o sin actualizar `excel_to_json.py` para preservarla/generarla), el campo se pierde y esas 4 series vuelven a mostrar el nombre pegado al párrafo.
-- Ver también la entrada de traducciones EN en el backlog de abajo (mismo tipo de riesgo: parchado directo en JSON, no vía Sheet).
+- **Statements de críticos con formato de cita**: 4 series (`berser-k` → Fernando Gonzalez Gortázar, `pausa` → Ana Elena Mallet, `saga` → Rocío Cerón, `trece-lunas` → Carlos Monsiváis) tenían el nombre del autor pegado al final del párrafo del statement. Se separó a un campo nuevo `statementAuthor` en `data/series.json`, y `build_site_v2.py` lo renderiza como `<p class="statement-author">— {nombre}</p>` (cursiva, color accent) en vez de texto corrido. (`excel_to_json.py` no genera este campo, pero ya no importa: el script está retirado del flujo — ver Arquitectura.)
 
 ## Backlog esperando input de Lucas (no bloquear trabajo técnico por esto)
 
-- ~~Traducciones EN + técnicas/materiales estandarizados en inglés~~ — **hecho 2026-09-04**: `statementEn` de las 21 series con texto (las 3 vacías —trompe-l-oeil, h2o, naranja-dulce— siguen esperando statement) y el campo `technique` de `works.json` traducidos a inglés profesional. Los títulos en español (series y obras) se respetaron sin traducir, por instrucción explícita. **⚠️ Se parchó `data/series.json` y `data/works.json` a mano, saltándose el flujo Sheets → JSON del punto 4 de Arquitectura** — la próxima vez que se exporte el Google Sheet, esta traducción se pierde si el Sheet no se actualiza también. Pendiente: volcar estas traducciones al Sheet fuente para que no se sobrescriban.
+- ~~Traducciones EN + técnicas/materiales estandarizados en inglés~~ — **hecho 2026-09-04**: `statementEn` de las 21 series con texto (las 3 vacías —trompe-l-oeil, h2o, naranja-dulce— siguen esperando statement) y el campo `technique` de `works.json` traducidos a inglés profesional. Los títulos en español (series y obras) se respetaron sin traducir, por instrucción explícita. (Ya no aplica la advertencia de que se perdería al re-exportar el Sheet: `data/*.json` es ahora la fuente canónica, el Sheet está retirado — ver Arquitectura.)
 - Imagen hero
 - 3 statements de serie faltantes
 - Confirmar typo "reviseted" (¿o es intencional?)
