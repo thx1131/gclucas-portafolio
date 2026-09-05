@@ -456,6 +456,7 @@ body.dark-mode .modal-close {
 }
 
 .modal-info h3 {
+    font-size: 14px;
     font-weight: 700;
     margin-bottom: 15px;
 }

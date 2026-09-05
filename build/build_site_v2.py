@@ -47,6 +47,15 @@ class SiteBuilder:
         self.navbar_component = self._load_template('components/navbar.html')
         self.footer_component = self._load_template('components/footer.html')
 
+        # Socials del footer: se ocultan solo en /contact/, que ya los muestra arriba
+        self.footer_socials_html = (
+            '<div class="footer-socials">\n'
+            '            <a href="https://instagram.com/lucas.asecas" target="_blank" rel="noopener noreferrer">instagram</a>\n'
+            '            <a href="https://wa.me/524151511029" target="_blank" rel="noopener noreferrer">whatsapp</a>\n'
+            '            <a href="mailto:gclucas999@gmail.com">email</a>\n'
+            '        </div>'
+        )
+
         # Imagen real usada como og:image genérico (home, statement, work, bio, contact).
         # Las páginas de serie individual usan su propio coverImage, no esto.
         self.default_og_image = self.site_data.get('heroImage',
@@ -94,6 +103,15 @@ class SiteBuilder:
         """Get all works for a series"""
         return [w for w in self.works_data if w['series'] == series_id]
 
+    def _build_series_nav(self, prev_s, next_s):
+        """HTML del navegador prev/next entre series. Se reusa arriba y abajo de la galería."""
+        nav = '<div class="series-nav">'
+        nav += f'<a href="/work/{prev_s["id"]}/">← {prev_s["titleEn"]}</a>' if prev_s else '<span></span>'
+        nav += '<a href="/work/">work</a>'
+        nav += f'<a href="/work/{next_s["id"]}/">{next_s["titleEn"]} →</a>' if next_s else '<span></span>'
+        nav += '</div>'
+        return nav
+
     def _format_dimensions(self, dims):
         """Formatea dimensions en sus variantes: normal, 3D, variables, raw, vacío"""
         if not dims:
@@ -119,11 +137,15 @@ class SiteBuilder:
         with open(path, 'w', encoding='utf-8') as f:
             f.write(content)
     
-    def _build_full_page(self, content, title, description, og_image, og_url, canonical_url, noindex=False):
-        """Wraps content with base template, navbar, footer, SEO"""
+    def _build_full_page(self, content, title, description, og_image, og_url, canonical_url, noindex=False, hide_footer_links=False):
+        """Wraps content with base template, navbar, footer, SEO.
+        hide_footer_links=True: oculta instagram/whatsapp/email del footer (usado en /contact/, que ya los muestra arriba)."""
         robots_meta = (
             '<meta name="robots" content="noindex, nofollow">' if noindex else ''
         )
+        footer_html = self._render_template(self.footer_component, {
+            'footer_socials': '' if hide_footer_links else self.footer_socials_html
+        })
         full_content = self._render_template(self.base_template, {
             'title': title,
             'description': description,
@@ -133,7 +155,7 @@ class SiteBuilder:
             'robots_meta': robots_meta,
             'navbar': self.navbar_component,
             'content': content,
-            'footer': self.footer_component
+            'footer': footer_html
         })
         return full_content
     
@@ -243,18 +265,13 @@ class SiteBuilder:
                     <img src="{work['cloudinaryUrl']}" alt="{work['titleEn']}" loading="lazy">
                     <div class="gallery-item-info">
                         <h4>{work['titleEn']}</h4>
-                        <p>{work['year']}</p>
                     </div>
                 </div>
                 """
 
             prev_s = self.series_data[i - 1] if i > 0 else None
             next_s = self.series_data[i + 1] if i < len(self.series_data) - 1 else None
-            nav = '<div class="series-nav">'
-            nav += f'<a href="/work/{prev_s["id"]}/">← {prev_s["titleEn"]}</a>' if prev_s else '<span></span>'
-            nav += '<a href="/work/">work</a>'
-            nav += f'<a href="/work/{next_s["id"]}/">{next_s["titleEn"]} →</a>' if next_s else '<span></span>'
-            nav += '</div>'
+            nav = self._build_series_nav(prev_s, next_s)
 
             statement_html = f"<p>{series['statementEn']}</p>" if series['statementEn'] else ""
             if series.get('statementAuthor'):
@@ -264,6 +281,7 @@ class SiteBuilder:
                 'series_title': series['titleEn'],
                 'series_year': series['year'],
                 'series_statement': statement_html,
+                'series_nav_top': nav,
                 'gallery': gallery_html,
                 'series_nav': nav
             })
@@ -365,9 +383,10 @@ class SiteBuilder:
             "Get in touch",
             self.default_og_image,
             f"{self.site_data['url']}/contact/",
-            f"{self.site_data['url']}/contact/"
+            f"{self.site_data['url']}/contact/",
+            hide_footer_links=True
         )
-        
+
         output_path = self.output_dir / 'contact' / 'index.html'
         self._save_html(output_path, html)
         print(f"✅ Created: {output_path}")
