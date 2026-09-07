@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-06 (rediseño de `/contact/` a tarjetas, revierte ocultar datos crudos de contacto).
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-07 (partials compartidos entre home-scroll y páginas independientes: statement/bio/contact).
 
 ## Qué es esto
 
@@ -35,6 +35,7 @@ Principios fijos:
 4. **Los JSON en `data/` son la fuente canónica** — se editan directo, a mano o con scripts. Ya no hay una fuente editorial externa que "gane": lo que está en `data/series.json` y `data/works.json` es la verdad. (Hasta 2026-09-04 la regla era la inversa: todo cambio entraba por Google Sheets → JSON, nunca al revés — ver arriba.)
 5. Sitio **solo en inglés** (sin toggle bilingüe).
 6. Colores en CSS custom properties, no en JSON. Fuente: Carlito (Google Fonts). ⚠️ Nota 2026-09-04: `data/site.json` tiene un bloque `colors` que **no lee `build_site_v2.py`** — es un duplicado muerto de lo que ya vive en `css/main.css :root`. Se actualizó por consistencia al cambiar `--text-light`, pero técnicamente no hace nada; evaluar borrarlo del JSON para no mantener dos fuentes de la misma info.
+7. **Home es scroll de secciones (`/#statement`, `/#bio`, `/#contact`) por diseño de Lucas, pero cada sección también existe como página independiente para SEO** (`/statement/`, `/bio/`, `/contact/`) — decisión de producto, no un descuido a "simplificar" fusionando en una sola página. **El contenido de esas 3 secciones (statement, bio, contact) se define una sola vez y se consume desde ambos lados** — ver "Partials compartidos" abajo. `work` es la única sección de home con contraparte independiente que **no** comparte partial a propósito: el home muestra un preview curado (grid sin excerpt ni contador) y `/work/` muestra el catálogo completo (con excerpt de statement y contador de obras) — son vistas distintas por diseño, no data duplicada.
 
 ## Comandos frecuentes
 
@@ -71,6 +72,24 @@ Qué revisar en el log del primer deploy para confirmar que funcionó:
 - Build debe terminar en **success**, no solo "sin errores visibles" — si falta un archivo requerido (cualquier JSON de `data/` o cualquier template salvo `text-detail.html`), el build ahora aborta con `❌ Error fatal: ...` y exit code ≠ 0, y Cloudflare debe marcar el deploy como fallido y mantener el último deploy bueno.
 - Comparar una página al azar (ej. `/work/ficciones/`) entre el HTML servido en gclucas.art y el HTML commiteado en git — deberían ser idénticos mientras no haya deriva (ver advertencia arriba).
 
+## Arquitectura: partials compartidos entre home-scroll y páginas independientes (2026-09-07)
+
+**Problema que resolvió esto**: `templates/home.html` (secciones `#statement`, `#bio`, `#contact`) y sus páginas independientes (`templates/statement.html`, `bio.html`, `contact.html`) tenían el contenido **copiado a mano dos veces**. En la práctica esto causó que el rediseño de tarjetas de contacto (sesión 2026-09-06) se aplicara solo a `templates/contact.html` y `contact/index.html`, mientras que la sección `#contact` del home seguía con el markup viejo (`.contact-links`, "email · whatsapp · instagram" en línea) — el bug reportado por Luis de "no se ve el cambio" en realidad sí estaba aplicado, solo que en la mitad de los lugares donde vivía ese contenido. Al mismo tiempo se encontró que `statement` y `bio` ya habían divergido silenciosamente: el home tenía una oración extra en `statement` y un segundo párrafo extra en `bio` que **no existían** en `data/site.json` (nadie los había puesto ahí cuando se hardcodeó el home originalmente).
+
+**Por qué no es Jinja de verdad**: `build_site_v2.py` no usa un motor de templates real — `_render_template()` es un `.replace("{{var}}", valor)` sobre strings planos (ver método, línea ~88). Meter Jinja habría significado reescribir el generador entero. Se usa la misma idea (un placeholder que se rellena una vez) pero con lo que ya existe.
+
+**Solución — partial file + variable compartida construida una sola vez en el builder**:
+1. `templates/partials/statement-content.html`, `bio-content.html`, `contact-content.html` — cada uno contiene **solo el bloque de valor** (el `<div class="statement-content">`, `.bio-content`, o `.contact-cards` con sus `{{placeholders}}` de datos), sin el `<h1>`/`<h2>` ni el `<section>` que envuelve — eso sigue viviendo en cada template porque sí difiere legítimamente entre home (`<h2>`, `.section`) y standalone (`<h1>`, `.{seccion}-page`).
+2. En `SiteBuilder.__init__` (`build_site_v2.py`), después de cargar `site_data`, se renderizan una sola vez: `self.statement_content_html`, `self.bio_content_html`, `self.contact_content_html` — strings ya resueltos contra `data/site.json`.
+3. `build_home()`, `build_statement()`, `build_bio()` y `build_contact()` inyectan **el mismo string** vía `{{statement_content}}` / `{{bio_content}}` / `{{contact_content}}` en su template respectivo. No hay dos copias del HTML en ningún lado — hay dos lugares que lo consumen.
+4. **`data/site.json`**: `statementEn`, `statementEs`, `bioEn`, `bioEs` pasaron de string único a **array de párrafos** (`["párrafo 1", "párrafo 2", ...]`), porque el home ya mostraba 2 párrafos en `statement` y `bio` que el JSON no tenía — se migró ese texto extra al JSON en vez de perderlo, y el builder ahora hace `"".join(f"<p>{p}</p>" for p in ...)`. `statementEs`/`bioEs` quedaron como array de 1 elemento (no se les agregó el párrafo extra en inglés porque no existía traducción — y de todos modos **son campos muertos**, `build_site_v2.py` nunca los lee; el sitio es solo-inglés, principio 5).
+5. `exhibitions` (bloque debajo de `.bio-content` en `/bio/`) **no** se partializó — solo vive en `templates/bio.html`, porque el home nunca lo mostró y no hay divergencia que resolver ahí.
+6. `work` (home preview vs `/work/` catálogo completo) **se revisó y se dejó fuera a propósito** — no es contenido duplicado, son dos vistas distintas del mismo dato por diseño (ver principio 7 de Arquitectura).
+
+**Regla para la próxima sección que se edite**: si el contenido vive tanto en `home.html` como en una página independiente, el fix va en el partial (`templates/partials/`) y/o en la variable compartida del builder — nunca en el HTML de un solo lado. Antes de dar un cambio de contenido por terminado, verificar que `grep` del texto viejo no aparezca en **ninguno** de los dos HTML generados (home Y standalone), no solo en el que se pidió cambiar.
+
+**Verificado 2026-09-07**: build corrido con `python3 build/build_site_v2.py`; comparación programática (regex + comparación de strings) confirma que `.statement-content`, `.bio-content` y `.contact-cards` son **idénticos byte a byte** entre `index.html` y `statement/index.html` / `bio/index.html` / `contact/index.html`. Footer solo-copyright en `/contact/` intacto (no se tocó esa lógica). `.bio-cv`/exhibitions sigue solo en `/bio/` standalone.
+
 ## Hoja de proyecto-cotejo.xlsx
 
 Hoja maestra de cotejo/verificación editorial (distinta del `HOJA_DE_TRASPASO_lucas.md` roto de la sección Referencias). Vive en dos copias:
@@ -103,7 +122,7 @@ Estructura (hoja única "En español", 1011 filas, 24 bloques de serie por celda
 3. **SUE006 aparece "pendiente"** (sin imagen) en la serie visión de filippo — confirmado, `cloudinaryUrl: ""` en `data/works.json`. Reservado para imágenes que Lucas enviará.
 4. ~~Carpeta huérfana `{build,templates` en la raíz del repo~~ — **resuelto 2026-09-04**, borrada junto con `work/nude-revisited/`.
 5. ~~`work/nude-revisited/` es output huérfano~~ — **resuelto 2026-09-04**, carpeta borrada. Confirmó que "reviseted" no es un bug de build sino que **vive en el Google Sheet / `data/works.json`+`series.json`**; la decisión de naming sigue pendiente de Lucas (ver backlog de abajo).
-6. **`templates/home.html` tiene bio parcialmente hardcodeada fuera de `data/site.json`.** El párrafo "Duis aute irure..." está escrito directo en el template y no sale del JSON — viola el principio 4 de Arquitectura (fuente única). Cuando llegue el texto real de Lucas, hay que asegurarse de que **ambos** párrafos salgan de `site.json`, no solo uno.
+6. ~~`templates/home.html` tiene bio parcialmente hardcodeada fuera de `data/site.json`~~ — **resuelto 2026-09-07** junto con el rediseño de partials compartidos (ver sección de Arquitectura arriba): `bioEn` en `data/site.json` ahora es un array con ambos párrafos, y `home.html`/`bio.html` consumen el mismo `bio_content` renderizado una sola vez.
 7. **Dark mode toggle podía verse opaco/con bajo contraste en modo oscuro** — resuelto 2026-09-04: el glyph de texto `◐` dependía de cómo cada fuente/SO lo renderizaba (en algunos casos no seguía `currentColor`). Se reemplazó por dos íconos SVG (sol/luna) con `stroke="currentColor"` en `templates/components/navbar.html`, garantizando que sigan el color del tema en ambos modos.
 8. **Botones prev/next del modal de galería quedaban tapados por el scroll interno en imágenes altas / laptops de poca altura** — resuelto 2026-09-04: `.modal-nav` ahora usa `position: sticky; bottom: 0` dentro de `.modal-content`, así los botones quedan siempre visibles sin necesidad de scrollear.
 
@@ -149,7 +168,7 @@ Luis hizo una revisión manual del sitio y reportó 7 hallazgos (impacto alto/me
   - `templates/contact.html`: el `<p class="contact-links">` se reemplazó por `<div class="contact-cards">` con 3 `<a class="contact-card">`, cada una con `<span class="contact-card-label">` (etiqueta) + `<span class="contact-card-value">` (valor real).
   - `css/main.css`: nuevas clases `.contact-cards` (grid `repeat(auto-fit, minmax(220px, 1fr))`, gap 20px), `.contact-card` (borde 1px `--border-light`/`--border-dark`, padding 32px 24px, hover oscurece/aclara el borde a `--accent-light`/`--accent-dark`, transición `var(--transition)`), `.contact-card-label` (~12-13px, `--accent-light`/`--accent-dark`, letter-spacing sutil) y `.contact-card-value` (tamaño body normal, `--text-light`/`--text-dark`). `.contact-page .contact-content` subió su `max-width` a 900px (de los 600px genéricos) para que quepan las 3 tarjetas en fila.
   - Responsive: `.contact-cards` pasa a `grid-template-columns: 1fr` en el breakpoint existente `@media (max-width: 768px)`, mismo patrón que `.series-grid`/`.series-list`.
-  - **Solo se tocó `/contact/`** (vía `templates/contact.html`, regenerado con `build_site_v2.py`). La sección `#contact` embebida en home (`templates/home.html`/`index.html`) comparte el bloque `.contact-content` pero sigue usando `.contact-links` (línea simple, sin tocar) — no se pidió cambiarla, y por eso el nuevo `.contact-cards`/`.contact-card` son clases nuevas, no una reescritura de `.contact-links`, para no heredar el layout de tarjetas ahí sin querer.
+  - **Solo se tocó `/contact/`** (vía `templates/contact.html`, regenerado con `build_site_v2.py`). La sección `#contact` embebida en home (`templates/home.html`/`index.html`) comparte el bloque `.contact-content` pero sigue usando `.contact-links` (línea simple, sin tocar) — no se pidió cambiarla, y por eso el nuevo `.contact-cards`/`.contact-card` son clases nuevas, no una reescritura de `.contact-links`, para no heredar el layout de tarjetas ahí sin querer. ⚠️ **Superado 2026-09-07**: esto era exactamente la causa raíz del bug reportado por Luis (el fix vivía solo de un lado) — ver sesión siguiente, ahora `#contact` de home y `/contact/` comparten el mismo partial y muestran las mismas tarjetas.
   - **Revierte la decisión previa de ocultar los datos de contacto crudos**: el rediseño de la sesión 2026-09-05 (tercera pasada, ver arriba) mostraba solo las palabras genéricas "email · whatsapp · instagram" como texto de link, sin exponer la dirección/número/handle real. Ahora las tarjetas de `/contact/` muestran el valor real como texto visible — `email` → `gclucas999@gmail.com` completo, `instagram` → `@lucas.asecas`. Excepción: `whatsapp` sigue sin mostrar el número crudo, por pedido explícito de Luis — el valor visible es un CTA genérico ("send a message"), aunque el link ya apunta a `https://wa.me/524151511029` igual que antes.
   - Footer **no tocado**: sigue el comportamiento de la sesión anterior (footer completo en todo el sitio, solo copyright en `/contact/`, ver `hide_footer_links` arriba).
   - Verificado: `python3 build/build_site_v2.py` regenera `contact/index.html` con las 3 tarjetas y el footer solo-copyright intacto.
@@ -164,6 +183,15 @@ Luis hizo una revisión manual del sitio y reportó 7 hallazgos (impacto alto/me
 - Nombre definitivo de la serie 03
 - Convención de nombres para obras seriadas ("0 quilates 1/43", etc.)
 - Textos finales del Portafolio 2025
+
+## Sesión 2026-09-07: elimina duplicación home-scroll / páginas independientes
+
+Luis reportó que el fix de tarjetas de contacto de la sesión anterior "no se veía" — no era caché: el fix estaba pusheado y correcto en `/contact/`, pero la sección `#contact` del home nunca se tocó porque vive en un HTML aparte (`templates/home.html`) copiado a mano desde `templates/contact.html`. Aclarado por Luis: la duplicación scroll-home / página-independiente **es intencional** (pedido de Lucas: sitio de una sola página con scroll, pero cada sección indexable por separado para SEO) — el bug no es la duplicación en sí, sino que un lado se actualizaba y el otro no.
+
+- Ver sección nueva **"Arquitectura: partials compartidos..."** arriba (justo después de la migración a Cloudflare CI) para el detalle completo de la solución.
+- Resumen: `templates/partials/{statement,bio,contact}-content.html` + 3 strings renderizados una vez en `SiteBuilder.__init__` (`build_site_v2.py`) e inyectados vía el mismo placeholder en `home.html` y en la página independiente correspondiente.
+- De paso se corrigieron dos divergencias que ya existían antes de esta sesión (encontradas al comparar ambos lados): el home tenía una oración de `statement` y un párrafo de `bio` que nunca estaban en `data/site.json` — se migraron al JSON (ahora arrays de párrafos) en vez de perderse.
+- `work` (preview en home vs catálogo en `/work/`) se revisó y quedó **fuera** de este refactor a propósito — no es texto duplicado, son dos vistas distintas del mismo dato por diseño.
 
 ## Backlog técnico scoped, no construido
 

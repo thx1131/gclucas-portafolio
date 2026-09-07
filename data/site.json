@@ -11,10 +11,20 @@
   "copyright": "© gclucas ® 2026",
   "language": "en",
   "url": "https://gclucas.art",
-  "statementEn": "My method of work is based on the exploration of the dual nature of reality. Contradictions may be perhaps the only way to explain a little bit about life, as well as one of the fullest expressions of lucidity. Through my work I seek to put opposite elements in dialogue: the real and the imagined, the artificial and the natural, reason and absurdity, the abstract and the tangible.",
-  "statementEs": "Mi método de trabajo se basa en la exploración de la naturaleza dual de la realidad. Las contradicciones pueden ser quizás la única manera de explicarnos un poco la vida así como una de las expresiones más plenas de la lucidez. A través de mi obra busco poner en diálogo elementos opuestos: lo real y lo imaginado, lo artificial y lo natural, la razón y el absurdo, lo abstracto y lo tangible.",
-  "bioEn": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  "bioEs": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "statementEn": [
+    "My method of work is based on the exploration of the dual nature of reality. Contradictions may be perhaps the only way to explain a little bit about life, as well as one of the fullest expressions of lucidity.",
+    "Through my work I seek to put opposite elements in dialogue: the real and the imagined, the artificial and the natural, reason and absurdity, the abstract and the tangible. Through the image I propose a reformulation of these polarities with the intention of dissolving them and reaching a point of integration."
+  ],
+  "statementEs": [
+    "Mi método de trabajo se basa en la exploración de la naturaleza dual de la realidad. Las contradicciones pueden ser quizás la única manera de explicarnos un poco la vida así como una de las expresiones más plenas de la lucidez. A través de mi obra busco poner en diálogo elementos opuestos: lo real y lo imaginado, lo artificial y lo natural, la razón y el absurdo, lo abstracto y lo tangible."
+  ],
+  "bioEn": [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  ],
+  "bioEs": [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  ],
   "colors": {
     "bgLight": "#ffffff",
     "bgDark": "#1a1a1a",

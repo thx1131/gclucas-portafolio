@@ -42,7 +42,15 @@ class SiteBuilder:
         self.text_detail_template = self._load_template('text-detail.html', optional=True)
         self.bio_template = self._load_template('bio.html')
         self.contact_template = self._load_template('contact.html')
-        
+
+        # Partials: contenido compartido entre el home-scroll (#statement/#bio/#contact)
+        # y su página independiente (/statement/, /bio/, /contact/) — una sola fuente,
+        # renderizada una vez aquí y reusada en build_home() y en cada build_*() de abajo.
+        # Ver "Arquitectura: partials compartidos" en gclucas_traspaso.md.
+        self.statement_content_partial = self._load_template('partials/statement-content.html')
+        self.bio_content_partial = self._load_template('partials/bio-content.html')
+        self.contact_content_partial = self._load_template('partials/contact-content.html')
+
         # Components
         self.navbar_component = self._load_template('components/navbar.html')
         self.footer_component = self._load_template('components/footer.html')
@@ -60,6 +68,20 @@ class SiteBuilder:
         # Las páginas de serie individual usan su propio coverImage, no esto.
         self.default_og_image = self.site_data.get('heroImage',
             'https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL004')
+
+        # Contenido de cada partial, renderizado una sola vez contra site_data.
+        # El mismo string se inyecta tal cual en home.html y en la página independiente.
+        self.statement_content_html = self._render_template(self.statement_content_partial, {
+            'statement_text': "".join(f"<p>{p}</p>" for p in self.site_data['statementEn'])
+        })
+        self.bio_content_html = self._render_template(self.bio_content_partial, {
+            'bio_text': "".join(f"<p>{p}</p>" for p in self.site_data['bioEn'])
+        })
+        self.contact_content_html = self._render_template(self.contact_content_partial, {
+            'email': self.site_data['email'],
+            'whatsapp_number': self.site_data['whatsapp_number'],
+            'instagram': self.site_data['instagram']
+        })
     
     def _load_json(self, filename):
         """Load JSON file from data directory. Siempre requerido: aborta el build si falta o es inválido."""
@@ -178,7 +200,10 @@ class SiteBuilder:
         content = self._render_template(self.home_template, {
             'series_preview': series_preview,
             'hero_image': self.site_data.get('heroImage',
-                'https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL004')
+                'https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL004'),
+            'statement_content': self.statement_content_html,
+            'bio_content': self.bio_content_html,
+            'contact_content': self.contact_content_html
         })
         
         html = self._build_full_page(
@@ -199,7 +224,7 @@ class SiteBuilder:
         print("📝 Building statement page...")
         
         content = self._render_template(self.statement_template, {
-            'statement_text': f"<p>{self.site_data['statementEn']}</p>"
+            'statement_content': self.statement_content_html
         })
         
         html = self._build_full_page(
@@ -350,7 +375,7 @@ class SiteBuilder:
             """
         
         content = self._render_template(self.bio_template, {
-            'bio_text': f"<p>{self.site_data['bioEn']}</p>",
+            'bio_content': self.bio_content_html,
             'exhibitions': exhibitions_html
         })
         
@@ -372,9 +397,7 @@ class SiteBuilder:
         print("📞 Building contact page...")
         
         content = self._render_template(self.contact_template, {
-            'email': self.site_data['email'],
-            'whatsapp_number': self.site_data['whatsapp_number'],
-            'instagram': self.site_data['instagram']
+            'contact_content': self.contact_content_html
         })
         
         html = self._build_full_page(
