@@ -525,6 +525,10 @@ body.dark-mode .modal-nav button {
     max-width: 600px;
 }
 
+.contact-page .contact-content {
+    max-width: 900px;
+}
+
 .contact-intro {
     font-size: 16px;
     color: var(--accent-light);
@@ -546,6 +550,54 @@ body.dark-mode .contact-intro {
 }
 
 body.dark-mode .contact-links a {
+    color: var(--text-dark);
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 32px 24px;
+    border: 1px solid var(--border-light);
+    text-decoration: none;
+    transition: border-color var(--transition);
+}
+
+body.dark-mode .contact-card {
+    border-color: var(--border-dark);
+}
+
+.contact-card:hover {
+    border-color: var(--accent-light);
+}
+
+body.dark-mode .contact-card:hover {
+    border-color: var(--accent-dark);
+}
+
+.contact-card-label {
+    font-size: 13px;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    color: var(--accent-light);
+}
+
+body.dark-mode .contact-card-label {
+    color: var(--accent-dark);
+}
+
+.contact-card-value {
+    font-size: var(--font-size-base);
+    color: var(--text-light);
+}
+
+body.dark-mode .contact-card-value {
     color: var(--text-dark);
 }
 
@@ -659,6 +711,10 @@ body.dark-mode .footer-socials a {
     }
 
     .series-grid, .series-list {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-cards {
         grid-template-columns: 1fr;
     }
 }
