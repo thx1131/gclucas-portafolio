@@ -94,7 +94,7 @@ Objetivo: Lucas edita texto (statement/bio/contacto) y series/obras, incluyendo 
 
 **Pendiente, fuera del repo (requiere acceso a las cuentas de Luis, no lo puede hacer Claude)**:
 1. Confirmar/crear en el dashboard de Cloudflare Pages el build command (ver sección de arriba) — si no está hecho, un commit del CMS actualiza el JSON pero el HTML publicado no se regenera solo.
-2. Verificar que el callback URL de la OAuth App en GitHub sea exactamente `https://sveltia-cms-auth.thx1131.workers.dev/callback`.
+2. ~~Verificar que el callback URL de la OAuth App en GitHub sea exactamente `https://sveltia-cms-auth.thx1131.workers.dev/callback`~~ — confirmado por Luis 2026-09-09.
 3. Reemplazar en `admin/config.yml` el `api_key` de Cloudinary (no es secreto, se copia del dashboard de Cloudinary).
 4. Crear un upload preset "unsigned" en Cloudinary (Settings → Upload → Add upload preset) para que el widget de subida del CMS funcione sin backend propio.
 5. Primera prueba real: Lucas sube una foto nueva desde `/admin/` → verificar que la URL que devuelve el widget de Cloudinary sirva con `f_auto,q_auto` igual que las URLs existentes en `data/works.json` (`obras/ID`). Si no, ajustar la config del media_library o el preset en Cloudinary.
