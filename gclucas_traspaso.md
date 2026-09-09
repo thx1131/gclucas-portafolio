@@ -86,13 +86,18 @@ Objetivo: Lucas edita texto (statement/bio/contacto) y series/obras, incluyendo 
 - `publish_mode: editorial_workflow` — cada guardado de Lucas abre un PR en vez de commitear directo a `main`, así Luis sigue siendo el gatekeeper editorial (rol que ya tenía) revisando el preview automático de Cloudflare Pages antes de mergear.
 - Imágenes: `media_library` configurado como `cloudinary` (cloud `dt2w4nxz6`) para que Lucas pueda subir fotos nuevas directo desde el panel, en vez de pegar URLs a mano.
 
+**Hecho 2026-09-09 (Luis + Claude)**:
+- OAuth App creada en GitHub para `thx1131/gclucas-portafolio`.
+- Worker `sveltia-cms-auth` (clon del proyecto open source oficial, sin modificar) desplegado en la cuenta de Cloudflare de Luis: `https://sveltia-cms-auth.thx1131.workers.dev`. El código fuente vive solo en `sveltia/sveltia-cms-auth` en GitHub — no se vendorizó dentro de este repo, es infraestructura aparte del sitio estático. Para volver a desplegar o actualizar: clonar ese repo y correr `wrangler deploy` logueado con la cuenta de Luis.
+- Secrets del Worker configurados vía `wrangler secret put` (nunca escritos a un archivo): `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `ALLOWED_DOMAINS=gclucas.art`.
+- `admin/config.yml`: `base_url` actualizado con la URL real del Worker.
+
 **Pendiente, fuera del repo (requiere acceso a las cuentas de Luis, no lo puede hacer Claude)**:
 1. Confirmar/crear en el dashboard de Cloudflare Pages el build command (ver sección de arriba) — si no está hecho, un commit del CMS actualiza el JSON pero el HTML publicado no se regenera solo.
-2. Crear una OAuth App en GitHub (Settings → Developer settings → OAuth Apps) para `thx1131/gclucas-portafolio`. Callback URL: la del Worker del paso siguiente + `/callback`.
-3. Desplegar el Worker de OAuth (proyecto open source `sveltia-cms-auth`, no reinventarlo — maneja el handshake con el client secret de GitHub). Configurar como secrets del Worker: `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, y `ALLOWED_DOMAINS=gclucas.art`.
-4. Reemplazar en `admin/config.yml`: `base_url` con la URL real del Worker, y `api_key` de Cloudinary (no es secreto, pero hay que copiarlo del dashboard de Cloudinary).
-5. Crear un upload preset "unsigned" en Cloudinary (Settings → Upload → Add upload preset) para que el widget de subida del CMS funcione sin backend propio.
-6. Primera prueba real: Lucas sube una foto nueva desde `/admin/` → verificar que la URL que devuelve el widget de Cloudinary sirva con `f_auto,q_auto` igual que las URLs existentes en `data/works.json` (`obras/ID`). Si no, ajustar la config del media_library o el preset en Cloudinary.
+2. Verificar que el callback URL de la OAuth App en GitHub sea exactamente `https://sveltia-cms-auth.thx1131.workers.dev/callback`.
+3. Reemplazar en `admin/config.yml` el `api_key` de Cloudinary (no es secreto, se copia del dashboard de Cloudinary).
+4. Crear un upload preset "unsigned" en Cloudinary (Settings → Upload → Add upload preset) para que el widget de subida del CMS funcione sin backend propio.
+5. Primera prueba real: Lucas sube una foto nueva desde `/admin/` → verificar que la URL que devuelve el widget de Cloudinary sirva con `f_auto,q_auto` igual que las URLs existentes en `data/works.json` (`obras/ID`). Si no, ajustar la config del media_library o el preset en Cloudinary.
 
 **No decidido todavía**: si el flujo de `Hoja de proyecto-cotejo.xlsx` (cotejo/QA editorial, no es fuente de contenido) sigue vigente una vez que Lucas edita directo por CMS, o si conviene reemplazarlo por revisar los PRs del CMS.
 

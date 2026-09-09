@@ -5,17 +5,20 @@
 # Cloudflare Pages) y lo mergea a `main`. El merge dispara el build en Cloudflare
 # Pages, que regenera el HTML y publica.
 #
+# OAuth App de GitHub + Worker (sveltia-cms-auth) ya desplegados (2026-09-09).
+# Verificar que el callback URL de la OAuth App en GitHub sea exactamente:
+#   https://sveltia-cms-auth.thx1131.workers.dev/callback
+#
 # Setup pendiente antes de que esto funcione (ver checklist en gclucas_traspaso.md):
-#   1. OAuth App en GitHub (Settings → Developer settings → OAuth Apps)
-#   2. Cloudflare Worker de OAuth desplegado (sveltia-cms-auth)
-#   3. `base_url` de abajo reemplazado por la URL real del Worker
-#   4. Upload preset "unsigned" creado en Cloudinary para el media_library de abajo
+#   1. Confirmar build command en el dashboard de Cloudflare Pages
+#   2. Reemplazar `api_key` de Cloudinary abajo (no es secreto, se copia del dashboard)
+#   3. Crear upload preset "unsigned" en Cloudinary para el media_library de abajo
 
 backend:
   name: github
   repo: thx1131/gclucas-portafolio
   branch: main
-  base_url: https://REEMPLAZAR-worker-oauth.workers.dev
+  base_url: https://sveltia-cms-auth.thx1131.workers.dev
   auth_endpoint: auth
 
 publish_mode: editorial_workflow
