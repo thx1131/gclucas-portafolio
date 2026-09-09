@@ -11,7 +11,15 @@
 #
 # Setup pendiente antes de que esto funcione (ver checklist en gclucas_traspaso.md):
 #   1. Confirmar build command en el dashboard de Cloudflare Pages
-#   2. Crear upload preset "unsigned" en Cloudinary para el media_library de abajo
+#
+# Media library: git-based nativa de Sveltia (NO Cloudinary). Decidido 2026-09-09
+# tras verificar en el código fuente de Sveltia que su integración "cloudinary"
+# requiere loguearse con la cuenta real de Cloudinary dentro de un iframe (el
+# Media Library Console), lo que le daría a Lucas acceso para borrar/reemplazar
+# directo cualquiera de las 144 obras existentes, sin pasar por el PR review.
+# Con la media library nativa, Lucas sube la foto con su mismo login de GitHub
+# y el archivo queda commiteado dentro del PR (Luis lo ve en el diff antes de
+# aprobar). Detalle y backlog de esta decisión en gclucas_traspaso.md.
 
 backend:
   name: github
@@ -25,14 +33,12 @@ publish_mode: editorial_workflow
 site_url: https://gclucas.art
 display_url: https://gclucas.art
 
+media_folder: uploads
+public_folder: /uploads
+
 media_library:
-  name: cloudinary
   config:
-    cloud_name: dt2w4nxz6
-    api_key: "689586654285591"
-    # Verificar tras la primera subida real: las URLs que devuelve el widget
-    # de Cloudinary deben servir con f_auto,q_auto igual que las URLs actuales
-    # en data/works.json (obras/ID). Si no, ajustar transformación acá o a mano.
+    slugify_filename: true
 
 collections:
   - name: site
@@ -108,7 +114,12 @@ collections:
               - { name: year, label: "Año", widget: number, value_type: int }
               - { name: statementEn, label: "Statement de la serie (inglés)", widget: text }
               - { name: statementEs, label: "Statement de la serie (español)", widget: text }
-              - { name: coverImage, label: "Imagen de portada", widget: image }
+              - name: coverImage
+                label: "Imagen de portada"
+                widget: image
+                media_folder: uploads/series
+                public_folder: /uploads/series
+                hint: "Las 144 obras originales usan URLs de Cloudinary (res.cloudinary.com); una foto nueva subida acá queda commiteada en el repo bajo /uploads/series/ — ambos formatos funcionan igual en el sitio."
               - { name: order, label: "Orden (menor = aparece primero)", widget: number, value_type: int }
 
   - name: works
@@ -139,5 +150,10 @@ collections:
                   - { name: width, label: "Ancho", widget: number }
                   - { name: unit, label: "Unidad", widget: select, options: ["cm", "in"] }
                   - { name: depth, label: "Profundidad (opcional)", widget: number, required: false }
-              - { name: cloudinaryUrl, label: "Imagen", widget: image }
+              - name: cloudinaryUrl
+                label: "Imagen"
+                widget: image
+                media_folder: uploads/works
+                public_folder: /uploads/works
+                hint: "Las 144 obras originales usan URLs de Cloudinary (res.cloudinary.com); una foto nueva subida acá queda commiteada en el repo bajo /uploads/works/ — ambos formatos funcionan igual en el sitio."
               - { name: order, label: "Orden dentro de la serie", widget: number, value_type: int }

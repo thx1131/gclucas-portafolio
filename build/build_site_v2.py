@@ -83,6 +83,19 @@ class SiteBuilder:
             'instagram': self.site_data['instagram']
         })
     
+    def _optimized_image_url(self, url):
+        """Inserta f_auto,q_auto en una URL de Cloudinary si no la trae ya.
+        Necesario porque el widget de subida del CMS (admin/) devuelve la URL
+        cruda del media_library, sin esa transformación, a diferencia de las
+        URLs de la pipeline original (obras-extraccion) que ya la traen fija."""
+        marker = '/image/upload/'
+        if marker not in url:
+            return url
+        rest = url.split(marker, 1)[1]
+        if 'f_auto' in rest.split('/', 1)[0]:
+            return url
+        return url.replace(marker, f'{marker}f_auto,q_auto/', 1)
+
     def _load_json(self, filename):
         """Load JSON file from data directory. Siempre requerido: aborta el build si falta o es inválido."""
         path = self.data_dir / filename
@@ -191,7 +204,7 @@ class SiteBuilder:
         for series in self.series_data:
             series_preview += f"""
             <a href="/work/{series['id']}/" class="series-card">
-                <img src="{series['coverImage']}" alt="{series['titleEn']}" loading="lazy">
+                <img src="{self._optimized_image_url(series['coverImage'])}" alt="{series['titleEn']}" loading="lazy">
                 <h3>{series['titleEn']}</h3>
                 <div class="year">{series['year']}</div>
             </a>
@@ -250,7 +263,7 @@ class SiteBuilder:
             excerpt = f"<p>{self._truncate(series['statementEn'])}</p>" if series['statementEn'] else ""
             series_list += f"""
             <a href="/work/{series['id']}/" class="series-card">
-                <img src="{series['coverImage']}" alt="{series['titleEn']}" loading="lazy">
+                <img src="{self._optimized_image_url(series['coverImage'])}" alt="{series['titleEn']}" loading="lazy">
                 <h3>{series['titleEn']}</h3>
                 {excerpt}
                 <div class="year">{series['year']} • {works_count} works</div>
@@ -287,7 +300,7 @@ class SiteBuilder:
                 dimensions = self._format_dimensions(work['dimensions'])
                 gallery_html += f"""
                 <div class="gallery-item" data-technique="{work['technique']}" data-dimensions="{dimensions}">
-                    <img src="{work['cloudinaryUrl']}" alt="{work['titleEn']}" loading="lazy">
+                    <img src="{self._optimized_image_url(work['cloudinaryUrl'])}" alt="{work['titleEn']}" loading="lazy">
                     <div class="gallery-item-info">
                         <h4>{work['titleEn']}</h4>
                     </div>
@@ -315,7 +328,7 @@ class SiteBuilder:
                 content,
                 f"{series['titleEn']} | gclucas",
                 self._truncate(series['statementEn'], 160),
-                series['coverImage'],
+                self._optimized_image_url(series['coverImage']),
                 f"{self.site_data['url']}/work/{series_id}/",
                 f"{self.site_data['url']}/work/{series_id}/"
             )
