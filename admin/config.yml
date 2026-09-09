@@ -36,8 +36,13 @@ display_url: https://gclucas.art
 media_folder: uploads
 public_folder: /uploads
 
-media_library:
-  config:
+# NO declarar `media_library:` acá — Sveltia valida ese bloque como selector de
+# backend (name: cloudinary/uploadcare/etc, o las claves planas access_key_id/
+# bucket/container de un backend cloud tipo S3) y si no matchea ninguno tira
+# "One of these options is required". Para configurar la librería default
+# (git-based, la que usamos) sin ambigüedad se usa `media_libraries.all`.
+media_libraries:
+  all:
     slugify_filename: true
 
 collections:
