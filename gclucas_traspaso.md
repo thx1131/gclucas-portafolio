@@ -108,6 +108,14 @@ Config: `admin/config.yml` con `media_folder: uploads` / `public_folder: /upload
 
 **Backlog técnico, no bloqueante**: las imágenes subidas vía CMS a partir de 2026-09-09 viven en `/uploads/` dentro del repo, sin la transformación `f_auto,q_auto` de Cloudinary que sí tienen las 144 obras originales (sirven tal cual desde Cloudflare Pages, sin negociación de formato/calidad automática). Pendiente evaluar más adelante si conviene migrarlas a Cloudinary (manual, o con un script que las suba y reescriba la URL en el JSON) una vez que haya volumen real. Se decidió aceptar este costo a cambio de no exponer el catálogo existente a un acceso destructivo no revisado (ver arriba).
 
+**Fix 2026-09-09: error de config `media_library` ambiguo**. Al primer intento real de abrir `/admin/`, el panel mostró: *"One of these options is required: media_library.name, media_library.access_key_id, media_library.bucket o media_library.container"*. Causa: el bloque `media_library: { config: { slugify_filename: true } }` que había quedado en `admin/config.yml` no traía `name`, y Sveltia valida ese bloque como selector de backend — o das `name` (cloudinary/uploadcare/default/etc) o las claves planas de un backend cloud tipo S3/Azure (`access_key_id`/`bucket`/`container`); sin ninguna de las dos, no matchea nada. Fix: se eliminó `media_library:` por completo. La opción no ambigua para configurar la librería default (git-based) es `media_libraries.all` — quedó así:
+```yaml
+media_libraries:
+  all:
+    slugify_filename: true
+```
+`media_folder`/`public_folder` a nivel raíz no se tocaron, son independientes de este bloque.
+
 **No decidido todavía**: si el flujo de `Hoja de proyecto-cotejo.xlsx` (cotejo/QA editorial, no es fuente de contenido) sigue vigente una vez que Lucas edita directo por CMS, o si conviene reemplazarlo por revisar los PRs del CMS.
 
 ## Arquitectura: partials compartidos entre home-scroll y páginas independientes (2026-09-07)
