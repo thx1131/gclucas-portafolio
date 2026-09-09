@@ -116,6 +116,12 @@ media_libraries:
 ```
 `media_folder`/`public_folder` a nivel raíz no se tocaron, son independientes de este bloque.
 
+**Acceso de Lucas 2026-09-09: `open_authoring`, no colaborador del repo**. Luis pidió que Lucas tenga acceso al panel sin usar la cuenta de GitHub de Luis y sin ser colaborador del repo (invitarlo como colaborador con Write le hubiera dado permiso para mergear su propio PR él mismo desde el panel del CMS, sin pasar por la revisión de Luis — se descartó por eso). Se activó `open_authoring: true` en `admin/config.yml` (verificado en el código fuente de Sveltia, `src/lib/services/workflow/open-authoring.js` + `src/lib/services/backends/git/github/fork.js`): al loguearse, Sveltia chequea si el usuario tiene permiso de push sobre `thx1131/gclucas-portafolio` (`canWrite`); si no lo tiene (caso de Lucas), le pide confirmación explícita para forkear el repo a su propia cuenta, trabaja sobre ese fork, y abre el PR desde ahí — como no tiene push sobre el repo original, no puede mergear su propio PR bajo ningún escenario. Para Luis (que sí tiene push como dueño del repo) el flujo no cambia, sigue trabajando directo sobre el repo sin fork.
+
+También se agregó `auth_scope: public_repo` porque `gclucas-portafolio` es público — sin esto, el OAuth le pediría a Lucas acceso a *todos* sus repos de GitHub, incluidos los privados.
+
+Lo único que necesita Lucas: su propia cuenta de GitHub (la crea él si no tiene) y entrar a `/admin/` con "Sign in with GitHub" — nada de tokens, nada de invitaciones de Luis.
+
 **No decidido todavía**: si el flujo de `Hoja de proyecto-cotejo.xlsx` (cotejo/QA editorial, no es fuente de contenido) sigue vigente una vez que Lucas edita directo por CMS, o si conviene reemplazarlo por revisar los PRs del CMS.
 
 ## Arquitectura: partials compartidos entre home-scroll y páginas independientes (2026-09-07)

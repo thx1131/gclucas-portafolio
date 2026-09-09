@@ -27,6 +27,16 @@ backend:
   branch: main
   base_url: https://sveltia-cms-auth.thx1131.workers.dev
   auth_endpoint: auth
+  # Lucas entra con SU PROPIA cuenta de GitHub, sin ser colaborador del repo.
+  # open_authoring: al loguearse, Sveltia le pide confirmación para forkear
+  # gclucas-portafolio a su cuenta; sus cambios van a ese fork y desde ahí
+  # abre un PR hacia este repo. Como no tiene acceso de escritura acá, no
+  # puede mergear su propio PR — Luis sigue siendo el único que puede.
+  # auth_scope: public_repo porque el repo es público, así el OAuth solo
+  # pide acceso a los repos públicos de Lucas, no a todos los suyos (privados
+  # incluidos), que es lo que pediría por default.
+  open_authoring: true
+  auth_scope: public_repo
 
 publish_mode: editorial_workflow
 
