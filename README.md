@@ -21,12 +21,13 @@ git clone https://github.com/thx1131/gclucas-portafolio
 cd gclucas-portafolio
 
 # Generate HTML from JSON
-cd build
-python build_site.py
+python3 build/build_site_v2.py
 
 # View output
-ls ../work/
+ls work/
 ```
+
+> Cloudflare Pages debe correr este mismo comando en cada push a `main` (ver sección de Deployment para el estado real). Corré el comando local para probar cambios antes de pushear.
 
 ### Test Locally
 
@@ -42,37 +43,41 @@ python -m http.server 8000
 
 ## 📝 EDITING CONTENT
 
-### Option 1: Edit JSON Directly
+### Option 1: CMS panel (Lucas, no code)
 
-1. Open `data/series.json` or `data/works.json`
+1. Go to `gclucas.art/admin/`, log in with GitHub
+2. Edit text, reorder series/works, or upload new photos
+3. Save → opens a PR automatically (editorial workflow)
+4. Luis reviews the PR (Cloudflare Pages generates an automatic preview link) and merges it
+5. Merge → Cloudflare Pages rebuilds and publishes
+
+Config lives in `admin/config.yml`. Setup checklist (GitHub OAuth App, Cloudflare Worker, Cloudinary preset) is in `gclucas_traspaso.md`.
+
+### Option 2: Edit JSON directly (Luis)
+
+1. Open `data/series.json` or `data/works.json` (each is `{"series": [...]}` / `{"works": [...]}`)
 2. Make changes
-3. Run `python build/build_site.py`
+3. Run `python3 build/build_site_v2.py`
 4. Commit and push
 
-### Option 2: Edit Excel, Export CSV
-
-1. Open Excel spreadsheet
-2. Make changes
-3. Export as CSV
-4. Run `python build/excel_to_json.py` (coming soon)
-5. Run `python build/build_site.py`
-6. Commit and push
+The old Excel/Sheets editing flow was retired — `data/*.json` is the single source of truth, edited either via the CMS or directly.
 
 ---
 
 ## 🎨 HOW IT WORKS
 
 ```
-data/series.json + data/works.json
-         ↓
-   build_site.py
-         ↓
-/work/pixelogue/index.html
-/work/headless/index.html
-/work/... (more series)
+admin/ (CMS panel, PR-based) ─┐
+                               ├─→ data/series.json + data/works.json + data/site.json
+data/*.json edited by hand ───┘         ↓
+                                  build_site_v2.py
+                                         ↓
+                              /work/pixelogue/index.html
+                              /work/headless/index.html
+                              /work/... (more series)
 ```
 
-Each time you run `build_site.py`, all HTML files are regenerated from JSON.
+Each time `build_site_v2.py` runs (in Cloudflare Pages CI, or locally to test), all HTML files are regenerated from JSON.
 
 ---
 
@@ -86,9 +91,12 @@ gclucas-portafolio/
 │   ├── pixelogue/
 │   ├── headless/
 │   └── ...
+├── admin/                  ← CMS panel (Sveltia)
+│   ├── index.html
+│   └── config.yml
 ├── data/                   ← JSON data
-│   ├── series.json
-│   ├── works.json
+│   ├── series.json         ← { "series": [...] }
+│   ├── works.json           ← { "works": [...] }
 │   └── site.json
 ├── templates/              ← HTML templates
 │   ├── base.html
@@ -103,7 +111,7 @@ gclucas-portafolio/
 │   ├── darkmode.js
 │   └── gallery.js
 ├── build/                  ← Build scripts
-│   └── build_site.py
+│   └── build_site_v2.py
 ├── ARCHITECTURE.md         ← Design decisions
 └── README.md              ← This file
 ```
@@ -154,7 +162,7 @@ gclucas-portafolio/
 
 3. Run generator:
 ```bash
-python build/build_site.py
+python3 build/build_site_v2.py
 ```
 
 4. Commit:
@@ -166,25 +174,29 @@ git add . && git commit -m "feat: add new-series" && git push
 
 ## 🌐 DEPLOYMENT
 
-### GitHub Pages / Cloudflare Pages
+### Cloudflare Pages
 
-The `work/` folder (and `index.html`) are automatically deployed via GitHub Pages or Cloudflare Pages.
+Build command: `python3 build/build_site_v2.py` · Build output directory: `/` · Root directory: `/`. Python version pinned via `.python-version` (3.13), no `requirements.txt` needed (stdlib only).
 
 **Workflow:**
-1. Push to GitHub
-2. Cloudflare Pages deploys automatically
+1. Push to `main` (directly, or via a merged CMS PR)
+2. Cloudflare Pages runs the build command and regenerates the HTML
 3. Changes live in ~1 minute
+
+Every branch/PR (including the ones the CMS opens) also gets an automatic Cloudflare Pages preview deploy — use that to review a Lucas edit before merging.
 
 ---
 
 ## 📊 DATA STRUCTURE
 
 ### series.json
+- Shape: `{ "series": [ {...}, {...} ] }`
 - Metadata for each series (title, year, description)
 - Used to generate `/work/series-name/` pages
 - Referenced by works.json via `series` field
 
 ### works.json
+- Shape: `{ "works": [ {...}, {...} ] }`
 - Metadata for each individual work (144+ total)
 - Fields: id, series, title, year, technique, dimensions, cloudinaryUrl
 - Used to generate gallery items within series pages
@@ -232,15 +244,14 @@ For detailed architecture decisions, see **[ARCHITECTURE.md](./ARCHITECTURE.md)*
 
 ### "Python not found"
 ```bash
-# Try python3
-python3 build/build_site.py
+python3 build/build_site_v2.py
 ```
 
 ### "FileNotFoundError: data/series.json"
 Make sure you're running from the project root:
 ```bash
 cd gclucas-portafolio
-python build/build_site.py
+python3 build/build_site_v2.py
 ```
 
 ### "Images not loading"
@@ -253,7 +264,7 @@ https://res.cloudinary.com/dt2w4nxz6/image/upload/...
 
 ## 🚀 FUTURE ROADMAP
 
-- [ ] Admin panel (Supabase)
+- [x] Admin panel (Sveltia CMS, git-based — see `admin/`)
 - [ ] Blog/articles section
 - [ ] Timeline interactive view
 - [ ] Multi-language support

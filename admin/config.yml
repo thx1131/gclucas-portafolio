@@ -1,0 +1,141 @@
+# Panel de edición (Sveltia CMS) para gclucas.art
+#
+# Cómo funciona: cada guardado acá crea un commit en una rama nueva y abre un PR
+# en GitHub (editorial_workflow). Luis revisa el PR (con preview automático de
+# Cloudflare Pages) y lo mergea a `main`. El merge dispara el build en Cloudflare
+# Pages, que regenera el HTML y publica.
+#
+# Setup pendiente antes de que esto funcione (ver checklist en gclucas_traspaso.md):
+#   1. OAuth App en GitHub (Settings → Developer settings → OAuth Apps)
+#   2. Cloudflare Worker de OAuth desplegado (sveltia-cms-auth)
+#   3. `base_url` de abajo reemplazado por la URL real del Worker
+#   4. Upload preset "unsigned" creado en Cloudinary para el media_library de abajo
+
+backend:
+  name: github
+  repo: thx1131/gclucas-portafolio
+  branch: main
+  base_url: https://REEMPLAZAR-worker-oauth.workers.dev
+  auth_endpoint: auth
+
+publish_mode: editorial_workflow
+
+site_url: https://gclucas.art
+display_url: https://gclucas.art
+
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: dt2w4nxz6
+    api_key: REEMPLAZAR-cloudinary-api-key
+    # Verificar tras la primera subida real: las URLs que devuelve el widget
+    # de Cloudinary deben servir con f_auto,q_auto igual que las URLs actuales
+    # en data/works.json (obras/ID). Si no, ajustar transformación acá o a mano.
+
+collections:
+  - name: site
+    label: "Sitio (statement, bio, contacto)"
+    files:
+      - name: site
+        label: "Contenido global"
+        file: data/site.json
+        fields:
+          # --- editable por Lucas ---
+          - { name: author, label: "Nombre del artista", widget: string }
+          - { name: descriptionEn, label: "Descripción corta (inglés, para SEO)", widget: text }
+          - { name: descriptionEs, label: "Descripción corta (español, para SEO)", widget: text }
+          - name: statementEn
+            label: "Statement (inglés)"
+            widget: list
+            label_singular: "Párrafo"
+            field: { name: paragraph, label: "Párrafo", widget: text }
+          - name: statementEs
+            label: "Statement (español)"
+            widget: list
+            label_singular: "Párrafo"
+            field: { name: paragraph, label: "Párrafo", widget: text }
+          - name: bioEn
+            label: "Bio (inglés)"
+            widget: list
+            label_singular: "Párrafo"
+            field: { name: paragraph, label: "Párrafo", widget: text }
+          - name: bioEs
+            label: "Bio (español)"
+            widget: list
+            label_singular: "Párrafo"
+            field: { name: paragraph, label: "Párrafo", widget: text }
+          - { name: email, label: "Email de contacto", widget: string }
+          - { name: phone, label: "Teléfono (formato con espacios, ej. +52 415 151 1029)", widget: string }
+          - { name: whatsapp_number, label: "WhatsApp (solo dígitos, sin +, ej. 524151511029)", widget: string, hint: "Debe ser el mismo número que 'Teléfono', solo que sin espacios ni +. Si cambia el teléfono, actualizar acá también." }
+          - { name: whatsapp, label: "Link de WhatsApp completo", widget: string, hint: "Debe ser https://wa.me/ seguido de 'WhatsApp (solo dígitos)' de arriba. Si cambia el teléfono, actualizar acá también." }
+          - { name: instagram, label: "Link de Instagram", widget: string }
+          - { name: copyright, label: "Texto de copyright del footer", widget: string }
+          # --- técnico, no tocar (se preserva oculto para no romper el sitio) ---
+          - { name: title, widget: hidden }
+          - { name: language, widget: hidden }
+          - { name: url, widget: hidden }
+          - name: colors
+            widget: object
+            hidden: true
+            fields:
+              - { name: bgLight, widget: hidden }
+              - { name: bgDark, widget: hidden }
+              - { name: textLight, widget: hidden }
+              - { name: textDark, widget: hidden }
+              - { name: borderLight, widget: hidden }
+              - { name: borderDark, widget: hidden }
+              - { name: accentLight, widget: hidden }
+              - { name: accentDark, widget: hidden }
+
+  - name: series
+    label: "Series"
+    files:
+      - name: series
+        label: "Todas las series"
+        file: data/series.json
+        fields:
+          - name: series
+            label: "Series"
+            widget: list
+            label_singular: "Serie"
+            summary: "{{fields.titleEn}} ({{fields.year}})"
+            fields:
+              - { name: id, label: "ID (slug de la URL)", widget: string, hint: "NO cambiar en una serie ya publicada: rompe la URL /work/<id>/. Para una serie nueva, usar minúsculas y guiones, sin espacios ni acentos." }
+              - { name: titleEn, label: "Título (inglés)", widget: string }
+              - { name: titleEs, label: "Título (español)", widget: string }
+              - { name: year, label: "Año", widget: number, value_type: int }
+              - { name: statementEn, label: "Statement de la serie (inglés)", widget: text }
+              - { name: statementEs, label: "Statement de la serie (español)", widget: text }
+              - { name: coverImage, label: "Imagen de portada", widget: image }
+              - { name: order, label: "Orden (menor = aparece primero)", widget: number, value_type: int }
+
+  - name: works
+    label: "Obras"
+    files:
+      - name: works
+        label: "Todas las obras"
+        file: data/works.json
+        fields:
+          - name: works
+            label: "Obras"
+            widget: list
+            label_singular: "Obra"
+            summary: "{{fields.titleEn}} — {{fields.series}}"
+            fields:
+              - { name: id, label: "ID", widget: string, hint: "NO cambiar en una obra ya publicada." }
+              - { name: series, label: "ID de la serie", widget: string, hint: "Debe coincidir exactamente con el ID de una serie existente (ver colección Series)." }
+              - { name: titleEn, label: "Título (inglés)", widget: string }
+              - { name: titleEs, label: "Título (español)", widget: string }
+              - { name: year, label: "Año", widget: number, value_type: int }
+              - { name: technique, label: "Técnica (inglés)", widget: string }
+              - { name: techniqueEs, label: "Técnica (español)", widget: string }
+              - name: dimensions
+                label: "Dimensiones"
+                widget: object
+                fields:
+                  - { name: height, label: "Alto", widget: number }
+                  - { name: width, label: "Ancho", widget: number }
+                  - { name: unit, label: "Unidad", widget: select, options: ["cm", "in"] }
+                  - { name: depth, label: "Profundidad (opcional)", widget: number, required: false }
+              - { name: cloudinaryUrl, label: "Imagen", widget: image }
+              - { name: order, label: "Orden dentro de la serie", widget: number, value_type: int }

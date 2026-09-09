@@ -11,19 +11,17 @@ A clean, scalable static site generator for visual artists. Built with vanilla H
 ### Data Flow
 
 ```
-Excel (editorial source)
-  ↓ [export CSV]
-JSON (technical source)
-  ↓ [build_site.py]
-HTML (static output)
-  ↓ [git push]
-GitHub + Cloudflare Pages (published)
+CMS panel (admin/) or direct edit ─┐
+                                     ├─→ JSON (source of truth, data/*.json)
+                                     ┘         ↓ [build_site_v2.py, runs in Cloudflare Pages CI]
+                                          HTML (static output)
+                                                ↓ [git push / merged PR]
+                                          GitHub + Cloudflare Pages (published)
 ```
 
-**One truth per level.**
+**One truth per level.** (Excel/Sheets were the original editorial source; retired 2026-09-04 — `data/*.json` is now edited directly, either by hand or through the CMS panel in `admin/`.)
 
-- **Excel:** Where you edit and maintain the content
-- **JSON:** Where the technical system reads from
+- **JSON:** Where you edit content (by hand, or via the CMS at `/admin/`) and what the technical system reads from
 - **HTML:** What Google indexes and users see
 - **GitHub:** Version history of everything
 
@@ -42,8 +40,7 @@ GitHub + Cloudflare Pages (published)
    - Easy to maintain and extend
 
 3. **Artist-Friendly**
-   - Edit in Excel, not code
-   - One CSV export generates all JSONs
+   - Edit via the CMS panel (`/admin/`, no code) or directly in `data/*.json`
    - Automatic page generation
    - No manual HTML editing needed
 
@@ -148,7 +145,6 @@ Google: Indexes full page immediately, Open Graph works, SEO perfect
 - ✅ Easy to learn and modify
 - ✅ Great for JSON manipulation
 - ✅ Built-in on most systems
-- ✅ Can extend with `excel_to_json.py`, `optimize_images.py`, etc
 - ✅ No npm dependencies, no complex build tools
 
 ### 4. Why Immutable IDs?
@@ -290,31 +286,24 @@ body.dark-mode {
 ### For Content Editors (Artists)
 
 ```
-1. Open Hoja_de_proyecto-cotejo.xlsx (Excel)
-2. Edit series descriptions, titles, add works
-3. Export as CSV
-4. Developer runs: python excel_to_json.py
-   → Generates series.json + works.json
-5. Upload images to Cloudinary
-6. Copy URLs into works.json
-7. Developer runs: python build_site.py
-   → Generates all HTML pages
-8. Commit and push to GitHub
-9. Cloudflare Pages deploys automatically
+1. Go to gclucas.art/admin/, log in with GitHub
+2. Edit series/works/statement/bio text, reorder, or upload new photos
+3. Save → opens a PR (editorial workflow)
+4. Developer reviews the PR (Cloudflare Pages auto-preview) and merges
+5. Merge → Cloudflare Pages runs build_site_v2.py and deploys
 ```
 
 ### For Developers
 
 ```
 # Build the site
-cd gclucas-portafolio/build/
-python build_site.py
+python3 build/build_site_v2.py
 
 # Check output
-ls ../work/
+ls work/
 
 # Test locally
-python -m http.server 8000
+python3 -m http.server 8000
 
 # Commit changes
 git add . && git commit -m "feat: add new series" && git push
@@ -330,11 +319,9 @@ git add . && git commit -m "feat: add new series" && git push
 - ✅ Responsive design
 - ✅ Gallery with modal
 
-### v2.0 (Future - Backend)
-- [ ] Supabase integration
-- [ ] Admin panel for editing
-- [ ] User authentication
-- [ ] API endpoints
+### v2.0 (Current)
+- [x] Multipágina + SEO (see Atelier v2.0, `build/build_site_v2.py`)
+- [x] Git-based CMS panel for editing (`admin/`, Sveltia CMS — no Supabase/backend needed)
 
 ### v3.0 (Later)
 - [ ] Blog / Articles section
@@ -367,19 +354,16 @@ python build_site.py
 
 1. **Edit data files directly:**
    ```
-   data/series.json
-   data/works.json
+   data/series.json   (shape: { "series": [...] })
+   data/works.json    (shape: { "works": [...] })
    data/site.json
    ```
 
-2. **Or edit Excel and export:**
-   ```
-   Export CSV → python excel_to_json.py → generates JSON files
-   ```
+2. **Or edit via the CMS panel:** `gclucas.art/admin/` — see `admin/config.yml`.
 
 3. **Regenerate HTML:**
    ```
-   python build_site.py
+   python3 build/build_site_v2.py
    ```
 
 4. **Push to GitHub:**

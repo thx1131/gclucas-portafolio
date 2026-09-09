@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-07 (partials compartidos entre home-scroll y páginas independientes: statement/bio/contact).
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-09 (CMS Sveltia para Lucas, en implementación — ver sección dedicada).
 
 ## Qué es esto
 
@@ -16,11 +16,13 @@ Portafolio estático multipágina del artista visual GC Lucas (Lucas de la Garza
 ## Arquitectura (NO revertir sin discutirlo)
 
 ```
-data/series.json + data/works.json (FUENTE CANÓNICA — se edita directo)
+data/series.json + data/works.json (FUENTE CANÓNICA — se edita directo o vía CMS)
   → build/build_site_v2.py
   → HTML estático pre-generado (SEO: meta/OG únicos por página)
   → git push → Cloudflare Pages
 ```
+
+⚠️ **Cambio 2026-09-09**: `data/series.json` y `data/works.json` dejaron de ser un array en la raíz — ahora son `{"series": [...]}` y `{"works": [...]}` respectivamente (`data/site.json` no cambió, sigue siendo un objeto). Motivo: los collections de tipo "file" del CMS (ver sección CMS abajo) necesitan que cada archivo sea un objeto con nombre de campo, no un array suelto. `build_site_v2.py` y `build_site.py` ya están actualizados (`self._load_json('series.json')['series']`, ídem `works`). Verificado con build antes/después: HTML generado idéntico, único diff es `lastmod` del sitemap por fecha.
 
 ⚠️ **Cambio 2026-09-04**: el Google Sheet + Excel + `excel_to_json.py` quedaron **retirados del flujo activo**. El Sheet es ahora un archivo histórico de referencia, ya no se sincroniza ni se re-exporta. Ver "Pipeline de imágenes" abajo.
 
@@ -71,6 +73,28 @@ Qué revisar en el log del primer deploy para confirmar que funcionó:
 - Debe aparecer el bloque `🎨 ATELIER v2.0 - Multipágina SEO-Optimizado` seguido de los `✅ Created: ...` por cada página (home, statement, work index, cada serie, texts, bio, contact, sitemap).
 - Build debe terminar en **success**, no solo "sin errores visibles" — si falta un archivo requerido (cualquier JSON de `data/` o cualquier template salvo `text-detail.html`), el build ahora aborta con `❌ Error fatal: ...` y exit code ≠ 0, y Cloudflare debe marcar el deploy como fallido y mantener el último deploy bueno.
 - Comparar una página al azar (ej. `/work/ficciones/`) entre el HTML servido en gclucas.art y el HTML commiteado en git — deberían ser idénticos mientras no haya deriva (ver advertencia arriba).
+
+## CMS para Lucas: Sveltia (2026-09-09, en implementación)
+
+Objetivo: Lucas edita texto (statement/bio/contacto) y series/obras, incluyendo subir fotos nuevas, sin tocar código ni JSON a mano, y sin depender de Luis para cada cambio chico.
+
+**Por qué Sveltia y no otra cosa**: git-based (sin backend/DB propio), fork moderno de Decap CMS compatible con su formato de `config.yml`, encaja directo con el modelo de datos actual (`data/*.json`). Ya estaba evaluado antes de hoy (ver commits previos), y el prerequisito que lo bloqueaba (mover el build a CI de Pages) ya está resuelto del lado de código desde el 2026-09-04 — solo falta confirmar que el dashboard de Cloudflare Pages esté configurado (ver sección de arriba).
+
+**Hecho (Claude, 2026-09-09)**:
+- `data/series.json` y `data/works.json` envueltos en `{"series": [...]}` / `{"works": [...]}` (ver nota arriba) — requerido por el formato de "file collections" del CMS.
+- `admin/index.html` + `admin/config.yml`: define 3 colecciones — `site` (statement/bio/contacto, con los campos técnicos de `site.json` como `title`/`url`/`colors`/`language` ocultos para que el CMS no los borre al guardar), `series` y `works` (listas editables, con `id`/`order` marcados con hint de "no cambiar en algo ya publicado").
+- `publish_mode: editorial_workflow` — cada guardado de Lucas abre un PR en vez de commitear directo a `main`, así Luis sigue siendo el gatekeeper editorial (rol que ya tenía) revisando el preview automático de Cloudflare Pages antes de mergear.
+- Imágenes: `media_library` configurado como `cloudinary` (cloud `dt2w4nxz6`) para que Lucas pueda subir fotos nuevas directo desde el panel, en vez de pegar URLs a mano.
+
+**Pendiente, fuera del repo (requiere acceso a las cuentas de Luis, no lo puede hacer Claude)**:
+1. Confirmar/crear en el dashboard de Cloudflare Pages el build command (ver sección de arriba) — si no está hecho, un commit del CMS actualiza el JSON pero el HTML publicado no se regenera solo.
+2. Crear una OAuth App en GitHub (Settings → Developer settings → OAuth Apps) para `thx1131/gclucas-portafolio`. Callback URL: la del Worker del paso siguiente + `/callback`.
+3. Desplegar el Worker de OAuth (proyecto open source `sveltia-cms-auth`, no reinventarlo — maneja el handshake con el client secret de GitHub). Configurar como secrets del Worker: `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, y `ALLOWED_DOMAINS=gclucas.art`.
+4. Reemplazar en `admin/config.yml`: `base_url` con la URL real del Worker, y `api_key` de Cloudinary (no es secreto, pero hay que copiarlo del dashboard de Cloudinary).
+5. Crear un upload preset "unsigned" en Cloudinary (Settings → Upload → Add upload preset) para que el widget de subida del CMS funcione sin backend propio.
+6. Primera prueba real: Lucas sube una foto nueva desde `/admin/` → verificar que la URL que devuelve el widget de Cloudinary sirva con `f_auto,q_auto` igual que las URLs existentes en `data/works.json` (`obras/ID`). Si no, ajustar la config del media_library o el preset en Cloudinary.
+
+**No decidido todavía**: si el flujo de `Hoja de proyecto-cotejo.xlsx` (cotejo/QA editorial, no es fuente de contenido) sigue vigente una vez que Lucas edita directo por CMS, o si conviene reemplazarlo por revisar los PRs del CMS.
 
 ## Arquitectura: partials compartidos entre home-scroll y páginas independientes (2026-09-07)
 
@@ -195,10 +219,9 @@ Luis reportó que el fix de tarjetas de contacto de la sesión anterior "no se v
 
 ## Backlog técnico scoped, no construido
 
-- `actualizar.sh` — script que encadene todo el pipeline (excel → json → build → push)
+- `actualizar.sh` — script que encadene el pipeline restante (build → push) para cambios locales
 - Script de ruteo de extracción de imágenes desde PowerPoint (discutido, no escrito)
 - Sección `/text/` — oculta hasta que exista contenido literario real
-- Evaluado y en pausa: CMS headless Git-based (Sveltia + build en Cloudflare Pages + Worker OAuth). Prerequisito: mover el build al CI de Pages. Decidir qué fuente manda (Sheets vs CMS) antes de implementar.
 
 ## Estilo de trabajo con Luis
 

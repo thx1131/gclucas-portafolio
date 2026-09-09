@@ -27,8 +27,8 @@ class SiteBuilder:
         self.output_dir = self.base_dir
         
         # Load data
-        self.series_data = self._load_json('series.json')
-        self.works_data = self._load_json('works.json')
+        self.series_data = self._load_json('series.json')['series']
+        self.works_data = self._load_json('works.json')['works']
         self.site_data = self._load_json('site.json')
         
         # Load templates
