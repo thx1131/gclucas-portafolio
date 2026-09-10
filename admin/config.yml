@@ -151,7 +151,15 @@ collections:
             summary: "{{fields.titleEn}} — {{fields.series}}"
             fields:
               - { name: id, label: "ID", widget: string, hint: "NO cambiar en una obra ya publicada." }
-              - { name: series, label: "ID de la serie", widget: string, hint: "Debe coincidir exactamente con el ID de una serie existente (ver colección Series)." }
+              - name: series
+                label: "Serie"
+                widget: relation
+                collection: series
+                file: series
+                value_field: '{{series.*.id}}'
+                search_fields: ['{{series.*.titleEn}}', '{{series.*.id}}']
+                display_fields: ['{{series.*.titleEn}} ({{series.*.id}})']
+                hint: "Buscá la serie por nombre — el ID se completa solo, ya no hay que tipearlo a mano."
               - { name: titleEn, label: "Título (inglés)", widget: string }
               - { name: titleEs, label: "Título (español)", widget: string }
               - { name: year, label: "Año", widget: number, value_type: int }
