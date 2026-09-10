@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-09 (CMS Sveltia para Lucas, en implementación — ver sección dedicada).
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-10 (CMS Sveltia para Lucas, en implementación — ver sección dedicada).
 
 ## Qué es esto
 
@@ -123,6 +123,14 @@ También se agregó `auth_scope: public_repo` porque `gclucas-portafolio` es pú
 Lo único que necesita Lucas: su propia cuenta de GitHub (la crea él si no tiene) y entrar a `/admin/` con "Sign in with GitHub" — nada de tokens, nada de invitaciones de Luis.
 
 **No decidido todavía**: si el flujo de `Hoja de proyecto-cotejo.xlsx` (cotejo/QA editorial, no es fuente de contenido) sigue vigente una vez que Lucas edita directo por CMS, o si conviene reemplazarlo por revisar los PRs del CMS.
+
+**Mejora UX 2026-09-10: campo `series` en Obras pasó de texto libre a `relation`**. El campo `series` de cada obra (`admin/config.yml`) exigía que Lucas tipeara a mano el ID exacto de la serie (`hint: "Debe coincidir exactamente con el ID de una serie existente"`) — fácil de errar el slug y sin forma de ubicarse entre las series existentes desde ese input. Se cambió a `widget: relation` apuntando a la colección `series` (`collection: series`, `file: series`), con `value_field: '{{series.*.id}}'` y `search_fields`/`display_fields` sobre `titleEn`/`id`. Ahora Lucas busca la serie por nombre en un dropdown y el CMS completa el ID solo.
+
+Probado localmente antes de pushear: `python3 -m http.server 8000` + `/admin/` logueado con la cuenta de Luis — el login funciona igual en localhost porque el OAuth pasa por el worker `sveltia-cms-auth`, no depende del origen del panel. Importante para futuras pruebas: aunque `config.yml` se sirve desde el filesystem local, los datos de `series`/`works` que carga el CMS vienen **en vivo desde `main` en GitHub vía API**, no del filesystem — y como `publish_mode: editorial_workflow`, guardar una prueba abre un PR/branch de borrador, no toca `main` directo.
+
+Commiteado y pusheado directo a `main` sin pasar por PR (commit `5192df7`) — es config del panel de edición, no contenido editorial, y ya se había probado el comportamiento antes de pushear.
+
+Sigue pendiente el punto 4 de la sección anterior (primera prueba real end-to-end con la cuenta de Lucas, vía fork + `open_authoring`) — lo de hoy solo probó el campo `relation` con la cuenta de Luis.
 
 ## Arquitectura: partials compartidos entre home-scroll y páginas independientes (2026-09-07)
 
