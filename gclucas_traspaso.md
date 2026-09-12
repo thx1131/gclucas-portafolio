@@ -277,6 +277,7 @@ Luis reportó que el fix de tarjetas de contacto de la sesión anterior "no se v
 - `actualizar.sh` — script que encadene el pipeline restante (build → push) para cambios locales
 - Script de ruteo de extracción de imágenes desde PowerPoint (discutido, no escrito)
 - Sección `/text/` — oculta hasta que exista contenido literario real
+- **Masonry real para `.series-grid`/`.series-list` y `.gallery`** — Lucas reportó imágenes "cortadas" en el grid (obras con proporciones muy variadas forzadas a `aspect-ratio` fijo). Parche aplicado el 2026-09-12: `object-fit: contain` + fondo `--bg-light`/`--bg-dark` en `.series-card img` y `.gallery-item img` (`css/main.css`), sin tocar el build — la imagen ya no se recorta pero queda "flotando" con espacio vacío en proporciones muy distintas al del contenedor. La solución de fondo (masonry, celdas que respetan la proporción real de cada imagen) requeriría que `build_site_v2.py` lea el ancho/alto en píxeles de cada imagen (ninguna dependencia de imágenes existe hoy en el build, habría que sumar Pillow) y reprocesar las 144 obras existentes para calcular sus proporciones antes de rehacer el CSS grid a columnas con altura variable. No es tarea de hoy.
 
 ## Estilo de trabajo con Luis
 

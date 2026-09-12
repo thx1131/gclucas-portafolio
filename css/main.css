@@ -280,9 +280,14 @@ body.dark-mode .hero-tagline {
 .series-card img {
     width: 100%;
     aspect-ratio: 4/3;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: var(--bg-light);
     margin-bottom: 20px;
     border-radius: 2px;
+}
+
+body.dark-mode .series-card img {
+    background-color: var(--bg-dark);
 }
 
 .series-card h3 {
@@ -372,8 +377,13 @@ body.dark-mode .series-nav {
 .gallery-item img {
     width: 100%;
     aspect-ratio: 1;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: var(--bg-light);
     border-radius: 2px;
+}
+
+body.dark-mode .gallery-item img {
+    background-color: var(--bg-dark);
 }
 
 .gallery-item-info {
