@@ -150,6 +150,12 @@ collections:
             label_singular: "Obra"
             summary: "{{fields.titleEn}} — {{fields.series}}"
             fields:
+              - name: cloudinaryUrl
+                label: "Imagen"
+                widget: image
+                media_folder: uploads/works
+                public_folder: /uploads/works
+                hint: "Las 144 obras originales usan URLs de Cloudinary (res.cloudinary.com); una foto nueva subida acá queda commiteada en el repo bajo /uploads/works/ — ambos formatos funcionan igual en el sitio."
               - { name: id, label: "ID", widget: string, hint: "NO cambiar en una obra ya publicada." }
               - name: series
                 label: "Serie"
@@ -164,19 +170,16 @@ collections:
               - { name: titleEs, label: "Título (español)", widget: string }
               - { name: year, label: "Año", widget: number, value_type: int }
               - { name: technique, label: "Técnica (inglés)", widget: string }
-              - { name: techniqueEs, label: "Técnica (español)", widget: string }
+              - { name: techniqueEs, label: "Técnica (español)", widget: string, required: false }
               - name: dimensions
                 label: "Dimensiones"
                 widget: object
+                hint: "Caso normal: completá Alto/Ancho/Unidad. Pieza de edición con medida variable (ej. 0 quilates): tildá 'Medida variable' y dejá Alto/Ancho/Unidad vacíos. Caso excepcional que no entra en ninguno de los dos: usá 'Medida en texto libre' en vez de Alto/Ancho."
                 fields:
-                  - { name: height, label: "Alto", widget: number }
-                  - { name: width, label: "Ancho", widget: number }
-                  - { name: unit, label: "Unidad", widget: select, options: ["cm", "in"] }
+                  - { name: height, label: "Alto", widget: number, required: false }
+                  - { name: width, label: "Ancho", widget: number, required: false }
+                  - { name: unit, label: "Unidad", widget: select, options: ["cm", "in"], required: false }
                   - { name: depth, label: "Profundidad (opcional)", widget: number, required: false }
-              - name: cloudinaryUrl
-                label: "Imagen"
-                widget: image
-                media_folder: uploads/works
-                public_folder: /uploads/works
-                hint: "Las 144 obras originales usan URLs de Cloudinary (res.cloudinary.com); una foto nueva subida acá queda commiteada en el repo bajo /uploads/works/ — ambos formatos funcionan igual en el sitio."
-              - { name: order, label: "Orden dentro de la serie", widget: number, value_type: int }
+                  - { name: variable, label: "Medida variable", widget: boolean, default: false, hint: "Piezas de edición donde cada unidad tiene una medida distinta (ej. 0 quilates)." }
+                  - { name: raw, label: "Medida en texto libre (caso excepcional)", widget: string, required: false, hint: "Solo si no aplica ni Alto/Ancho ni 'Medida variable'." }
+              - { name: order, label: "Orden dentro de la serie", widget: number, value_type: int, required: false }

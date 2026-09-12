@@ -1,0 +1,84 @@
+# Comprime/redimensiona imágenes nuevas subidas vía CMS después de que un PR
+# se mergea a main. Corre DESPUÉS del merge a propósito, para no interferir
+# con la revisión visual del PR en GitHub (que muestra la imagen original
+# subida por Lucas en el diff). Ver gclucas_traspaso.md para el detalle de
+# la decisión y los parámetros elegidos.
+#
+# Solo toca jpg/jpeg/png bajo uploads/ que cambiaron en el push que disparó
+# el workflow (no reprocesa las obras existentes en cada corrida).
+
+name: Optimizar imágenes nuevas
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "uploads/**"
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    # Evita loop infinito: el commit de optimización de abajo también hace
+    # push a main, lo que dispararía este mismo workflow de nuevo.
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detectar imágenes nuevas o modificadas
+        id: changed
+        run: |
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.event.after }}"
+          if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            BEFORE=$(git rev-parse HEAD~1)
+          fi
+          FILES=$(git diff --name-only --diff-filter=ACM "$BEFORE" "$AFTER" -- 'uploads/**/*.jpg' 'uploads/**/*.jpeg' 'uploads/**/*.png' 'uploads/**/*.JPG' 'uploads/**/*.JPEG' 'uploads/**/*.PNG' || true)
+          {
+            echo "files<<EOF"
+            echo "$FILES"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Instalar herramientas de optimización
+        if: steps.changed.outputs.files != ''
+        run: sudo apt-get update && sudo apt-get install -y imagemagick jpegoptim optipng
+
+      - name: Redimensionar y comprimir
+        if: steps.changed.outputs.files != ''
+        env:
+          FILES: ${{ steps.changed.outputs.files }}
+        run: |
+          echo "$FILES" | while IFS= read -r f; do
+            [ -z "$f" ] && continue
+            [ -f "$f" ] || continue
+            case "$f" in
+              *.jpg|*.jpeg|*.JPG|*.JPEG)
+                # Nunca agranda (el ">" en el geometry solo reduce si excede 2000px).
+                mogrify -resize '2000x2000>' -quality 84 -strip "$f"
+                jpegoptim --strip-all --quiet "$f"
+                ;;
+              *.png|*.PNG)
+                mogrify -resize '2000x2000>' -strip "$f"
+                optipng -o2 -quiet "$f"
+                ;;
+            esac
+          done
+
+      - name: Commitear si hubo cambios
+        if: steps.changed.outputs.files != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- uploads/; then
+            echo "Sin cambios tras optimizar, nada que commitear."
+            exit 0
+          fi
+          git add -- uploads/
+          git commit -m "chore: optimiza imágenes subidas en ${{ github.sha }}"
+          git push
