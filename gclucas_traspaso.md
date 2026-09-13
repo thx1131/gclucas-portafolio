@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-10 (CMS Sveltia para Lucas, en implementación — ver sección dedicada).
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-13 (fix de recorte en el grid + build command de Cloudflare estaba vacío — ver sección dedicada).
 
 ## Qué es esto
 
@@ -73,6 +73,10 @@ Qué revisar en el log del primer deploy para confirmar que funcionó:
 - Debe aparecer el bloque `🎨 ATELIER v2.0 - Multipágina SEO-Optimizado` seguido de los `✅ Created: ...` por cada página (home, statement, work index, cada serie, texts, bio, contact, sitemap).
 - Build debe terminar en **success**, no solo "sin errores visibles" — si falta un archivo requerido (cualquier JSON de `data/` o cualquier template salvo `text-detail.html`), el build ahora aborta con `❌ Error fatal: ...` y exit code ≠ 0, y Cloudflare debe marcar el deploy como fallido y mantener el último deploy bueno.
 - Comparar una página al azar (ej. `/work/ficciones/`) entre el HTML servido en gclucas.art y el HTML commiteado en git — deberían ser idénticos mientras no haya deriva (ver advertencia arriba).
+
+**⚠️ Corrección 2026-09-13**: esta sección documentaba la config *deseada*, pero nunca se había confirmado que estuviera realmente puesta en el dashboard. El log del deploy de push a `main` seguía diciendo `No build command specified. Skipping build step.` hasta el 2026-09-12 — es decir, Cloudflare Pages llevaba quién sabe cuánto tiempo sirviendo el HTML tal cual estaba en el repo, sin regenerarlo nunca. Esto es grave para el flujo del CMS: cualquier edición de Lucas vía Sveltia que se mergeara a `main` solo tocaba `data/*.json`, y sin build automático el sitio en vivo nunca iba a reflejar sus cambios.
+
+Se configuró el **Build command** en el dashboard (Settings → Builds & deployments) el 2026-09-13, y se confirmó con un redeploy: el log ahora sí instala Python 3.13.12 vía pyenv/asdf, corre `build_site_v2.py` completo (24 series + home/statement/work/text/bio/contact/sitemap) y publica con `Success: Your site was deployed!`. **A partir de ahora el build automático en Cloudflare Pages está confirmado funcionando** — el resto de esta sección (qué revisar en el log) sigue vigente como checklist.
 
 ## CMS para Lucas: Sveltia (2026-09-09, en implementación)
 
@@ -271,6 +275,16 @@ Luis reportó que el fix de tarjetas de contacto de la sesión anterior "no se v
 - Resumen: `templates/partials/{statement,bio,contact}-content.html` + 3 strings renderizados una vez en `SiteBuilder.__init__` (`build_site_v2.py`) e inyectados vía el mismo placeholder en `home.html` y en la página independiente correspondiente.
 - De paso se corrigieron dos divergencias que ya existían antes de esta sesión (encontradas al comparar ambos lados): el home tenía una oración de `statement` y un párrafo de `bio` que nunca estaban en `data/site.json` — se migraron al JSON (ahora arrays de párrafos) en vez de perderse.
 - `work` (preview en home vs catálogo en `/work/`) se revisó y quedó **fuera** de este refactor a propósito — no es texto duplicado, son dos vistas distintas del mismo dato por diseño.
+
+## Sesión 2026-09-12/13: fix de recorte en el grid + build command de Cloudflare estaba vacío
+
+Lucas reportó que veía todas las imágenes cortadas. Confirmado: `.series-card img` y `.gallery-item img` usaban `object-fit: cover` con `aspect-ratio` fijo (4:3 y 1:1 respectivamente), recortando cualquier obra con proporción distinta a la del contenedor. Fix aplicado en `css/main.css` (commit `5c9ef3f`): `object-fit: contain` + `background-color: var(--bg-light)` / `var(--bg-dark)` en dark mode — la imagen se ve completa, con el fondo de la página rellenando el espacio sobrante. Ver detalle de opciones evaluadas (crop mejorado, contain+fondo, masonry, bento) y por qué se descartó masonry por ahora en el ítem de backlog de abajo.
+
+Al pushear ese commit se detectó el problema grande: el deploy en Cloudflare Pages decía `No build command specified. Skipping build step.` — ver corrección completa en **"Migración del build a Cloudflare Pages CI"** arriba. Se configuró el build command en el dashboard y se confirmó con un redeploy exitoso el 2026-09-13.
+
+- Verificado en local antes del push: build (`python3 build/build_site_v2.py`) + `python -m http.server 8000`, revisado con Chrome en `/work/` y `/work/headless/` en modo oscuro — imágenes horizontales y verticales se ven completas, sin recortar bordes.
+- Dos tokens de GitHub (`ghp_...`) fueron pegados en el chat por error durante esta sesión — no se usaron ni se ejecutó nada con ellos, pero quedaron expuestos en el historial de la conversación. Pendiente confirmar que Luis los revocó.
+- Bug de dark mode toggle (ya documentado en "Bugs abiertos") se re-confirmó vigente: el botón de la navbar no cambia el tema.
 
 ## Backlog técnico scoped, no construido
 
