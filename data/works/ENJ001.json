@@ -1,0 +1,16 @@
+{
+  "id": "ENJ001",
+  "series": "anticommands",
+  "titleEn": "enjoy solitude",
+  "titleEs": "enjoy solitude",
+  "year": 2013,
+  "technique": "photography",
+  "techniqueEs": "photography",
+  "dimensions": {
+    "height": 40,
+    "width": 60,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/ENJ001",
+  "order": 4
+}

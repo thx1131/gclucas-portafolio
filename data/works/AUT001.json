@@ -1,0 +1,16 @@
+{
+  "id": "AUT001",
+  "series": "bob-ross-disturbed",
+  "titleEn": "autumn qbert",
+  "titleEs": "autumn qbert",
+  "year": 2017,
+  "technique": "acrylic, oil/canvas",
+  "techniqueEs": "acrilic, oil/canvas",
+  "dimensions": {
+    "height": 25,
+    "width": 20,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/AUT001",
+  "order": 6
+}

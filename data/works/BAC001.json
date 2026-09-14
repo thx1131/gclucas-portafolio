@@ -1,0 +1,16 @@
+{
+  "id": "BAC001",
+  "series": "nevermind",
+  "titleEn": "backpack",
+  "titleEs": "backpack",
+  "year": 2015,
+  "technique": "oil, acrylic/canvas",
+  "techniqueEs": "oil, acrilic/canvas",
+  "dimensions": {
+    "height": 150,
+    "width": 200,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/BAC001",
+  "order": 1
+}

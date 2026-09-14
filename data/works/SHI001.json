@@ -1,0 +1,16 @@
+{
+  "id": "SHI001",
+  "series": "headless",
+  "titleEn": "shiver",
+  "titleEs": "shiver",
+  "year": 2020,
+  "technique": "engraving/paper",
+  "techniqueEs": "grabado/papel",
+  "dimensions": {
+    "height": 30,
+    "width": 38,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SHI001",
+  "order": 2
+}

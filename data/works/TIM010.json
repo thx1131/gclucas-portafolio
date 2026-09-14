@@ -1,0 +1,16 @@
+{
+  "id": "TIM010",
+  "series": "pausa",
+  "titleEn": "8:30 am",
+  "titleEs": "8:30 am",
+  "year": 2008,
+  "technique": "oil/canvas",
+  "techniqueEs": "oil/canvas",
+  "dimensions": {
+    "height": 180,
+    "width": 120,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM010",
+  "order": 10
+}

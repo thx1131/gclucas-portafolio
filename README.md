@@ -55,7 +55,7 @@ Config lives in `admin/config.yml`. Setup checklist (GitHub OAuth App, Cloudflar
 
 ### Option 2: Edit JSON directly (Luis)
 
-1. Open `data/series.json` or `data/works.json` (each is `{"series": [...]}` / `{"works": [...]}`)
+1. Open `data/series.json` (shape `{"series": [...]}`) or, for a work, its own file under `data/works/<ID>.json`
 2. Make changes
 3. Run `python3 build/build_site_v2.py`
 4. Commit and push
@@ -68,7 +68,7 @@ The old Excel/Sheets editing flow was retired — `data/*.json` is the single so
 
 ```
 admin/ (CMS panel, PR-based) ─┐
-                               ├─→ data/series.json + data/works.json + data/site.json
+                               ├─→ data/series.json + data/works/*.json + data/site.json
 data/*.json edited by hand ───┘         ↓
                                   build_site_v2.py
                                          ↓
@@ -96,7 +96,7 @@ gclucas-portafolio/
 │   └── config.yml
 ├── data/                   ← JSON data
 │   ├── series.json         ← { "series": [...] }
-│   ├── works.json           ← { "works": [...] }
+│   ├── works/               ← one file per work, data/works/<ID>.json
 │   └── site.json
 ├── templates/              ← HTML templates
 │   ├── base.html
@@ -146,7 +146,7 @@ gclucas-portafolio/
 }
 ```
 
-2. Add works to `data/works.json`:
+2. Add a work as a new file `data/works/NEW001.json` (filename must match `id`):
 ```json
 {
   "id": "NEW001",
@@ -193,12 +193,13 @@ Every branch/PR (including the ones the CMS opens) also gets an automatic Cloudf
 - Shape: `{ "series": [ {...}, {...} ] }`
 - Metadata for each series (title, year, description)
 - Used to generate `/work/series-name/` pages
-- Referenced by works.json via `series` field
+- Referenced by each work (data/works/<ID>.json) via `series` field
 
-### works.json
-- Shape: `{ "works": [ {...}, {...} ] }`
+### works/ (folder, one JSON file per work)
+- One file per work at `data/works/<ID>.json`, filename must match the `id` field
 - Metadata for each individual work (144+ total)
-- Fields: id, series, title, year, technique, dimensions, cloudinaryUrl
+- Fields: id, series, title, year, technique, dimensions, cloudinaryUrl, order
+- `order` is used to sort works within a series — file read order isn't curated
 - Used to generate gallery items within series pages
 
 ### site.json
@@ -255,7 +256,7 @@ python3 build/build_site_v2.py
 ```
 
 ### "Images not loading"
-Check Cloudinary URLs in `data/works.json`. Should be:
+Check the Cloudinary URL in the work's file under `data/works/`. Should be:
 ```
 https://res.cloudinary.com/dt2w4nxz6/image/upload/...
 ```

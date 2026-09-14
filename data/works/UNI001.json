@@ -1,0 +1,16 @@
+{
+  "id": "UNI001",
+  "series": "aqui-es-todas-partes",
+  "titleEn": "un instante de eternidad",
+  "titleEs": "un instante de eternidad",
+  "year": 2008,
+  "technique": "oil/canvas",
+  "techniqueEs": "oil/canvas",
+  "dimensions": {
+    "height": 90,
+    "width": 60,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/UNI001",
+  "order": 2
+}

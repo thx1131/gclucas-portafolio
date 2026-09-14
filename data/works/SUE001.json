@@ -1,0 +1,16 @@
+{
+  "id": "SUE001",
+  "series": "vision-de-filippo",
+  "titleEn": "visión de filippo 2",
+  "titleEs": "visión de filippo 2",
+  "year": 2021,
+  "technique": "acrylic/canvas",
+  "techniqueEs": "acrilic/canvas",
+  "dimensions": {
+    "height": 60,
+    "width": 90,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SUE001",
+  "order": 1
+}

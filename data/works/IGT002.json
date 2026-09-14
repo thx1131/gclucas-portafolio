@@ -1,0 +1,14 @@
+{
+  "id": "IGT002",
+  "series": "in-god-we-trust",
+  "titleEn": "in god we trust",
+  "titleEs": "in god we trust",
+  "year": 2012,
+  "technique": "mexican coins",
+  "techniqueEs": "monedas mexicanas",
+  "dimensions": {
+    "variable": true
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/IGT002",
+  "order": 2
+}

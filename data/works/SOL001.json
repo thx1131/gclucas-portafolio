@@ -1,0 +1,16 @@
+{
+  "id": "SOL001",
+  "series": "bob-ross-disturbed",
+  "titleEn": "solstice invader",
+  "titleEs": "solstice invader",
+  "year": 2017,
+  "technique": "acrylic, oil/canvas",
+  "techniqueEs": "acrilic, oil/canvas",
+  "dimensions": {
+    "height": 40,
+    "width": 50,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SOL001",
+  "order": 7
+}

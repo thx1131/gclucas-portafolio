@@ -1,0 +1,16 @@
+{
+  "id": "LUZ001",
+  "series": "aqui-es-todas-partes",
+  "titleEn": "la luz encuentra la luz",
+  "titleEs": "la luz encuentra la luz",
+  "year": 2007,
+  "technique": "oil/canvas",
+  "techniqueEs": "oil/canvas",
+  "dimensions": {
+    "height": 100,
+    "width": 150,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/LUZ001",
+  "order": 6
+}

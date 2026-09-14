@@ -1,0 +1,16 @@
+{
+  "id": "CUA002",
+  "series": "cuatro-vueltas",
+  "titleEn": "cuatro vueltas 2/40",
+  "titleEs": "cuatro vueltas 2/40",
+  "year": 2009,
+  "technique": "graphite/canson",
+  "techniqueEs": "graphite/canson",
+  "dimensions": {
+    "height": 40,
+    "width": 30,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CUA002",
+  "order": 2
+}

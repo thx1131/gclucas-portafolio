@@ -1,0 +1,16 @@
+{
+  "id": "TEN001",
+  "series": "nevermind",
+  "titleEn": "the end",
+  "titleEs": "the end",
+  "year": 2014,
+  "technique": "oil, acrylic/canvas",
+  "techniqueEs": "oil, acrilic/canvas",
+  "dimensions": {
+    "height": 150,
+    "width": 100,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TEN001",
+  "order": 7
+}

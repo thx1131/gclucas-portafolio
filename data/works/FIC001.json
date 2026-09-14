@@ -1,0 +1,17 @@
+{
+  "id": "FIC001",
+  "series": "ficciones",
+  "titleEn": "ficciones 1",
+  "titleEs": "ficciones 1",
+  "year": 2025,
+  "technique": "book, phone (AI)",
+  "techniqueEs": "libro, celular (IA)",
+  "dimensions": {
+    "height": 45,
+    "width": 28,
+    "unit": "cm",
+    "depth": 3
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/FIC001",
+  "order": 1
+}

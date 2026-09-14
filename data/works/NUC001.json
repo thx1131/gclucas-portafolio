@@ -1,0 +1,16 @@
+{
+  "id": "NUC001",
+  "series": "berser-k",
+  "titleEn": "nuclear dj",
+  "titleEs": "nuclear dj",
+  "year": 2016,
+  "technique": "oil, spray/canvas",
+  "techniqueEs": "oil, spray/canvas",
+  "dimensions": {
+    "height": 180,
+    "width": 180,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/NUC001",
+  "order": 3
+}

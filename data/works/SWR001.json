@@ -1,0 +1,16 @@
+{
+  "id": "SWR001",
+  "series": "anticommands",
+  "titleEn": "something´s wrong",
+  "titleEs": "something´s wrong",
+  "year": 2013,
+  "technique": "photography",
+  "techniqueEs": "photography",
+  "dimensions": {
+    "height": 40,
+    "width": 60,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SWR001",
+  "order": 8
+}

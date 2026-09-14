@@ -1,0 +1,16 @@
+{
+  "id": "SPR001",
+  "series": "bob-ross-disturbed",
+  "titleEn": "springtime kirby",
+  "titleEs": "springtime kirby",
+  "year": 2017,
+  "technique": "acrylic, oil/canvas",
+  "techniqueEs": "acrilic, oil/canvas",
+  "dimensions": {
+    "height": 20,
+    "width": 25,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SPR001",
+  "order": 4
+}

@@ -1,0 +1,16 @@
+{
+  "id": "VIA001",
+  "series": "trece-lunas",
+  "titleEn": "el viaje",
+  "titleEs": "el viaje",
+  "year": 1999,
+  "technique": "oil/canvas",
+  "techniqueEs": "oil/canvas",
+  "dimensions": {
+    "height": 170,
+    "width": 120,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/VIA001",
+  "order": 1
+}

@@ -1,0 +1,16 @@
+{
+  "id": "MAD001",
+  "series": "trece-lunas",
+  "titleEn": "madre tierra",
+  "titleEs": "madre tierra",
+  "year": 1999,
+  "technique": "oil/canvas",
+  "techniqueEs": "oil/canvas",
+  "dimensions": {
+    "height": 130,
+    "width": 200,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/MAD001",
+  "order": 3
+}

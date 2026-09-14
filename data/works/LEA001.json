@@ -1,0 +1,16 @@
+{
+  "id": "LEA001",
+  "series": "anticommands",
+  "titleEn": "learn to fly",
+  "titleEs": "learn to fly",
+  "year": 2013,
+  "technique": "photography",
+  "techniqueEs": "photography",
+  "dimensions": {
+    "height": 40,
+    "width": 60,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/LEA001",
+  "order": 7
+}

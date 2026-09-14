@@ -1,0 +1,16 @@
+{
+  "id": "PEC001",
+  "series": "trece-lunas",
+  "titleEn": "pec",
+  "titleEs": "pec",
+  "year": 1999,
+  "technique": "oil/canvas",
+  "techniqueEs": "oil/canvas",
+  "dimensions": {
+    "height": 175,
+    "width": 130,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEC001",
+  "order": 2
+}

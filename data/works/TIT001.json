@@ -1,0 +1,16 @@
+{
+  "id": "TIT001",
+  "series": "naranja-dulce",
+  "titleEn": "titerefue",
+  "titleEs": "titerefue",
+  "year": 2004,
+  "technique": "oil/canvas",
+  "techniqueEs": "oil/canvas",
+  "dimensions": {
+    "height": 180,
+    "width": 135,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIT001",
+  "order": 5
+}

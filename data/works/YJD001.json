@@ -1,0 +1,16 @@
+{
+  "id": "YJD001",
+  "series": "pixelogue",
+  "titleEn": "you just disappeared",
+  "titleEs": "you just disappeared",
+  "year": 2019,
+  "technique": "acrylic/canvas",
+  "techniqueEs": "acrilic/canvas",
+  "dimensions": {
+    "height": 155,
+    "width": 140,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/YJD001",
+  "order": 2
+}

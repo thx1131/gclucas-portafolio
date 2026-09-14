@@ -1,0 +1,16 @@
+{
+  "id": "DOP001",
+  "series": "naranja-dulce",
+  "titleEn": "do pin we",
+  "titleEs": "do pin we",
+  "year": 2004,
+  "technique": "oil/canvas",
+  "techniqueEs": "oil/canvas",
+  "dimensions": {
+    "height": 180,
+    "width": 120,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/DOP001",
+  "order": 3
+}

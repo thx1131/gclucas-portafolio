@@ -28,7 +28,7 @@ class SiteBuilder:
         
         # Load data
         self.series_data = self._load_json('series.json')['series']
-        self.works_data = self._load_json('works.json')['works']
+        self.works_data = self._load_works_folder()
         self.site_data = self._load_json('site.json')
         
         # Load templates
@@ -107,6 +107,20 @@ class SiteBuilder:
         except json.JSONDecodeError as e:
             sys.exit(f"❌ Error fatal: {filename} tiene JSON inválido ({e})")
 
+    def _load_works_folder(self):
+        """Carga data/works/ (folder collection del CMS: un archivo JSON por obra).
+        El orden de lectura del filesystem no es curatorial (alfabético por id),
+        a diferencia del viejo works.json de array único — ver _get_works_by_series,
+        que ordena explícitamente por el campo 'order' de cada obra."""
+        folder = self.data_dir / 'works'
+        if not folder.is_dir():
+            sys.exit(f"❌ Error fatal: {folder} not found")
+        works = []
+        for path in sorted(folder.glob('*.json')):
+            with open(path, 'r', encoding='utf-8') as f:
+                works.append(json.load(f))
+        return works
+
     def _load_template(self, filename, optional=False):
         """Load template file from templates directory.
         optional=True: falta tolerada (ningún page builder lo usa todavía), devuelve "" y solo avisa."""
@@ -135,8 +149,10 @@ class SiteBuilder:
         return None
     
     def _get_works_by_series(self, series_id):
-        """Get all works for a series"""
-        return [w for w in self.works_data if w['series'] == series_id]
+        """Get all works for a series, ordered by el campo 'order' de cada obra
+        (ya no por posición física en el archivo, ver _load_works_folder)."""
+        works = [w for w in self.works_data if w['series'] == series_id]
+        return sorted(works, key=lambda w: w.get('order') if w.get('order') is not None else 0)
 
     def _build_series_nav(self, prev_s, next_s):
         """HTML del navegador prev/next entre series. Se reusa arriba y abajo de la galería."""

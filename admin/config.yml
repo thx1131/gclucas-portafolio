@@ -139,47 +139,49 @@ collections:
 
   - name: works
     label: "Obras"
-    files:
-      - name: works
-        label: "Todas las obras"
-        file: data/works.json
+    # Folder collection (2026-09-13): antes era un solo archivo data/works.json con
+    # las 144 obras en una lista larga para scrollear. Ahora cada obra es su propio
+    # archivo data/works/<ID>.json — Lucas tiene un botón "+ Nueva obra" en vez de
+    # buscar su lugar en una lista de 144 ítems. Ver gclucas_traspaso.md.
+    folder: data/works
+    create: true
+    slug: '{{fields.id}}'
+    identifier_field: id
+    summary: "{{fields.titleEn}} — {{fields.series}}"
+    sortable_fields: ['order', 'titleEn', 'series', 'year']
+    view_groups:
+      - { name: series, label: "Serie", field: series }
+    fields:
+      - name: cloudinaryUrl
+        label: "Imagen"
+        widget: image
+        media_folder: uploads/works
+        public_folder: /uploads/works
+        hint: "Las 144 obras originales usan URLs de Cloudinary (res.cloudinary.com); una foto nueva subida acá queda commiteada en el repo bajo /uploads/works/ — ambos formatos funcionan igual en el sitio."
+      - { name: id, label: "ID", widget: string, hint: "NO cambiar en una obra ya publicada: es también el nombre del archivo (data/works/<ID>.json)." }
+      - name: series
+        label: "Serie"
+        widget: relation
+        collection: series
+        file: series
+        value_field: '{{series.*.id}}'
+        search_fields: ['{{series.*.titleEn}}', '{{series.*.id}}']
+        display_fields: ['{{series.*.titleEn}} ({{series.*.id}})']
+        hint: "Buscá la serie por nombre — el ID se completa solo, ya no hay que tipearlo a mano."
+      - { name: titleEn, label: "Título (inglés)", widget: string }
+      - { name: titleEs, label: "Título (español)", widget: string }
+      - { name: year, label: "Año", widget: number, value_type: int }
+      - { name: technique, label: "Técnica (inglés)", widget: string }
+      - { name: techniqueEs, label: "Técnica (español)", widget: string, required: false }
+      - name: dimensions
+        label: "Dimensiones"
+        widget: object
+        hint: "Caso normal: completá Alto/Ancho/Unidad. Pieza de edición con medida variable (ej. 0 quilates): tildá 'Medida variable' y dejá Alto/Ancho/Unidad vacíos. Caso excepcional que no entra en ninguno de los dos: usá 'Medida en texto libre' en vez de Alto/Ancho."
         fields:
-          - name: works
-            label: "Obras"
-            widget: list
-            label_singular: "Obra"
-            summary: "{{fields.titleEn}} — {{fields.series}}"
-            fields:
-              - name: cloudinaryUrl
-                label: "Imagen"
-                widget: image
-                media_folder: uploads/works
-                public_folder: /uploads/works
-                hint: "Las 144 obras originales usan URLs de Cloudinary (res.cloudinary.com); una foto nueva subida acá queda commiteada en el repo bajo /uploads/works/ — ambos formatos funcionan igual en el sitio."
-              - { name: id, label: "ID", widget: string, hint: "NO cambiar en una obra ya publicada." }
-              - name: series
-                label: "Serie"
-                widget: relation
-                collection: series
-                file: series
-                value_field: '{{series.*.id}}'
-                search_fields: ['{{series.*.titleEn}}', '{{series.*.id}}']
-                display_fields: ['{{series.*.titleEn}} ({{series.*.id}})']
-                hint: "Buscá la serie por nombre — el ID se completa solo, ya no hay que tipearlo a mano."
-              - { name: titleEn, label: "Título (inglés)", widget: string }
-              - { name: titleEs, label: "Título (español)", widget: string }
-              - { name: year, label: "Año", widget: number, value_type: int }
-              - { name: technique, label: "Técnica (inglés)", widget: string }
-              - { name: techniqueEs, label: "Técnica (español)", widget: string, required: false }
-              - name: dimensions
-                label: "Dimensiones"
-                widget: object
-                hint: "Caso normal: completá Alto/Ancho/Unidad. Pieza de edición con medida variable (ej. 0 quilates): tildá 'Medida variable' y dejá Alto/Ancho/Unidad vacíos. Caso excepcional que no entra en ninguno de los dos: usá 'Medida en texto libre' en vez de Alto/Ancho."
-                fields:
-                  - { name: height, label: "Alto", widget: number, required: false }
-                  - { name: width, label: "Ancho", widget: number, required: false }
-                  - { name: unit, label: "Unidad", widget: select, options: ["cm", "in"], required: false }
-                  - { name: depth, label: "Profundidad (opcional)", widget: number, required: false }
-                  - { name: variable, label: "Medida variable", widget: boolean, default: false, hint: "Piezas de edición donde cada unidad tiene una medida distinta (ej. 0 quilates)." }
-                  - { name: raw, label: "Medida en texto libre (caso excepcional)", widget: string, required: false, hint: "Solo si no aplica ni Alto/Ancho ni 'Medida variable'." }
-              - { name: order, label: "Orden dentro de la serie", widget: number, value_type: int, required: false }
+          - { name: height, label: "Alto", widget: number, required: false }
+          - { name: width, label: "Ancho", widget: number, required: false }
+          - { name: unit, label: "Unidad", widget: select, options: ["cm", "in"], required: false }
+          - { name: depth, label: "Profundidad (opcional)", widget: number, required: false }
+          - { name: variable, label: "Medida variable", widget: boolean, default: false, hint: "Piezas de edición donde cada unidad tiene una medida distinta (ej. 0 quilates)." }
+          - { name: raw, label: "Medida en texto libre (caso excepcional)", widget: string, required: false, hint: "Solo si no aplica ni Alto/Ancho ni 'Medida variable'." }
+      - { name: order, label: "Orden dentro de la serie", widget: number, value_type: int, required: false, hint: "Menor = aparece primero dentro de su serie. El build ahora ordena explícitamente por este campo (antes dependía de la posición en works.json)." }

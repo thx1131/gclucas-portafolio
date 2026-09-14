@@ -1,0 +1,16 @@
+{
+  "id": "PEW001",
+  "series": "pixelogue",
+  "titleEn": "pew pew pew",
+  "titleEs": "pew pew pew",
+  "year": 2019,
+  "technique": "acrylic/canvas",
+  "techniqueEs": "acrilic/canvas",
+  "dimensions": {
+    "height": 155,
+    "width": 140,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEW001",
+  "order": 4
+}

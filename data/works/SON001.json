@@ -1,0 +1,16 @@
+{
+  "id": "SON001",
+  "series": "bob-ross-disturbed",
+  "titleEn": "sonic season",
+  "titleEs": "sonic season",
+  "year": 2017,
+  "technique": "acrylic, oil/canvas",
+  "techniqueEs": "acrilic, oil/canvas",
+  "dimensions": {
+    "height": 50,
+    "width": 40,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/SON001",
+  "order": 3
+}

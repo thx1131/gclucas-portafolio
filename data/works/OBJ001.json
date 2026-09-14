@@ -1,0 +1,14 @@
+{
+  "id": "OBJ001",
+  "series": "objetos-perdidos",
+  "titleEn": "objetos perdidos",
+  "titleEs": "objetos perdidos",
+  "year": 2012,
+  "technique": "shovel, soil, gold leaf (AI)",
+  "techniqueEs": "pala, tierra, baño de oro (IA)",
+  "dimensions": {
+    "variable": true
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/OBJ001",
+  "order": 1
+}

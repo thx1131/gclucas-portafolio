@@ -1,0 +1,14 @@
+{
+  "id": "QUI001",
+  "series": "0-quilates",
+  "titleEn": "0 quilates 1/43",
+  "titleEs": "0 quilates 1/43",
+  "year": 2009,
+  "technique": "plastic/gold leaf",
+  "techniqueEs": "plástico/hoja de oro",
+  "dimensions": {
+    "variable": true
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/QUI001",
+  "order": 1
+}

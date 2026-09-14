@@ -1,0 +1,16 @@
+{
+  "id": "ERR001",
+  "series": "saga",
+  "titleEn": "errante",
+  "titleEs": "errante",
+  "year": 2000,
+  "technique": "oil/canvas",
+  "techniqueEs": "oil/canvas",
+  "dimensions": {
+    "height": 190,
+    "width": 110,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/ERR001",
+  "order": 5
+}

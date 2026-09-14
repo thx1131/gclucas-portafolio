@@ -1,0 +1,16 @@
+{
+  "id": "NIN001",
+  "series": "trece-lunas",
+  "titleEn": "niña leyendo",
+  "titleEs": "niña leyendo",
+  "year": 1998,
+  "technique": "oil/canvas",
+  "techniqueEs": "oil/canvas",
+  "dimensions": {
+    "height": 150,
+    "width": 100,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/NIN001",
+  "order": 7
+}

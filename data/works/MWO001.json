@@ -1,0 +1,16 @@
+{
+  "id": "MWO001",
+  "series": "saga",
+  "titleEn": "MW",
+  "titleEs": "MW",
+  "year": 2001,
+  "technique": "oil/canvas",
+  "techniqueEs": "oil/canvas",
+  "dimensions": {
+    "height": 80,
+    "width": 80,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/MWO001",
+  "order": 7
+}

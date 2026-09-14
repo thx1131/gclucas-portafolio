@@ -1,0 +1,16 @@
+{
+  "id": "THI001",
+  "series": "headless",
+  "titleEn": "think deep",
+  "titleEs": "think deep",
+  "year": 2020,
+  "technique": "engraving/paper",
+  "techniqueEs": "grabado/papel",
+  "dimensions": {
+    "height": 38,
+    "width": 30,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/THI001",
+  "order": 7
+}

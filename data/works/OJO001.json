@@ -1,0 +1,16 @@
+{
+  "id": "OJO001",
+  "series": "saga",
+  "titleEn": "ojo de agua",
+  "titleEs": "ojo de agua",
+  "year": 2001,
+  "technique": "oil/canvas",
+  "techniqueEs": "oil/canvas",
+  "dimensions": {
+    "height": 165,
+    "width": 120,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/OJO001",
+  "order": 6
+}

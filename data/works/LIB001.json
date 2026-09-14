@@ -1,0 +1,17 @@
+{
+  "id": "LIB001",
+  "series": "libro-negro",
+  "titleEn": "libro negro",
+  "titleEs": "libro negro",
+  "year": 2011,
+  "technique": "paper, leather, steel",
+  "techniqueEs": "papel, piel, acero",
+  "dimensions": {
+    "height": 75,
+    "width": 55,
+    "unit": "cm",
+    "depth": 15
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/LIB001",
+  "order": 1
+}

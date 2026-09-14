@@ -1,0 +1,16 @@
+{
+  "id": "ITW001",
+  "series": "anticommands",
+  "titleEn": "in is the way out",
+  "titleEs": "in is the way out",
+  "year": 2013,
+  "technique": "photography",
+  "techniqueEs": "photography",
+  "dimensions": {
+    "height": 40,
+    "width": 60,
+    "unit": "cm"
+  },
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/ITW001",
+  "order": 5
+}
