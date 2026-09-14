@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-14 ("Sitio" pasó a singleton en el CMS — ver sección dedicada).
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-14 (link de preview + tablero "Flujo editorial" — ver sección dedicada).
 
 ## Qué es esto
 
@@ -93,7 +93,7 @@ Objetivo: Lucas edita texto (statement/bio/contacto) y series/obras, incluyendo 
 **Hecho 2026-09-09 (Luis + Claude)**:
 - OAuth App creada en GitHub para `thx1131/gclucas-portafolio`.
 - Worker `sveltia-cms-auth` (clon del proyecto open source oficial, sin modificar) desplegado en la cuenta de Cloudflare de Luis: `https://sveltia-cms-auth.thx1131.workers.dev`. El código fuente vive solo en `sveltia/sveltia-cms-auth` en GitHub — no se vendorizó dentro de este repo, es infraestructura aparte del sitio estático. Para volver a desplegar o actualizar: clonar ese repo y correr `wrangler deploy` logueado con la cuenta de Luis.
-- Secrets del Worker configurados vía `wrangler secret put` (nunca escritos a un archivo): `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `ALLOWED_DOMAINS=gclucas.art`.
+- Secrets del Worker configurados vía `wrangler secret put` (nunca escritos a un archivo): `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `ALLOWED_DOMAINS=gclucas.art`. ⚠️ **Desactualizado, ver sesión 2026-09-14**: ahora son tres dominios separados por coma (`gclucas.art,www.gclucas.art,gclucas-portafolio.pages.dev`), corregido después de un bug real con el separador.
 - `admin/config.yml`: `base_url` actualizado con la URL real del Worker.
 
 **Pendiente, fuera del repo (requiere acceso a las cuentas de Luis, no lo puede hacer Claude)**:
@@ -340,6 +340,18 @@ Luis probó el flujo completo con su propia cuenta (con permiso de escritura, as
 - **Bug real encontrado usando la obra de prueba `HED008`**: Luis le puso medidas (alto 1, ancho 1, cm) desde el panel y no aparecían en el sitio. Causa en `_format_dimensions()` (`build/build_site_v2.py`): chequeaba `'raw' in dims` y `'depth' in dims` — **presencia de la clave**, no si tenía contenido real. El formulario de Obras del CMS siempre guarda las 6 subclaves de `dimensions` (incluidas `raw: ""` y `depth: null` cuando no se usan, por como quedó armado el formulario desde el fix de dimensiones variables de la sesión 2026-09-12), así que **cualquier obra creada o editada desde el panel** entraba siempre por la rama de `raw` (string vacío → sin medidas visibles) sin llegar nunca a usar `height`/`width`. Las 144 obras originales nunca tuvieron esas claves si no aplicaban (vienen de la migración de datos, no del formulario), por eso el bug no se había visto hasta la primera edición real vía CMS.
   - **Fix** (commit `1b5cf9f`): `dims.get('raw')` / `dims.get('depth') is not None` en vez de chequear pertenencia de la clave — evalúan si hay contenido real. Verificado con `HED008`: antes `data-dimensions=""`, ahora `data-dimensions="1×1 cm"`. Diff del build limpio en el resto del sitio (ninguna de las 144 obras originales tiene esas claves).
   - El modal de galería (`js/gallery.js`) solo lee el atributo `data-dimensions` ya corregido — no hay un segundo lugar con el mismo bug que arreglar.
+
+## Sesión 2026-09-14 (continuación): Lucas ve sus cambios sin depender de Luis + tablero "Flujo editorial"
+
+Luis preguntó si Lucas siempre va a tener que pasar por él para ver sus cambios, y después planteó una necesidad más amplia: si es Luis quien sube algo, quiere que quede claramente marcado como "Borrador" y filtrable, para que Lucas (u otra persona) le dé el visto bueno antes de publicar.
+
+- **Preview automático, sin tocar nada de Cloudflare**: confirmado vía la API de Cloudflare (con permiso de lectura, ver más abajo) que el proyecto Pages ya tenía `preview_deployment_setting: "all"` + `pr_comments_enabled: true` — genera un deploy preview y comenta el link en **cualquier PR**, incluidos los que abre Lucas desde su fork. Ya funcionaba, nadie lo estaba usando.
+- **Falta agregar (commit `80b2af3`)**: `preview_path` en `admin/config.yml`, para que ese link aparezca directo en la pestaña "Flujo editorial" del panel (Sveltia le pregunta a GitHub por el deploy asociado al PR y arma el link) — así nadie tiene que ir a buscarlo a GitHub. Series apunta a `/work/{{id}}/` (tiene página propia); Obras apunta a `/work/{{series}}/` (vive como ítem de galería dentro de la página de su serie, no tiene página propia).
+- **El tablero "Flujo editorial" (`/admin/#/workflow`) ya resuelve lo del "Borrador"**, sin construir nada nuevo — viene con Sveltia y ya estaba activo por `publish_mode: editorial_workflow`. Confirmado en el código fuente (`src/lib/services/workflow/constants.js` + `es-CO.yaml`): 3 columnas — **Borrador** → **En revisión** → **Listo** — y confirmado en vivo entrando a esa URL (el panel anuncia "Borradores: 0. En revisión: 0. Listos: 0." cuando no hay nada pendiente). Cualquier guardado sin publicar de Luis o de Lucas aparece ahí con su estatus.
+  - **Límite real, no resuelto ni resoluble sin dar más acceso**: Lucas puede *ver* cualquier borrador (incluidos los de Luis, es un repo público) y moverlo hasta "En revisión", pero no puede marcarlo "Listo" ni publicarlo — no tiene permiso de escritura en GitHub (`OPEN_AUTHORING_STAGES` en el código de Sveltia excluye ese último paso a propósito para colaboradores sin push). El clic final de publicar siempre lo da quien tiene acceso de escritura (hoy, solo Luis). "Aceptar" en el sentido de dar el visto bueno sí funciona ya; "aceptar" en el sentido de mergear, no, por diseño (mismo motivo que se descartó darle a Lucas permiso de escritura, ver sesión 2026-09-09 y la conversación del 2026-09-14 sobre el token de Cloudflare).
+- **Pendiente de probar, bajo riesgo, quedó en backlog** (no se llegó a probar en esta sesión):
+  - Subir una imagen de portada nueva a una **serie** desde el panel — usa el mismo `media_folder` ya corregido que Obras, pero nunca se probó con un caso real específico de Series.
+  - Tildar "Medida variable" en `HED008` desde el panel real: se intentó por automatización de navegador y no se pudo — el widget `boolean` de Sveltia está armado con componentes Svelte que no exponen un checkbox/input estándar, así que un click programático no lo activa de forma confiable. Confianza alta igual de que funciona (es un widget nativo de Sveltia, no código del proyecto, y el build ya prioriza `variable` antes que alto/ancho — ver fix de sesión anterior), pero sin confirmar con un caso guardado desde el CMS. Si alguna vez se prueba a mano, confirmar que `dimensions.variable` efectivamente se guarda como `true` (booleano) y no como string.
 
 ## Backlog técnico scoped, no construido
 
