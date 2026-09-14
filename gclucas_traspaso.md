@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-14 (migración de `series.json` a folder collection en el CMS, mismo patrón que `works.json` — ver sección dedicada).
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-14 ("Sitio" pasó a singleton en el CMS — ver sección dedicada).
 
 ## Qué es esto
 
@@ -314,6 +314,14 @@ Luis pidió replicar en `series` la migración de `works` (sesión anterior). Mi
   - **Fix** (commit `9b4b192`): se quitó `file: series` y se simplificaron `value_field`/`search_fields`/`display_fields` de `{{series.*.campo}}` (sintaxis para un wildcard sobre un list field, la forma del viejo `series.json`) a nombres de campo planos (`id`, `titleEn`) — cada serie ya no vive dentro de un array, es su propia entrada.
   - **Verificado en Chrome real** tras el deploy (tardó ~2-3 min en propagarse en Cloudflare Pages — verificado con `curl` directo a `/admin/config.yml` hasta confirmar el contenido nuevo antes de reprobar en el navegador): "Series" carga sus 24 entradas, "Obras" sus 144, y abrir la obra `FIC001` muestra el campo Serie resuelto correctamente como "ficciones (ficciones)".
   - **Lección para la próxima migración de este tipo**: si un `relation` (o cualquier referencia cruzada) apunta a una colección que se va a migrar de file a folder collection, hay que revisar y actualizar esa referencia en el mismo cambio — no es automático, y el error que tira Sveltia sí es claro y bloquea toda la colección que lo contiene (no solo el campo roto).
+
+## Sesión 2026-09-14 (continuación): "Sitio" pasó de file collection a singleton
+
+Luis pidió replicar la migración también en "Sitio". A diferencia de `series`/`works`, **no aplica folder collection**: `data/site.json` es un único archivo de configuración global (statement/bio/contacto) que nunca va a tener un segundo — no hay problema de "lista larga para scrollear" que resolver. Lo análogo que ofrece Sveltia para este caso es un **singleton**: un tipo de entrada de nivel raíz (`singletons:`, hermano de `collections:` en `config.yml`, no un ítem dentro de `collections`) que se edita directo desde el sidebar, sin la lista intermedia de "un solo ítem" que tenía antes como file collection.
+
+- **Cambio, solo en `admin/config.yml`**: el bloque `- name: site` se sacó de `collections:` (donde era una file collection con `files: [{name: site, file: data/site.json, fields: [...]}]`) y pasó a `singletons:` como `{name: site, label: ..., file: data/site.json, fields: [...]}` — mismos campos, sin cambios de contenido ni de `data/site.json`.
+- **Sin cambios en `build_site_v2.py` ni en datos**: `data/site.json` sigue siendo un único objeto plano en la misma ruta; el singleton lo edita en el mismo lugar, solo cambia cómo se navega a él desde el panel.
+- **Verificado**: `python3 build/build_site_v2.py` — diff limpio contra HEAD, cero cambios en el HTML generado (nada tocó el dato). YAML validado con `yaml.safe_load` (`collections: [series, works]`, `singletons: [site]`).
 
 ## Backlog técnico scoped, no construido
 

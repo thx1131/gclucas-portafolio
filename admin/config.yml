@@ -55,61 +55,63 @@ media_libraries:
   all:
     slugify_filename: true
 
-collections:
+# Singleton (2026-09-14): "Sitio" solo tiene un archivo (data/site.json), nunca va a
+# haber un segundo — no es una lista de ítems como Series/Obras, así que no aplica
+# folder collection. Un singleton le da la mejora análoga (menos clics: edita directo,
+# sin la lista intermedia de un solo ítem que tenía antes como file collection).
+singletons:
   - name: site
     label: "Sitio (statement, bio, contacto)"
-    files:
-      - name: site
-        label: "Contenido global"
-        file: data/site.json
+    file: data/site.json
+    fields:
+      # --- editable por Lucas ---
+      - { name: author, label: "Nombre del artista", widget: string }
+      - { name: descriptionEn, label: "Descripción corta (inglés, para SEO)", widget: text }
+      - { name: descriptionEs, label: "Descripción corta (español, para SEO)", widget: text }
+      - name: statementEn
+        label: "Statement (inglés)"
+        widget: list
+        label_singular: "Párrafo"
+        field: { name: paragraph, label: "Párrafo", widget: text }
+      - name: statementEs
+        label: "Statement (español)"
+        widget: list
+        label_singular: "Párrafo"
+        field: { name: paragraph, label: "Párrafo", widget: text }
+      - name: bioEn
+        label: "Bio (inglés)"
+        widget: list
+        label_singular: "Párrafo"
+        field: { name: paragraph, label: "Párrafo", widget: text }
+      - name: bioEs
+        label: "Bio (español)"
+        widget: list
+        label_singular: "Párrafo"
+        field: { name: paragraph, label: "Párrafo", widget: text }
+      - { name: email, label: "Email de contacto", widget: string }
+      - { name: phone, label: "Teléfono (formato con espacios, ej. +52 415 151 1029)", widget: string }
+      - { name: whatsapp_number, label: "WhatsApp (solo dígitos, sin +, ej. 524151511029)", widget: string, hint: "Debe ser el mismo número que 'Teléfono', solo que sin espacios ni +. Si cambia el teléfono, actualizar acá también." }
+      - { name: whatsapp, label: "Link de WhatsApp completo", widget: string, hint: "Debe ser https://wa.me/ seguido de 'WhatsApp (solo dígitos)' de arriba. Si cambia el teléfono, actualizar acá también." }
+      - { name: instagram, label: "Link de Instagram", widget: string }
+      - { name: copyright, label: "Texto de copyright del footer", widget: string }
+      # --- técnico, no tocar (se preserva oculto para no romper el sitio) ---
+      - { name: title, widget: hidden }
+      - { name: language, widget: hidden }
+      - { name: url, widget: hidden }
+      - name: colors
+        widget: object
+        hidden: true
         fields:
-          # --- editable por Lucas ---
-          - { name: author, label: "Nombre del artista", widget: string }
-          - { name: descriptionEn, label: "Descripción corta (inglés, para SEO)", widget: text }
-          - { name: descriptionEs, label: "Descripción corta (español, para SEO)", widget: text }
-          - name: statementEn
-            label: "Statement (inglés)"
-            widget: list
-            label_singular: "Párrafo"
-            field: { name: paragraph, label: "Párrafo", widget: text }
-          - name: statementEs
-            label: "Statement (español)"
-            widget: list
-            label_singular: "Párrafo"
-            field: { name: paragraph, label: "Párrafo", widget: text }
-          - name: bioEn
-            label: "Bio (inglés)"
-            widget: list
-            label_singular: "Párrafo"
-            field: { name: paragraph, label: "Párrafo", widget: text }
-          - name: bioEs
-            label: "Bio (español)"
-            widget: list
-            label_singular: "Párrafo"
-            field: { name: paragraph, label: "Párrafo", widget: text }
-          - { name: email, label: "Email de contacto", widget: string }
-          - { name: phone, label: "Teléfono (formato con espacios, ej. +52 415 151 1029)", widget: string }
-          - { name: whatsapp_number, label: "WhatsApp (solo dígitos, sin +, ej. 524151511029)", widget: string, hint: "Debe ser el mismo número que 'Teléfono', solo que sin espacios ni +. Si cambia el teléfono, actualizar acá también." }
-          - { name: whatsapp, label: "Link de WhatsApp completo", widget: string, hint: "Debe ser https://wa.me/ seguido de 'WhatsApp (solo dígitos)' de arriba. Si cambia el teléfono, actualizar acá también." }
-          - { name: instagram, label: "Link de Instagram", widget: string }
-          - { name: copyright, label: "Texto de copyright del footer", widget: string }
-          # --- técnico, no tocar (se preserva oculto para no romper el sitio) ---
-          - { name: title, widget: hidden }
-          - { name: language, widget: hidden }
-          - { name: url, widget: hidden }
-          - name: colors
-            widget: object
-            hidden: true
-            fields:
-              - { name: bgLight, widget: hidden }
-              - { name: bgDark, widget: hidden }
-              - { name: textLight, widget: hidden }
-              - { name: textDark, widget: hidden }
-              - { name: borderLight, widget: hidden }
-              - { name: borderDark, widget: hidden }
-              - { name: accentLight, widget: hidden }
-              - { name: accentDark, widget: hidden }
+          - { name: bgLight, widget: hidden }
+          - { name: bgDark, widget: hidden }
+          - { name: textLight, widget: hidden }
+          - { name: textDark, widget: hidden }
+          - { name: borderLight, widget: hidden }
+          - { name: borderDark, widget: hidden }
+          - { name: accentLight, widget: hidden }
+          - { name: accentDark, widget: hidden }
 
+collections:
   - name: series
     label: "Series"
     # Folder collection (2026-09-14), mismo patrón que "Obras" (ver esa sección abajo
