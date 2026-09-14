@@ -135,7 +135,12 @@ collections:
       - name: coverImage
         label: "Imagen de portada"
         widget: image
-        media_folder: uploads/series
+        # OJO: la barra inicial en media_folder es obligatoria. Sin ella, Sveltia trata
+        # la ruta como relativa a la carpeta de LA ENTRADA (folder collection), no a la
+        # raíz del repo — la imagen terminaba guardada dentro de data/series/uploads/...
+        # en vez de /uploads/series/, y la URL guardada en el JSON quedaba sin "/" inicial
+        # (no resuelve como src de imagen). Bug real, ver gclucas_traspaso.md 2026-09-14.
+        media_folder: /uploads/series
         public_folder: /uploads/series
         hint: "Las 144 obras originales usan URLs de Cloudinary (res.cloudinary.com); una foto nueva subida acá queda commiteada en el repo bajo /uploads/series/ — ambos formatos funcionan igual en el sitio."
       - { name: order, label: "Orden (menor = aparece primero)", widget: number, value_type: int, hint: "Controla el orden de navegación prev/next entre series (build_site_v2.py ordena explícitamente por este campo)." }
@@ -160,7 +165,8 @@ collections:
       - name: cloudinaryUrl
         label: "Imagen"
         widget: image
-        media_folder: uploads/works
+        # Ídem coverImage de Series: la barra inicial es obligatoria, ver ese comentario.
+        media_folder: /uploads/works
         public_folder: /uploads/works
         hint: "Las 144 obras originales usan URLs de Cloudinary (res.cloudinary.com); una foto nueva subida acá queda commiteada en el repo bajo /uploads/works/ — ambos formatos funcionan igual en el sitio."
       - { name: id, label: "ID", widget: string, hint: "NO cambiar en una obra ya publicada: es también el nombre del archivo (data/works/<ID>.json)." }
