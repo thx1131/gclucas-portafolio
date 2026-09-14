@@ -55,7 +55,7 @@ Config lives in `admin/config.yml`. Setup checklist (GitHub OAuth App, Cloudflar
 
 ### Option 2: Edit JSON directly (Luis)
 
-1. Open `data/series.json` (shape `{"series": [...]}`) or, for a work, its own file under `data/works/<ID>.json`
+1. Open the series' own file under `data/series/<ID>.json`, or a work's under `data/works/<ID>.json`
 2. Make changes
 3. Run `python3 build/build_site_v2.py`
 4. Commit and push
@@ -68,7 +68,7 @@ The old Excel/Sheets editing flow was retired — `data/*.json` is the single so
 
 ```
 admin/ (CMS panel, PR-based) ─┐
-                               ├─→ data/series.json + data/works/*.json + data/site.json
+                               ├─→ data/series/*.json + data/works/*.json + data/site.json
 data/*.json edited by hand ───┘         ↓
                                   build_site_v2.py
                                          ↓
@@ -95,8 +95,8 @@ gclucas-portafolio/
 │   ├── index.html
 │   └── config.yml
 ├── data/                   ← JSON data
-│   ├── series.json         ← { "series": [...] }
-│   ├── works/               ← one file per work, data/works/<ID>.json
+│   ├── series/               ← one file per series, data/series/<ID>.json
+│   ├── works/                ← one file per work, data/works/<ID>.json
 │   └── site.json
 ├── templates/              ← HTML templates
 │   ├── base.html
@@ -134,7 +134,7 @@ gclucas-portafolio/
 
 ### Add a New Series
 
-1. Add entry to `data/series.json`:
+1. Add a series as a new file `data/series/new-series.json` (filename must match `id`):
 ```json
 {
   "id": "new-series",
@@ -189,9 +189,10 @@ Every branch/PR (including the ones the CMS opens) also gets an automatic Cloudf
 
 ## 📊 DATA STRUCTURE
 
-### series.json
-- Shape: `{ "series": [ {...}, {...} ] }`
+### series/ (folder, one JSON file per series)
+- One file per series at `data/series/<ID>.json`, filename must match the `id` field
 - Metadata for each series (title, year, description)
+- `order` controls prev/next navigation between series — the build sorts by it explicitly
 - Used to generate `/work/series-name/` pages
 - Referenced by each work (data/works/<ID>.json) via `series` field
 
@@ -248,7 +249,7 @@ For detailed architecture decisions, see **[ARCHITECTURE.md](./ARCHITECTURE.md)*
 python3 build/build_site_v2.py
 ```
 
-### "FileNotFoundError: data/series.json"
+### "Error fatal: data/series not found"
 Make sure you're running from the project root:
 ```bash
 cd gclucas-portafolio

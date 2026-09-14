@@ -73,7 +73,7 @@ gclucas-portafolio/
 │       └── seo.html                    ← SEO metadata (if needed)
 │
 ├── data/
-│   ├── series.json                     ← 24 series metadata
+│   ├── series/                         ← 24 series metadata, one file per series (data/series/<ID>.json)
 │   ├── works/                          ← 144+ individual works, one file per work (data/works/<ID>.json)
 │   └── site.json                       ← Global config (email, socials, etc)
 │
@@ -354,7 +354,7 @@ python build_site.py
 
 1. **Edit data files directly:**
    ```
-   data/series.json   (shape: { "series": [...] })
+   data/series/       (folder collection, one file per series: data/series/<ID>.json)
    data/works/        (folder collection, one file per work: data/works/<ID>.json)
    data/site.json
    ```
@@ -410,7 +410,7 @@ python build_site.py
 | File | Purpose |
 |------|---------|
 | `build/build_site.py` | Main generator - reads JSON, writes HTML |
-| `data/series.json` | Series metadata (24 series) |
+| `data/series/` | Series metadata, one file per series (24 series) |
 | `data/works/` | Works metadata, one file per work (144+ works) |
 | `data/site.json` | Global configuration |
 | `templates/base.html` | Master template (all pages inherit) |

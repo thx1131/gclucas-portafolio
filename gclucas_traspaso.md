@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-13 (migración de `works.json` a folder collection en el CMS — ver sección dedicada).
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-14 (migración de `series.json` a folder collection en el CMS, mismo patrón que `works.json` — ver sección dedicada).
 
 ## Qué es esto
 
@@ -301,6 +301,16 @@ Punto 4 del backlog de fricción del CMS (arriba). Solo se migró `works` — no
 - **Segundo bug, mismo día: tras el fix de arriba, "Obras" pasó de "vacía" a mostrar 144 errores en consola** (`data/works/<ID>.json could not be parsed due to SyntaxError: Unexpected end of JSON input`, uno por obra). Se descartó que fuera un problema del dato: se verificó vía la API de GitHub que el contenido real de varios archivos (`FIC001.json`, `2911001.json`) es JSON válido en `main`. Se clonó el código fuente de `sveltia/sveltia-cms` (`fetch.js`/`files.js`/`parse.js`) para entender el flujo: Sveltia cachea en IndexedDB (`github:thx1131/gclucas-portafolio`, store `file-cache`) los metadatos de commit (`meta`) de cada archivo por separado del contenido (`text`); un archivo con `meta` ya cacheado se excluye de la próxima ronda de fetch de contenido (`fetchingFiles = allFiles.filter(({meta}) => !meta)`), asumiendo que ya está completo. Se inspeccionó la IndexedDB real del navegador (`indexedDB.databases()` + leer el store `file-cache` vía consola) y se confirmó: las 144 obras tenían `meta` cacheado (de un intento anterior, probablemente el primer intento fallido de antes del fix de `extension/format`) pero **sin** el campo `text` — el contenido nunca se cacheó, y por el chequeo de arriba nunca se reintentaba. Cada vez que el CMS armaba la entrada, el texto faltante se resolvía a `''`, y `JSON.parse('')` tira exactamente "Unexpected end of JSON input" para las 144.
   - **Fix**: `indexedDB.deleteDatabase('github:thx1131/gclucas-portafolio')` en la consola del navegador (o Ajustes del navegador → borrar datos del sitio de `gclucas.art`) + recargar `/admin/`. Confirmado con Chrome real: tras borrar la caché, "Obras" carga las 144 entradas con miniatura y título, sin errores en consola (verificado con recarga completa adicional).
   - **No requirió ningún cambio de código ni de config** — es un problema de estado local del navegador que hizo la migración, no del repo. Si vuelve a pasar (a Lucas o a Luis, en cualquier navegador), el mismo paso lo arregla: borrar el site data de `gclucas.art` (o el IndexedDB `github:<owner>/<repo>`) y recargar `/admin/`.
+
+## Sesión 2026-09-14: `series.json` también migrado a folder collection
+
+Luis pidió replicar en `series` la migración de `works` (sesión anterior). Mismo patrón, con dos diferencias respecto a `works`:
+
+- **`extension: json` + `format: json` declarados desde el primer commit** — la sesión anterior tuvo que arreglar esto después para `works`; acá se aprendió la lección y se agregó de entrada.
+- **`build_site_v2.py` necesitó un ajuste que `works` no necesitó**: el orden de `self.series_data` importa en todo el builder (no solo dentro de una serie) — lo usa la navegación prev/next entre series (`_build_series_nav`, vía índice de array) y el sitemap. `_load_series_folder()` (nuevo método, mismo lugar que `_load_works_folder`) ahora ordena explícitamente por el campo `order` de cada serie apenas termina de leer la carpeta, en vez de dejar que cada consumidor lo haga por su cuenta — a diferencia de `_get_works_by_series`, que ordena solo al filtrar por serie.
+- **Dato**: `data/series.json` (`{"series": [...]}`, 24 ítems) partido en `data/series/<ID>.json`. Verificado antes de migrar: las 24 series ya traían `order` sin huecos ni duplicados, IDs únicos y filename-safe.
+- **Verificado**: `python3 build/build_site_v2.py` + diff contra el HEAD anterior — cero cambios en absolutamente ningún archivo generado (ni siquiera `sitemap.xml`, que ya tenía la fecha de hoy de la sesión anterior). YAML validado con `yaml.safe_load`.
+- **No se repitió la prueba en el panel real** (`/admin/`) en esta sesión — recomendado antes de que Lucas/Luis lo usen: si el navegador tiene caché vieja de antes de este cambio, puede aparecer el mismo síntoma que con `works` (ver arriba) — mismo fix, borrar el IndexedDB `github:thx1131/gclucas-portafolio` y recargar.
 
 ## Backlog técnico scoped, no construido
 

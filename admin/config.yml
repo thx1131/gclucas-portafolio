@@ -112,30 +112,31 @@ collections:
 
   - name: series
     label: "Series"
-    files:
-      - name: series
-        label: "Todas las series"
-        file: data/series.json
-        fields:
-          - name: series
-            label: "Series"
-            widget: list
-            label_singular: "Serie"
-            summary: "{{fields.titleEn}} ({{fields.year}})"
-            fields:
-              - { name: id, label: "ID (slug de la URL)", widget: string, hint: "NO cambiar en una serie ya publicada: rompe la URL /work/<id>/. Para una serie nueva, usar minúsculas y guiones, sin espacios ni acentos." }
-              - { name: titleEn, label: "Título (inglés)", widget: string }
-              - { name: titleEs, label: "Título (español)", widget: string }
-              - { name: year, label: "Año", widget: number, value_type: int }
-              - { name: statementEn, label: "Statement de la serie (inglés)", widget: text }
-              - { name: statementEs, label: "Statement de la serie (español)", widget: text }
-              - name: coverImage
-                label: "Imagen de portada"
-                widget: image
-                media_folder: uploads/series
-                public_folder: /uploads/series
-                hint: "Las 144 obras originales usan URLs de Cloudinary (res.cloudinary.com); una foto nueva subida acá queda commiteada en el repo bajo /uploads/series/ — ambos formatos funcionan igual en el sitio."
-              - { name: order, label: "Orden (menor = aparece primero)", widget: number, value_type: int }
+    # Folder collection (2026-09-14), mismo patrón que "Obras" (ver esa sección abajo
+    # y en gclucas_traspaso.md). extension/format declarados desde el día uno acá —
+    # el primer intento con "Obras" tuvo que arreglarse después por faltar esto.
+    folder: data/series
+    create: true
+    extension: json
+    format: json
+    slug: '{{fields.id}}'
+    identifier_field: id
+    summary: "{{fields.titleEn}} ({{fields.year}})"
+    sortable_fields: ['order', 'titleEn', 'year']
+    fields:
+      - { name: id, label: "ID (slug de la URL)", widget: string, hint: "NO cambiar en una serie ya publicada: rompe la URL /work/<id>/ y es también el nombre del archivo (data/series/<ID>.json). Para una serie nueva, usar minúsculas y guiones, sin espacios ni acentos." }
+      - { name: titleEn, label: "Título (inglés)", widget: string }
+      - { name: titleEs, label: "Título (español)", widget: string }
+      - { name: year, label: "Año", widget: number, value_type: int }
+      - { name: statementEn, label: "Statement de la serie (inglés)", widget: text }
+      - { name: statementEs, label: "Statement de la serie (español)", widget: text }
+      - name: coverImage
+        label: "Imagen de portada"
+        widget: image
+        media_folder: uploads/series
+        public_folder: /uploads/series
+        hint: "Las 144 obras originales usan URLs de Cloudinary (res.cloudinary.com); una foto nueva subida acá queda commiteada en el repo bajo /uploads/series/ — ambos formatos funcionan igual en el sitio."
+      - { name: order, label: "Orden (menor = aparece primero)", widget: number, value_type: int, hint: "Controla el orden de navegación prev/next entre series (build_site_v2.py ordena explícitamente por este campo)." }
 
   - name: works
     label: "Obras"

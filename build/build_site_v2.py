@@ -27,7 +27,7 @@ class SiteBuilder:
         self.output_dir = self.base_dir
         
         # Load data
-        self.series_data = self._load_json('series.json')['series']
+        self.series_data = self._load_series_folder()
         self.works_data = self._load_works_folder()
         self.site_data = self._load_json('site.json')
         
@@ -120,6 +120,22 @@ class SiteBuilder:
             with open(path, 'r', encoding='utf-8') as f:
                 works.append(json.load(f))
         return works
+
+    def _load_series_folder(self):
+        """Carga data/series/ (folder collection del CMS: un archivo JSON por serie).
+        A diferencia de works, el orden de self.series_data importa en todo el builder
+        (navegación prev/next entre series, sitemap, etc.), así que se ordena acá mismo
+        por el campo 'order' de cada serie — el orden de lectura del filesystem
+        (alfabético por id) ya no es curatorial como lo era el viejo series.json."""
+        folder = self.data_dir / 'series'
+        if not folder.is_dir():
+            sys.exit(f"❌ Error fatal: {folder} not found")
+        series = []
+        for path in sorted(folder.glob('*.json')):
+            with open(path, 'r', encoding='utf-8') as f:
+                series.append(json.load(f))
+        series.sort(key=lambda s: s.get('order') if s.get('order') is not None else 0)
+        return series
 
     def _load_template(self, filename, optional=False):
         """Load template file from templates directory.
