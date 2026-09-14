@@ -180,17 +180,23 @@ class SiteBuilder:
         return nav
 
     def _format_dimensions(self, dims):
-        """Formatea dimensions en sus variantes: normal, 3D, variables, raw, vacío"""
+        """Formatea dimensions en sus variantes: normal, 3D, variables, raw, vacío.
+        El formulario de Obras en el CMS guarda las 6 subclaves siempre (height/width/
+        unit/depth/variable/raw), vacías o null si no aplican — a diferencia de las 144
+        obras originales, que solo tienen las claves que usan. Por eso todo acá chequea
+        contenido real (valores truthy / is not None), nunca solo si la clave existe."""
         if not dims:
             return ""
         if dims.get('variable'):
             return "variable dimensions"
         if dims.get('raw'):
             return dims['raw']
+        if not dims.get('height') or not dims.get('width'):
+            return ""
         parts = [str(dims['height']), str(dims['width'])]
         if dims.get('depth') is not None:
             parts.append(str(dims['depth']))
-        return "×".join(parts) + f" {dims.get('unit', 'cm')}"
+        return "×".join(parts) + f" {dims.get('unit') or 'cm'}"
     
     def _truncate(self, text, length=100):
         """Corta texto a `length` caracteres sin partir una palabra a la mitad"""
