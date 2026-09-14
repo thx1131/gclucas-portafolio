@@ -185,10 +185,10 @@ class SiteBuilder:
             return ""
         if dims.get('variable'):
             return "variable dimensions"
-        if 'raw' in dims:
+        if dims.get('raw'):
             return dims['raw']
         parts = [str(dims['height']), str(dims['width'])]
-        if 'depth' in dims:
+        if dims.get('depth') is not None:
             parts.append(str(dims['depth']))
         return "×".join(parts) + f" {dims.get('unit', 'cm')}"
     
