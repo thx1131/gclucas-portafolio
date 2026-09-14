@@ -125,6 +125,10 @@ collections:
     identifier_field: id
     summary: "{{fields.titleEn}} ({{fields.year}})"
     sortable_fields: ['order', 'titleEn', 'year']
+    # Link de preview en la pestaña "Flujo editorial": Sveltia le pregunta a GitHub por
+    # el deploy de Cloudflare Pages asociado al PR y arma el link con esta ruta — así
+    # quien guardó (Lucas o Luis) ve su cambio en vivo sin ir a buscar el link a GitHub.
+    preview_path: '/work/{{id}}/'
     fields:
       - { name: id, label: "ID (slug de la URL)", widget: string, hint: "NO cambiar en una serie ya publicada: rompe la URL /work/<id>/ y es también el nombre del archivo (data/series/<ID>.json). Para una serie nueva, usar minúsculas y guiones, sin espacios ni acentos." }
       - { name: titleEn, label: "Título (inglés)", widget: string }
@@ -161,6 +165,9 @@ collections:
     sortable_fields: ['order', 'titleEn', 'series', 'year']
     view_groups:
       - { name: series, label: "Serie", field: series }
+    # Una obra no tiene página propia — vive como ítem de galería dentro de la página
+    # de su serie, así que el preview apunta ahí (mismo mecanismo que en Series arriba).
+    preview_path: '/work/{{series}}/'
     fields:
       - name: cloudinaryUrl
         label: "Imagen"
