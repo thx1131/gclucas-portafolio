@@ -145,6 +145,8 @@ collections:
     # buscar su lugar en una lista de 144 ítems. Ver gclucas_traspaso.md.
     folder: data/works
     create: true
+    extension: json
+    format: json
     slug: '{{fields.id}}'
     identifier_field: id
     summary: "{{fields.titleEn}} — {{fields.series}}"
