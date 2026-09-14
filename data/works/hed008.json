@@ -8,9 +8,9 @@
   "technique": "PEND",
   "techniqueEs": "",
   "dimensions": {
-    "height": 0,
-    "width": 0,
-    "unit": "",
+    "height": 1,
+    "width": 1,
+    "unit": "cm",
     "depth": null,
     "variable": false,
     "raw": ""
