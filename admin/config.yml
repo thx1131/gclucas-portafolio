@@ -166,10 +166,9 @@ collections:
         label: "Serie"
         widget: relation
         collection: series
-        file: series
-        value_field: '{{series.*.id}}'
-        search_fields: ['{{series.*.titleEn}}', '{{series.*.id}}']
-        display_fields: ['{{series.*.titleEn}} ({{series.*.id}})']
+        value_field: 'id'
+        search_fields: ['titleEn', 'id']
+        display_fields: ['{{titleEn}} ({{id}})']
         hint: "Buscá la serie por nombre — el ID se completa solo, ya no hay que tipearlo a mano."
       - { name: titleEn, label: "Título (inglés)", widget: string }
       - { name: titleEs, label: "Título (español)", widget: string }
