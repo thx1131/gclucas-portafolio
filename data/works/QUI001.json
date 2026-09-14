@@ -1,4 +1,5 @@
 {
+  "cloudinaryUrl": "/uploads/works/whatsapp-image-2026-09-09-at-8.55.19-pm-3.jpeg",
   "id": "QUI001",
   "series": "0-quilates",
   "titleEn": "0 quilates 1/43",
@@ -7,8 +8,12 @@
   "technique": "plastic/gold leaf",
   "techniqueEs": "plástico/hoja de oro",
   "dimensions": {
-    "variable": true
+    "height": null,
+    "width": null,
+    "unit": "",
+    "depth": null,
+    "variable": true,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/QUI001",
   "order": 1
 }
