@@ -323,6 +323,16 @@ Luis pidió replicar la migración también en "Sitio". A diferencia de `series`
 - **Sin cambios en `build_site_v2.py` ni en datos**: `data/site.json` sigue siendo un único objeto plano en la misma ruta; el singleton lo edita en el mismo lugar, solo cambia cómo se navega a él desde el panel.
 - **Verificado**: `python3 build/build_site_v2.py` — diff limpio contra HEAD, cero cambios en el HTML generado (nada tocó el dato). YAML validado con `yaml.safe_load` (`collections: [series, works]`, `singletons: [site]`).
 
+## Sesión 2026-09-14 (continuación): primera prueba real end-to-end del CMS — encontró un bug de media_folder
+
+Luis probó el flujo completo con su propia cuenta (con permiso de escritura, así que sin fork): creó una obra de prueba `HED008` en la serie `headless` desde `/admin/`, subió una imagen, guardó (abrió PR `cms/works/hed008`) y mergeó (`bc8cf98` → `99261ea`, PR #1 de GitHub). El deploy se disparó solo, pero la imagen apareció rota en el sitio publicado.
+
+- **Causa**: `admin/config.yml` tenía `media_folder: uploads/works` (y `uploads/series`) **sin barra inicial** en los campos de imagen de Obras/Series. En una *folder collection*, un `media_folder` relativo se resuelve relativo a la carpeta de la entrada (`data/works/<id>/`), no a la raíz del repo — confirmado leyendo el código fuente de Sveltia (`src/lib/services/config/folders/assets.js`, línea ~126: `const entryRelative = !mediaFolder.startsWith('/')`). Resultado real: el archivo quedó commiteado en `data/works/uploads/works/whatsapp-....jpeg` (anidado dentro de la carpeta de la obra) en vez de `uploads/works/` en la raíz, y la URL que quedó guardada en `hed008.json` (`"uploads/works/whatsapp-....jpeg"`, sin `/` inicial) tampoco servía como `src` de imagen — un path relativo en HTML se resuelve contra la URL de la página, no contra la raíz del sitio.
+- **Fix** (commit `dcf2a02`): se agregó la barra inicial a `media_folder` en ambos campos de imagen (`coverImage` de Series, `cloudinaryUrl` de Obras) — `/uploads/series`, `/uploads/works`. `public_folder` ya la tenía bien desde el principio, por eso el bug no se vio en la revisión de config, solo al probar con un upload real.
+- **La obra de prueba se dejó viva, corregida en su lugar** (no se borró): Luis quiere seguir usándola para probar edición/borrado desde el CMS. Se movió el archivo a `uploads/works/` y se corrigió la URL en `data/works/hed008.json` a `/uploads/works/whatsapp-....jpeg`. Verificado regenerando el sitio: `work/headless/index.html` referencia la imagen con la ruta correcta.
+- **Nota para cuando se borre `HED008` de verdad** (vía CMS o a mano): junto con `data/works/hed008.json`, borrar también `uploads/works/whatsapp-image-2026-09-09-at-8.55.19-pm-4.jpeg` si no se vuelve a usar — el CMS no borra archivos de imagen huérfanos automáticamente al borrar una entrada.
+- **Confirma que el flujo end-to-end del CMS funciona** (pendiente #4 de la sección "CMS para Lucas" de arriba): crear obra + subir imagen + guardar (PR) + mergear + rebuild automático — todo funcionó, el único problema fue el bug de rutas ya corregido.
+
 ## Backlog técnico scoped, no construido
 
 - `actualizar.sh` — script que encadene el pipeline restante (build → push) para cambios locales
