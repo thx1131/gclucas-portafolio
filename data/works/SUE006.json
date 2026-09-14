@@ -1,16 +1,19 @@
 {
+  "cloudinaryUrl": "/uploads/works/vision4.jpeg",
   "id": "SUE006",
   "series": "vision-de-filippo",
-  "titleEn": "pendiente",
-  "titleEs": "pendiente",
+  "titleEn": "visión de filippo 4",
+  "titleEs": "visión de filippo 4",
   "year": 2021,
   "technique": "acrylic/canvas",
   "techniqueEs": "acrilic/canvas",
   "dimensions": {
     "height": 60,
     "width": 90,
-    "unit": "cm"
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "",
-  "order": 6
+  "order": 4
 }
