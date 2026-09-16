@@ -2,17 +2,17 @@
   "cloudinaryUrl": "/uploads/works/whatsapp-image-2026-09-09-at-8.53.57-pm-4.jpeg",
   "id": "0qui001",
   "series": "0-quilates",
-  "titleEn": "",
-  "titleEs": "",
-  "year": null,
-  "technique": "",
-  "techniqueEs": "",
+  "titleEn": "zero carat",
+  "titleEs": "cero quilates",
+  "year": 2009,
+  "technique": "plastic/gold leaf",
+  "techniqueEs": "plástico/hoja de oro",
   "dimensions": {
     "height": null,
     "width": null,
     "unit": "",
     "depth": null,
-    "variable": false,
+    "variable": true,
     "raw": ""
   },
   "order": null
