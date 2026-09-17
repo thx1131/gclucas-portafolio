@@ -1,0 +1,19 @@
+{
+  "cloudinaryUrl": "/uploads/works/whatsapp-image-2026-09-09-at-8.53.57-pm-2.jpeg",
+  "id": "ar001",
+  "series": "archeology-road",
+  "titleEn": "2945 AD",
+  "titleEs": "2945 AD",
+  "year": 2010,
+  "technique": "oil/canvas",
+  "techniqueEs": "óleo/tela",
+  "dimensions": {
+    "height": 50,
+    "width": 150,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
+  },
+  "order": null
+}
