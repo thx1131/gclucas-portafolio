@@ -1,0 +1,19 @@
+{
+  "cloudinaryUrl": "/uploads/works/tompe-l-oeil1.jpeg",
+  "id": "",
+  "series": "trompe-l-oeil",
+  "titleEn": "",
+  "titleEs": "",
+  "year": null,
+  "technique": "",
+  "techniqueEs": "",
+  "dimensions": {
+    "height": null,
+    "width": null,
+    "unit": "",
+    "depth": null,
+    "variable": false,
+    "raw": ""
+  },
+  "order": null
+}
