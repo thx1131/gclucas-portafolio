@@ -1,0 +1,19 @@
+{
+  "cloudinaryUrl": "/uploads/works/anticommands-4.jpeg",
+  "id": "td001",
+  "series": "anticommands",
+  "titleEn": "todo duda",
+  "titleEs": "todo duda",
+  "year": 2013,
+  "technique": "photography",
+  "techniqueEs": "fotografía",
+  "dimensions": {
+    "height": 40,
+    "width": 60,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
+  },
+  "order": null
+}
