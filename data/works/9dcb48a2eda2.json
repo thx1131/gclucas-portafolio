@@ -1,0 +1,19 @@
+{
+  "cloudinaryUrl": "/uploads/works/whatsapp-image-2026-09-09-at-8.53.57-pm-1.jpeg",
+  "id": "ar002",
+  "series": "archeology-road",
+  "titleEn": "2992 ad",
+  "titleEs": "2992 ad",
+  "year": 2010,
+  "technique": "oil/canvas",
+  "techniqueEs": "óleo/tela",
+  "dimensions": {
+    "height": 50,
+    "width": 150,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
+  },
+  "order": null
+}
