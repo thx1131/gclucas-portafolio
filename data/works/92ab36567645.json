@@ -1,0 +1,19 @@
+{
+  "cloudinaryUrl": "/uploads/works/anticommands-2.jpeg",
+  "id": "nls001",
+  "series": "anticommands",
+  "titleEn": "no lo sé",
+  "titleEs": "no lo sé",
+  "year": 2013,
+  "technique": "photography",
+  "techniqueEs": "fotografía",
+  "dimensions": {
+    "height": 40,
+    "width": 60,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
+  },
+  "order": null
+}
