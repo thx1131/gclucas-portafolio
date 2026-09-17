@@ -1,0 +1,19 @@
+{
+  "cloudinaryUrl": "/uploads/works/anticommands-3.jpeg",
+  "id": "sio001",
+  "series": "anticommands",
+  "titleEn": "success is overated",
+  "titleEs": "success is overated",
+  "year": 2013,
+  "technique": "photography",
+  "techniqueEs": "fotografía",
+  "dimensions": {
+    "height": 40,
+    "width": 60,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
+  },
+  "order": null
+}
