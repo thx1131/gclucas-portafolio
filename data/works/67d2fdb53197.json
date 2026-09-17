@@ -1,0 +1,19 @@
+{
+  "cloudinaryUrl": "/uploads/works/anticommands-6.jpeg",
+  "id": "bp001",
+  "series": "anticommands",
+  "titleEn": "boost perception",
+  "titleEs": "boost perception",
+  "year": 2013,
+  "technique": "photography",
+  "techniqueEs": "fotografía",
+  "dimensions": {
+    "height": 40,
+    "width": 60,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
+  },
+  "order": null
+}
