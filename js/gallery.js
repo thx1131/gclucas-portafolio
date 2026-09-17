@@ -92,7 +92,7 @@ document.addEventListener('click', (e) => {
             const items = Array.from(galleryContainer.querySelectorAll('.gallery-item')).map(el => ({
                 image: el.querySelector('img').src,
                 title: el.querySelector('h4')?.textContent || '',
-                year: el.querySelector('.year')?.textContent || '',
+                year: el.dataset.year || '',
                 technique: el.dataset.technique || '',
                 dimensions: el.dataset.dimensions || ''
             }));

@@ -337,7 +337,7 @@ class SiteBuilder:
             for work in works:
                 dimensions = self._format_dimensions(work['dimensions'])
                 gallery_html += f"""
-                <div class="gallery-item" data-technique="{work['technique']}" data-dimensions="{dimensions}">
+                <div class="gallery-item" data-technique="{work['technique']}" data-dimensions="{dimensions}" data-year="{work['year']}">
                     <img src="{self._optimized_image_url(work['cloudinaryUrl'])}" alt="{work['titleEn']}" loading="lazy">
                     <div class="gallery-item-info">
                         <h4>{work['titleEn']}</h4>

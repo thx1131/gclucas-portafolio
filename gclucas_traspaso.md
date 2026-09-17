@@ -369,6 +369,17 @@ Luis preguntó si Lucas siempre va a tener que pasar por él para ver sus cambio
   2. Revisar y publicar los 4 PRs en `pending_review` (#24, #37, #38, #40) mencionados arriba.
   3. Hacia el final de la sesión, Lucas empezó a cargar obras nuevas en volumen (~28 PRs en `draft` se abrieron en minutos, #42 a #68) — no se revisó ninguno, quedan para que Luis los vaya pasando por Borrador → En revisión → Listo → Publicar a su ritmo. Mencionarlo acá para que el próximo traspaso no se sorprenda con un número de PR mucho más alto de lo esperado.
 
+## Sesión 2026-09-17: ficha de obra (modal) — título sin negrita + año agregado debajo del material
+
+Luis pidió que en la ficha individual de cada obra (el modal que se abre al hacer click en una pieza dentro de una serie, `templates/series.html` + `js/gallery.js`) el título dejara de verse en negrita, y que se agregara el año debajo del material — orden final: título, dimensiones, material, año (ej. "harvest pacman / 30×40 cm / acrylic, oil/canvas / 2017").
+
+- **Causa del año faltante**: `js/gallery.js` leía el año de un elemento `.year` que nunca existió en el HTML generado (`build_site_v2.py` solo emitía `data-technique`/`data-dimensions` en cada `.gallery-item`, sin año) — el campo `modalYear` del modal siempre quedaba vacío, no era solo un tema de orden.
+  - **Fix**: `build_site_v2.py` ahora agrega `data-year="{work['year']}"` a cada `.gallery-item`; `gallery.js` lo lee con `el.dataset.year` en vez del `.year` inexistente.
+- **Negrita del título**: no bastaba con bajar `font-weight` de `.modal-info h3` (700→400) — Luis probó en local y seguía viéndose "resaltado". Causa real: el `h3` no tenía `color` propio, así que heredaba el color de texto normal del body (`--text-light`/`--text-dark`, más oscuro/claro y con más contraste), mientras que las líneas de dimensiones/material/año usan `color: var(--accent-light|dark)` (gris apagado) vía `.modal-info p`. Con el mismo peso pero distinto color, el título seguía leyéndose destacado.
+  - **Fix** (`css/main.css`): `.modal-info h3` ahora usa el mismo `var(--accent-light)` (y `var(--accent-dark)` en dark mode) que `.modal-info p`, además del `font-weight: 400`.
+- **Verificado en local**: `python3 -m http.server` + Chrome, click en una obra de `work/bob-ross-disturbed/` — el modal quedó con las cuatro líneas en el mismo peso y color. Regenerado el sitio completo (`python3 build/build_site_v2.py`) para propagar `data-year` a las 24 series.
+- **Nota, no arreglada — fuera de alcance de esta sesión**: al regenerar apareció una carpeta nueva sin trackear `work/sal y limón/` — el dato de esa serie (`data/series/berser-k.json`) tiene `"id": "sal y limón"` en vez de un slug (`berser-k` u otro), un bug de datos preexistente y no relacionado a este cambio. Queda como carpeta suelta en el working tree (no se commiteó); si se corrige el `id` en el JSON (a mano o desde el CMS) y se regenera, la carpeta vieja con espacios/acento se puede borrar.
+
 ## Backlog técnico scoped, no construido
 
 - `actualizar.sh` — script que encadene el pipeline restante (build → push) para cambios locales

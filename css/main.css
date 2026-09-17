@@ -467,8 +467,9 @@ body.dark-mode .modal-close {
 
 .modal-info h3 {
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 15px;
+    color: var(--accent-light);
 }
 
 .modal-info p {
@@ -477,6 +478,7 @@ body.dark-mode .modal-close {
     color: var(--accent-light);
 }
 
+body.dark-mode .modal-info h3,
 body.dark-mode .modal-info p {
     color: var(--accent-dark);
 }
