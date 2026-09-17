@@ -1,0 +1,19 @@
+{
+  "cloudinaryUrl": "/uploads/works/anticommands-9.jpeg",
+  "id": "fyfm001",
+  "series": "anticommands",
+  "titleEn": "forget your fifteen minutes",
+  "titleEs": "forget your fifteen minutes",
+  "year": 2013,
+  "technique": "photography",
+  "techniqueEs": "fotografía",
+  "dimensions": {
+    "height": 40,
+    "width": 60,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
+  },
+  "order": null
+}
