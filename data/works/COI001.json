@@ -1,16 +1,19 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/COI001",
   "id": "COI001",
   "series": "headless",
-  "titleEn": "coins",
-  "titleEs": "coins",
+  "titleEn": "moneditas",
+  "titleEs": "moneditas",
   "year": 2020,
   "technique": "engraving/paper",
   "techniqueEs": "grabado/papel",
   "dimensions": {
     "height": 30,
     "width": 38,
-    "unit": "cm"
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/COI001",
   "order": 6
 }
