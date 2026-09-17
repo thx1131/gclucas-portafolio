@@ -1,16 +1,19 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CIB001",
   "id": "CIB001",
   "series": "headless",
-  "titleEn": "ciber man",
-  "titleEs": "ciber man",
+  "titleEn": "ciberman",
+  "titleEs": "ciberman",
   "year": 2020,
   "technique": "engraving/paper",
   "techniqueEs": "grabado/papel",
   "dimensions": {
     "height": 30,
     "width": 38,
-    "unit": "cm"
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CIB001",
   "order": 3
 }
