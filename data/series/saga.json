@@ -1,11 +1,11 @@
 {
   "id": "saga",
-  "titleEn": "saga",
-  "titleEs": "saga",
+  "titleEn": "backhome",
+  "titleEs": "regreso a casa",
   "year": 2000,
   "statementEn": "A painting of representation but also of concealment, of what lies between the lines. Since the perspectives of a truly contemporary art consist in blending inner geography with the elements found outside (always searching for depth, for discovery), GC Lucas speaks not only for what he is, but for what he finds — as if the echo of what we know as reality could be carried from sound into color. In his work, the initial intention is the concentration of what is seen, of what is touched, in order to extract what is most intensely primal.",
   "statementEs": "Pintura de representación pero también de ocultación, de entrelíneas. Dado que las perspectivas de un arte verdaderamente contemporáneo consisten en mezclar la geografía interior con los elementos que se encuentran afuera (siempre buscando lo hondo, el hallazgo), GC Lucas no habla solamente por lo que el es, sino por lo que encuentra, como si el eco de lo que conocemos como realidad pudiera llevarse del sonido al color. En su obra la intención inicial es la concentración de lo visto, de lo palpado, con el fin de extraer lo más intensamente primigenio.",
-  "statementAuthor": "Rocío Cerón",
   "coverImage": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/REG001",
-  "order": 230
+  "order": 230,
+  "statementAuthor": "Rocío Cerón"
 }
