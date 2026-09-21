@@ -1,0 +1,19 @@
+{
+  "cloudinaryUrl": "/uploads/works/cuatro-vueltas-22.jpeg",
+  "id": "CUA0016",
+  "series": "cuatro-vueltas",
+  "titleEn": "cuatro vueltas 16",
+  "titleEs": "cuatro vueltas 16",
+  "year": 2009,
+  "technique": "graphite/paper",
+  "techniqueEs": "grafito/papel",
+  "dimensions": {
+    "height": 30,
+    "width": 40,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
+  },
+  "order": null
+}
