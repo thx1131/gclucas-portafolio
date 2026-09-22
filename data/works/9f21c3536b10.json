@@ -1,0 +1,19 @@
+{
+  "cloudinaryUrl": "/uploads/works/h2o7.jpeg",
+  "id": "h2o1",
+  "series": "h2o",
+  "titleEn": "h20 1",
+  "titleEs": "h2o 1",
+  "year": 2006,
+  "technique": "photography",
+  "techniqueEs": "fotografía",
+  "dimensions": {
+    "height": 40,
+    "width": 60,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
+  },
+  "order": null
+}
