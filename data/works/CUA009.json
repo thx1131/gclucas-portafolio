@@ -1,16 +1,19 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CUA009",
   "id": "CUA009",
   "series": "cuatro-vueltas",
   "titleEn": "cuatro vueltas 9/40",
   "titleEs": "cuatro vueltas 9/40",
   "year": 2009,
-  "technique": "graphite/canson",
-  "techniqueEs": "graphite/canson",
+  "technique": "graphite/paper",
+  "techniqueEs": "graphite/paper",
   "dimensions": {
     "height": 40,
     "width": 30,
-    "unit": "cm"
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CUA009",
   "order": 9
 }
