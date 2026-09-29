@@ -1,16 +1,19 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM012",
   "id": "TIM012",
   "series": "pausa",
   "titleEn": "5:55 pm",
   "titleEs": "5:55 pm",
-  "year": "2008-17",
+  "year": 2008,
   "technique": "oil/canvas",
   "techniqueEs": "oil/canvas",
   "dimensions": {
     "height": 220,
     "width": 140,
-    "unit": "cm"
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM012",
   "order": 12
 }
