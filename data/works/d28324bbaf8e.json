@@ -1,0 +1,19 @@
+{
+  "cloudinaryUrl": "/uploads/works/cuatro-vueltas-21.jpeg",
+  "id": "CUA0017",
+  "series": "cuatro-vueltas",
+  "titleEn": "cuatro vueltas 17",
+  "titleEs": "cuatro vueltas 17",
+  "year": 2009,
+  "technique": "graphite/paper",
+  "techniqueEs": "grafito/papel",
+  "dimensions": {
+    "height": 30,
+    "width": 40,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
+  },
+  "order": null
+}
