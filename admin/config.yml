@@ -136,6 +136,7 @@ collections:
       - { name: year, label: "Año", widget: number, value_type: int }
       - { name: statementEn, label: "Statement de la serie (inglés)", widget: text }
       - { name: statementEs, label: "Statement de la serie (español)", widget: text }
+      - { name: statementAuthor, label: "Autor de la cita (opcional)", widget: string, required: false, hint: "Llenar SOLO si el statement es una cita de un crítico/tercero. El build le agrega el em-dash y lo muestra aparte (cursiva, color accent) en vez de pegarlo al párrafo del statement." }
       - name: coverImage
         label: "Imagen de portada"
         widget: image
