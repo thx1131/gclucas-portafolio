@@ -1,30 +1,30 @@
 {
-  "title": "gclucas",
-  "descriptionEn": "Visual artist exploring contradictions and transitions through painting, engraving, photography, and installation.",
-  "descriptionEs": "Artista visual explorando contradicciones y transiciones a través de pintura, grabado, fotografía e instalación.",
   "author": "GC Lucas",
+  "descriptionEn": "My artistic practice is based on exploring the dual nature of reality. Contradictions may be one of the few ways to make sense of life, as well as one of the clearest expressions of lucidity. Through my work, I seek to bring opposing elements into dialogue: the real and the imagined, the artificial and the natural, reason and absurdity, the abstract and the tangible.\n I work across multiple disciplines, including painting, photography, stencil, printmaking, and installation.",
+  "descriptionEs": "Mi método de trabajo se basa en la exploración de la naturaleza dual de la realidad. Las contradicciones pueden ser quizás la única manera de explicarnos un poco la vida así como una de las expresiones más plenas de la lucidez. A través de mi obra busco poner en diálogo elementos opuestos: lo real y lo imaginado, lo artificial y lo natural, la razón y el absurdo, lo abstracto y lo tangible. \nTrabajo de manera multidisciplinaria la pintura, fotografía, stencil, grabado e instalación.",
+  "statementEn": [
+    "",
+    ""
+  ],
+  "statementEs": [
+    ""
+  ],
+  "bioEn": [
+    "GC Lucas (1966) Monterrey, Mexico. Self-taught artist since 1991.\nGroup exhibitions: Bienal Rufino Tamayo, Gerickepaffrath Gallery Dusseldorf, Triennale Grenchen Suiza, MUCA CDMX, Kunsthaus San Miguel de Allende Guanajuato, Nigromante Bellas Artes de San Miguel Allende Guanajuato, Pinacoteca de Monterrey, Palacio del Ayuntamiento CDMX, Bellas Artes San Miguel de Allende Guanajuato, Museo de Arte Contemporáneo Matamoros Tamaulipas, Museo del Centenario San Pedro Garza García NL, Galería Emma Molina Monterrey NL , Out Gallery CDMX,  Fototeca Monterrey NL, MACO CDMX, Art Crawl Houston Texas, 527 Gallery Houston Texas. \nSolo exhibitions: Centro de las Artes de Monterrey NL, Museo Metropolitano de Monterrey NL, Flying Circus Gallery Monterrey NL, Galería Itatti México CDMX, Galería Infinito Monterrey NL.",
+    ""
+  ],
+  "bioEs": [
+    "GC Lucas (1966) Monterrey, N.L. México. Artista autodidacta desde 1991.\nExhibiciones colectivas: Bienal Rufino Tamayo, Gerickepaffrath Gallery Dusseldorf, Triennale Grenchen Suiza, MUCA CDMX, Kunsthaus San Miguel de Allende Guanajuato, Nigromante Bellas Artes de San Miguel Allende Guanajuato, Pinacoteca de Monterrey, Palacio del Ayuntamiento CDMX, Bellas Artes San Miguel de Allende Guanajuato, Museo de Arte Contemporáneo Matamoros Tamaulipas, Museo del Centenario San Pedro Garza García NL, Galería Emma Molina Monterrey NL , Out Gallery CDMX,  Fototeca Monterrey NL, MACO CDMX, Art Crawl Houston Texas, 527 Gallery Houston Texas. \nExhibiciones individuales: Centro de las Artes de Monterrey NL, Museo Metropolitano de Monterrey NL, Flying Circus Gallery Monterrey NL, Galería Itatti México CDMX, Galería Infinito Monterrey NL."
+  ],
   "email": "gclucas999@gmail.com",
   "phone": "+52 415 151 1029",
   "whatsapp_number": "524151511029",
-  "instagram": "https://www.instagram.com/lucas.asecas/",
   "whatsapp": "https://wa.me/524151511029",
+  "instagram": "https://www.instagram.com/lucas.asecas/",
   "copyright": "© gclucas ® 2026",
+  "title": "gclucas",
   "language": "en",
   "url": "https://gclucas.art",
-  "statementEn": [
-    "My method of work is based on the exploration of the dual nature of reality. Contradictions may be perhaps the only way to explain a little bit about life, as well as one of the fullest expressions of lucidity.",
-    "Through my work I seek to put opposite elements in dialogue: the real and the imagined, the artificial and the natural, reason and absurdity, the abstract and the tangible. Through the image I propose a reformulation of these polarities with the intention of dissolving them and reaching a point of integration."
-  ],
-  "statementEs": [
-    "Mi método de trabajo se basa en la exploración de la naturaleza dual de la realidad. Las contradicciones pueden ser quizás la única manera de explicarnos un poco la vida así como una de las expresiones más plenas de la lucidez. A través de mi obra busco poner en diálogo elementos opuestos: lo real y lo imaginado, lo artificial y lo natural, la razón y el absurdo, lo abstracto y lo tangible."
-  ],
-  "bioEn": [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  ],
-  "bioEs": [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-  ],
   "colors": {
     "bgLight": "#ffffff",
     "bgDark": "#1a1a1a",
