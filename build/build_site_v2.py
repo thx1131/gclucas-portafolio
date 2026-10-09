@@ -17,6 +17,7 @@ Cada página se genera una vez por idioma (ver LANGS): el idioma default
 (site.json → "language") vive en la raíz y el otro bajo su prefijo (/es/...).
 """
 
+import hashlib
 import json
 import re
 import sys
@@ -141,6 +142,14 @@ class SiteBuilder:
             'footer_component': self._load_template('components/footer.html'),
         }
 
+        # Versión de los assets (hash del contenido de css/ y js/), agregada como ?v=... a sus
+        # URLs en base.html. Cloudflare los sirve con caché de 4 h en el navegador: sin esto,
+        # un cambio de CSS/JS tarda horas en verse para quien ya visitó el sitio.
+        digest = hashlib.sha256()
+        for asset in sorted([*(self.base_dir / 'css').glob('*.css'), *(self.base_dir / 'js').glob('*.js')]):
+            digest.update(asset.read_bytes())
+        self.asset_version = digest.hexdigest()[:8]
+
         self.default_lang = self.site_data.get('language', 'en')
         if self.default_lang not in LANGS:
             sys.exit(f"❌ Error fatal: site.json language='{self.default_lang}' no está en LANGS {LANGS}")
@@ -176,6 +185,7 @@ class SiteBuilder:
         ui_vars = {f't_{key}': value for key, value in self.t.items()}
         ui_vars['base'] = self.prefix
         ui_vars['lang'] = lang
+        ui_vars['asset_version'] = self.asset_version
         for name, raw in self._raw_templates.items():
             setattr(self, name, self._render_template(raw, ui_vars))
 
