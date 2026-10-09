@@ -134,6 +134,7 @@ collections:
       - { name: titleEn, label: "Título (inglés)", widget: string }
       - { name: titleEs, label: "Título (español)", widget: string }
       - { name: year, label: "Año", widget: number, value_type: int }
+      - { name: yearEnd, label: "Año final (opcional)", widget: number, value_type: int, required: false, hint: "Llenar SOLO si la serie abarca varios años: el sitio muestra \"Año–Año final\" (ej. 2006–2008). Vacío = se muestra solo el Año." }
       - { name: statementEn, label: "Statement de la serie (inglés)", widget: text }
       - { name: statementEs, label: "Statement de la serie (español)", widget: text }
       - { name: statementAuthor, label: "Autor de la cita (opcional)", widget: string, required: false, hint: "Llenar SOLO si el statement es una cita de un crítico/tercero. El build le agrega el em-dash y lo muestra aparte (cursiva, color accent) en vez de pegarlo al párrafo del statement." }
