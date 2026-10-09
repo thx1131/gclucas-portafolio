@@ -1,6 +1,6 @@
 {
   "id": "H2O002",
-  "series": "h2o",
+  "series": "trompe-l-oeil",
   "titleEn": "h2o 2/12",
   "titleEs": "h2o 2/12",
   "year": 2006,
@@ -12,5 +12,5 @@
     "unit": "cm"
   },
   "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/H2O002",
-  "order": 2
+  "order": 10
 }

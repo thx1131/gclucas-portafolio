@@ -1,0 +1,6 @@
+# Cloudflare Pages: redirecciones de URLs que ya no existen.
+# h2o se fusionó con trompe l'oeil (2026-10-08).
+/work/h2o /work/trompe-l-oeil/ 301
+/work/h2o/ /work/trompe-l-oeil/ 301
+/es/work/h2o /es/work/trompe-l-oeil/ 301
+/es/work/h2o/ /es/work/trompe-l-oeil/ 301

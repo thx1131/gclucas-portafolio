@@ -123,12 +123,17 @@ body.dark-mode .navbar {
     gap: 8px;
 }
 
-/* selector de idioma: muestra el código del otro idioma (en ↔ es) */
+/* selector de idioma: muestra el código del otro idioma (en ↔ es).
+   El <a> conserva la fuente base (16px) y el texto va en un <span> de 14px, igual que
+   <li> → <a> en .navbar-menu: así comparte línea base con los links del menú. */
 .lang-switch {
     text-transform: lowercase;
+    padding: 8px;
+}
+
+.lang-switch span {
     font-size: 14px;
     letter-spacing: 0.5px;
-    padding: 8px;
 }
 
 .theme-toggle {
