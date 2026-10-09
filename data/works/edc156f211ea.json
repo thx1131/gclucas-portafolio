@@ -1,0 +1,19 @@
+{
+  "cloudinaryUrl": "/uploads/works/tompe-l-oeil1.jpeg",
+  "id": "tlo 09",
+  "series": "trompe-l-oeil",
+  "titleEn": "trompe l´oeil 9",
+  "titleEs": "trompe l´oeil 9",
+  "year": null,
+  "technique": "photography",
+  "techniqueEs": "fotografía",
+  "dimensions": {
+    "height": 40,
+    "width": 60,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
+  },
+  "order": null
+}
