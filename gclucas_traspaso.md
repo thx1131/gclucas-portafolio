@@ -1,10 +1,10 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-09-17 (aclaración del flujo de publicación + fix de versión del CMS pineada + limpieza de PRs acumulados — ver sección dedicada).
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-10-08 (sitio bilingüe en/es, fusión de h2o en trompe l´oeil, año final opcional en series, cache busting de CSS/JS — ver "Sesión 2026-10-08").
 
 ## Qué es esto
 
-Portafolio estático multipágina del artista visual GC Lucas (Lucas de la Garza), en producción en **https://gclucas.art** con contenido real: **~143 obras en 24 series**. Motor propio de generación: **Atelier v2.0** (Python).
+Portafolio estático multipágina del artista visual GC Lucas (Lucas de la Garza), en producción en **https://gclucas.art** con contenido real: **186 obras en 23 series** (conteo al 2026-10-08), en inglés (`/`) y español (`/es/`). Motor propio de generación: **Atelier v2.0** (Python).
 
 - Repo: `https://thx1131@github.com/thx1131/gclucas-portafolio.git` (rama `main` = producción)
 - Codebase local: `~/Documentos/gclucas-portafolio/`
@@ -58,7 +58,7 @@ Pipeline de imágenes (en `~/Documentos/obras-extraccion/`, activar venv primero
 - `cloudinary_sync.py` — upload idempotente a `obras/{ID}` con tags de serie → `cloudinary_urls.json`
 - `excel_to_json.py` — **retirado del flujo activo (2026-09-04)**. Ya no se ejecuta como parte del proceso normal: `data/series.json` y `data/works.json` son la fuente canónica y se editan directo. El script se conserva en el repo sin borrar, por si hace falta para una migración masiva futura.
 
-Regla: editaste `data/` o `templates/` → regenera antes de push. Solo `css/` o `js/` → push directo.
+Regla: editaste `data/` o `templates/` → regenera antes de push. Solo `css/` o `js/` → push directo. (Desde 2026-10-08 un cambio en `css/` o `js/` también cambia el `?v=<hash>` de todas las páginas: el build de CI lo regenera solo, pero si se quiere mantener al día el HTML versionado hay que regenerar igual.)
 
 ## Migración del build a Cloudflare Pages CI (2026-09-04)
 
@@ -192,6 +192,10 @@ Estructura (hoja única "En español", 1011 filas, 24 bloques de serie por celda
 - **Git remote lleva el usuario embebido** (`thx1131@github.com`) para evitar credenciales cacheadas de otra cuenta (`sistemaskmmp`). No "limpiar" la URL.
 - **Deploy que no actualiza**: revisar en el diff del commit que los archivos VIEJOS realmente se reemplazaron (no solo que se agregaron nuevos). Ya pasó: se copiaron carpetas nuevas pero index/css/js quedaron viejos.
 - **Caché**: si GitHub está bien pero gclucas.art se ve viejo → Cloudflare → Caching → Purge Everything.
+- **Caché del navegador (distinta de la de arriba)**: Cloudflare sirve `css/` y `js/` con `cache-control: max-age=14400` (4 h). Hasta 2026-10-08 un cambio de CSS ya publicado podía seguir viéndose viejo en un navegador que ya había visitado el sitio; desde entonces las URLs llevan `?v=<hash>` (ver sesión 2026-10-08). Si aun así algo "no se ve", probar Ctrl+Shift+R antes de asumir que el fix no llegó.
+- **`gh` puede tener activa la otra cuenta (`sistemaskmmp`)**, que solo tiene lectura en este repo, y git se autentica con `gh auth git-credential` → un `git push` normal falla. Sin cambiar la cuenta global: `GH_TOKEN=$(gh auth token -u thx1131) gh ...` para comandos de `gh`, y para el push `git -c credential.helper= -c credential.helper='!f(){ echo username=thx1131; echo "password=$GH_TOKEN"; }; f' push`. Alternativa global: `gh auth switch -u thx1131`.
+- **El builder no borra páginas viejas.** Si una serie se elimina o cambia de `id`, su `work/<id>/index.html` (y `es/work/<id>/`) sigue versionado y Cloudflare lo sigue sirviendo: hay que hacer `git rm` a mano y, si la URL ya estaba publicada, agregar la redirección en `_redirects`. Quedan dos huérfanas sin limpiar: `work/peligro-extincion/` y `work/vision-filippo/` (los ids reales son `peligro-de-extincion` y `vision-de-filippo`).
+- **Sveltia identifica cada entrada por el nombre del archivo.** Renombrar `data/series/<x>.json` con un borrador abierto sobre el nombre viejo deja dos "posts" de la misma serie en el Flujo editorial (pasó con `berser-k.json` → `sal-y-limon.json`, PR #82 vs #94; se cerró el viejo sin fusionar). Antes de renombrar un archivo de `data/`, revisar que no haya PRs `cms/...` abiertos sobre él.
 - **Conflicto de la serie Filippo** se resolvió con fingerprinting de imágenes a nivel de pixel; si reaparece ambigüedad serie/numeración, usar ese método.
 - "Uploaded 0 files" en el deploy = el commit no cambió nada realmente; revisar `git status` antes de asumir bug de Cloudflare.
 - **Archivo personal suelto en la raíz del repo, sin trackear**: `MP_1396036171.pdf` (ficha de pago interbancario BBVA/Infonavit a nombre de Luis, con CLABE). No tiene relación con el proyecto ni está en el historial de git. Nunca se debe agregar al repo — si reaparece un archivo así (descargas que caen por error en `~/Documentos/gclucas-portafolio/`), avisar a Luis para que lo mueva, no commitearlo.
@@ -382,11 +386,46 @@ Luis pidió que en la ficha individual de cada obra (el modal que se abre al hac
   - **Fix**: `id` de `data/series/berser-k.json` → `sal-y-limon` (slug válido, refleja el nombre nuevo); `series` de las 4 obras afectadas (`BER002`, `CIB002`, `NUC001`, `ZIZ001`) → `sal-y-limon`; se borró la carpeta huérfana `work/berser-k/` del repo. Regenerado y verificado: `/work/sal-y-limon/` con las 4 obras y nav prev/next entre `nevermind`/`enemigo-publico` apuntando bien.
   - **Riesgo real, no resuelto**: el campo `id` en el CMS (`admin/config.yml`, colección Series) es un `widget: string` común — el hint es la única protección, nada bloquea a Lucas de volver a tocarlo. Si vuelve a pasar en otra serie, mismo síntoma: página nueva con 0 obras + página vieja huérfana con el título anterior. Posible mejora futura: hacer el campo `id` de solo lectura después de creado (Sveltia no lo soporta nativo para folder collections vía config simple, habría que evaluar `pattern`/validación o instruir a Lucas a no tocarlo).
 
+## Sesión 2026-10-08: sitio bilingüe (en/es), fusión de h2o en trompe l´oeil, año final en series, cache busting
+
+Cuatro cambios, cada uno en su PR (todos fusionados por Luis con squash y verificados en producción):
+
+- **Sitio bilingüe — PR #96.** `build_site_v2.py` genera cada página una vez por idioma (`LANGS = ('en', 'es')`): el default (`site.json` → `language`, hoy `en`) va en la raíz y el otro bajo `/es/`. Cambiar ese campo a `es` invierte todo (el inglés pasaría a `/en/`).
+  - **Textos de interfaz**: dict `UI` del builder; entran a los templates como `{{t_<clave>}}`. `{{base}}` es el prefijo de idioma de los links (`''` o `/es`) y `{{lang}}` el código. `_set_language()` re-renderiza templates y partials por idioma.
+  - **Contenido**: `_loc(obj, 'title')` lee `titleEs`/`titleEn` (igual `statement`, `description`, `bio`); si el `...Es` está vacío cae al inglés. En el menú en español quedaron "statement" y "bio" sin traducir a propósito; "work" → "obra", "contact" → "contacto".
+  - **Técnicas**: la mayoría de las obras trae `techniqueEs` todavía en inglés ("oil/canvas", "acrilic/canvas"). En vez de reescribir ~150 archivos (y chocar con PRs abiertos del CMS), `_technique()` traduce esos términos al renderizar con el glosario `TECHNIQUE_ES` (óleo, acrílico, tela, grafito, papel, fotografía, aerosol). Un `techniqueEs` ya en español pasa sin cambios. Si aparece un material nuevo en inglés, agregarlo al glosario o corregir el dato.
+  - **Selector de idioma**: link `en ↔ es` en la navbar (`.navbar-actions` agrupa selector + toggle de tema), lleva a la misma página en el otro idioma. `_build_full_page()` ahora recibe `path` (sin prefijo) en vez de `og_url`/`canonical_url`, y de ahí arma canonical, `og:url`, los `hreflang` y el link del selector.
+  - **SEO**: `<html lang>`, `og:locale`, `<link rel="alternate" hreflang>` por página (+ `x-default` al idioma default) y sitemap con `xhtml:link` alternates (una entrada por página y por idioma).
+  - **Efecto en el inglés** (verificado compilando `main` y la rama lado a lado): solo cambios aditivos (link `es`, `og:locale`, `hreflang`); el único valor que cambió es el canonical/`og:url` de la home, que ganó la barra final (`https://gclucas.art/`).
+  - **Alineación del selector** (parte del PR #97): el `en`/`es` quedaba 1.4 px arriba de los links del menú, porque como flex item usaba su propia línea base de 14px. Ahora el `<a>` conserva los 16px base y el texto va en un `<span>` de 14px, igual que `<li>` → `<a>` en `.navbar-menu`.
+  - **Pendiente de contenido**: `statementEs` de `site.json` tiene un solo párrafo (le falta la última frase del inglés) y la bio sigue en lorem ipsum, ahora visible también en `/es/`.
+
+- **Fusión de h2o en trompe l´oeil — PR #97** (decisión de Lucas; trompe l´oeil es la principal, los títulos de las obras no cambian).
+  - Las 11 obras de h2o pasaron a `series: trompe-l-oeil` con `order` 9–19, después de las 8 originales: primero `H2O001`–`H2O004` ("h2o 1/12"…"4/12"), luego las siete subidas por Lucas desde el CMS, por el número de su título. Orden propuesto por Claude viendo las imágenes; Lucas puede pedir otro.
+  - Se borraron `data/series/h2o.json`, `work/h2o/` y `es/work/h2o/`. Quedan 23 series.
+  - **Nuevo `_redirects`** en la raíz (Cloudflare Pages): `/work/h2o/` → `/work/trompe-l-oeil/` (301), también en `/es/`. Es el lugar para futuras redirecciones.
+  - **Sin resolver, datos de Lucas**: una obra se titula "h20 1" (con cero) en inglés y "h2o 1" en español; otra "h2o 2" en inglés y solo "h2o" en español. Además 7 de esas obras tienen `id` con espacios o irregular ("h2o 3", "h2o1") y nombre de archivo hash.
+  - **Borradores afectados**: los PRs #47, #85 y #86 del CMS son obras nuevas con `series: h2o`; si se publican tal cual no aparecen en el sitio (el builder no falla, simplemente ninguna serie las lista) hasta reasignarlas a `trompe-l-oeil`.
+
+- **Año final opcional en series — PR #98.** Campo nuevo `yearEnd` en Series ("Año final (opcional)" en el CMS, `required: false`). `_series_years()` devuelve "2006–2008" si existe y difiere de `year`, o solo el año si no. Se usa en la home, `/work/` y la página de la serie. `trompe-l-oeil` quedó con `year: 2006`, `yearEnd: 2008`. Las obras conservan su propio año.
+
+- **Cache busting de CSS/JS — PR #99.** Luis seguía viendo el selector desalineado con el fix ya publicado: era la copia de `main.css` en la caché del navegador (4 h). El builder calcula un hash del contenido de `css/*.css` + `js/*.js` (`self.asset_version`, 8 caracteres) y `base.html` lo agrega como `?v={{asset_version}}` a los cinco assets. La URL solo cambia cuando cambia algún asset.
+
+**Otros hechos de la sesión:**
+
+- **PR #82 cerrado sin fusionar** (rama `cms/series/berser-k` borrada): borrador viejo de sal y limón sobre el archivo ya renombrado; la versión vigente es el #94. Ver gotcha de Sveltia arriba.
+- **Flujo de merge**: Claude Code no pudo fusionar PRs a `main` (lo bloquea su control de permisos por "merge sin revisión"); Claude deja el PR abierto con la vista previa de Cloudflare verificada y Luis hace el merge con `GH_TOKEN=$(gh auth token -u thx1131) gh pr merge <n> --squash --delete-branch`. El deploy a producción tarda ~2.5 min tras el merge.
+- **Deriva del HTML versionado**: el HTML del repo ya estaba desfasado respecto a `data/` antes de la sesión (los merges del CMS no regeneran). Cada PR de esta sesión commiteó el HTML regenerado, por eso sus diffs incluyen páginas no relacionadas.
+- **Cloudflare Pages sin `404.html`**: una ruta inexistente responde 200 con el contenido de la home (comportamiento SPA de Pages), así que un `curl` con código 200 no prueba que una página nueva ya esté desplegada — verificar contenido, no el status.
+
 ## Backlog técnico scoped, no construido
 
 - `actualizar.sh` — script que encadene el pipeline restante (build → push) para cambios locales
 - Script de ruteo de extracción de imágenes desde PowerPoint (discutido, no escrito)
 - Sección `/text/` — oculta hasta que exista contenido literario real
+- Limpiar las páginas huérfanas `work/peligro-extincion/` y `work/vision-filippo/` (y decidir si llevan redirección en `_redirects`)
+- Página `404.html` propia (hoy una ruta inexistente devuelve la home con status 200)
+- Corregir en `data/works/` los `techniqueEs` que siguen en inglés y retirar el glosario `TECHNIQUE_ES` del builder
 - **Masonry real para `.series-grid`/`.series-list` y `.gallery`** — Lucas reportó imágenes "cortadas" en el grid (obras con proporciones muy variadas forzadas a `aspect-ratio` fijo). Parche aplicado el 2026-09-12: `object-fit: contain` + fondo `--bg-light`/`--bg-dark` en `.series-card img` y `.gallery-item img` (`css/main.css`), sin tocar el build — la imagen ya no se recorta pero queda "flotando" con espacio vacío en proporciones muy distintas al del contenedor. La solución de fondo (masonry, celdas que respetan la proporción real de cada imagen) requeriría que `build_site_v2.py` lea el ancho/alto en píxeles de cada imagen (ninguna dependencia de imágenes existe hoy en el build, habría que sumar Pillow) y reprocesar las 144 obras existentes para calcular sus proporciones antes de rehacer el CSS grid a columnas con altura variable. No es tarea de hoy.
 
 ## Estilo de trabajo con Luis
