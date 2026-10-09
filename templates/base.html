@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{lang}}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,7 @@
     <meta property="og:description" content="{{description}}">
     <meta property="og:image" content="{{og_image}}">
     <meta property="og:url" content="{{og_url}}">
+    <meta property="og:locale" content="{{t_og_locale}}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{title}}">
     <meta name="twitter:description" content="{{description}}">
@@ -19,6 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap" rel="stylesheet">
     <link rel="canonical" href="{{canonical_url}}">
+    {{alternates}}
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/darkmode.css">
 </head>

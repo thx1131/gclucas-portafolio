@@ -117,6 +117,20 @@ body.dark-mode .navbar {
     letter-spacing: 0.5px;
 }
 
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* selector de idioma: muestra el código del otro idioma (en ↔ es) */
+.lang-switch {
+    text-transform: lowercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    padding: 8px;
+}
+
 .theme-toggle {
     background: none;
     border: none;

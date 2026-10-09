@@ -326,7 +326,7 @@ git add . && git commit -m "feat: add new series" && git push
 ### v3.0 (Later)
 - [ ] Blog / Articles section
 - [ ] Timeline interactive view
-- [ ] Multiple language support
+- [x] Multiple language support (English at `/`, Spanish at `/es/`)
 - [ ] Email newsletter
 
 ---
