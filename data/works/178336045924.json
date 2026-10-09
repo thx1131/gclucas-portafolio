@@ -1,7 +1,7 @@
 {
   "cloudinaryUrl": "/uploads/works/h2o5.jpeg",
   "id": "h2o 2",
-  "series": "h2o",
+  "series": "trompe-l-oeil",
   "titleEn": "h2o 2",
   "titleEs": "h2o",
   "year": 2006,
@@ -15,5 +15,5 @@
     "variable": false,
     "raw": ""
   },
-  "order": null
+  "order": 14
 }
