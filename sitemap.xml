@@ -1,119 +1,351 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gclucas.art/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/statement/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/statement/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/statement/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/statement/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/statement/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/statement/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/bio/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/bio/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/bio/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/bio/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/bio/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/bio/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/contact/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/contact/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/contact/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/contact/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/contact/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/ficciones/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/ficciones/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/ficciones/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/ficciones/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/ficciones/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/ficciones/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/peligro-de-extincion/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/peligro-de-extincion/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/peligro-de-extincion/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/peligro-de-extincion/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/peligro-de-extincion/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/peligro-de-extincion/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/vision-de-filippo/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/vision-de-filippo/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/vision-de-filippo/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/vision-de-filippo/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/vision-de-filippo/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/vision-de-filippo/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/headless/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/headless/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/headless/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/headless/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/headless/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/headless/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/pixelogue/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/pixelogue/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/pixelogue/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/pixelogue/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/pixelogue/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/pixelogue/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/nude-reviseted/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/nude-reviseted/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/nude-reviseted/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/nude-reviseted/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/nude-reviseted/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/nude-reviseted/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/bob-ross-disturbed/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/bob-ross-disturbed/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/bob-ross-disturbed/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/bob-ross-disturbed/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/bob-ross-disturbed/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/bob-ross-disturbed/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/enemigo-publico/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/enemigo-publico/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/enemigo-publico/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/enemigo-publico/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/enemigo-publico/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/enemigo-publico/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/sal-y-limon/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/sal-y-limon/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/sal-y-limon/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/sal-y-limon/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/sal-y-limon/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/sal-y-limon/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/nevermind/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/nevermind/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/nevermind/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/nevermind/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/nevermind/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/nevermind/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/anticommands/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/anticommands/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/anticommands/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/anticommands/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/anticommands/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/anticommands/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/objetos-perdidos/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/objetos-perdidos/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/objetos-perdidos/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/objetos-perdidos/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/objetos-perdidos/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/objetos-perdidos/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/in-god-we-trust/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/in-god-we-trust/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/in-god-we-trust/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/in-god-we-trust/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/in-god-we-trust/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/in-god-we-trust/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/libro-negro/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/libro-negro/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/libro-negro/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/libro-negro/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/libro-negro/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/libro-negro/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/archeology-road/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/archeology-road/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/archeology-road/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/archeology-road/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/archeology-road/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/archeology-road/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/0-quilates/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/0-quilates/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/0-quilates/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/0-quilates/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/0-quilates/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/0-quilates/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/cuatro-vueltas/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/cuatro-vueltas/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/cuatro-vueltas/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/cuatro-vueltas/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/cuatro-vueltas/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/cuatro-vueltas/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/trompe-l-oeil/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/trompe-l-oeil/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/trompe-l-oeil/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/trompe-l-oeil/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/trompe-l-oeil/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/trompe-l-oeil/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/pausa/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/pausa/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/pausa/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/pausa/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/pausa/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/pausa/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/aqui-es-todas-partes/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/aqui-es-todas-partes/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/aqui-es-todas-partes/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/aqui-es-todas-partes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/aqui-es-todas-partes/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/aqui-es-todas-partes/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/h2o/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/h2o/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/h2o/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/h2o/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/h2o/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/h2o/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/naranja-dulce/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/naranja-dulce/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/naranja-dulce/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/naranja-dulce/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/naranja-dulce/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/naranja-dulce/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/saga/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/saga/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/saga/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/saga/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/saga/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/saga/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://gclucas.art/work/trece-lunas/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/trece-lunas/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/trece-lunas/"/>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gclucas.art/es/work/trece-lunas/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gclucas.art/work/trece-lunas/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gclucas.art/es/work/trece-lunas/"/>
+    <lastmod>2026-10-08</lastmod>
   </url>
 </urlset>

@@ -2,11 +2,11 @@
 <section class="hero">
     <div class="hero-inner">
         <div class="hero-artwork">
-            <img src="{{hero_image}}" alt="gclucas — visual artist" loading="eager">
+            <img src="{{hero_image}}" alt="{{t_hero_alt}}" loading="eager">
         </div>
         <div class="hero-content">
             <h1 class="hero-title">gclucas</h1>
-            <p class="hero-tagline">visual artist exploring contradictions & transitions</p>
+            <p class="hero-tagline">{{t_hero_tagline}}</p>
         </div>
     </div>
 </section>
@@ -14,7 +14,7 @@
 <!-- statement section -->
 <section class="section" id="statement">
     <div class="container">
-        <h2>statement</h2>
+        <h2>{{t_nav_statement}}</h2>
         {{statement_content}}
     </div>
 </section>
@@ -22,8 +22,8 @@
 <!-- work section -->
 <section class="section" id="work">
     <div class="container">
-        <h2><a href="/work/">work</a></h2>
-        <p class="section-subtitle">explore the series</p>
+        <h2><a href="{{base}}/work/">{{t_nav_work}}</a></h2>
+        <p class="section-subtitle">{{t_explore_series}}</p>
         <div class="series-grid">
             {{series_preview}}
         </div>
@@ -33,7 +33,7 @@
 <!-- bio section -->
 <section class="section" id="bio">
     <div class="container">
-        <h2>bio</h2>
+        <h2>{{t_nav_bio}}</h2>
         {{bio_content}}
     </div>
 </section>
@@ -41,7 +41,7 @@
 <!-- contact section -->
 <section class="section" id="contact">
     <div class="container">
-        <h2>contact</h2>
+        <h2>{{t_nav_contact}}</h2>
         <div class="contact-content">
             {{contact_content}}
         </div>

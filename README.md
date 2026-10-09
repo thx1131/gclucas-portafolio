@@ -269,7 +269,7 @@ https://res.cloudinary.com/dt2w4nxz6/image/upload/...
 - [x] Admin panel (Sveltia CMS, git-based — see `admin/`)
 - [ ] Blog/articles section
 - [ ] Timeline interactive view
-- [ ] Multi-language support
+- [x] Multi-language support (English at `/`, Spanish at `/es/`)
 - [ ] Email newsletter
 
 ---
