@@ -198,6 +198,14 @@ class SiteBuilder:
         Si falta o está vacío en español, cae al inglés para no publicar un hueco."""
         return obj.get(f'{field}{self.lang.capitalize()}') or obj.get(f'{field}En') or ''
 
+    def _series_years(self, series):
+        """Año de una serie como texto: "2008", o "2006–2008" si trae yearEnd
+        (opcional: año final de una serie hecha a lo largo de varios años)."""
+        year, year_end = series['year'], series.get('yearEnd')
+        if year_end and year_end != year:
+            return f"{year}–{year_end}"
+        return str(year)
+
     def _technique(self, work):
         """Técnica de una obra en el idioma actual. El inglés vive en 'technique' (sin sufijo)
         y el español en 'techniqueEs', que se normaliza con TECHNIQUE_ES."""
@@ -389,7 +397,7 @@ class SiteBuilder:
             <a href="{self.prefix}/work/{series['id']}/" class="series-card">
                 <img src="{self._optimized_image_url(series['coverImage'])}" alt="{self._loc(series, 'title')}" loading="lazy">
                 <h3>{self._loc(series, 'title')}</h3>
-                <div class="year">{series['year']}</div>
+                <div class="year">{self._series_years(series)}</div>
             </a>
             """
         
@@ -448,7 +456,7 @@ class SiteBuilder:
                 <img src="{self._optimized_image_url(series['coverImage'])}" alt="{self._loc(series, 'title')}" loading="lazy">
                 <h3>{self._loc(series, 'title')}</h3>
                 {excerpt}
-                <div class="year">{series['year']} • {works_count} {self.t['works_count']}</div>
+                <div class="year">{self._series_years(series)} • {works_count} {self.t['works_count']}</div>
             </a>
             """
         
@@ -499,7 +507,7 @@ class SiteBuilder:
 
             content = self._render_template(self.series_template, {
                 'series_title': self._loc(series, 'title'),
-                'series_year': series['year'],
+                'series_year': self._series_years(series),
                 'series_statement': statement_html,
                 'series_nav_top': nav,
                 'gallery': gallery_html,
