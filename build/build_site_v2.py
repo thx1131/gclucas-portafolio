@@ -165,8 +165,9 @@ class SiteBuilder:
 
         # Imagen real usada como og:image genérico (home, statement, work, bio, contact).
         # Las páginas de serie individual usan su propio coverImage, no esto.
-        self.default_og_image = self.site_data.get('heroImage',
-            'https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL004')
+        # `or` y no el default de .get(): el CMS guarda heroImage como "" si se deja vacío.
+        self.default_og_image = (self.site_data.get('heroImage')
+            or 'https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL004')
 
         self._set_language(self.default_lang)
 
@@ -413,8 +414,7 @@ class SiteBuilder:
         
         content = self._render_template(self.home_template, {
             'series_preview': series_preview,
-            'hero_image': self.site_data.get('heroImage',
-                'https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/PEL004'),
+            'hero_image': self.default_og_image,
             'statement_content': self.statement_content_html,
             'bio_content': self.bio_content_html,
             'contact_content': self.contact_content_html
