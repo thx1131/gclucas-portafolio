@@ -1,4 +1,5 @@
 {
+  "cloudinaryUrl": "/uploads/whatsapp-image-2026-10-13-at-6.58.44-pm-1.jpeg",
   "id": "CIB002",
   "series": "sal-y-limon",
   "titleEn": "ciberman",
@@ -9,8 +10,10 @@
   "dimensions": {
     "height": 150,
     "width": 200,
-    "unit": "cm"
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CIB002",
   "order": 2
 }
