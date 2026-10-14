@@ -94,6 +94,14 @@ singletons:
       - { name: whatsapp, label: "Link de WhatsApp completo", widget: string, hint: "Debe ser https://wa.me/ seguido de 'WhatsApp (solo dígitos)' de arriba. Si cambia el teléfono, actualizar acá también." }
       - { name: instagram, label: "Link de Instagram", widget: string }
       - { name: copyright, label: "Texto de copyright del footer", widget: string }
+      - name: heroImage
+        label: "Imagen de portada del sitio (home)"
+        widget: image
+        required: false
+        # Ídem coverImage de Series: la barra inicial en media_folder es obligatoria.
+        media_folder: /uploads/site
+        public_folder: /uploads/site
+        hint: "La imagen grande de la página de inicio; también es la que se ve al compartir el link en WhatsApp/redes. Vacío = se usa la imagen por defecto (obra PEL004)."
       # --- técnico, no tocar (se preserva oculto para no romper el sitio) ---
       - { name: title, widget: hidden }
       - { name: language, widget: hidden }
