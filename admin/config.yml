@@ -73,13 +73,17 @@ singletons:
         widget: list
         required: false
         label_singular: "Párrafo"
-        field: { name: paragraph, label: "Párrafo", widget: text }
+        # required: false también en el párrafo: si no, un párrafo vacío bloquea el guardado
+        # aunque la lista sea opcional. El build descarta los párrafos vacíos.
+        field: { name: paragraph, label: "Párrafo", widget: text, required: false }
       - name: statementEs
         label: "Statement (español)"
         widget: list
         required: false
         label_singular: "Párrafo"
-        field: { name: paragraph, label: "Párrafo", widget: text }
+        # required: false también en el párrafo: si no, un párrafo vacío bloquea el guardado
+        # aunque la lista sea opcional. El build descarta los párrafos vacíos.
+        field: { name: paragraph, label: "Párrafo", widget: text, required: false }
       - name: bioEn
         label: "Bio (inglés)"
         widget: list
