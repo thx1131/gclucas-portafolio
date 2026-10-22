@@ -1,16 +1,19 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/HUE001",
   "id": "HUE001",
   "series": "trece-lunas",
   "titleEn": "huellas de luna",
   "titleEs": "huellas de luna",
   "year": 1998,
   "technique": "oil/canvas",
-  "techniqueEs": "oil/canvas",
+  "techniqueEs": "óleo/tela",
   "dimensions": {
     "height": 70,
     "width": 105,
-    "unit": "cm"
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/HUE001",
   "order": 8
 }
