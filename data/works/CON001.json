@@ -1,16 +1,19 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CON001",
   "id": "CON001",
   "series": "aqui-es-todas-partes",
   "titleEn": "confines de lo cercano",
   "titleEs": "confines de lo cercano",
   "year": 2007,
   "technique": "oil/canvas",
-  "techniqueEs": "oil/canvas",
+  "techniqueEs": "óleo/tela",
   "dimensions": {
     "height": 100,
     "width": 150,
-    "unit": "cm"
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/CON001",
   "order": 11
 }
