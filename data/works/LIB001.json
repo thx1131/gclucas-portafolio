@@ -1,8 +1,9 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/LIB001",
   "id": "LIB001",
   "series": "libro-negro",
-  "titleEn": "libro negro",
-  "titleEs": "libro negro",
+  "titleEn": "libro negro (war on drugs)",
+  "titleEs": "libro negro (war on drugs)",
   "year": 2011,
   "technique": "paper, leather, steel",
   "techniqueEs": "papel, piel, acero",
@@ -10,8 +11,9 @@
     "height": 75,
     "width": 55,
     "unit": "cm",
-    "depth": 15
+    "depth": 15,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/LIB001",
   "order": 1
 }
