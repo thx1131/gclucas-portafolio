@@ -8,8 +8,8 @@
   "technique": "oil/canvas",
   "techniqueEs": "óleo/tela",
   "dimensions": {
-    "height": 250,
-    "width": 115,
+    "height": 125,
+    "width": 250,
     "unit": "cm",
     "depth": null,
     "variable": false,
