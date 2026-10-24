@@ -1,0 +1,19 @@
+{
+  "cloudinaryUrl": "/uploads/works/link.jpeg",
+  "id": "zelda",
+  "series": "bob-ross-disturbed",
+  "titleEn": "reaping zelda",
+  "titleEs": "reaping zelda",
+  "year": 2017,
+  "technique": "acrylic, oil/canvas",
+  "techniqueEs": "acrílico,óleo/tela",
+  "dimensions": {
+    "height": 37,
+    "width": 44,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
+  },
+  "order": null
+}

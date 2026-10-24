@@ -1,16 +1,19 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/MAS001",
   "id": "MAS001",
   "series": "aqui-es-todas-partes",
-  "titleEn": "mas vasto que el todo",
-  "titleEs": "mas vasto que el todo",
+  "titleEn": "más vasto que el todo",
+  "titleEs": "más vasto que el todo",
   "year": 2007,
   "technique": "oil/canvas",
-  "techniqueEs": "oil/canvas",
+  "techniqueEs": "óleo/tela",
   "dimensions": {
-    "height": 100,
-    "width": 150,
-    "unit": "cm"
+    "height": 120,
+    "width": 180,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/MAS001",
   "order": 12
 }

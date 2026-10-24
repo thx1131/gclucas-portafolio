@@ -1,16 +1,19 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRO008",
   "id": "TRO008",
   "series": "trompe-l-oeil",
-  "titleEn": "trompe l´oeil 8/12",
-  "titleEs": "trompe l´oeil 8/12",
+  "titleEn": "trompe l´oeil (sea)",
+  "titleEs": "trompe l´oeil (mar)",
   "year": 2008,
   "technique": "photography",
   "techniqueEs": "photography",
   "dimensions": {
     "height": 60,
     "width": 40,
-    "unit": "cm"
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRO008",
   "order": 8
 }

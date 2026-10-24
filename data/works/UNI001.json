@@ -1,16 +1,19 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/UNI001",
   "id": "UNI001",
   "series": "aqui-es-todas-partes",
-  "titleEn": "un instante de eternidad",
-  "titleEs": "un instante de eternidad",
+  "titleEn": "lontananza instantánea",
+  "titleEs": "lontananza instantánea",
   "year": 2008,
   "technique": "oil/canvas",
-  "techniqueEs": "oil/canvas",
+  "techniqueEs": "óleo/tela",
   "dimensions": {
     "height": 90,
     "width": 60,
-    "unit": "cm"
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/UNI001",
   "order": 2
 }
