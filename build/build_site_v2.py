@@ -193,7 +193,7 @@ class SiteBuilder:
         # Contenido de cada partial, renderizado una sola vez por idioma contra site_data.
         # El mismo string se inyecta tal cual en home.html y en la página independiente.
         self.statement_content_html = self._render_template(self.statement_content_partial, {
-            'statement_text': "".join(f"<p>{p}</p>" for p in self._loc(self.site_data, 'statement'))
+            'statement_text': "".join(f"<p>{p}</p>" for p in self._paragraphs('statement'))
         })
         self.bio_content_html = self._render_template(self.bio_content_partial, {
             'bio_text': "".join(f"<p>{p}</p>" for p in self._loc(self.site_data, 'bio'))
@@ -208,6 +208,16 @@ class SiteBuilder:
         """Campo de contenido en el idioma actual (titleEn/titleEs, statementEn/statementEs, ...).
         Si falta o está vacío en español, cae al inglés para no publicar un hueco."""
         return obj.get(f'{field}{self.lang.capitalize()}') or obj.get(f'{field}En') or ''
+
+    def _paragraphs(self, field):
+        """Párrafos no vacíos de un campo de lista de site.json en el idioma actual. El CMS
+        puede guardar párrafos en blanco (son opcionales): se descartan, y si en español
+        no queda ninguno cae al inglés, igual que _loc."""
+        for lang in (self.lang.capitalize(), 'En'):
+            paragraphs = [p for p in (self.site_data.get(f'{field}{lang}') or []) if p and p.strip()]
+            if paragraphs:
+                return paragraphs
+        return []
 
     def _series_years(self, series):
         """Año de una serie como texto: "2008", o "2006–2008" si trae yearEnd
