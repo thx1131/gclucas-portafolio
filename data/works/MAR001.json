@@ -1,16 +1,19 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/MAR001",
   "id": "MAR001",
   "series": "trece-lunas",
   "titleEn": "marina",
   "titleEs": "marina",
   "year": 1998,
   "technique": "oil/canvas",
-  "techniqueEs": "oil/canvas",
+  "techniqueEs": "óleo/tela",
   "dimensions": {
-    "height": 250,
-    "width": 115,
-    "unit": "cm"
+    "height": 125,
+    "width": 250,
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/MAR001",
   "order": 9
 }
