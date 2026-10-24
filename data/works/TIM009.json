@@ -1,16 +1,19 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM009",
   "id": "TIM009",
   "series": "pausa",
   "titleEn": "12:30 pm",
   "titleEs": "12:30 pm",
   "year": 2008,
   "technique": "oil/canvas",
-  "techniqueEs": "oil/canvas",
+  "techniqueEs": "óleo/tela",
   "dimensions": {
     "height": 150,
     "width": 100,
-    "unit": "cm"
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TIM009",
   "order": 9
 }
