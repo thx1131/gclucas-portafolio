@@ -4,6 +4,11 @@
     <meta charset="utf-8" />
     <meta name="robots" content="noindex, nofollow" />
     <title>gclucas — panel de edición</title>
+    <style>
+      /* Flujo editorial: sin min-height 0 las columnas crecen al largo de la lista y la
+         lista no hace scroll (bug de Sveltia, visto en 0.251.0 con ~80 entradas). */
+      .board .columns, .board .column { min-height: 0; }
+    </style>
   </head>
   <body>
     <script src="https://cdn.jsdelivr.net/npm/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
