@@ -1,10 +1,10 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-10-08 (sitio bilingüe en/es, fusión de h2o en trompe l´oeil, año final opcional en series, cache busting de CSS/JS — ver "Sesión 2026-10-08").
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-10-24 (publicación de 75 entradas del CMS en un solo deploy, scroll del tablero "Flujo editorial", párrafos vacíos del statement, estado de `/text/` — ver "Sesión 2026-10-13 a 2026-10-24").
 
 ## Qué es esto
 
-Portafolio estático multipágina del artista visual GC Lucas (Lucas de la Garza), en producción en **https://gclucas.art** con contenido real: **186 obras en 23 series** (conteo al 2026-10-08), en inglés (`/`) y español (`/es/`). Motor propio de generación: **Atelier v2.0** (Python).
+Portafolio estático multipágina del artista visual GC Lucas (Lucas de la Garza), en producción en **https://gclucas.art** con contenido real: **205 obras en 23 series** (conteo al 2026-10-24), en inglés (`/`) y español (`/es/`). Motor propio de generación: **Atelier v2.0** (Python).
 
 - Repo: `https://thx1131@github.com/thx1131/gclucas-portafolio.git` (rama `main` = producción)
 - Codebase local: `~/Documentos/gclucas-portafolio/`
@@ -429,6 +429,22 @@ Cuatro cambios, cada uno en su PR (todos fusionados por Luis con squash y verifi
 - **Flujo de merge**: Claude Code no pudo fusionar PRs a `main` (lo bloquea su control de permisos por "merge sin revisión"); Claude deja el PR abierto con la vista previa de Cloudflare verificada y Luis hace el merge con `GH_TOKEN=$(gh auth token -u thx1131) gh pr merge <n> --squash --delete-branch`. El deploy a producción tarda ~2.5 min tras el merge.
 - **Deriva del HTML versionado**: el HTML del repo ya estaba desfasado respecto a `data/` antes de la sesión (los merges del CMS no regeneran). Cada PR de esta sesión commiteó el HTML regenerado, por eso sus diffs incluyen páginas no relacionadas.
 - **Cloudflare Pages sin `404.html`**: una ruta inexistente responde 200 con el contenido de la home (comportamiento SPA de Pages), así que un `curl` con código 200 no prueba que una página nueva ya esté desplegada — verificar contenido, no el status.
+
+## Sesión 2026-10-13 a 2026-10-24: CMS (portada, statement opcional, scroll del tablero) + publicación masiva de 75 entradas
+
+- **Campo de portada de la home — PR #101.** `heroImage` editable en el singleton "Sitio" (`widget: image`, `required: false`). Hoy apunta a `/uploads/site/aqui-es-todas-partes.jpeg`. Lo usan el hero de la home y `self.default_og_image`.
+- **Statement del sitio opcional — PR #102.** `statementEn`/`statementEs` con `required: false` en `admin/config.yml`. **Estado actual: los dos están vacíos (`[]`) en `data/site.json`** — se vaciaron desde el CMS el 2026-10-13.
+- **Párrafos vacíos del statement — PR #103.** Sveltia guarda párrafos en blanco (`[""]`) aunque el campo no tenga `required: false` (pasó entre el 2026-10-07 y el 2026-10-13, ver historial de `data/site.json`). Con eso el build publicaba `<p></p>` y en español no caía al inglés, porque `[""]` cuenta como lista con contenido para `_loc()`. Fix: helper `_paragraphs()` en `build_site_v2.py` descarta párrafos vacíos y cae al inglés si en español no queda ninguno. La primera versión del PR también ponía `required: false` en cada párrafo; se quitó porque no hacía nada (el CMS ya los guardaba). Con `[]` la salida es idéntica a la de antes.
+  - La bio no usa `_paragraphs()` (sigue con `_loc()` y párrafos obligatorios). Si algún día aparece un `<p></p>` vacío en la bio, la solución es la misma.
+- **Scroll del tablero "Flujo editorial" — PR #199.** Con ~80 entradas, las columnas de `/admin/#/workflow` no hacían scroll: `.column` y `.columns` no tienen `min-height: 0`, así que como flex items crecían al largo de su lista (7698 px) dentro de `.board` (826 px, `overflow: hidden`), y el scroll propio de `.entries` nunca se activaba. Bug de CSS de Sveltia (visto en 0.251.0). Fix: `<style>` en `admin/index.html` con `.board .columns, .board .column { min-height: 0; }`. Diagnosticado y probado inyectando la regla en el panel de producción. **Depende de nombres de clase de Sveltia**: si una versión los cambia, la regla deja de aplicar sin romper nada (el síntoma volvería). No se reportó upstream.
+- **Publicación masiva — PR #200.** 75 entradas del CMS en "En revisión" (obras y 3 series, del 2026-09-17 al 2026-10-23). En vez de publicarlas una por una (75 deploys en fila de ~2.5 min), se armó una rama de integración (`integracion/cms-2026-10-24`) con un `git merge --no-ff` por PR, sin cambios propios, y se fusionó **con merge commit, no squash**: así GitHub marca los 75 PRs como `MERGED` solos y desaparecen del tablero de Sveltia. Con squash habrían quedado abiertos y publicables dos veces.
+  - Verificado antes de fusionar: 0 conflictos, build OK, las 205 obras con JSON válido, serie existente, imagen presente y título EN/ES; vista previa de Cloudflare OK. **No se revisó el contenido de cada entrada** (lo revisó Luis en la vista previa).
+  - Después: se borraron las 75 ramas `cms/...` y la de integración (Sveltia no las borra porque no se publicaron desde el panel). Quedan 27 ramas `cms/...` (borradores de Lucas y ramas viejas), no se tocaron. `optimize-images.yml` corrió una vez sobre todas las fotos nuevas (`48522c9`).
+  - Si se repite: listar los PRs con label `sveltia-cms/pending_review` (`gh pr list --json number,headRefName,labels`), mergear sus heads en una rama desde `main`, correr build + validación, abrir un PR y fusionar con `--merge`. Lo que Lucas pase a "En revisión" después de armar la rama no entra; queda en el tablero.
+- **Quién fusiona**: el clasificador de modo automático de Claude Code bloquea `gh pr merge` ("Merge Without Review"), también cuando Luis lo pide explícitamente en el chat. Lo que funcionó: Luis lo corre desde la misma sesión con `! GH_TOKEN=$(gh auth token -u thx1131) gh pr merge <n> --squash --delete-branch` (o `--merge` para una rama de integración), y Claude verifica el resultado. Para destrabarlo habría que agregar una regla de permiso en la config de Claude Code.
+- **`gh` tiene dos cuentas** en la laptop de Luis (`thx1131` activa, `sistemaskmmp` inactiva). Usar siempre `GH_TOKEN=$(gh auth token -u thx1131)` para no depender de cuál esté activa.
+- **PR #71 (pinear Sveltia) sigue abierto**, y fija `0.213.5` — muy vieja: hoy jsDelivr sirve `0.251.0`. Fusionarlo tal cual sería un downgrade de ~40 versiones (perdería funciones del flujo editorial que se usan hoy). Si se retoma, pinear a la versión vigente y verificar que el CSS del #199 siga aplicando.
+- **Borradores fuera del #200**: #86, #128, #153 y #192–#198 (7 obras nuevas del 2026-10-24 con fotos de WhatsApp) siguen en "Borradores".
 
 ## Backlog técnico scoped, no construido
 
