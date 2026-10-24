@@ -1,16 +1,19 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/DEF001",
   "id": "DEF001",
   "series": "anticommands",
   "titleEn": "define beauty",
   "titleEs": "define beauty",
   "year": 2013,
   "technique": "photography",
-  "techniqueEs": "photography",
+  "techniqueEs": "fotografía",
   "dimensions": {
     "height": 40,
     "width": 60,
-    "unit": "cm"
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/DEF001",
   "order": 2
 }
