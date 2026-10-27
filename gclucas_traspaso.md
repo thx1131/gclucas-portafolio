@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-10-27 (sección `/text/` construida, oculta hasta que haya textos publicados — ver "Sesión 2026-10-27"; antes: versión de Sveltia fijada y tarjetas de series, ver "Sesión 2026-10-26").
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-10-27 (sección `/text/` construida y **en vivo con los 5 textos publicados** — ver "Sesión 2026-10-27"; antes: versión de Sveltia fijada y tarjetas de series, ver "Sesión 2026-10-26").
 
 ## Qué es esto
 
@@ -458,9 +458,9 @@ Cuatro cambios, cada uno en su PR (todos fusionados por Luis con squash y verifi
 
 ## Sesión 2026-10-27: sección `/text/` (textos críticos)
 
-Construida según el prompt y el mockup de Luis (`txts/`, no commiteado; las capturas del mockup no se guardaron en el repo). **Hoy no se ve nada en el sitio**: los 5 textos están con `published: false` hasta que Lucas los apruebe.
+Construida según el prompt y el mockup de Luis (`txts/`, no commiteado; las capturas del mockup no se guardaron en el repo). **En vivo desde el 2026-10-27 (PR #223)**: Luis decidió publicar los 5 textos tras corregir los typos evidentes, sin esperar la revisión de Lucas. Los pendientes de `REVISION_TEXTOS.md` se corrigen después desde el CMS.
 
-- **Datos**: `data/texts/<id>.json`, uno por texto (5 textos de Lucas: Carballo, Cerón, Gortázar, Monsiváis, Noyola), pasados de los Word sin corregir. Las decisiones pendientes con Lucas y los typos detectados están en `REVISION_TEXTOS.md` (raíz del repo). Único cambio sobre los Word: `titleEn` de Monsiváis = "The Two Landscapes of G.C. Lucas" (propuesta, pendiente de Lucas). El título de Cerón en español se dejó como en el Word ("G C Lucas: la transfiguración de lo palpado"), **no** como el mockup, que lo acortaba por error.
+- **Datos**: `data/texts/<id>.json`, uno por texto (5 textos de Lucas: Carballo, Cerón, Gortázar, Monsiváis, Noyola), pasados de los Word. Las decisiones pendientes con Lucas, los typos corregidos y los dudosos que se dejaron igual (Itatti/Ittati, *inadverted*, *diptics*) están en `REVISION_TEXTOS.md` (raíz del repo). Cambios sobre los Word: los typos inequívocos (24, listados ahí) y `titleEn` de Monsiváis = "The Two Landscapes of G.C. Lucas" (propuesta, pendiente de Lucas). El título de Cerón en español se dejó como en el Word ("G C Lucas: la transfiguración de lo palpado"), **no** como el mockup, que lo acortaba por error.
 - **Regla de visibilidad**: todo lo de `/text/` depende de que haya al menos un texto con `published: true`. Con cero: no se generan páginas, el navbar no muestra el link, el home no tiene la sección, el sitemap no las lista y `robots.txt` bloquea `/text/` y `/es/text/`. Con al menos uno aparece todo y se quita el bloqueo. `build_text_pages()` borra `text/` (y `es/text/`) antes de generar: despublicar o renombrar un texto también saca su página.
 - **`robots.txt` ahora lo genera el build** (`build_robots()`), porque su contenido depende de los textos publicados. Antes era estático: **no editarlo a mano**, se sobrescribe en cada build.
 - **Orden** (pedido de Lucas): año descendente y, dentro del año, campo `order` (menor primero; vacío = al final del año). Cerón (1) · Carballo (2) · Noyola (3) en 2001; Gortázar (4) · Monsiváis (5) en 1999.
@@ -475,6 +475,9 @@ Construida según el prompt y el mockup de Luis (`txts/`, no commiteado; las cap
 - **Robustez**: un JSON inválido en `data/texts/` aborta el build. Un texto publicado sin id, título o cuerpo se saltea con aviso, en vez de frenar el deploy del resto.
 - **Verificado** con Playwright (chrome-headless-shell local) contra `python3 -m http.server`, con 0 textos publicados (la sección desaparece de todo) y con los 5 publicados (solo en local, sin commitear): `/text/`, `/es/text/`, detalle en cada idioma y home en los dos idiomas, en claro y oscuro, escritorio y móvil, más el menú móvil. También con imagen en solo 2 textos, series relacionadas y un id de serie inexistente. Sin scroll horizontal y con los títulos alineados en todas las combinaciones.
 - **Diferencias con el mockup, a propósito**: color de texto `#333` del sitio; el subtítulo usa `.section-subtitle` del sitio (mayúsculas, como en `/work/`) en vez de minúsculas; el menú móvil es el actual del sitio; el navegador anterior/siguiente muestra títulos en los dos lados, como `.series-nav`, en vez de "← más reciente".
+- **Publicación y deploy** (mismo PR #223, commits `fix` de typos + `feat` con `published: true`): verificado en vivo — `/text/` lista los 5, `/es/` muestra "texto" en el menú y la sección del home, los detalles cargan con las correcciones y `robots.txt` ya no bloquea `/text/`. Las ~30 líneas `Disallow` que se ven en el `robots.txt` en vivo **no son nuestras**: las antepone Cloudflare (bloqueo de bots de IA / content signals).
+  - **Pendiente con Lucas**: títulos (Monsiváis EN, Cerón ES, Gortázar, Carballo, Noyola), fechas, epígrafe de Cerón EN y, sobre todo, **confirmar permisos** para republicar textos de terceros. Si algún permiso no se confirma: `published: false` en el CMS y la página desaparece en el siguiente build.
+- **Gotcha local**: después de un build local quedan `text/` y `es/text/` sin seguimiento (desde #223 no se versionan) y HTML/`robots.txt`/`sitemap.xml` modificados. Eso hace fallar el checkout final de `gh pr merge` ("serán sobrescritos"), aunque el merge en GitHub sí se haga. Limpiar antes con `git restore . && rm -rf text es/text`.
 - **Encontrado de paso, no arreglado**: `og:image` es una ruta relativa (`/uploads/site/aqui-es-todas-partes.jpeg`) en todas las páginas que usan `default_og_image`, porque `heroImage` se guarda sin dominio. WhatsApp y las redes necesitan una URL absoluta para la vista previa. Ver backlog.
 
 ## Backlog técnico scoped, no construido
