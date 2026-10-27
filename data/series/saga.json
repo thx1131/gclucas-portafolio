@@ -3,9 +3,10 @@
   "titleEn": "saga",
   "titleEs": "saga",
   "year": 2000,
-  "statementEn": "In this series, I explore the tension between a landscape constructed from geometric forms and the presence of figures, beings and situations that introduce instability and movement. The image functions as a space where this opposing elements coexist, confront one another, and ultimately become integrated. Geometry represents that which seeks to remain stable and resist transformation, while the irregular introduces change and vitality. By placing the human figure within a geometric structure, I aim to make visible the inseperable relationship between order and chaos, not as mutually exclusive forces, but as parts of a whole.",
-  "statementEs": "En esta serie exploro la tensión entre un paisaje construido a partir de formas geométricas y la presencia de figuras, seres y situaciones que introducen inestabilidad y movimiento. La imagen funciona como un espacio donde estos elementos opuestos conviven, se confrontan y finalmente se integran. La geometría es aquello que busca permanecer estable y resistirse a la transformación; lo irregular introduce cambio y vitalidad. Al situar la figura humana dentro de una estructura geométrica, me interesa hacer visible la relación inseparable entre orden y caos, no como fuerzas excluyentes, sino como partes del todo.",
+  "yearEnd": null,
+  "statementEn": "In this series, I explore the tension between a landscape constructed from geometric forms and the presence of figures, beings or situations that introduce instability and movement. The image functions as a space where this opposing elements coexist, confront one another, and ultimately become integrated.",
+  "statementEs": "En esta serie exploro la tensión entre un paisaje construido a partir de formas geométricas y la presencia de figuras, seres o situaciones que introducen inestabilidad y movimiento. La imagen funciona como un espacio donde estos elementos opuestos conviven, se confrontan y finalmente se integran.",
+  "statementAuthor": "",
   "coverImage": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/REG001",
-  "order": 230,
-  "statementAuthor": "Rocío Cerón"
+  "order": 230
 }
