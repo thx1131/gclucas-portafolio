@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /text/
+Disallow: /es/text/
 
 Sitemap: https://gclucas.art/sitemap.xml

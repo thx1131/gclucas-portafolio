@@ -214,3 +214,56 @@ collections:
           - { name: variable, label: "Medida variable", widget: boolean, default: false, hint: "Piezas de edición donde cada unidad tiene una medida distinta (ej. 0 quilates)." }
           - { name: raw, label: "Medida en texto libre (caso excepcional)", widget: string, required: false, hint: "Solo si no aplica ni Alto/Ancho ni 'Medida variable'." }
       - { name: order, label: "Orden dentro de la serie", widget: number, value_type: int, required: false, hint: "Menor = aparece primero dentro de su serie. El build ahora ordena explícitamente por este campo (antes dependía de la posición en works.json)." }
+
+  - name: texts
+    label: "Textos"
+    label_singular: "Texto"
+    # Folder collection (2026-10-27), mismo patrón que "Obras"/"Series": un archivo por texto
+    # en data/texts/<ID>.json. Un texto solo aparece en el sitio con "Publicado" activado;
+    # mientras no haya ninguno, /text/ no existe (ni navbar, ni home, ni sitemap).
+    folder: data/texts
+    create: true
+    extension: json
+    format: json
+    slug: '{{fields.id}}'
+    identifier_field: id
+    summary: "{{fields.titleEs}} — {{fields.author}} ({{fields.year}})"
+    sortable_fields: ['year', 'order', 'author']
+    preview_path: '/text/{{id}}/'
+    fields:
+      - { name: id, label: "ID (slug de la URL)", widget: string, hint: "NO cambiar en un texto ya publicado: rompe la URL /text/<id>/ y es también el nombre del archivo. Para uno nuevo: minúsculas y guiones, sin espacios ni acentos (ej. apellido-tema)." }
+      - { name: published, label: "Publicado", widget: boolean, default: false, hint: "Solo los textos con esto activado aparecen en el sitio." }
+      - { name: type, widget: hidden, default: critical }
+      - { name: author, label: "Autor del texto", widget: string }
+      - { name: year, label: "Año", widget: number, value_type: int }
+      - { name: order, label: "Orden dentro del año (opcional)", widget: number, value_type: int, required: false, hint: "El índice ordena por año (más reciente primero) y, dentro del mismo año, por este número (menor = primero). Vacío = al final de su año." }
+      - { name: dateEs, label: "Fecha (español)", widget: string, required: false, hint: "Tal como va en la firma, ej. \"Mayo 2001\". Vacío = se muestra el Año." }
+      - { name: dateEn, label: "Fecha (inglés)", widget: string, required: false, hint: "Ej. \"May 2001\". Vacío = se usa la fecha en español, o el Año." }
+      - { name: titleEn, label: "Título (inglés)", widget: string, required: false, hint: "Si falta un idioma, el sitio muestra el título del otro." }
+      - { name: titleEs, label: "Título (español)", widget: string, required: false }
+      - { name: epigraphEn, label: "Epígrafe (inglés, opcional)", widget: text, required: false }
+      - { name: epigraphEs, label: "Epígrafe (español, opcional)", widget: text, required: false }
+      - { name: epigraphAuthor, label: "Autor del epígrafe (opcional)", widget: string, required: false }
+      # Editor con solo negrita y cursiva: es lo que entiende el build (_markdown en build_site_v2.py).
+      - { name: bodyEn, label: "Texto (inglés)", widget: markdown, required: false, buttons: [bold, italic], editor_components: [] }
+      - { name: bodyEs, label: "Texto (español)", widget: markdown, required: false, buttons: [bold, italic], editor_components: [] }
+      - name: image
+        label: "Imagen (opcional)"
+        widget: image
+        required: false
+        # Ídem coverImage de Series: la barra inicial en media_folder es obligatoria.
+        media_folder: /uploads/texts
+        public_folder: /uploads/texts
+        hint: "Se muestra arriba del texto (3:2) y como miniatura en el índice."
+      - { name: imageCaptionEn, label: "Pie de imagen (inglés, opcional)", widget: string, required: false }
+      - { name: imageCaptionEs, label: "Pie de imagen (español, opcional)", widget: string, required: false }
+      - name: series
+        label: "Series relacionadas (opcional)"
+        widget: relation
+        collection: series
+        value_field: 'id'
+        search_fields: ['titleEn', 'id']
+        display_fields: ['{{titleEn}} ({{id}})']
+        multiple: true
+        required: false
+        hint: "Se muestran al final del texto como links a cada serie."

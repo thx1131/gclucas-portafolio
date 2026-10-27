@@ -632,6 +632,292 @@ body.dark-mode .contact-card-value {
     color: var(--text-dark);
 }
 
+/* TEXTS: lista (índice /text/ y sección del home) + texto individual */
+.text-page {
+    padding: 60px 0 80px;
+}
+
+.text-page .container {
+    max-width: calc(960px + 2 * var(--spacing-base));
+}
+
+.text-page h1 {
+    margin-bottom: 8px;
+}
+
+.text-rows {
+    border-bottom: 1px solid var(--border-light);
+}
+
+/* Una sola marca para las dos vistas; las columnas se ordenan con grid-template-areas
+   y .text-row-meta (año + autor) se "disuelve" en el grid salvo en móvil. */
+.text-row {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr) 260px 24px;
+    grid-template-areas: "year title author arrow";
+    gap: 24px;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-light);
+}
+
+.text-rows--thumbs .text-row {
+    grid-template-columns: 56px 96px minmax(0, 1fr) 260px 24px;
+    grid-template-areas: "year thumb title author arrow";
+}
+
+body.dark-mode .text-rows,
+body.dark-mode .text-row {
+    border-color: var(--border-dark);
+}
+
+.text-row-meta {
+    display: contents;
+}
+
+.text-row-year,
+.text-row-author {
+    font-size: 14px;
+    color: var(--accent-light);
+}
+
+body.dark-mode .text-row-year,
+body.dark-mode .text-row-author {
+    color: var(--accent-dark);
+}
+
+.text-row-year { grid-area: year; }
+
+.text-row-author {
+    grid-area: author;
+    text-transform: lowercase;
+}
+
+.text-row-title {
+    grid-area: title;
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    text-transform: lowercase;
+}
+
+.text-row-arrow {
+    grid-area: arrow;
+    font-size: 18px;
+}
+
+/* miniatura: la obra completa (contain), como en las tarjetas de series; sin imagen, cuadro gris */
+.text-row-thumb {
+    grid-area: thumb;
+    width: 96px;
+    aspect-ratio: 4/3;
+}
+
+.text-row-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: var(--bg-light);
+}
+
+body.dark-mode .text-row-thumb img {
+    background-color: var(--bg-dark);
+}
+
+.text-row-thumb--empty {
+    background-color: #eeeeee;
+}
+
+body.dark-mode .text-row-thumb--empty {
+    background-color: #2a2a2a;
+}
+
+/* home: título · autor · año, sin miniatura ni flecha */
+.text-rows--compact {
+    max-width: 960px;
+}
+
+.text-rows--compact .text-row {
+    grid-template-columns: minmax(0, 1fr) 240px 56px;
+    grid-template-areas: "title author year";
+    align-items: baseline;
+    padding: 18px 0;
+}
+
+.text-rows--compact .text-row-title {
+    font-size: 20px;
+    letter-spacing: -0.2px;
+}
+
+.text-rows--compact .text-row-year {
+    text-align: right;
+}
+
+.text-rows--compact .text-row-arrow {
+    display: none;
+}
+
+.text-all {
+    margin: 24px 0 0;
+    font-size: 14px;
+}
+
+.text-all a {
+    border-bottom: 1px solid currentColor;
+}
+
+/* texto individual: una columna de 720px */
+.text-detail .container {
+    max-width: calc(720px + 2 * var(--spacing-base));
+}
+
+.text-breadcrumb {
+    padding-top: 48px;
+    margin-bottom: 40px;
+    font-size: 14px;
+    color: var(--accent-light);
+}
+
+.text-detail h1 {
+    line-height: 1.1;
+    margin-bottom: 12px;
+}
+
+.text-byline {
+    font-size: 14px;
+    color: var(--accent-light);
+    text-transform: lowercase;
+    margin-bottom: 48px;
+}
+
+body.dark-mode .text-breadcrumb,
+body.dark-mode .text-byline {
+    color: var(--accent-dark);
+}
+
+.text-figure {
+    margin: 0 0 48px;
+}
+
+.text-figure img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    background-color: var(--bg-light);
+}
+
+body.dark-mode .text-figure img {
+    background-color: var(--bg-dark);
+}
+
+.text-figure figcaption {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--accent-light);
+}
+
+body.dark-mode .text-figure figcaption {
+    color: var(--accent-dark);
+}
+
+.text-epigraph {
+    margin: 0 0 40px;
+    padding-left: 24px;
+    border-left: 1px solid var(--accent-light);
+    font-size: 20px;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.text-epigraph p {
+    margin-bottom: 0;
+}
+
+.text-epigraph cite {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+    font-style: normal;
+    color: var(--accent-light);
+}
+
+body.dark-mode .text-epigraph {
+    border-left-color: var(--accent-dark);
+}
+
+body.dark-mode .text-epigraph cite {
+    color: var(--accent-dark);
+}
+
+.text-content p {
+    font-size: 19px;
+    line-height: 1.8;
+    margin-bottom: 22px;
+}
+
+.text-series {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    margin: 56px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+    font-size: 14px;
+    color: var(--accent-light);
+}
+
+.text-series a {
+    color: var(--text-light);
+    border-bottom: 1px solid var(--accent-light);
+}
+
+body.dark-mode .text-series {
+    border-top-color: var(--border-dark);
+    color: var(--accent-dark);
+}
+
+body.dark-mode .text-series a {
+    color: var(--text-dark);
+    border-bottom-color: var(--accent-dark);
+}
+
+/* anterior / índice / siguiente: mismo layout que .series-nav */
+.text-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-top: 64px;
+    padding: 24px 0 60px;
+    border-top: 1px solid var(--border-light);
+    font-size: 14px;
+    text-transform: lowercase;
+}
+
+body.dark-mode .text-nav {
+    border-top-color: var(--border-dark);
+}
+
+.text-nav a,
+.text-nav span {
+    flex: 1;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+.text-nav a:nth-child(2) {
+    justify-content: center;
+}
+
+.text-nav a:last-child,
+.text-nav span:last-child {
+    justify-content: flex-end;
+    text-align: right;
+}
+
 /* FOOTER — centrado */
 .footer {
     border-top: 1px solid var(--border-light);
@@ -747,6 +1033,93 @@ body.dark-mode .footer-socials a {
 
     .contact-cards {
         grid-template-columns: 1fr;
+    }
+
+    /* /text/ en móvil: miniatura de 72px a la izquierda, "año · autor" arriba del título */
+    .text-page {
+        padding-top: 40px;
+    }
+
+    .text-row,
+    .text-rows--thumbs .text-row {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "meta" "title";
+        gap: 2px 16px;
+        padding: 18px 0;
+    }
+
+    .text-rows--thumbs .text-row {
+        grid-template-columns: 72px minmax(0, 1fr);
+        grid-template-areas: "thumb meta" "thumb title";
+    }
+
+    .text-row-thumb {
+        width: 72px;
+        align-self: center;
+    }
+
+    .text-row-meta {
+        display: block;
+        grid-area: meta;
+        font-size: 13px;
+    }
+
+    .text-row-year,
+    .text-row-author {
+        font-size: 13px;
+    }
+
+    .text-row-author::before {
+        content: " · ";
+    }
+
+    .text-row-title {
+        font-size: 20px;
+    }
+
+    .text-row-arrow {
+        display: none;
+    }
+
+    /* home en móvil: título y autor a la izquierda, año a la derecha */
+    .text-rows--compact .text-row {
+        grid-template-columns: minmax(0, 1fr) 56px;
+        grid-template-areas: "title year" "author year";
+    }
+
+    .text-rows--compact .text-row-meta {
+        display: contents;
+    }
+
+    .text-rows--compact .text-row-author::before {
+        content: none;
+    }
+
+    .text-breadcrumb {
+        padding-top: 30px;
+    }
+
+    .text-content p {
+        font-size: 18px;
+        line-height: 1.75;
+    }
+
+    .text-nav {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .text-nav span:empty {
+        display: none;
+    }
+
+    .text-nav a,
+    .text-nav span,
+    .text-nav a:nth-child(2),
+    .text-nav a:last-child,
+    .text-nav span:last-child {
+        justify-content: center;
+        text-align: center;
     }
 }
 
