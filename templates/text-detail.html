@@ -1,18 +1,15 @@
-<!-- text detail section -->
-<section class="text-detail">
+<!-- text detail: una columna; imagen, epígrafe y series relacionadas solo si el texto los trae -->
+<article class="text-detail">
     <div class="container">
+        <p class="text-breadcrumb"><a href="{{base}}/text/">← {{t_nav_text}}</a></p>
         <h1>{{text_title}}</h1>
-        
-        <div class="text-meta">
-            <p class="text-date">{{text_date}}</p>
-        </div>
-        
+        <p class="text-byline">{{text_byline}}</p>
+        {{text_figure}}
+        {{text_epigraph}}
         <div class="text-content">
             {{text_body}}
         </div>
-        
-        <div class="text-nav">
-            {{text_prev_next}}
-        </div>
+        {{text_series}}
+        {{text_nav}}
     </div>
-</section>
+</article>

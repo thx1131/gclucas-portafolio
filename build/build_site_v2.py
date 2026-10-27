@@ -8,7 +8,7 @@ Genera todas las páginas:
 /statement
 /work (lista de series)
 /work/[series-id] (serie individual)
-/text (lista de textos)
+/text (lista de textos; solo si hay textos publicados)
 /text/[text-id] (texto individual)
 /bio
 /contact
@@ -18,8 +18,10 @@ Cada página se genera una vez por idioma (ver LANGS): el idioma default
 """
 
 import hashlib
+import html
 import json
 import re
+import shutil
 import sys
 from pathlib import Path
 from datetime import datetime, date
@@ -35,6 +37,7 @@ UI = {
         'og_locale': 'en_US',
         'nav_statement': 'statement',
         'nav_work': 'work',
+        'nav_text': 'text',
         'nav_bio': 'bio',
         'nav_contact': 'contact',
         'theme_toggle': 'Toggle dark mode',
@@ -43,9 +46,9 @@ UI = {
         'hero_tagline': 'visual artist exploring contradictions & transitions',
         'explore_series': 'explore the series',
         'exhibitions': 'exhibitions',
-        'texts': 'texts',
-        'texts_subtitle': 'writings and reflections',
-        'read_more': 'read more',
+        'texts_subtitle': 'critical texts on the work',
+        'all_texts': 'all texts',
+        'related_series': 'related series',
         'send_message': 'send a message',
         'modal_close': 'close',
         'modal_prev': '← previous',
@@ -55,7 +58,7 @@ UI = {
         'title_home': 'gclucas | visual artist',
         'desc_statement': "Artist's statement",
         'desc_work': 'Explore the series',
-        'desc_texts': 'Writings and reflections',
+        'desc_texts': 'Critical texts on the work of GC Lucas',
         'desc_bio': 'Artist biography and exhibitions',
         'desc_contact': 'Get in touch',
     },
@@ -63,6 +66,7 @@ UI = {
         'og_locale': 'es_MX',
         'nav_statement': 'statement',
         'nav_work': 'obra',
+        'nav_text': 'texto',
         'nav_bio': 'bio',
         'nav_contact': 'contacto',
         'theme_toggle': 'Cambiar a modo oscuro',
@@ -71,9 +75,9 @@ UI = {
         'hero_tagline': 'artista visual que explora contradicciones y transiciones',
         'explore_series': 'explora las series',
         'exhibitions': 'exposiciones',
-        'texts': 'textos',
-        'texts_subtitle': 'escritos y reflexiones',
-        'read_more': 'leer más',
+        'texts_subtitle': 'textos críticos sobre la obra',
+        'all_texts': 'todos los textos',
+        'related_series': 'series relacionadas',
         'send_message': 'enviar un mensaje',
         'modal_close': 'cerrar',
         'modal_prev': '← anterior',
@@ -83,7 +87,7 @@ UI = {
         'title_home': 'gclucas | artista visual',
         'desc_statement': 'Statement del artista',
         'desc_work': 'Explora las series',
-        'desc_texts': 'Escritos y reflexiones',
+        'desc_texts': 'Textos críticos sobre la obra de GC Lucas',
         'desc_bio': 'Biografía y exposiciones del artista',
         'desc_contact': 'Ponte en contacto',
     },
@@ -113,6 +117,9 @@ class SiteBuilder:
         self.series_data = self._load_series_folder()
         self.works_data = self._load_works_folder()
         self.site_data = self._load_json('site.json')
+        # Solo los publicados, ya en el orden del índice. Vacío = /text/ no existe en el sitio
+        # (ni navbar, ni home, ni sitemap): ver _load_texts_folder.
+        self.texts_data = self._load_texts_folder()
         
         # Templates crudos (con los {{t_...}} / {{base}} sin resolver). _set_language()
         # los localiza y los deja como atributos (self.base_template, self.home_template, ...).
@@ -123,8 +130,7 @@ class SiteBuilder:
             'work_template': self._load_template('work.html'),
             'series_template': self._load_template('series.html'),
             'text_template': self._load_template('text.html'),
-            # opcional: aún no se renderiza ninguna página con este template (ver backlog /text/)
-            'text_detail_template': self._load_template('text-detail.html', optional=True),
+            'text_detail_template': self._load_template('text-detail.html'),
             'bio_template': self._load_template('bio.html'),
             'contact_template': self._load_template('contact.html'),
 
@@ -136,6 +142,10 @@ class SiteBuilder:
             'statement_content_partial': self._load_template('partials/statement-content.html'),
             'bio_content_partial': self._load_template('partials/bio-content.html'),
             'contact_content_partial': self._load_template('partials/contact-content.html'),
+            # Lista de textos: la misma para /text/ y para la sección text del home
+            # (cambia solo el modificador de clase, ver _text_list).
+            'text_list_partial': self._load_template('partials/text-list.html'),
+            'home_texts_partial': self._load_template('partials/home-texts.html'),
 
             # Components
             'navbar_component': self._load_template('components/navbar.html'),
@@ -208,6 +218,13 @@ class SiteBuilder:
         """Campo de contenido en el idioma actual (titleEn/titleEs, statementEn/statementEs, ...).
         Si falta o está vacío en español, cae al inglés para no publicar un hueco."""
         return obj.get(f'{field}{self.lang.capitalize()}') or obj.get(f'{field}En') or ''
+
+    def _loc_any(self, obj, field):
+        """Como _loc, pero cae al otro idioma en las dos direcciones (un texto puede tener
+        el título solo en español). Se usa para los campos de data/texts/."""
+        langs = [self.lang] + [l for l in LANGS if l != self.lang]
+        return next((obj[f'{field}{l.capitalize()}'] for l in langs
+                     if (obj.get(f'{field}{l.capitalize()}') or '').strip()), '')
 
     def _paragraphs(self, field):
         """Párrafos no vacíos de un campo de lista de site.json en el idioma actual. El CMS
@@ -297,17 +314,51 @@ class SiteBuilder:
         series.sort(key=lambda s: s.get('order') if s.get('order') is not None else 0)
         return series
 
-    def _load_template(self, filename, optional=False):
-        """Load template file from templates directory.
-        optional=True: falta tolerada (ningún page builder lo usa todavía), devuelve "" y solo avisa."""
+    def _load_texts_folder(self):
+        """Carga data/texts/ (folder collection del CMS: un archivo JSON por texto) y devuelve
+        solo los publicados, ordenados como el índice: año descendente y luego 'order'.
+        Aborta el build si un JSON es inválido. Un texto publicado sin id, título o cuerpo
+        se saltea con un aviso: no frena el deploy del resto del sitio. La carpeta es
+        opcional: sin ella, no hay textos."""
+        folder = self.data_dir / 'texts'
+        if not folder.is_dir():
+            return []
+        texts = []
+        for path in sorted(folder.glob('*.json')):
+            try:
+                with open(path, 'r', encoding='utf-8') as f:
+                    text = json.load(f)
+            except json.JSONDecodeError as e:
+                sys.exit(f"❌ Error fatal: texts/{path.name} tiene JSON inválido ({e})")
+            if not text.get('published'):
+                continue
+            missing = [label for label, fields in (('id', ['id']), ('título', ['titleEn', 'titleEs']),
+                                                   ('cuerpo', ['bodyEn', 'bodyEs']))
+                       if not any((text.get(f) or '').strip() for f in fields)]
+            if missing:
+                print(f"⚠️  Aviso: texts/{path.name} está publicado pero le falta {', '.join(missing)}; no se publica")
+                continue
+            texts.append(text)
+        ids = [t['id'] for t in texts]
+        if len(ids) != len(set(ids)):
+            sys.exit(f"❌ Error fatal: hay textos publicados con el mismo id ({ids})")
+
+        def sort_key(text):
+            try:
+                year = int(text.get('year'))
+            except (TypeError, ValueError):
+                year = 0  # sin año: al final
+            order = text.get('order')
+            return (-year, order if order is not None else float('inf'))
+        return sorted(texts, key=sort_key)
+
+    def _load_template(self, filename):
+        """Load template file from templates directory. Siempre requerido: aborta el build si falta."""
         path = self.templates_dir / filename
         try:
             with open(path, 'r', encoding='utf-8') as f:
                 return f.read()
         except FileNotFoundError:
-            if optional:
-                print(f"⚠️  Aviso: {filename} not found at {path} (opcional, no bloquea el build)")
-                return ""
             sys.exit(f"❌ Error fatal: {filename} not found at {path}")
     
     def _render_template(self, template, variables):
@@ -358,6 +409,81 @@ class SiteBuilder:
             parts.append(str(dims['depth']))
         return "×".join(parts) + f" {dims.get('unit') or 'cm'}"
     
+    def _markdown(self, text):
+        """Markdown mínimo de los textos (bodyEn/bodyEs): párrafos separados por una línea en
+        blanco, ***negrita cursiva***, **negrita**, *cursiva* (o _cursiva_) y salto de línea
+        forzado (\\ o dos espacios al final). Lo demás (títulos, listas, links) sale como texto:
+        el editor del CMS solo ofrece negrita y cursiva (ver admin/config.yml)."""
+        escaped = {}
+
+        def protect(match):
+            key = f"\x00{len(escaped)}\x00"
+            escaped[key] = match.group(1)
+            return key
+
+        paragraphs = []
+        for block in re.split(r'\n\s*\n', (text or '').strip()):
+            if not block.strip():
+                continue
+            s = html.escape(block.strip(), quote=False)
+            s = re.sub(r'\\([\\*_])', protect, s)          # \* y \_ son literales
+            s = re.sub(r'(?:\\| {2,})\n', '\x01', s)        # salto de línea forzado
+            s = re.sub(r'\s*\n\s*', ' ', s)                  # salto simple = espacio
+            s = re.sub(r'\*\*\*(?=\S)(.+?)(?<=\S)\*\*\*', r'<strong><em>\1</em></strong>', s)
+            s = re.sub(r'\*\*(?=\S)(.+?)(?<=\S)\*\*', r'<strong>\1</strong>', s)
+            s = re.sub(r'\*(?=\S)(.+?)(?<=\S)\*', r'<em>\1</em>', s)
+            s = re.sub(r'(?<!\w)_(?=\S)(.+?)(?<=\S)_(?!\w)', r'<em>\1</em>', s)
+            for key, char in escaped.items():
+                s = s.replace(key, char)
+            paragraphs.append(f"<p>{s.replace(chr(1), '<br>')}</p>")
+        return "\n".join(paragraphs)
+
+    def _plain(self, markdown_text):
+        """Texto plano de un campo markdown (para meta description)."""
+        return html.unescape(re.sub(r'<[^>]+>', '', self._markdown(markdown_text))).replace('\n', ' ')
+
+    def _text_date(self, text):
+        """Fecha de un texto tal como la escribió el autor ("Mayo 2001"), o el año si no hay."""
+        return self._loc_any(text, 'date') or str(text.get('year') or '')
+
+    def _text_list(self, compact=False):
+        """Lista de textos publicados. La misma marca para /text/ y para el home:
+        compact=True (home) muestra solo título, autor y año, hasta 5 (los más recientes).
+        Miniaturas (solo /text/): la columna existe si al menos un texto tiene imagen; los
+        que no tienen muestran un cuadro gris 4:3 para que los títulos no se desalineen."""
+        texts = self.texts_data[:5] if compact else self.texts_data
+        thumbs = not compact and any(t.get('image') for t in texts)
+        rows = ""
+        for text in texts:
+            thumb = ""
+            if thumbs:
+                thumb = (f'<span class="text-row-thumb"><img src="{html.escape(self._optimized_image_url(text["image"]))}" alt="" loading="lazy"></span>'
+                         if text.get('image') else '<span class="text-row-thumb text-row-thumb--empty"></span>')
+            rows += f"""
+            <a href="{self.prefix}/text/{text['id']}/" class="text-row">
+                {thumb}
+                <span class="text-row-title">{html.escape(self._loc_any(text, 'title'))}</span>
+                <span class="text-row-meta"><span class="text-row-year">{html.escape(str(text.get('year') or ''))}</span><span class="text-row-author">{html.escape(text.get('author') or '')}</span></span>
+                <span class="text-row-arrow" aria-hidden="true">→</span>
+            </a>
+            """
+        modifier = ' text-rows--compact' if compact else (' text-rows--thumbs' if thumbs else '')
+        return self._render_template(self.text_list_partial, {
+            'text_rows_class': modifier,
+            'text_rows': rows
+        })
+
+    def _build_text_nav(self, prev_t, next_t):
+        """Navegador anterior/siguiente entre textos (mismo esquema que _build_series_nav):
+        anterior = más reciente en el índice, siguiente = más antiguo."""
+        title = lambda t: html.escape(self._loc_any(t, 'title'))
+        nav = '<nav class="text-nav">'
+        nav += f'<a href="{self.prefix}/text/{prev_t["id"]}/">← {title(prev_t)}</a>' if prev_t else '<span></span>'
+        nav += f'<a href="{self.prefix}/text/">{self.t["nav_text"]}</a>'
+        nav += f'<a href="{self.prefix}/text/{next_t["id"]}/">{title(next_t)} →</a>' if next_t else '<span></span>'
+        nav += '</nav>'
+        return nav
+
     def _truncate(self, text, length=100):
         """Corta texto a `length` caracteres sin partir una palabra a la mitad"""
         if len(text) <= length:
@@ -387,7 +513,9 @@ class SiteBuilder:
         )
         navbar_html = self._render_template(self.navbar_component, {
             'alt_lang': alt_lang,
-            'alt_url': f"{self._lang_prefix(alt_lang)}{path}"
+            'alt_url': f"{self._lang_prefix(alt_lang)}{path}",
+            'nav_text_item': (f'<li><a href="{self.prefix}/text/">{self.t["nav_text"]}</a></li>'
+                              if self.texts_data else '')
         })
         footer_html = self._render_template(self.footer_component, {
             'footer_socials': '' if hide_footer_links else self.footer_socials_html
@@ -422,8 +550,15 @@ class SiteBuilder:
             </a>
             """
         
+        text_section = ''
+        if self.texts_data:
+            text_section = self._render_template(self.home_texts_partial, {
+                'text_list': self._text_list(compact=True)
+            })
+
         content = self._render_template(self.home_template, {
             'series_preview': series_preview,
+            'text_section': text_section,
             'hero_image': self.default_og_image,
             'statement_content': self.statement_content_html,
             'bio_content': self.bio_content_html,
@@ -550,42 +685,76 @@ class SiteBuilder:
             self._save_html(output_path, html)
             print(f"✅ Created: {output_path} ({len(works)} works)")
     
-    def build_text_index(self):
-        """Build /text/index.html"""
-        print("📚 Building texts index...")
-        
-        texts_list = f"""
-        <div class="texts-grid">
-            <article class="text-card">
-                <h3>Ficciones</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <a href="{self.prefix}/text/ficciones/">{self.t['read_more']}</a>
-            </article>
-            <article class="text-card">
-                <h3>Sobre Peligro de Extinción</h3>
-                <p>Exploración del concepto de extinción en la obra contemporánea.</p>
-                <a href="{self.prefix}/text/peligro-extincion/">{self.t['read_more']}</a>
-            </article>
-        </div>
-        """
-        
+    def build_text_pages(self):
+        """Build /text/index.html y /text/[text-id]/index.html. Sin textos publicados no se
+        genera nada, y la carpeta text/ de una corrida anterior se borra: así despublicar
+        (o renombrar) un texto también saca su página del sitio."""
+        text_dir = self.lang_output_dir / 'text'
+        if text_dir.is_dir():
+            shutil.rmtree(text_dir)
+        if not self.texts_data:
+            print("📚 Sin textos publicados: no se genera /text/")
+            return
+
+        print("📚 Building texts...")
         content = self._render_template(self.text_template, {
-            'texts_list': texts_list
+            'texts_list': self._text_list()
         })
-        
-        html = self._build_full_page(
+        html_page = self._build_full_page(
             content,
-            f"{self.t['texts']} | gclucas",
+            f"{self.t['nav_text']} | gclucas",
             self.t['desc_texts'],
-            "https://picsum.photos/1200/600?random=texts",
-            '/text/',
-            noindex=True  # placeholder content (lorem ipsum, links a páginas inexistentes) — no indexar hasta que haya texto real
+            self.default_og_image,
+            '/text/'
         )
-        
-        output_path = self.lang_output_dir / 'text' / 'index.html'
-        self._save_html(output_path, html)
-        print(f"✅ Created: {output_path}")
-    
+        self._save_html(text_dir / 'index.html', html_page)
+        print(f"✅ Created: {text_dir / 'index.html'}")
+
+        for i, text in enumerate(self.texts_data):
+            title = self._loc_any(text, 'title')
+            figure = ''
+            if text.get('image'):
+                caption = self._loc_any(text, 'imageCaption')
+                figure = (f'<figure class="text-figure"><img src="{html.escape(self._optimized_image_url(text["image"]))}" alt="{html.escape(caption or title)}">'
+                          + (f'<figcaption>{html.escape(caption)}</figcaption>' if caption else '')
+                          + '</figure>')
+            epigraph = ''
+            if self._loc_any(text, 'epigraph'):
+                author = (text.get('epigraphAuthor') or '').strip()
+                epigraph = (f'<blockquote class="text-epigraph"><p>{html.escape(self._loc_any(text, "epigraph"))}</p>'
+                            + (f'<cite>{html.escape(author)}</cite>' if author else '')
+                            + '</blockquote>')
+            # Enlaces a series: se omite un id que no exista (p. ej. una serie renombrada)
+            related = [s for s in (self._get_series_by_id(sid) for sid in (text.get('series') or [])) if s]
+            series_html = ''
+            if related:
+                links = "".join(f'<a href="{self.prefix}/work/{s["id"]}/">{html.escape(self._loc(s, "title"))} →</a>' for s in related)
+                series_html = f'<p class="text-series"><span>{self.t["related_series"]}:</span>{links}</p>'
+
+            prev_t = self.texts_data[i - 1] if i > 0 else None
+            next_t = self.texts_data[i + 1] if i < len(self.texts_data) - 1 else None
+            byline = " · ".join(html.escape(p) for p in (text.get('author') or '', self._text_date(text)) if p)
+
+            content = self._render_template(self.text_detail_template, {
+                'text_title': html.escape(title),
+                'text_byline': byline,
+                'text_figure': figure,
+                'text_epigraph': epigraph,
+                'text_body': self._markdown(self._loc_any(text, 'body')),
+                'text_series': series_html,
+                'text_nav': self._build_text_nav(prev_t, next_t)
+            })
+            html_page = self._build_full_page(
+                content,
+                f"{html.escape(title)} | gclucas",
+                html.escape(self._truncate(self._plain(self._loc_any(text, 'body')), 160)),
+                self._optimized_image_url(text['image']) if text.get('image') else self.default_og_image,
+                f"/text/{text['id']}/"
+            )
+            output_path = text_dir / text['id'] / 'index.html'
+            self._save_html(output_path, html_page)
+            print(f"✅ Created: {output_path}")
+
     def build_bio(self):
         """Build /bio/index.html"""
         print("👤 Building bio page...")
@@ -642,9 +811,10 @@ class SiteBuilder:
         print("🗺️  Building sitemap...")
 
         today = date.today().isoformat()
-        # /text/ excluido a propósito: contenido placeholder, no indexable todavía (ver noindex en build_text_index)
         static_paths = ['/', '/statement/', '/work/', '/bio/', '/contact/']
         paths = static_paths + [f"/work/{s['id']}/" for s in self.series_data]
+        if self.texts_data:
+            paths += ['/text/'] + [f"/text/{t['id']}/" for t in self.texts_data]
 
         # Una entrada por página y por idioma, cada una con sus alternates (hreflang)
         entries = []
@@ -670,6 +840,20 @@ class SiteBuilder:
         output_path.write_text(xml, encoding='utf-8')
         print(f"✅ Created: {output_path} ({len(entries)} URLs)")
     
+    def build_robots(self):
+        """Build /robots.txt. Mientras no haya textos publicados, /text/ queda bloqueado
+        en todos los idiomas (no existe, y antes era un placeholder)."""
+        disallow = "" if self.texts_data else "".join(
+            f"Disallow: {self._lang_prefix(l)}/text/\n" for l in LANGS)
+        robots = (
+            "User-agent: *\n"
+            "Allow: /\n"
+            f"{disallow}\n"
+            f"Sitemap: {self.site_data['url'].rstrip('/')}/sitemap.xml\n"
+        )
+        (self.output_dir / 'robots.txt').write_text(robots, encoding='utf-8')
+        print(f"✅ Created: {self.output_dir / 'robots.txt'}")
+
     def build(self):
         """Build entire site"""
         print("\n" + "="*60)
@@ -684,10 +868,11 @@ class SiteBuilder:
             self.build_statement()
             self.build_work_index()
             self.build_series_pages()
-            self.build_text_index()
+            self.build_text_pages()
             self.build_bio()
             self.build_contact()
         self.build_sitemap()
+        self.build_robots()
         
         print("\n" + "="*60)
         print("✅ Multipágina site generation complete!")
@@ -697,7 +882,7 @@ class SiteBuilder:
         print("  /statement")
         print("  /work (todas las series)")
         print("  /work/[series-id] (cada serie)")
-        print("  /text (lista de textos)")
+        print(f"  /text ({len(self.texts_data)} textos publicados)")
         print("  /bio")
         print("  /contact")
         print("\n" + "="*60 + "\n")
