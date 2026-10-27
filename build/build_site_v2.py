@@ -468,15 +468,19 @@ class SiteBuilder:
         
         series_list = ""
         for series in self.series_data:
+            # Extracto y conteo ocultos a pedido de Lucas, oct 2026: la tarjeta muestra solo
+            # título y año. Se siguen calculando para poder volver a mostrarlos.
             works_count = len(self._get_works_by_series(series['id']))
             statement = self._loc(series, 'statement')
             excerpt = f"<p>{self._truncate(statement)}</p>" if statement else ""
+            # Sin año, se omite la línea entera en vez de dejar un hueco
+            year = self._series_years(series) if series.get('year') not in (None, '') else ''
+            year_html = f'<div class="year">{year}</div>' if year else ''
             series_list += f"""
             <a href="{self.prefix}/work/{series['id']}/" class="series-card">
                 <img src="{self._optimized_image_url(series['coverImage'])}" alt="{self._loc(series, 'title')}" loading="lazy">
                 <h3>{self._loc(series, 'title')}</h3>
-                {excerpt}
-                <div class="year">{self._series_years(series)} • {works_count} {self.t['works_count']}</div>
+                {year_html}
             </a>
             """
         
