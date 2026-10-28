@@ -252,11 +252,13 @@ body.dark-mode .hero {
 
 .hero-title {
     font-size: 56px;
-    margin-bottom: 16px;
+    margin: 0;
     text-transform: lowercase;
 }
 
+/* sin uso desde 2026-10-27: el tagline no se imprime (pedido de Lucas) */
 .hero-tagline {
+    margin-top: 16px;
     font-size: 18px;
     color: var(--accent-light);
     text-transform: lowercase;

@@ -43,6 +43,8 @@ UI = {
         'theme_toggle': 'Toggle dark mode',
         'lang_switch': 'Ver en español',
         'hero_alt': 'gclucas — visual artist',
+        # hero_tagline: no se imprime desde 2026-10-27 (pedido de Lucas); para volver,
+        # agregar <p class="hero-tagline">{{t_hero_tagline}}</p> debajo del h1 en home.html
         'hero_tagline': 'visual artist exploring contradictions & transitions',
         'explore_series': 'explore the series',
         'exhibitions': 'exhibitions',

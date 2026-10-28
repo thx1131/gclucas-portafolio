@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-10-27 (sección `/text/` construida y **en vivo con los 5 textos publicados**, y publicación masiva de 18 entradas del CMS en el PR #225 — ver "Sesión 2026-10-27"; antes: versión de Sveltia fijada y tarjetas de series, ver "Sesión 2026-10-26").
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-10-27 (sección `/text/` construida y **en vivo con los 5 textos publicados**, publicación masiva de 18 entradas del CMS en el PR #225 y ajustes de Lucas al subtítulo de `/text/` y al hero — ver "Sesión 2026-10-27"; antes: versión de Sveltia fijada y tarjetas de series, ver "Sesión 2026-10-26").
 
 ## Qué es esto
 
@@ -490,9 +490,20 @@ Misma receta que el #200: rama `integracion/cms-2026-10-27` con un `git merge --
 - **`CUA001`–`CUA010`** (#210–#219): título sin la edición, "cuatro vueltas N/40" → "cuatro vueltas N", en los dos idiomas.
 
 Pendientes después del #225:
-- **Ramas sin borrar**: las 18 ramas `cms/...` de los PRs fusionados siguen en el remoto (la de integración sí se borró). Borrarlas como se hizo tras el #200: `git push origin --delete cms/series/saga cms/series/trece-lunas cms/works/CUA001 …`.
+- ~~**Ramas sin borrar**~~: las 18 ramas `cms/...` de los PRs fusionados se borraron el 2026-10-27 (las corrió Luis: el modo automático de Claude Code bloquea `git push --delete`, igual que `gh pr merge`).
 - **Borradores que siguen abiertos**: #128 (`TRO001`), #153 (`HOY001`) y #192–#198 (7 obras nuevas con fotos de WhatsApp, id hash). El #86 se cerró sin fusionar.
 - No se registró en su momento la verificación previa (build, vista previa) del #225; el merge en GitHub quedó `MERGED`.
+
+### Ajustes a pedido de Lucas (2026-10-27)
+
+- **Subtítulo de `/text/` — PR #227.** "critical texts on the work" → "critical texts" y "textos críticos sobre la obra" → "textos críticos" (`texts_subtitle` en el dict `UI`). La meta description y `og:description` de `/text/` (`desc_texts`) repetían la frase: ahora "Critical texts on GC Lucas" / "Textos críticos sobre GC Lucas" ("of GC Lucas" daría a entender que él los escribió).
+- **Hero de la home: título "gc lucas" y sin tagline.** En `templates/home.html` el `<h1 class="hero-title">` dice "gc lucas" (antes "gclucas") y se quitó el `<p class="hero-tagline">`. El hero se usa solo ahí (EN y ES salen del mismo template).
+  - **El dato no se borró**: `hero_tagline` sigue en el dict `UI` (EN y ES) y `.hero-tagline` sigue en `css/main.css`, con un comentario de cómo volver a mostrarlo. El tagline nunca vino de `site.json`.
+  - **SEO**: la frase no se usaba en la meta description, OG ni twitter de la home: esos salen de `descriptionEn`/`descriptionEs` de `site.json` (el statement largo). El `index.html` versionado en git muestra otra descripción ("Visual artist exploring contradictions and transitions through painting…"): es HTML viejo, no lo que está publicado (ver "Riesgo de deriva del HTML versionado").
+  - **CSS**: `.hero-title` pasó de `margin-bottom: 16px` a `margin: 0`, y el espacio quedó como `margin-top` de `.hero-tagline`. Así el título queda centrado exacto con la imagen en escritorio. No hay scroll indicator en el hero.
+  - **Verificado** con playwright-core (caché de npx) contra `python3 -m http.server`: `/` y `/es/`, escritorio (1366 px) y móvil (390 px), claro y oscuro. En escritorio el centro vertical del título coincide con el de la imagen (416.5 px los dos). En móvil va debajo de la imagen. Sin scroll horizontal.
+  - **Navbar y footer también** (pedido de Luis, mismo PR #228): la marca de `templates/components/navbar.html` dice "gc lucas" y el footer `© gc lucas ® 2026`. Verificado en `/es/work/` a 1366, 390 y 320 px, claro y oscuro: la marca cabe en una línea junto al menú, el selector de idioma y el botón de tema. Las únicas páginas que todavía dicen "gclucas" en navbar/footer son `work/peligro-extincion/` y `work/vision-filippo/`: HTML viejo versionado que el build ya no genera (esas series no existen). **Siguen en vivo** (gclucas.art responde 200, verificado 2026-10-27) porque Cloudflare publica también lo que queda versionado en el repo: son páginas huérfanas. Decidir si se borran (o se redirigen en `_redirects`).
+  - **"gclucas" como marca sigue en**: `<title>`/`og:title`/`twitter:title` de todas las páginas (`title_home` = "gclucas | visual artist" y los `... | gclucas` del builder), el `alt` de la imagen del hero (`hero_alt`: "gclucas — visual artist") y `title` de `data/site.json` (oculto en el CMS y no lo lee el builder: no se ve en ningún lado). Pendiente de Lucas decidir cuáles cambian.
 
 ## Backlog técnico scoped, no construido
 
