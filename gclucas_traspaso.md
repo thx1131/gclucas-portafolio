@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-10-27 (sección `/text/` construida y **en vivo con los 5 textos publicados**, publicación masiva de 18 entradas del CMS en el PR #225 y ajustes de Lucas al subtítulo de `/text/` y al hero — ver "Sesión 2026-10-27"; antes: versión de Sveltia fijada y tarjetas de series, ver "Sesión 2026-10-26").
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-10-27 (sección `/text/` construida y **en vivo con los 5 textos publicados**, publicación masiva de 18 entradas del CMS en el PR #225 ajustes de Lucas al subtítulo de `/text/` y a la marca "gc lucas" en hero/navbar/footer, y lista de pendientes al cierre — ver "Sesión 2026-10-27"; antes: versión de Sveltia fijada y tarjetas de series, ver "Sesión 2026-10-26").
 
 ## Qué es esto
 
@@ -497,13 +497,22 @@ Pendientes después del #225:
 ### Ajustes a pedido de Lucas (2026-10-27)
 
 - **Subtítulo de `/text/` — PR #227.** "critical texts on the work" → "critical texts" y "textos críticos sobre la obra" → "textos críticos" (`texts_subtitle` en el dict `UI`). La meta description y `og:description` de `/text/` (`desc_texts`) repetían la frase: ahora "Critical texts on GC Lucas" / "Textos críticos sobre GC Lucas" ("of GC Lucas" daría a entender que él los escribió).
-- **Hero de la home: título "gc lucas" y sin tagline.** En `templates/home.html` el `<h1 class="hero-title">` dice "gc lucas" (antes "gclucas") y se quitó el `<p class="hero-tagline">`. El hero se usa solo ahí (EN y ES salen del mismo template).
+- **Hero de la home: título "gc lucas" y sin tagline — PR #228.** En vivo desde el 2026-10-27 (verificado en `/` y `/es/`: hero, navbar y footer dicen "gc lucas" y el tagline ya no aparece). En `templates/home.html` el `<h1 class="hero-title">` dice "gc lucas" (antes "gclucas") y se quitó el `<p class="hero-tagline">`. El hero se usa solo ahí (EN y ES salen del mismo template).
   - **El dato no se borró**: `hero_tagline` sigue en el dict `UI` (EN y ES) y `.hero-tagline` sigue en `css/main.css`, con un comentario de cómo volver a mostrarlo. El tagline nunca vino de `site.json`.
   - **SEO**: la frase no se usaba en la meta description, OG ni twitter de la home: esos salen de `descriptionEn`/`descriptionEs` de `site.json` (el statement largo). El `index.html` versionado en git muestra otra descripción ("Visual artist exploring contradictions and transitions through painting…"): es HTML viejo, no lo que está publicado (ver "Riesgo de deriva del HTML versionado").
   - **CSS**: `.hero-title` pasó de `margin-bottom: 16px` a `margin: 0`, y el espacio quedó como `margin-top` de `.hero-tagline`. Así el título queda centrado exacto con la imagen en escritorio. No hay scroll indicator en el hero.
   - **Verificado** con playwright-core (caché de npx) contra `python3 -m http.server`: `/` y `/es/`, escritorio (1366 px) y móvil (390 px), claro y oscuro. En escritorio el centro vertical del título coincide con el de la imagen (416.5 px los dos). En móvil va debajo de la imagen. Sin scroll horizontal.
   - **Navbar y footer también** (pedido de Luis, mismo PR #228): la marca de `templates/components/navbar.html` dice "gc lucas" y el footer `© gc lucas ® 2026`. Verificado en `/es/work/` a 1366, 390 y 320 px, claro y oscuro: la marca cabe en una línea junto al menú, el selector de idioma y el botón de tema. Las únicas páginas que todavía dicen "gclucas" en navbar/footer son `work/peligro-extincion/` y `work/vision-filippo/`: HTML viejo versionado que el build ya no genera (esas series no existen). **Siguen en vivo** (gclucas.art responde 200, verificado 2026-10-27) porque Cloudflare publica también lo que queda versionado en el repo: son páginas huérfanas. Decidir si se borran (o se redirigen en `_redirects`).
   - **"gclucas" como marca sigue en**: `<title>`/`og:title`/`twitter:title` de todas las páginas (`title_home` = "gclucas | visual artist" y los `... | gclucas` del builder), el `alt` de la imagen del hero (`hero_alt`: "gclucas — visual artist") y `title` de `data/site.json` (oculto en el CMS y no lo lee el builder: no se ve en ningún lado). Pendiente de Lucas decidir cuáles cambian.
+
+### Pendientes al cierre del 2026-10-27
+
+- **Statement del sitio vacío**: `statementEn`/`statementEs` siguen en `[]` (desde el 2026-10-13), así que la sección `/#statement` de la home y la página `/statement/` muestran solo el título, y el primer link del navbar lleva a una página vacía. El texto que suena a statement ("My artistic practice is based on exploring the dual nature of reality…") está en `descriptionEn`/`descriptionEs` de `site.json` y solo se usa como meta description de la home. Dos opciones, a decidir con Lucas: (a) que lo llene desde el CMS (sin código), o (b) esconder sección, página y link mientras esté vacío, como hace `/text/` (cambio de código).
+- **Páginas huérfanas en vivo**: `/work/peligro-extincion/` y `/work/vision-filippo/` (ver arriba). Decidir si se borran del repo o se redirigen en `_redirects` (¿a qué series?).
+- **Marca "gclucas" en `<title>`/OG/twitter y `hero_alt`**: Lucas decide si pasan a "gc lucas" (ver arriba).
+- **Typos en vivo del #225**: `9f21c3536b10` EN "(h20)"; `trece-lunas` EN "tensión", "oppsing"; `saga` EN "this opposing elements". Desde el CMS.
+- **Borradores abiertos**: #128, #153 y #192–#198.
+- **De `/text/`**: títulos, fechas, epígrafe de Cerón EN y permisos de republicación (ver "Sesión 2026-10-27").
 
 ## Backlog técnico scoped, no construido
 
