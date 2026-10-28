@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-10-27 (sección `/text/` construida y **en vivo con los 5 textos publicados** — ver "Sesión 2026-10-27"; antes: versión de Sveltia fijada y tarjetas de series, ver "Sesión 2026-10-26").
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-10-27 (sección `/text/` construida y **en vivo con los 5 textos publicados**, y publicación masiva de 18 entradas del CMS en el PR #225 — ver "Sesión 2026-10-27"; antes: versión de Sveltia fijada y tarjetas de series, ver "Sesión 2026-10-26").
 
 ## Qué es esto
 
@@ -444,7 +444,7 @@ Cuatro cambios, cada uno en su PR (todos fusionados por Luis con squash y verifi
 - **Quién fusiona**: el clasificador de modo automático de Claude Code bloquea `gh pr merge` ("Merge Without Review"), también cuando Luis lo pide explícitamente en el chat. Lo que funcionó: Luis lo corre desde la misma sesión con `! GH_TOKEN=$(gh auth token -u thx1131) gh pr merge <n> --squash --delete-branch` (o `--merge` para una rama de integración), y Claude verifica el resultado. Para destrabarlo habría que agregar una regla de permiso en la config de Claude Code.
 - **`gh` tiene dos cuentas** en la laptop de Luis (`thx1131` activa, `sistemaskmmp` inactiva). Usar siempre `GH_TOKEN=$(gh auth token -u thx1131)` para no depender de cuál esté activa.
 - ~~**PR #71 (pinear Sveltia) sigue abierto**~~ — cerrado el 2026-10-26, reemplazado por el #220 (ver "Sesión 2026-10-26"). Fijaba `0.213.5` — muy vieja: hoy jsDelivr sirve `0.251.0`. Fusionarlo tal cual sería un downgrade de ~40 versiones (perdería funciones del flujo editorial que se usan hoy). Si se retoma, pinear a la versión vigente y verificar que el CSS del #199 siga aplicando.
-- **Borradores fuera del #200**: #86, #128, #153 y #192–#198 (7 obras nuevas del 2026-10-24 con fotos de WhatsApp) siguen en "Borradores".
+- **Borradores fuera del #200**: #86, #128, #153 y #192–#198 (7 obras nuevas del 2026-10-24 con fotos de WhatsApp) siguen en "Borradores". *(Al 2026-10-27: el #86 está cerrado sin fusionar; los demás siguen abiertos — ver "Publicación masiva — PR #225".)*
 
 ## Sesión 2026-10-26: versión de Sveltia fijada + tarjetas de series solo con título y año
 
@@ -479,6 +479,20 @@ Construida según el prompt y el mockup de Luis (`txts/`, no commiteado; las cap
   - **Pendiente con Lucas**: títulos (Monsiváis EN, Cerón ES, Gortázar, Carballo, Noyola), fechas, epígrafe de Cerón EN y, sobre todo, **confirmar permisos** para republicar textos de terceros. Si algún permiso no se confirma: `published: false` en el CMS y la página desaparece en el siguiente build.
 - **Gotcha local**: después de un build local quedan `text/` y `es/text/` sin seguimiento (desde #223 no se versionan) y HTML/`robots.txt`/`sitemap.xml` modificados. Eso hace fallar el checkout final de `gh pr merge` ("serán sobrescritos"), aunque el merge en GitHub sí se haga. Limpiar antes con `git restore . && rm -rf text es/text`.
 - **Encontrado de paso, no arreglado**: `og:image` es una ruta relativa (`/uploads/site/aqui-es-todas-partes.jpeg`) en todas las páginas que usan `default_og_image`, porque `heroImage` se guarda sin dominio. WhatsApp y las redes necesitan una URL absoluta para la vista previa. Ver backlog.
+
+### Publicación masiva — PR #225 (2026-10-27)
+
+Misma receta que el #200: rama `integracion/cms-2026-10-27` con un `git merge --no-ff` por PR, fusionada con **merge commit** a las 02:04. Entraron 18 PRs del CMS (#202–#219), todos **ediciones** de entradas existentes (18 archivos, ninguna obra nueva; siguen 205 obras y 23 series):
+
+- **Series `saga` y `trece-lunas`** (#202, #203): statements EN/ES recortados a los dos primeros enunciados, `statementAuthor` vaciado (antes "Rocío Cerón" y "Carlos Monsiváis") y `yearEnd: null` agregado.
+  - **Typos que siguen en vivo**: `trece-lunas` EN "tensión" (con acento) y "oppsing"; `saga` EN "this opposing elements". Corregir desde el CMS.
+- **6 obras de `trompe-l-oeil` con id hash** (#204–#209: `eca9d9990241`, `bdffce740797`, `5b906c5bcc18`, `e631f678cd28`, `04cf0a5f2bdd`, `9f21c3536b10`): `titleEn`/`titleEs` pasaron de "h2o N" a "trompe l´oeil (h2o)", el mismo título para las 6. **`9f21c3536b10` tiene `titleEn` "trompe l´oeil (h20)"** (cero en vez de o): typo a corregir. Siguen con id que no es formato `AAA000` (el campo `id` interno dice "h2o 3", etc.) e imagen en `/uploads/` en vez de Cloudinary.
+- **`CUA001`–`CUA010`** (#210–#219): título sin la edición, "cuatro vueltas N/40" → "cuatro vueltas N", en los dos idiomas.
+
+Pendientes después del #225:
+- **Ramas sin borrar**: las 18 ramas `cms/...` de los PRs fusionados siguen en el remoto (la de integración sí se borró). Borrarlas como se hizo tras el #200: `git push origin --delete cms/series/saga cms/series/trece-lunas cms/works/CUA001 …`.
+- **Borradores que siguen abiertos**: #128 (`TRO001`), #153 (`HOY001`) y #192–#198 (7 obras nuevas con fotos de WhatsApp, id hash). El #86 se cerró sin fusionar.
+- No se registró en su momento la verificación previa (build, vista previa) del #225; el merge en GitHub quedó `MERGED`.
 
 ## Backlog técnico scoped, no construido
 
