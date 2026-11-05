@@ -1,4 +1,5 @@
 {
+  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRO001",
   "id": "TRO001",
   "series": "trompe-l-oeil",
   "titleEn": "trompe l´oeil (river)",
@@ -9,8 +10,10 @@
   "dimensions": {
     "height": 60,
     "width": 40,
-    "unit": "cm"
+    "unit": "cm",
+    "depth": null,
+    "variable": false,
+    "raw": ""
   },
-  "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRO001",
   "order": 25
 }
