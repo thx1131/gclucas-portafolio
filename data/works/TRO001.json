@@ -1,8 +1,8 @@
 {
   "id": "TRO001",
   "series": "trompe-l-oeil",
-  "titleEn": "trompe l´oeil 1/12",
-  "titleEs": "trompe l´oeil 1/12",
+  "titleEn": "trompe l´oeil (river)",
+  "titleEs": "trompe l´oeil (río)",
   "year": 2008,
   "technique": "photography",
   "techniqueEs": "photography",
@@ -12,5 +12,5 @@
     "unit": "cm"
   },
   "cloudinaryUrl": "https://res.cloudinary.com/dt2w4nxz6/image/upload/f_auto,q_auto/obras/TRO001",
-  "order": 1
+  "order": 25
 }
