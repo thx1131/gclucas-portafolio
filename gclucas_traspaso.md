@@ -526,8 +526,8 @@ Pedidos de Lucas, todos cambios de datos en `data/` (sin tocar código ni templa
 
 Desde el CMS (Lucas/Luis, sin código):
 
-- **Statement del sitio** (#232, #235): `statementEn`/`statementEs` de `site.json` ya tienen texto, así que `/statement/` y `/#statement` dejaron de estar vacías. Se corrigió "base" → "based". **Typo que sigue en vivo**: "oppsing" en `statementEn`.
-- **Serie pausa** (#236 y commits directos del 2026-10-06/07): statement nuevo firmado por Ana Elena Mallet (EN puesto el 2026-10-06 16:14, ES el mismo día 16:39, final EN ajustado el 2026-10-07). El 2026-11-05 se corrigió "consite" → "consiste" en ES. **Sigue**: comillas `¨pausa¨` (diéresis) en vez de `“pausa”`.
+- **Statement del sitio** (#232, #235): `statementEn`/`statementEs` de `site.json` ya tienen texto, así que `/statement/` y `/#statement` dejaron de estar vacías. Se corrigió "base" → "based". "oppsing" en `statementEn` **se deja así a propósito** (decisión de Luis, 2026-11-05: puede ser intencional de Lucas). No corregir sin que lo pida.
+- **Serie pausa** (#236 y commits directos del 2026-10-06/07): statement nuevo firmado por Ana Elena Mallet (EN puesto el 2026-10-06 16:14, ES el mismo día 16:39, final EN ajustado el 2026-10-07). El 2026-11-05 se corrigió "consite" → "consiste" en ES. Las comillas `¨pausa¨` (diéresis) **se dejan así a propósito**, mismo motivo.
 
 **Gotcha — `order: null` va primero.** `get_works_for_series()` ordena con `null` como 0, así que una obra nueva cargada desde el CMS sin `order` aparece **antes** de la 1. Fue la causa en cuatro vueltas, visión de filippo y 0 quilates. Siguen 17 obras sin `order`: anticommands (11), naranja-dulce (2), archeology-road (2), headless (1) y bob-ross-disturbed (1). Si Lucas reporta que una obra "salió primero", revisar esto antes que nada. (Mejora posible, no hecha: que `null` vaya al final, como en `/text/`.)
 
