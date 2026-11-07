@@ -1,19 +1,19 @@
 {
   "cloudinaryUrl": "/uploads/works/whatsapp-image-2026-10-23-at-1.03.39-pm-1.jpeg",
-  "id": "",
+  "id": "CUA0028",
   "series": "cuatro-vueltas",
-  "titleEn": "",
-  "titleEs": "",
-  "year": null,
-  "technique": "",
-  "techniqueEs": "",
+  "titleEn": "cuatro vueltas 28",
+  "titleEs": "cuatro vueltas 28",
+  "year": 2009,
+  "technique": "graphite/paper",
+  "techniqueEs": "grafito/papel",
   "dimensions": {
-    "height": null,
-    "width": null,
-    "unit": "",
+    "height": 30,
+    "width": 40,
+    "unit": "cm",
     "depth": null,
     "variable": false,
     "raw": ""
   },
-  "order": null
+  "order": 28
 }
