@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-10-27 (sección `/text/` construida y **en vivo con los 5 textos publicados**, publicación masiva de 18 entradas del CMS en el PR #225 ajustes de Lucas al subtítulo de `/text/` y a la marca "gc lucas" en hero/navbar/footer, y lista de pendientes al cierre — ver "Sesión 2026-10-27"; antes: versión de Sveltia fijada y tarjetas de series, ver "Sesión 2026-10-26").
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-11-05 (orden de obras en cuatro vueltas, visión de filippo, trompe l´oeil y 0 quilates; statement del sitio y de pausa cargados desde el CMS — ver "Sesión 2026-11-05"; antes: sección `/text/` en vivo y publicación masiva del PR #225, ver "Sesión 2026-10-27").
 
 ## Qué es esto
 
@@ -507,12 +507,51 @@ Pendientes después del #225:
 
 ### Pendientes al cierre del 2026-10-27
 
-- **Statement del sitio vacío**: `statementEn`/`statementEs` siguen en `[]` (desde el 2026-10-13), así que la sección `/#statement` de la home y la página `/statement/` muestran solo el título, y el primer link del navbar lleva a una página vacía. El texto que suena a statement ("My artistic practice is based on exploring the dual nature of reality…") está en `descriptionEn`/`descriptionEs` de `site.json` y solo se usa como meta description de la home. Dos opciones, a decidir con Lucas: (a) que lo llene desde el CMS (sin código), o (b) esconder sección, página y link mientras esté vacío, como hace `/text/` (cambio de código).
+- ~~**Statement del sitio vacío**~~ — **resuelto 2026-11-05**: Lucas lo cargó desde el CMS (PRs #232 y #235). Ver "Sesión 2026-11-05". Texto original: `statementEn`/`statementEs` siguen en `[]` (desde el 2026-10-13), así que la sección `/#statement` de la home y la página `/statement/` muestran solo el título, y el primer link del navbar lleva a una página vacía. El texto que suena a statement ("My artistic practice is based on exploring the dual nature of reality…") está en `descriptionEn`/`descriptionEs` de `site.json` y solo se usa como meta description de la home. Dos opciones, a decidir con Lucas: (a) que lo llene desde el CMS (sin código), o (b) esconder sección, página y link mientras esté vacío, como hace `/text/` (cambio de código).
 - **Páginas huérfanas en vivo**: `/work/peligro-extincion/` y `/work/vision-filippo/` (ver arriba). Decidir si se borran del repo o se redirigen en `_redirects` (¿a qué series?).
 - **Marca "gclucas" en `<title>`/OG/twitter y `hero_alt`**: Lucas decide si pasan a "gc lucas" (ver arriba).
-- **Typos en vivo del #225**: `9f21c3536b10` EN "(h20)"; `trece-lunas` EN "tensión", "oppsing"; `saga` EN "this opposing elements". Desde el CMS.
-- **Borradores abiertos**: #128, #153 y #192–#198.
+- **Typos en vivo del #225**: ~~`9f21c3536b10` EN "(h20)"~~ (corregido 2026-11-05, PR #231); `trece-lunas` EN "tensión", "oppsing"; `saga` EN "this opposing elements". Desde el CMS.
+- **Borradores abiertos**: ~~#128~~ (entró el 2026-11-05), #153 y ~~#192–#198~~ (entraron el 2026-11-07, PR #239).
 - **De `/text/`**: títulos, fechas, epígrafe de Cerón EN y permisos de republicación (ver "Sesión 2026-10-27").
+
+## Sesión 2026-11-05: orden de obras en varias series + statements desde el CMS
+
+Pedidos de Lucas, todos cambios de datos en `data/` (sin tocar código ni templates). Cada uno en su PR, fusionado con merge commit:
+
+- **#230 — cuatro vueltas y visión de filippo**: el `order` de cada obra ahora coincide con el número del título (cuatro vueltas 1–26, visión de filippo 1–9). Las obras cargadas desde el CMS tenían `order: null` y salían antes que la 1.
+- **#231 — trompe l´oeil en bloques**: `order` reasignado para que salgan juntas por grupo, sea → mass → h2o → river. De paso, `9f21c3536b10` `titleEn` "h20" → "h2o" y "(mar)" → "(sea)".
+- **#233 — ajustes de los dos anteriores**: "visión de filippo" sin número (`c618dc3cad01`) va **al inicio** de la serie (no al final, como dejó el #230). `TRO001` pasa de "1/12" a "(río)"/"(river)" y abre el bloque river. La edición de `TRO001` desde el CMS (`0acea4e`) también entró a `main` ese día: el borrador #128 ya no está abierto.
+- **#234 — títulos de 0 quilates**: las 5 obras y la serie quedan "0 quilates" / "0 carats". Se quitó la numeración ("1/43", etc.) y la variante "cero quilates" / "zero carat". La URL `/work/0-quilates/` no cambia.
+- **#237 — orden de 0 quilates**: primera, la del cubo solo (`QUI001`, el "pelón pelo rico", confirmado por Luis); última, la instalación con el brazo femenino (`5b5cd0eb6ae7`). Las dos sin `order` (`ed528f53eee6` y `5b5cd0eb6ae7`) pasaron a 4 y 5. Las posiciones 2–4 quedaron como estaban.
+
+Desde el CMS (Lucas/Luis, sin código):
+
+- **Statement del sitio** (#232, #235): `statementEn`/`statementEs` de `site.json` ya tienen texto, así que `/statement/` y `/#statement` dejaron de estar vacías. Se corrigió "base" → "based". "oppsing" en `statementEn` **se deja así a propósito** (decisión de Luis, 2026-11-05: puede ser intencional de Lucas). No corregir sin que lo pida.
+- **Serie pausa** (#236 y commits directos del 2026-10-06/07): statement nuevo firmado por Ana Elena Mallet (EN puesto el 2026-10-06 16:14, ES el mismo día 16:39, final EN ajustado el 2026-10-07). El 2026-11-05 se corrigió "consite" → "consiste" en ES. Las comillas `¨pausa¨` (diéresis) **se dejan así a propósito**, mismo motivo.
+
+**Gotcha — `order: null` va primero.** `get_works_for_series()` ordena con `null` como 0, así que una obra nueva cargada desde el CMS sin `order` aparece **antes** de la 1. Fue la causa en cuatro vueltas, visión de filippo y 0 quilates. Siguen 17 obras sin `order`: anticommands (11), naranja-dulce (2), archeology-road (2), headless (1) y bob-ross-disturbed (1). Si Lucas reporta que una obra "salió primero", revisar esto antes que nada. (Mejora posible, no hecha: que `null` vaya al final, como en `/text/`.)
+
+**CMS — quedarse en la entrada al guardar.** Sveltia vuelve a la lista después de guardar un borrador. Se desactiva por usuario y por navegador en *Settings → Contents → Editor → "Close the editor after saving a draft"* (verificado en el código de Sveltia 0.252.0). No es config del repo: Lucas tiene que hacerlo en su navegador.
+
+## Sesión 2026-11-07: borradores #192–#198 completados y publicados
+
+- **Datos de los 7 borradores con foto de WhatsApp.** Estaban vacíos salvo `series` y la imagen. Se llenaron con los datos de las otras obras de su serie, con un commit en la rama `cms/works/<hash>` de cada PR. No se renombró ningún archivo, para no duplicar entradas en Sveltia.
+  - **cuatro vueltas** (#192–#196): `CUA0027`–`CUA0031`, "cuatro vueltas 27"–"31", `order` 27–31. 2009, grafito/papel, 30×40 cm (como la 11–26; las 5 fotos son horizontales). El orden entre ellas es arbitrario: por la hora de la foto de WhatsApp.
+  - **in god we trust** (#197): `IGT003`, "in god we trust", 2012, monedas mexicanas, medidas variables.
+  - **archeology road** (#198): `ar003`, **"2993 ad"**, `order` 10. 2011, óleo/tela, 33×50 cm (la proporción de la foto, 1.51, coincide con 33×50 y no con 50×150). **El título lo eligió Claude** (siguiente al último, "2992 ad"): en esta serie los títulos son años, no una numeración. **Falta que Lucas lo confirme.**
+- **PR #239 — publicación.** Misma receta que el #200/#225: rama `integracion/cms-2026-11-07`, un `git merge --no-ff` por PR, fusionada con merge commit. Los 7 PRs quedaron `MERGED`. Verificado antes: 0 conflictos, build OK, 212 obras con serie existente e imagen presente. En vivo verificado a las 13:02. Las 7 ramas `cms/works/...` las borró Luis (el modo automático sigue bloqueando `git push --delete`). `optimize-images.yml` corrió sobre las fotos nuevas (`08f02a3`).
+- **PR #240 — ids duplicados.** El campo `id` de las obras no lo usa el build (ni URLs ni HTML), solo el CMS como nombre de la entrada (`identifier_field: id`), así que dos obras se veían con el mismo nombre. `ae8d2baa7ea2` (no extrañes nada) `nen001` → `nen002`; `d242813e8ceb` (trompe l´oeil river, `order` 33) `tromp014` → `tromp015`. Ya no quedan ids duplicados en `data/works/`.
+- **PR #241 — orden de in god we trust** (pedido de Lucas: "ponerla entre las 2 q tienen fondo blanco"). `IGT001` (blanco) 1 · `IGT003` (fondo negro) 2 · `IGT002` (blanco) 3.
+
+**Por qué unas fotos están en Cloudinary y otras no** (consulta de Luis): las 131 obras originales se subieron con `cloudinary_sync.py`; las 73 cargadas desde el CMS desde el 2026-09-09 viven en `/uploads/` (ver "Cambio de diseño 2026-09-09"). La migración sigue en el backlog; con más de un tercio del catálogo en `/uploads/`, puede ser buen momento.
+
+**Gotcha — build local en una rama con cambios sin commitear.** `git restore .` para limpiar la salida del build también deshace los cambios de `data/`. Commitear primero y correr el build después.
+
+Pendientes al cierre del 2026-11-07:
+- **#153 (`HOY001`)**: único borrador abierto. Ojo: además de `techniqueEs` "óleo/tela", deja `year` en `null` (hoy "2007-17"); publicarlo tal cual borra el año.
+- **17 ramas `cms/works/...` viejas** sin PR abierto (además de la del #153). Revisar y borrar.
+- **"2993 ad"**: confirmar con Lucas.
+- **Sin `order`**: siguen las mismas 17 obras (ver gotcha de la sesión 2026-11-05), incluidas `ar001` y `ar002`, que salen antes que la primera de archeology road.
 
 ## Backlog técnico scoped, no construido
 
