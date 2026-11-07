@@ -511,7 +511,7 @@ Pendientes después del #225:
 - **Páginas huérfanas en vivo**: `/work/peligro-extincion/` y `/work/vision-filippo/` (ver arriba). Decidir si se borran del repo o se redirigen en `_redirects` (¿a qué series?).
 - **Marca "gclucas" en `<title>`/OG/twitter y `hero_alt`**: Lucas decide si pasan a "gc lucas" (ver arriba).
 - **Typos en vivo del #225**: ~~`9f21c3536b10` EN "(h20)"~~ (corregido 2026-11-05, PR #231); `trece-lunas` EN "tensión", "oppsing"; `saga` EN "this opposing elements". Desde el CMS.
-- **Borradores abiertos**: ~~#128~~ (entró el 2026-11-05), #153 y ~~#192–#198~~ (entraron el 2026-11-07, PR #239).
+- ~~**Borradores abiertos**~~: ninguno desde el 2026-11-07. ~~#128~~ entró el 2026-11-05, ~~#192–#198~~ el 2026-11-07 (PR #239) y ~~#153~~ se cerró sin fusionar el 2026-11-07.
 - **De `/text/`**: títulos, fechas, epígrafe de Cerón EN y permisos de republicación (ver "Sesión 2026-10-27").
 
 ## Sesión 2026-11-05: orden de obras en varias series + statements desde el CMS
@@ -548,7 +548,8 @@ Desde el CMS (Lucas/Luis, sin código):
 **Gotcha — build local en una rama con cambios sin commitear.** `git restore .` para limpiar la salida del build también deshace los cambios de `data/`. Commitear primero y correr el build después.
 
 Pendientes al cierre del 2026-11-07:
-- **#153 (`HOY001`)**: único borrador abierto. Ojo: además de `techniqueEs` "óleo/tela", deja `year` en `null` (hoy "2007-17"); publicarlo tal cual borra el año.
+- ~~**#153 (`HOY001`)**~~: **cerrado sin fusionar** el 2026-11-07 (rama borrada). Solo cambiaba `techniqueEs` a "óleo/tela", que el sitio ya muestra en `/es/` gracias al glosario `TECHNIQUE_ES` del builder (verificado en vivo), y además vaciaba `year`. No queda ningún borrador abierto.
+- **"hoyo blanco" (`HOY001`) no se edita desde el CMS.** Su `year` es el texto "2007-17", y el campo Año de las obras en el CMS es numérico (`admin/config.yml`, `widget: number`). El panel lo muestra vacío y al guardar lo borra: así nació el #153. Es la única obra o serie con año no numérico (verificado 2026-11-07). Si hay que editarla, hacerlo a mano en `data/works/HOY001.json`, o revisar el año antes de publicar. Si Lucas va a cargar más obras con rango de años, la salida de fondo es agregar `yearEnd` a las obras, como ya tienen las series.
 - **17 ramas `cms/works/...` viejas** sin PR abierto (además de la del #153). Revisar y borrar.
 - **"2993 ad"**: confirmar con Lucas.
 - **Sin `order`**: siguen las mismas 17 obras (ver gotcha de la sesión 2026-11-05), incluidas `ar001` y `ar002`, que salen antes que la primera de archeology road.
