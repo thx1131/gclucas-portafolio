@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-11-09 (visión de filippo 10, combi "2963 ad" y orden de headless — ver "Sesión 2026-11-09"; antes: orden de obras en cuatro vueltas, visión de filippo, trompe l´oeil y 0 quilates; statement del sitio y de pausa cargados desde el CMS — ver "Sesión 2026-11-05"; antes: sección `/text/` en vivo y publicación masiva del PR #225, ver "Sesión 2026-10-27").
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-11-10 (visión de filippo 10, combi "2963 ad", orden de headless, favicon y pixelogue sin el storm trooper — ver "Sesión 2026-11-09"; antes: orden de obras en cuatro vueltas, visión de filippo, trompe l´oeil y 0 quilates; statement del sitio y de pausa cargados desde el CMS — ver "Sesión 2026-11-05"; antes: sección `/text/` en vivo y publicación masiva del PR #225, ver "Sesión 2026-10-27").
 
 ## Qué es esto
 
@@ -554,13 +554,19 @@ Pendientes al cierre del 2026-11-07:
 - ~~**"2993 ad"**~~: Lucas lo corrigió a "2963 ad" (2026-11-09).
 - **Sin `order`**: siguen 16 de esas 17 obras (headless se resolvió el 2026-11-09) (ver gotcha de la sesión 2026-11-05), incluidas `ar001` y `ar002`, que salen antes que la primera de archeology road.
 
-## Sesión 2026-11-09: filippo 10, combi y headless
+## Sesión 2026-11-09: filippo 10, combi, headless, favicon y pixelogue
 
-Pedidos de Lucas, solo cambios de datos en `data/works/`, en un PR:
+Pedidos de Lucas. **PR #243** (solo datos en `data/works/`):
 
 - **visión de filippo**: la obra sin número (`c618dc3cad01`, la roja) pasa a "visión de filippo 10" (EN/ES) con `order` 10, **al final** de la serie. Revierte la posición al inicio que le dio el #233.
 - **archeology road**: la combi (`ar003`, `ef31cea06c7e`) pasa de "2993 ad" (título puesto por Claude el 2026-11-07) a **"2963 ad"**.
 - **headless**: "scroll and roll" (`d095113e907b`, la de la bicicleta) no tenía `order` y salía primera, pegada a "berzerk"; las dos tienen un cerebro. Con `order` 9 queda al final y los dos cerebros quedan separados (1 y 9).
+
+**PR #244 — favicon.** El sitio no tenía. Se hizo a partir de la portada (`uploads/site/aqui-es-todas-partes.jpeg`), recortada a cuadrado con fondo **blanco** (si fuera transparente, el texto negro desaparece en pestañas en modo oscuro). Archivos en la raíz: `favicon.ico` (16/32/48), `favicon-32.png` y `apple-touch-icon.png` (180). Tres `<link>` en el `<head>` de `templates/base.html`. A 16 px el texto no se lee, se ve como un anillo; si Lucas quiere algo legible a ese tamaño, la alternativa es un ícono propio (p. ej. "gc" en Carlito). Si se cambia la portada, el favicon **no** se actualiza solo: hay que regenerarlo.
+
+**PR #245 — pixelogue sin el storm trooper.** Se borró `data/works/PEW001.json` ("pew pew pew"). Pixelogue queda con 3 obras. La imagen sigue en Cloudinary (`obras/PEW001`) por si se quiere recuperar.
+
+Los tres verificados en vivo el 2026-11-09/10.
 
 Pendiente de esta tanda:
 - **Filito negro en cuatro vueltas** (pedido de Lucas, aún no se hace). Solo afecta fotos de `/uploads/works/`, no las de Cloudinary (`CUA001`–`010`). Una medición de píxeles oscuros en los bordes marca 9 claras: 13 `3e998f1155b9`, 15 `dbce6c1687bc`, 18 `7a08a403582e`, 19 `a9395c84ebca`, 21 `f8455731b890`, 23 `e48600235719`, 24 `b7d2c4f6cde7`, 25 `9679ba9045a4`, 28 `d1e71ff7c5d9`; dudosas: 12, 27 y 31. Revisar cada orilla a mano antes de recortar (en algunas el dibujo toca el borde). Arreglo previsto: recortar unos píxeles del lado afectado y sobrescribir el mismo archivo, sin tocar JSON.
