@@ -1,6 +1,6 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-11-05 (orden de obras en cuatro vueltas, visión de filippo, trompe l´oeil y 0 quilates; statement del sitio y de pausa cargados desde el CMS — ver "Sesión 2026-11-05"; antes: sección `/text/` en vivo y publicación masiva del PR #225, ver "Sesión 2026-10-27").
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-11-09 (visión de filippo 10, combi "2963 ad" y orden de headless — ver "Sesión 2026-11-09"; antes: orden de obras en cuatro vueltas, visión de filippo, trompe l´oeil y 0 quilates; statement del sitio y de pausa cargados desde el CMS — ver "Sesión 2026-11-05"; antes: sección `/text/` en vivo y publicación masiva del PR #225, ver "Sesión 2026-10-27").
 
 ## Qué es esto
 
@@ -529,7 +529,7 @@ Desde el CMS (Lucas/Luis, sin código):
 - **Statement del sitio** (#232, #235): `statementEn`/`statementEs` de `site.json` ya tienen texto, así que `/statement/` y `/#statement` dejaron de estar vacías. Se corrigió "base" → "based". "oppsing" en `statementEn` **se deja así a propósito** (decisión de Luis, 2026-11-05: puede ser intencional de Lucas). No corregir sin que lo pida.
 - **Serie pausa** (#236 y commits directos del 2026-10-06/07): statement nuevo firmado por Ana Elena Mallet (EN puesto el 2026-10-06 16:14, ES el mismo día 16:39, final EN ajustado el 2026-10-07). El 2026-11-05 se corrigió "consite" → "consiste" en ES. Las comillas `¨pausa¨` (diéresis) **se dejan así a propósito**, mismo motivo.
 
-**Gotcha — `order: null` va primero.** `get_works_for_series()` ordena con `null` como 0, así que una obra nueva cargada desde el CMS sin `order` aparece **antes** de la 1. Fue la causa en cuatro vueltas, visión de filippo y 0 quilates. Siguen 17 obras sin `order`: anticommands (11), naranja-dulce (2), archeology-road (2), headless (1) y bob-ross-disturbed (1). Si Lucas reporta que una obra "salió primero", revisar esto antes que nada. (Mejora posible, no hecha: que `null` vaya al final, como en `/text/`.)
+**Gotcha — `order: null` va primero.** `get_works_for_series()` ordena con `null` como 0, así que una obra nueva cargada desde el CMS sin `order` aparece **antes** de la 1. Fue la causa en cuatro vueltas, visión de filippo y 0 quilates. Siguen 16 obras sin `order` (al 2026-11-09): anticommands (11), naranja-dulce (2), archeology-road (2) y bob-ross-disturbed (1). La de headless (`d095113e907b`) se resolvió el 2026-11-09. Si Lucas reporta que una obra "salió primero", revisar esto antes que nada. (Mejora posible, no hecha: que `null` vaya al final, como en `/text/`.)
 
 **CMS — quedarse en la entrada al guardar.** Sveltia vuelve a la lista después de guardar un borrador. Se desactiva por usuario y por navegador en *Settings → Contents → Editor → "Close the editor after saving a draft"* (verificado en el código de Sveltia 0.252.0). No es config del repo: Lucas tiene que hacerlo en su navegador.
 
@@ -538,7 +538,7 @@ Desde el CMS (Lucas/Luis, sin código):
 - **Datos de los 7 borradores con foto de WhatsApp.** Estaban vacíos salvo `series` y la imagen. Se llenaron con los datos de las otras obras de su serie, con un commit en la rama `cms/works/<hash>` de cada PR. No se renombró ningún archivo, para no duplicar entradas en Sveltia.
   - **cuatro vueltas** (#192–#196): `CUA0027`–`CUA0031`, "cuatro vueltas 27"–"31", `order` 27–31. 2009, grafito/papel, 30×40 cm (como la 11–26; las 5 fotos son horizontales). El orden entre ellas es arbitrario: por la hora de la foto de WhatsApp.
   - **in god we trust** (#197): `IGT003`, "in god we trust", 2012, monedas mexicanas, medidas variables.
-  - **archeology road** (#198): `ar003`, **"2993 ad"**, `order` 10. 2011, óleo/tela, 33×50 cm (la proporción de la foto, 1.51, coincide con 33×50 y no con 50×150). **El título lo eligió Claude** (siguiente al último, "2992 ad"): en esta serie los títulos son años, no una numeración. **Falta que Lucas lo confirme.**
+  - **archeology road** (#198): `ar003`, **"2993 ad"**, `order` 10. 2011, óleo/tela, 33×50 cm (la proporción de la foto, 1.51, coincide con 33×50 y no con 50×150). **El título lo eligió Claude** (siguiente al último, "2992 ad"): en esta serie los títulos son años, no una numeración. **Corregido el 2026-11-09 a "2963 ad"** por Lucas (ver "Sesión 2026-11-09").
 - **PR #239 — publicación.** Misma receta que el #200/#225: rama `integracion/cms-2026-11-07`, un `git merge --no-ff` por PR, fusionada con merge commit. Los 7 PRs quedaron `MERGED`. Verificado antes: 0 conflictos, build OK, 212 obras con serie existente e imagen presente. En vivo verificado a las 13:02. Las 7 ramas `cms/works/...` las borró Luis (el modo automático sigue bloqueando `git push --delete`). `optimize-images.yml` corrió sobre las fotos nuevas (`08f02a3`).
 - **PR #240 — ids duplicados.** El campo `id` de las obras no lo usa el build (ni URLs ni HTML), solo el CMS como nombre de la entrada (`identifier_field: id`), así que dos obras se veían con el mismo nombre. `ae8d2baa7ea2` (no extrañes nada) `nen001` → `nen002`; `d242813e8ceb` (trompe l´oeil river, `order` 33) `tromp014` → `tromp015`. Ya no quedan ids duplicados en `data/works/`.
 - **PR #241 — orden de in god we trust** (pedido de Lucas: "ponerla entre las 2 q tienen fondo blanco"). `IGT001` (blanco) 1 · `IGT003` (fondo negro) 2 · `IGT002` (blanco) 3.
@@ -551,8 +551,19 @@ Pendientes al cierre del 2026-11-07:
 - ~~**#153 (`HOY001`)**~~: **cerrado sin fusionar** el 2026-11-07 (rama borrada). Solo cambiaba `techniqueEs` a "óleo/tela", que el sitio ya muestra en `/es/` gracias al glosario `TECHNIQUE_ES` del builder (verificado en vivo), y además vaciaba `year`. No queda ningún borrador abierto.
 - **"hoyo blanco" (`HOY001`) no se edita desde el CMS.** Su `year` es el texto "2007-17", y el campo Año de las obras en el CMS es numérico (`admin/config.yml`, `widget: number`). El panel lo muestra vacío y al guardar lo borra: así nació el #153. Es la única obra o serie con año no numérico (verificado 2026-11-07). Si hay que editarla, hacerlo a mano en `data/works/HOY001.json`, o revisar el año antes de publicar. Si Lucas va a cargar más obras con rango de años, la salida de fondo es agregar `yearEnd` a las obras, como ya tienen las series.
 - **17 ramas `cms/works/...` viejas** sin PR abierto (además de la del #153). Revisar y borrar.
-- **"2993 ad"**: confirmar con Lucas.
-- **Sin `order`**: siguen las mismas 17 obras (ver gotcha de la sesión 2026-11-05), incluidas `ar001` y `ar002`, que salen antes que la primera de archeology road.
+- ~~**"2993 ad"**~~: Lucas lo corrigió a "2963 ad" (2026-11-09).
+- **Sin `order`**: siguen 16 de esas 17 obras (headless se resolvió el 2026-11-09) (ver gotcha de la sesión 2026-11-05), incluidas `ar001` y `ar002`, que salen antes que la primera de archeology road.
+
+## Sesión 2026-11-09: filippo 10, combi y headless
+
+Pedidos de Lucas, solo cambios de datos en `data/works/`, en un PR:
+
+- **visión de filippo**: la obra sin número (`c618dc3cad01`, la roja) pasa a "visión de filippo 10" (EN/ES) con `order` 10, **al final** de la serie. Revierte la posición al inicio que le dio el #233.
+- **archeology road**: la combi (`ar003`, `ef31cea06c7e`) pasa de "2993 ad" (título puesto por Claude el 2026-11-07) a **"2963 ad"**.
+- **headless**: "scroll and roll" (`d095113e907b`, la de la bicicleta) no tenía `order` y salía primera, pegada a "berzerk"; las dos tienen un cerebro. Con `order` 9 queda al final y los dos cerebros quedan separados (1 y 9).
+
+Pendiente de esta tanda:
+- **Filito negro en cuatro vueltas** (pedido de Lucas, aún no se hace). Solo afecta fotos de `/uploads/works/`, no las de Cloudinary (`CUA001`–`010`). Una medición de píxeles oscuros en los bordes marca 9 claras: 13 `3e998f1155b9`, 15 `dbce6c1687bc`, 18 `7a08a403582e`, 19 `a9395c84ebca`, 21 `f8455731b890`, 23 `e48600235719`, 24 `b7d2c4f6cde7`, 25 `9679ba9045a4`, 28 `d1e71ff7c5d9`; dudosas: 12, 27 y 31. Revisar cada orilla a mano antes de recortar (en algunas el dibujo toca el borde). Arreglo previsto: recortar unos píxeles del lado afectado y sobrescribir el mismo archivo, sin tocar JSON.
 
 ## Backlog técnico scoped, no construido
 

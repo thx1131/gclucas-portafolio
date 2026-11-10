@@ -2,8 +2,8 @@
   "cloudinaryUrl": "/uploads/works/filippo_n.jpeg",
   "id": "SUE010",
   "series": "vision-de-filippo",
-  "titleEn": "visión de filippo",
-  "titleEs": "visión de filippo",
+  "titleEn": "visión de filippo 10",
+  "titleEs": "visión de filippo 10",
   "year": 2021,
   "technique": "acrilic/canvas",
   "techniqueEs": "acrílico/tela",
@@ -15,5 +15,5 @@
     "variable": false,
     "raw": ""
   },
-  "order": 0
+  "order": 10
 }
