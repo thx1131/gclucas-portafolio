@@ -1,10 +1,10 @@
 # CLAUDE.md — gclucas-portafolio
 
-Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-11-10 (visión de filippo 10, combi "2963 ad", orden de headless, favicon y pixelogue sin el storm trooper — ver "Sesión 2026-11-09"; antes: orden de obras en cuatro vueltas, visión de filippo, trompe l´oeil y 0 quilates; statement del sitio y de pausa cargados desde el CMS — ver "Sesión 2026-11-05"; antes: sección `/text/` en vivo y publicación masiva del PR #225, ver "Sesión 2026-10-27").
+Contexto para Claude Code. Leer completo antes de tocar código. Última actualización: 2026-11-20 (modal de galería ya no corta la parte inferior de las obras en escritorio — ver "Sesión 2026-11-19/20"; antes: visión de filippo 10, combi "2963 ad", orden de headless, favicon y pixelogue sin el storm trooper — ver "Sesión 2026-11-09"; antes: orden de obras en cuatro vueltas, visión de filippo, trompe l´oeil y 0 quilates; statement del sitio y de pausa cargados desde el CMS — ver "Sesión 2026-11-05"; antes: sección `/text/` en vivo y publicación masiva del PR #225, ver "Sesión 2026-10-27").
 
 ## Qué es esto
 
-Portafolio estático multipágina del artista visual GC Lucas (Lucas de la Garza), en producción en **https://gclucas.art** con contenido real: **205 obras en 23 series** (conteo al 2026-10-24), en inglés (`/`) y español (`/es/`). Motor propio de generación: **Atelier v2.0** (Python).
+Portafolio estático multipágina del artista visual GC Lucas (Lucas de la Garza), en producción en **https://gclucas.art** con contenido real: **211 obras en 23 series** (conteo al 2026-11-20), en inglés (`/`) y español (`/es/`). Motor propio de generación: **Atelier v2.0** (Python).
 
 - Repo: `https://thx1131@github.com/thx1131/gclucas-portafolio.git` (rama `main` = producción)
 - Codebase local: `~/Documentos/gclucas-portafolio/`
@@ -211,7 +211,7 @@ Estructura (hoja única "En español", 1011 filas, 24 bloques de serie por celda
 5. ~~`work/nude-revisited/` es output huérfano~~ — **resuelto 2026-09-04**, carpeta borrada. Confirmó que "reviseted" no es un bug de build sino que **vive en el Google Sheet / `data/works.json`+`series.json`**; la decisión de naming sigue pendiente de Lucas (ver backlog de abajo).
 6. ~~`templates/home.html` tiene bio parcialmente hardcodeada fuera de `data/site.json`~~ — **resuelto 2026-09-07** junto con el rediseño de partials compartidos (ver sección de Arquitectura arriba): `bioEn` en `data/site.json` ahora es un array con ambos párrafos, y `home.html`/`bio.html` consumen el mismo `bio_content` renderizado una sola vez.
 7. **Dark mode toggle podía verse opaco/con bajo contraste en modo oscuro** — resuelto 2026-09-04: el glyph de texto `◐` dependía de cómo cada fuente/SO lo renderizaba (en algunos casos no seguía `currentColor`). Se reemplazó por dos íconos SVG (sol/luna) con `stroke="currentColor"` en `templates/components/navbar.html`, garantizando que sigan el color del tema en ambos modos.
-8. **Botones prev/next del modal de galería quedaban tapados por el scroll interno en imágenes altas / laptops de poca altura** — resuelto 2026-09-04: `.modal-nav` ahora usa `position: sticky; bottom: 0` dentro de `.modal-content`, así los botones quedan siempre visibles sin necesidad de scrollear.
+8. **Botones prev/next del modal de galería quedaban tapados por el scroll interno en imágenes altas / laptops de poca altura** — resuelto 2026-09-04: `.modal-nav` ahora usa `position: sticky; bottom: 0` dentro de `.modal-content`, así los botones quedan siempre visibles sin necesidad de scrollear. **En escritorio esto causó otro bug** (los botones tapaban la parte de abajo de la obra); desde el 2026-11-20 el `sticky` solo aplica en móvil — ver "Sesión 2026-11-19/20".
 
 ## Sesión 2026-09-04: traducción EN + fixes de UI (commits `3b00bb6`, `ac4ca46`, `4af7165`)
 
@@ -570,6 +570,29 @@ Los tres verificados en vivo el 2026-11-09/10.
 
 Pendiente de esta tanda:
 - **Filito negro en cuatro vueltas** (pedido de Lucas, aún no se hace). Solo afecta fotos de `/uploads/works/`, no las de Cloudinary (`CUA001`–`010`). Una medición de píxeles oscuros en los bordes marca 9 claras: 13 `3e998f1155b9`, 15 `dbce6c1687bc`, 18 `7a08a403582e`, 19 `a9395c84ebca`, 21 `f8455731b890`, 23 `e48600235719`, 24 `b7d2c4f6cde7`, 25 `9679ba9045a4`, 28 `d1e71ff7c5d9`; dudosas: 12, 27 y 31. Revisar cada orilla a mano antes de recortar (en algunas el dibujo toca el borde). Arreglo previsto: recortar unos píxeles del lado afectado y sobrescribir el mismo archivo, sin tocar JSON.
+
+## Sesión 2026-11-10 a 2026-11-19: PRs #247–#251 (resumen desde git)
+
+No se documentaron en su momento; esto sale de los commits.
+
+- **#247** — texto de Ana Elena Mallet (2008) en `/text/` (`data/texts/mallet-aqui-es-todas-partes.json`), serie relacionada: aquí es todas partes. Pasado de los Word de `txts/` sin corregir.
+- **#248** — se sustituyeron 12 fotos de cuatro vueltas (mismos nombres de archivo en `uploads/works/`, sin tocar JSON). Revisar si esto cierra el pendiente del **filito negro** (sesión 2026-11-09): la lista de fotos no coincide uno a uno.
+- **#249** — statement de naranja dulce (ES/EN), del Word de `txts/`, sin corregir.
+- **#250** — "ciberman" → "cyberman" en `CIB001` y `CIB002` (headless y sal y limón).
+- **#251** (CMS, fusionado 2026-11-20) — nueva foto de "cuatro vueltas 24" (`CUA0024`, archivo `b7d2c4f6cde7.json`). Ojo: la imagen quedó en `/uploads/cuatro-vueltas-13.jpeg` (raíz de `uploads/`, no `uploads/works/`, y con "13" en el nombre aunque es la 24). Funciona, pero puede confundir.
+
+## Sesión 2026-11-19/20: el modal de galería cortaba la parte inferior de las obras (PR #252)
+
+Luis reportó que en bob ross disturbed las imágenes "se cortan" al abrirlas en la ficha individual. Las imágenes estaban completas; el bug era del CSS del modal y afectaba a **todo el sitio**.
+
+- **Causa**: `.modal-content` es un grid de 2 columnas (imagen | info) con `max-height: 90vh` y `overflow-y: auto`, pero tiene 3 hijos. `.modal-nav` caía a una segunda fila **bajo la imagen**, con `position: sticky; bottom: 0` y fondo opaco (el parche del bug #8 de 2026-09-04). Imagen `75vh` + padding + gap + botones ≈ `75vh + 185px` > `90vh` en cualquier ventana de menos de ~1230px de alto → los botones tapaban los últimos ~34px de la obra.
+- **Medición en vivo** (Brave, ventana 1280×608, script que abre cada obra en el modal y compara el borde inferior de la imagen pintada con los botones): **200 de 211 obras cortadas**, en las 23 series. Solo se salvaban las muy horizontales.
+- **Móvil no tenía el bug** (medido en iframes de 390×844 y 360×640): una columna, imagen a `55vh` arriba, y el `sticky` mantiene los botones visibles mientras se scrollea la info. Una primera versión del arreglo sin `sticky` en móvil dejaba los botones fuera de pantalla en 27 obras (360×640), por eso el arreglo es solo escritorio.
+- **Arreglo** (`css/main.css`, `@media (min-width: 769px)`): `grid-template-areas: "img info" / "img nav"`, `.modal-nav` con `align-self: end; position: static`, y `.modal-image img { max-height: calc(90vh - 80px) }`.
+- **Verificado** en local con las 211 obras: 0 cortadas y 0 modales con scroll en 1920×912, 1280×608, 1024×600 y 800×500; móvil igual que antes. Fusionado con merge commit y verificado en vivo en bob ross disturbed (CSS `?v=0c8aaa73`, publicado ~2 min después del merge).
+- **Detalle menor no resuelto**: en móvil la "×" de cerrar queda encima de la esquina superior derecha de la imagen (no tapa la obra, sí un pedazo del marco).
+
+**Gotcha — los HTML generados en el repo están desactualizados.** Cloudflare regenera todo en CI, así que `work/`, `es/` etc. versionados no reflejan `data/`. Un build local para probar modifica ~59 HTML y crea `text/` y `es/text/` sin trackear. Para un PR de solo CSS/JS: probar, luego `git checkout --` de los HTML y borrar esas carpetas, y commitear solo el archivo tocado.
 
 ## Backlog técnico scoped, no construido
 
