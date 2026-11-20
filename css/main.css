@@ -541,6 +541,34 @@ body.dark-mode .modal-nav button {
     color: white;
 }
 
+/* escritorio: los botones van en la columna derecha, bajo la info,
+   para que nunca tapen la parte inferior de la obra. en móvil se
+   mantiene el layout apilado con los botones sticky. */
+@media (min-width: 769px) {
+    .modal-content {
+        grid-template-areas:
+            "img info"
+            "img nav";
+        grid-template-rows: auto 1fr;
+    }
+
+    .modal-image { grid-area: img; }
+    .modal-info { grid-area: info; }
+
+    .modal-nav {
+        grid-area: nav;
+        align-self: end;
+        position: static;
+        margin-top: 0;
+    }
+
+    /* 90vh del modal menos 80px de padding: la obra cabe completa */
+    .modal-image img {
+        display: block;
+        max-height: calc(90vh - 80px);
+    }
+}
+
 /* BIO */
 .bio-content {
     max-width: 600px;
